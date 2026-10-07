@@ -1,6 +1,6 @@
 # Code Buddies
 
-Children learn computers and coding the fun way. **Robot Missions** (20 missions in 4 Nigerian worlds: Market Run, School Run, Farm Friends, Lagos Lights) teach steps in order, loops, decisions, functions and variables with picture blocks that turn into real Python. **Code Studio** lets children write Python that draws Adire patterns, tells talking stories and makes their own games (Catch the Mango, Penalty Kick), a market calculator and a number puzzle. **Toddler Zone** (ages 2 to 4) has Robot Road and Find It! (computer things). Coding legends, a robot garage, badges, certificates and voice messages from parents.
+Children learn computers and coding the fun way. **Robot Missions** (20 missions in 4 Nigerian worlds: Market Run, School Run, Farm Friends, Lagos Lights) teach steps in order, loops, decisions, functions and variables with picture blocks that turn into real Python. **Code Studio** lets children write Python that draws Adire patterns, tells talking stories and makes their own games (Catch the Mango, Penalty Kick), a market calculator and a number puzzle. **School ICT** has Primary 1 Computer Studies: 12 topics over three terms with read-aloud lessons, hands-on activities (mouse, keyboard, desktop and more), practice questions, term badges, a final challenge and a certificate. **Toddler Zone** (ages 2 to 4) has Robot Road and Find It! (computer things). Coding legends, a robot garage, badges, certificates and voice messages from parents.
 
 Made by **Dr. Arowolo Ayoola**.
 
