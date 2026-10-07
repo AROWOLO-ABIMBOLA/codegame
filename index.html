@@ -434,8 +434,10 @@ canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-
 @keyframes blink { 50% { opacity: 0; } }
 .deskscr { position: absolute; inset: 3%; border: 4px solid var(--ink); border-radius: 12px; overflow: hidden; background: linear-gradient(#5C9DFF, #8FD3FF 60%, #6CCF8A 60%); }
 .deskscr.alt { background: linear-gradient(#FF9A62, #FFD27A 55%, #E8A15A 55%); }
-.dicon { position: absolute; left: 4%; display: flex; flex-direction: column; align-items: center; width: clamp(60px, 14cqw, 110px); color: #fff; font-weight: 800; font-size: clamp(11px, 2cqh, 16px); text-shadow: 0 1px 2px #000; cursor: pointer; padding: 4px; border-radius: 10px; }
-.dicon b { font-size: clamp(30px, 6.5cqh, 60px); text-shadow: none; }
+.dicon { position: absolute; left: 4%; display: flex; flex-direction: column; align-items: center; text-align: center; line-height: 1.15; width: clamp(66px, 16cqw, 110px); color: #fff; font-weight: 800; font-size: clamp(10px, min(2cqh, 3.3cqw), 16px); text-shadow: 0 1px 2px #000; cursor: pointer; padding: 4px; border-radius: 10px; }
+.dicon b { font-size: clamp(26px, min(6.5cqh, 10cqw), 60px); text-shadow: none; }
+.dicons { position: absolute; top: 2%; left: 2%; bottom: 14%; right: 40%; display: flex; flex-direction: column; flex-wrap: wrap; align-content: flex-start; gap: 2px 4px; }
+.dicons .dicon { position: static; flex: 0 1 auto; min-height: 0; }
 .dicon.sel { background: rgba(255,255,255,.35); }
 .dtask { position: absolute; left: 0; right: 0; bottom: 0; height: 13%; background: #1D1B45; display: flex; align-items: center; gap: 8px; padding: 0 8px; cursor: pointer; }
 .dstart { background: var(--good); color: #fff; border: 2px solid #fff; border-radius: 8px; font-weight: 800; padding: 2px 10px; font-size: clamp(12px, 2.2cqh, 18px); }
@@ -462,6 +464,13 @@ canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-
 @container app (max-width: 759px), (orientation: portrait) { .qans.pic .btn { height: clamp(100px, 24cqh, 260px); } .qans .btn { min-height: clamp(44px, 8.2cqh, 100px); } .qprompt { font-size: clamp(16px, 3.1cqh, 30px); } .qvis svg { height: 100%; max-height: 22cqh; } .qvis .picem { font-size: min(13cqh, 28cqw); } .qans:not(.pic) .btn { font-size: clamp(14px, 2.5cqh, 24px); } }
 #s-quiz .qzA { flex: 1 1 0; min-height: 0; } #s-quiz .colB { flex: 0 0 auto; flex-shrink: 0; }
 @container app (min-width: 760px) and (orientation: landscape) { #yGrid { grid-template-columns: 1fr 1fr; } .qans.pic .btn { height: clamp(110px, 32cqh, 300px); } .qvis svg { max-height: 40cqh; } }
+.sortcard .sortpic { display: block; height: clamp(54px, 13cqh, 140px); font-size: clamp(44px, 10cqh, 110px); line-height: 1; margin-bottom: 4px; }
+.sortcard .sortpic svg { height: 100%; width: auto; }
+.lpanel { position: absolute; left: 6%; right: 6%; top: 12%; bottom: 10%; background: #90A4AE; border: 4px solid #1D1B45; border-radius: 16px; }
+.lpanel span { position: absolute; left: 0; right: 0; bottom: 4px; text-align: center; font-weight: 800; color: #1D1B45; font-size: clamp(12px, 2.2cqh, 18px); }
+.kbd.big { height: 66%; } .kbd.big button { max-width: 8.5%; font-size: clamp(10px, 2.1cqh, 20px); }
+.kbd.big button.wide { max-width: 15%; }
+.dfile { color: #1D1B45; text-shadow: none; z-index: 2; touch-action: none; }
 
 </style>
 </head>
@@ -1718,7 +1727,7 @@ ON_SHOW.home = () => {
   $("#misStat").textContent = `${done} of ${lv.length} missions`;
   const pj = PROJECTS.filter(x => (s.studio[x.id] || {}).ran).length; $("#stuStat").textContent = `${pj} of ${PROJECTS.length} projects tried`;
   $("#todStat").textContent = `${s.tod.stars || 0} ⭐`;
-  const sc = (s.school || { stars: {} }).stars || {}; $("#schStat").textContent = `Primary 1: ${ictTopics(1).filter(t => sc[t.id]).length} of ${ictTopics(1).length} topics`;
+  const sc = (s.school || { stars: {} }).stars || {}; const ys = Object.keys(ICT_YEARS).map(Number), tot = ys.reduce((a, y) => a + ictTopics(y).length, 0), dn = ys.reduce((a, y) => a + ictTopics(y).filter(t => sc[t.id]).length, 0); $("#schStat").textContent = `Primary 1–${ys.length}: ${dn} of ${tot} topics`;
   const rb = $("#royalBar"); if (s.legends.length >= 4) { rb.hidden = false; rb.innerHTML = `👑 <b>${royalTitle()} of Code</b> ${esc(p.name)}`; } else rb.hidden = true;
   $("#soundBtn").textContent = soundOn ? "🔊" : "🔇";
   // toddlers see their zone first; big kids see missions first
@@ -1775,8 +1784,8 @@ ON_SHOW.treasure = () => {
   if (tTab === "legends") body.innerHTML = `<div class="fillgrid">${Object.entries(LEGENDS).map(([k, L]) => { const got = s.legends.includes(k); return `<button class="tro ${got ? "got" : "no"}" data-lg="${k}"><b>${L.emoji}</b>${got ? L.nm : "???"}<span class="t-s">${got ? "Tap to read" : "Keep coding"}</span></button>`; }).join("")}</div>`;
   if (tTab === "stickers") { const bs = BADGES(); body.innerHTML = `<div class="fillgrid">${bs.map(b => `<div class="tro ${b.got ? "got" : "no"}"><b>${b.ic}</b>${b.nm}</div>`).join("")}</div>`; }
   if (tTab === "certs") {
-    const C = [["school1", "Primary 1 Computer Studies", "🏫"], ["missions", "Robot Missions", "🤖"], ["studio", "Code Studio", "🎨"]];
-    body.innerHTML = `<div class="fillgrid" style="grid-template-columns:1fr 1fr 1fr">${C.map(([k, nm, ic]) => { const got = s.certs.includes(k); return `<button class="tro ${got ? "got" : "no"}" data-ct="${k}"><b>${ic}</b>${nm}<span class="t-s">${got ? "Tap to open" : k === "missions" ? "Finish all missions" : k === "studio" ? "Finish all studio challenges" : "Pass the final challenge"}</span></button>`; }).join("")}</div>`;
+    const C = [...Object.keys(ICT_YEARS).map(y => ["school" + y, `Primary ${y} Computer Studies`, "🏫"]), ["missions", "Robot Missions", "🤖"], ["studio", "Code Studio", "🎨"]];
+    body.innerHTML = `<div class="fillgrid" style="grid-template-columns:1fr 1fr">${C.map(([k, nm, ic]) => { const got = s.certs.includes(k); return `<button class="tro ${got ? "got" : "no"}" data-ct="${k}"><b>${ic}</b>${nm}<span class="t-s">${got ? "Tap to open" : k === "missions" ? "Finish all missions" : k === "studio" ? "Finish all studio challenges" : "Pass the final challenge"}</span></button>`; }).join("")}</div>`;
   }
 };
 $("#tTabs").onclick = e => { const b = e.target.closest("[data-tt]"); if (!b) return; tTab = b.dataset.tt; SFX.tap(); ON_SHOW.treasure(); };
@@ -1810,7 +1819,7 @@ function openGate() { const a = rnd(6, 9), b = rnd(6, 9); gateAns = a * b; $("#g
 $("#gateGo").onclick = () => { if (+$("#gateIn").value === gateAns) { pTab = "set"; show("parent"); } else { $("#gateHint").textContent = "Not quite. Ask a grown-up!"; SFX.oops(); } };
 $("#gateIn").onkeydown = e => { if (e.key === "Enter") $("#gateGo").click(); };
 let pTab = "set";
-const MSG_WHEN = () => [["w1", "Finishing Market Run"], ["w2", "Finishing School Run"], ["w3", "Finishing Farm Friends"], ["w4", "Finishing Lagos Lights"], ["studio", "Finishing a studio project"], ["tod", "Finishing a Toddler Zone game"], ["p1", "Passing Primary 1 Computer Studies"]];
+const MSG_WHEN = () => [["w1", "Finishing Market Run"], ["w2", "Finishing School Run"], ["w3", "Finishing Farm Friends"], ["w4", "Finishing Lagos Lights"], ["studio", "Finishing a studio project"], ["tod", "Finishing a Toddler Zone game"], ["p1", "Passing Primary 1 Computer Studies"], ["p2", "Passing Primary 2 Computer Studies"]];
 ON_SHOW.parent = () => {
   $("#pTabs").innerHTML = [["set", "⚙️", "Settings"], ["prog", "📊", "Progress"], ["msgs", "💌", "Messages"]].map(([k, ic, nm]) => `<button class="btn" data-pt="${k}" aria-pressed="${k === pTab}"><b>${ic}</b>${nm}</button>`).join("");
   $("#pMsgs").hidden = pTab !== "msgs"; $("#pProg").hidden = pTab !== "prog"; $("#pSet").hidden = pTab !== "set";
@@ -1832,7 +1841,7 @@ ON_SHOW.parent = () => {
     $("#pProg").innerHTML = `<div class="card"><p class="t-m">${esc(p.name)}: ${totalStars()} stars, ${s.coins} coins</p><p class="t-s">Coding style now: ${codeMode() === "python" ? "Python" : "Blocks"}. Legends met: ${s.legends.length} of ${Object.keys(LEGENDS).length}.</p></div>
       <div class="card"><table class="progtable"><tr><th>Robot Missions</th><th></th><th></th></tr>${rows}</table></div>
       <div class="card"><table class="progtable"><tr><th>Code Studio</th><th></th><th></th></tr>${pr}</table></div>
-      <div class="card"><table class="progtable"><tr><th>School ICT: Primary 1</th><th></th><th></th></tr>${ictTopics(1).map(t => { const sc = (s.school || {}); return `<tr><td>${t.icon} ${t.nm}</td><td>${(sc.stars || {})[t.id] ? "⭐".repeat(sc.stars[t.id]) : "not yet"}</td><td>${(sc.acts || {})[t.id] ? "✋ done" : ""}</td></tr>`; }).join("")}<tr><td>🏆 Final challenge</td><td>${((s.school || {}).finals || {})[1] ? "passed 📜" : "not yet"}</td><td></td></tr></table></div>
+      ${Object.keys(ICT_YEARS).map(y => `<div class="card"><table class="progtable"><tr><th>School ICT: Primary ${y}</th><th></th><th></th></tr>${ictTopics(+y).map(t => { const sc = (s.school || {}); return `<tr><td>${t.icon} ${t.nm}</td><td>${(sc.stars || {})[t.id] ? "⭐".repeat(sc.stars[t.id]) : "not yet"}</td><td>${(sc.acts || {})[t.id] ? "✋ done" : ""}</td></tr>`; }).join("")}<tr><td>🏆 Final challenge</td><td>${((s.school || {}).finals || {})[y] ? "passed 📜" : "not yet"}</td><td></td></tr></table></div>`).join("")}
       <div class="card"><p class="t-s">Toddler Zone: Robot Road level ${s.tod.road + 1}, Find It ${s.tod.find} rounds, ${s.tod.stars} stars.</p></div>`;
   }
   if (pTab === "msgs") { $("#msgWhen").innerHTML = MSG_WHEN().map(([v, t]) => `<option value="${v}">${t}</option>`).join(""); listMsgs(); }
@@ -2721,7 +2730,7 @@ function BADGES() {
   WORLDS.forEach(w => b.push({ ic: w.ic, nm: w.nm, got: LEVELS.filter(l => l.world === w.id).every(l => s.stars[l.id]) }));
   b.push({ ic: "⭐", nm: "3 stars on all", got: LEVELS.every(l => s.stars[l.id] === 3) });
   PROJECTS.slice(0, 6).forEach(p => b.push({ ic: p.ic, nm: p.nm, got: ((s.studio[p.id] || {}).done || []).filter(Boolean).length === p.chal.length }));
-  ICT_P1.terms.forEach((tm, i) => b.push({ ic: "🏅", nm: "P1 " + tm.nm, got: !!((s.school || {}).badges || {})["1-" + i] }));
+  Object.values(ICT_YEARS).forEach(Y => Y.terms.forEach((tm, i) => b.push({ ic: "🏅", nm: `P${Y.y} ${tm.nm}`, got: !!((s.school || {}).badges || {})[Y.y + "-" + i] })));
   b.push({ ic: "🧸", nm: "Toddler helper", got: (s.tod.stars || 0) >= 1 });
   b.push({ ic: "🐍", nm: "Python power", got: s.legends.includes("guido") });
   b.push({ ic: "🌐", nm: "Real Python", got: !!s.usedReal });
@@ -3328,6 +3337,264 @@ function buildPool(topic, n = 60) {
 }
 if (typeof module !== "undefined") module.exports = { ICT_P1, buildPool, ictTopics };
 
+/* ---------------- PRIMARY 2 ---------------- */
+Object.assign(SVGS, {
+  lightpen: SV(`<path d="M20 86 L72 24" stroke="${INK}" stroke-width="12" stroke-linecap="round"/><path d="M20 86 L72 24" stroke="#90A4AE" stroke-width="7" stroke-linecap="round"/><circle cx="17" cy="89" r="5" fill="#FFC83D" stroke="${INK}" stroke-width="2"/><path d="M74 22 Q88 10 92 20" fill="none" stroke="${INK}" stroke-width="3"/>`),
+  super: SV(`${[0, 1, 2, 3, 4].map(i => `<rect x="${6 + i * 18}" y="18" width="16" height="70" rx="2" fill="#37474F" stroke="${INK}" stroke-width="2.5"/>${[0, 1, 2, 3, 4, 5].map(r => `<rect x="${9 + i * 18}" y="${24 + r * 10}" width="10" height="4" fill="${(i + r) % 3 ? "#4FC3F7" : "#81C784"}"/>`).join("")}`).join("")}`),
+  mainframe: SV(`<rect x="14" y="16" width="34" height="72" rx="3" fill="#B0BEC5" stroke="${INK}" stroke-width="3"/><rect x="52" y="16" width="34" height="72" rx="3" fill="#B0BEC5" stroke="${INK}" stroke-width="3"/>${[0, 1, 2, 3].map(r => `<rect x="20" y="${24 + r * 14}" width="22" height="8" rx="1" fill="#546E7A"/><rect x="58" y="${24 + r * 14}" width="22" height="8" rx="1" fill="#546E7A"/>`).join("")}`),
+  minicomp: SV(`<rect x="28" y="20" width="44" height="66" rx="4" fill="#CFD8DC" stroke="${INK}" stroke-width="3"/><rect x="34" y="28" width="32" height="10" rx="2" fill="#455A64"/><rect x="34" y="44" width="32" height="10" rx="2" fill="#455A64"/><circle cx="50" cy="72" r="5" fill="#1FA874"/>`),
+  speedo: SV(`<path d="M10 70 A40 40 0 0 1 90 70" fill="#fff" stroke="${INK}" stroke-width="5"/>${[0, 1, 2, 3, 4, 5, 6].map(i => { const a = Math.PI * (1 - i / 6); return `<path d="M${50 + Math.cos(a) * 34} ${70 - Math.sin(a) * 34} L${50 + Math.cos(a) * 40} ${70 - Math.sin(a) * 40}" stroke="${INK}" stroke-width="3"/>`; }).join("")}<path d="M50 70 L74 42" stroke="#E53935" stroke-width="5" stroke-linecap="round"/><circle cx="50" cy="70" r="6" fill="${INK}"/>`),
+  heart: SV(`<rect x="8" y="16" width="84" height="60" rx="6" fill="#263238" stroke="${INK}" stroke-width="4"/><path d="M14 52 H34 L40 34 L48 66 L54 44 L58 52 H86" fill="none" stroke="#66BB6A" stroke-width="4" stroke-linejoin="round"/><text x="84" y="32" font-size="14" text-anchor="end" fill="#FFC83D" font-family="monospace" font-weight="bold">72</text><rect x="40" y="76" width="20" height="10" fill="#90A4AE"/>`),
+  pump: SV(`<rect x="22" y="10" width="40" height="80" rx="5" fill="#E53935" stroke="${INK}" stroke-width="4"/><rect x="28" y="18" width="28" height="18" rx="2" fill="#C5E1A5" stroke="${INK}" stroke-width="2"/><text x="52" y="31" font-size="10" text-anchor="end" font-family="monospace" fill="${INK}">₦850</text><path d="M62 44 H76 V70" fill="none" stroke="${INK}" stroke-width="5"/><rect x="70" y="68" width="12" height="16" rx="2" fill="#37474F"/>`),
+  usb: SV(`<rect x="8" y="30" width="84" height="40" rx="4" fill="#ECEFF1" stroke="${INK}" stroke-width="5"/><rect x="18" y="38" width="64" height="12" fill="#1565C0"/>`),
+  hdmi: SV(`<path d="M6 30 H94 V56 L82 70 H18 L6 56 Z" fill="#ECEFF1" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/><rect x="18" y="40" width="64" height="10" fill="${INK}"/>`),
+  audio: SV(`<circle cx="50" cy="50" r="34" fill="#81C784" stroke="${INK}" stroke-width="5"/><circle cx="50" cy="50" r="12" fill="${INK}"/>`),
+  lan: SV(`<rect x="16" y="16" width="68" height="62" rx="4" fill="#ECEFF1" stroke="${INK}" stroke-width="5"/><rect x="28" y="28" width="44" height="34" fill="${INK}"/><rect x="40" y="62" width="20" height="10" fill="${INK}"/>${[0, 1, 2, 3, 4, 5].map(i => `<rect x="${32 + i * 6.4}" y="30" width="3" height="8" fill="#FFC83D"/>`).join("")}`),
+  pport: SV(`<rect x="10" y="20" width="80" height="60" rx="8" fill="#263238" stroke="${INK}" stroke-width="5"/><rect x="24" y="36" width="10" height="26" rx="2" fill="#ECEFF1"/><rect x="45" y="36" width="10" height="26" rx="2" fill="#ECEFF1"/><rect x="66" y="36" width="10" height="26" rx="2" fill="#ECEFF1"/>`),
+  vacuum: SV(`<path d="M34 80 V36 A16 16 0 0 1 66 36 V80 Z" fill="#FFF3E0" stroke="${INK}" stroke-width="4" opacity=".95"/><path d="M42 70 V44 M58 70 V44 M42 50 H58" stroke="#FF7043" stroke-width="3"/><rect x="30" y="80" width="40" height="12" rx="2" fill="#5D4037" stroke="${INK}" stroke-width="3"/>`),
+  transistor: SV(`<path d="M30 20 H70 V56 H30 Z" fill="#37474F" stroke="${INK}" stroke-width="4"/><path d="M38 56 V90 M50 56 V90 M62 56 V90" stroke="#B0BEC5" stroke-width="5"/>`),
+  chip: SV(`<rect x="22" y="22" width="56" height="56" rx="4" fill="#212121" stroke="${INK}" stroke-width="3"/>${[0, 1, 2, 3, 4].map(i => `<path d="M${30 + i * 10} 22 V12 M${30 + i * 10} 78 V88 M22 ${30 + i * 10} H12 M78 ${30 + i * 10} H88" stroke="#B0BEC5" stroke-width="4"/>`).join("")}<circle cx="32" cy="32" r="3" fill="#9E9E9E"/>`),
+  ai: SV(`<circle cx="50" cy="50" r="36" fill="#E8EAF6" stroke="${INK}" stroke-width="4"/><path d="M34 40 Q50 22 66 40 M30 56 Q50 74 70 56" fill="none" stroke="#7C4DFF" stroke-width="5" stroke-linecap="round"/><circle cx="40" cy="48" r="4" fill="#7C4DFF"/><circle cx="60" cy="48" r="4" fill="#7C4DFF"/><circle cx="50" cy="48" r="4" fill="#E8457E"/>`),
+});
+Object.assign(PIC, {
+  joystick: { h: em("🕹️"), nm: "joystick" }, lightpen: { h: SVGS.lightpen, nm: "light pen" }, abacus: { h: em("🧮"), nm: "abacus" },
+  super: { h: SVGS.super, nm: "supercomputer" }, mainframe: { h: SVGS.mainframe, nm: "mainframe computer" }, minicomp: { h: SVGS.minicomp, nm: "minicomputer" },
+  thermometer: { h: em("🌡️"), nm: "thermometer" }, speedo: { h: SVGS.speedo, nm: "speedometer" }, clock: { h: em("🕰️"), nm: "clock with hands" },
+  heart: { h: SVGS.heart, nm: "heart monitor" }, pump: { h: SVGS.pump, nm: "petrol pump" }, traffic: { h: em("🚦"), nm: "traffic light" },
+  smartphone: { h: em("📱"), nm: "smartphone" }, bin: { h: em("🗑️"), nm: "Recycle Bin" }, folder: { h: em("📁"), nm: "File Explorer" }, browser: { h: em("🌐"), nm: "web browser" },
+  media: { h: em("🎵"), nm: "media player" }, settings: { h: em("⚙️"), nm: "settings" }, calcapp: { h: SVGS.calculator, nm: "calculator app" },
+  usb: { h: SVGS.usb, nm: "USB port" }, hdmi: { h: SVGS.hdmi, nm: "monitor port" }, audio: { h: SVGS.audio, nm: "headphone port" }, lan: { h: SVGS.lan, nm: "network port" }, pport: { h: SVGS.pport, nm: "power port" },
+  vacuum: { h: SVGS.vacuum, nm: "vacuum tube" }, transistor: { h: SVGS.transistor, nm: "transistor" }, chip: { h: SVGS.chip, nm: "chip" }, ai: { h: SVGS.ai, nm: "artificial intelligence" },
+});
+const P2_INPUT = [{ k: "keyboard", job: "types letters into the computer" }, { k: "mouse", job: "points and clicks" }, { k: "joystick", job: "moves players in a game" }, { k: "lightpen", job: "draws and points on the screen" }, { k: "scanner", job: "copies pictures into the computer" }, { k: "microphone", job: "puts our voice into the computer" }, { k: "webcam", job: "puts pictures of us into the computer" }];
+const P2_OUTPUT = [{ k: "monitor", job: "shows pictures and words" }, { k: "printer", job: "puts work on paper" }, { k: "speaker", job: "plays sound out loud" }, { k: "headphones", job: "plays sound for one person" }];
+const P2_PORTS = [{ k: "usb", use: "a flash drive, mouse or keyboard", pl: "We plug a flash drive into the USB port." }, { k: "hdmi", use: "the monitor cable", pl: "The monitor cable goes into the monitor port." },
+  { k: "audio", use: "headphones", pl: "Headphones go into the round headphone port." }, { k: "lan", use: "the internet cable", pl: "The internet cable goes into the network port." }, { k: "pport", use: "the power cable", pl: "The power cable goes into the power port." }];
+const P2_SKEYS = [{ k: "Tab", cap: "Tab ⇥", job: "jumps forward to the next box" }, { k: "Ctrl", cap: "Ctrl", job: "works with other keys to give orders" }, { k: "Esc", cap: "Esc", job: "stops or cancels something" },
+  { k: "Delete", cap: "Delete", job: "rubs out the letter after the cursor" }, { k: "Backspace", cap: "⌫ Back", job: "rubs out the letter before the cursor" }, { k: "F1", cap: "F1", job: "is a function key that often opens Help" },
+  { k: "Caps Lock", cap: "Caps Lock", job: "makes every letter a capital letter" }, { k: "Space", cap: "space", job: "puts a space between words" }, { k: "Enter", cap: "Enter ↵", job: "starts a new line or says OK" }, { k: "Shift", cap: "⇧ Shift", job: "makes one capital letter" }];
+const P2_SETUP = ["Put the computer on a strong table", "Connect the monitor to the system unit", "Connect the keyboard and the mouse", "Connect the power cables", "Plug into the socket and switch on"];
+const P2_WS = ["a strong table", "a comfortable chair", "a computer", "a socket for power", "good light"];
+const P2_NOTWS = ["a swimming pool", "a cooking pot", "a goat", "a bucket of water", "a football"];
+const P2_ICONS = [{ k: "bin", use: "holds the files we delete" }, { k: "folder", use: "helps us find our files and folders" }, { k: "browser", use: "opens websites on the internet" }, { k: "media", use: "plays music and videos" }, { k: "settings", use: "changes how the computer works" }, { k: "calcapp", use: "does sums on the computer" }];
+const P2_SIZES = [
+  { k: "super", nm: "supercomputer", fact: "the biggest and fastest kind of computer", use: "forecast the weather for a whole country" },
+  { k: "mainframe", nm: "mainframe computer", fact: "a very big computer that many people use at the same time", use: "keep the records of a big bank" },
+  { k: "minicomp", nm: "minicomputer", fact: "a middle-sized computer for a small company", use: "keep the records of a small office" },
+  { k: "laptop", nm: "microcomputer", fact: "a small computer for one person", use: "do homework at home" },
+];
+const P2_MICRO = ["laptop", "desktop", "tablet", "smartphone"];
+const P2_PHONE = [{ p: "screen", job: "shows pictures and words" }, { p: "earpiece", job: "lets us hear the other person" }, { p: "mouthpiece", job: "picks up our voice when we talk" }, { p: "keypad", job: "lets us type numbers and letters" }, { p: "battery", job: "gives the phone power" }, { p: "camera", job: "takes pictures" }, { p: "SIM card", job: "connects the phone to the network" }];
+const P2_PHONEUSES = ["make calls", "send text messages", "take pictures", "browse the internet", "keep phone numbers", "play music"];
+const P2_ANALOGUE = [{ k: "thermometer", how: "measures how hot something is with a line that moves" }, { k: "speedo", how: "shows speed with a needle that moves" }, { k: "clock", how: "shows the time with hands that go round" }];
+const P2_DIGITAL = [{ k: "calculator", how: "works with numbers" }, { k: "laptop", how: "works with numbers" }, { k: "watch", how: "shows the time in numbers" }, { k: "smartphone", how: "works with numbers" }, { k: "desktop", how: "works with numbers" }];
+const P2_HYBRID = [{ k: "heart", how: "measures a heartbeat and shows it in numbers" }, { k: "pump", how: "measures the fuel flowing and shows the price in numbers" }];
+const P2_GENS = [{ g: "first", k: "vacuum", part: "vacuum tubes", fact: "were as big as a room and used glass tubes" }, { g: "second", k: "transistor", part: "transistors", fact: "used small transistors instead of glass tubes" },
+  { g: "third", k: "chip", part: "integrated circuits (chips)", fact: "put many tiny parts on one chip" }, { g: "fourth", k: "laptop", part: "microprocessors", fact: "put a whole computer brain on one chip, so we got desktops and laptops" },
+  { g: "fifth", k: "ai", part: "artificial intelligence", fact: "learn and talk with us, like smart helpers" }];
+const P2_SPECIAL = ["atm", "calculator", "watch", "traffic", "pos", "pump"];
+const P2_GENERAL = ["laptop", "desktop"];
+const P2_POWER = [{ o: "Shut down", what: "switches the computer off completely", when: "we finish using the computer for the day" }, { o: "Restart", what: "switches off and starts again", when: "the computer has hung or is very slow" },
+  { o: "Sleep", what: "rests the computer, using very little power, and wakes up fast", when: "we go for a short break" }, { o: "Hibernate", what: "saves our work and switches off, then opens it all again later", when: "we go away for a long time but want our work to stay open" }];
+
+const ICT_P2 = { y: 2, title: "Primary 2", subj: "Computer Studies", terms: [
+  { nm: "First term", sub: "Inside and around the computer", topics: [
+    { id: "i2-history", nm: "Computers long ago", icon: "🧮", desc: "From the abacus to today's computers", act: { type: "order", nm: "Oldest to newest", sets: [{ nm: "put the counting machines in order, from the oldest", steps: ["The abacus, for counting with beads", "Charles Babbage's engine plans, in the 1800s", "ENIAC, a giant computer, in 1945", "Desktop computers in homes", "Smartphones in our pockets"] }], done: "You know the story of the computer!" },
+      learn: [{ v: "🧮", t: "Long, long ago, people counted with an abacus. They moved beads to add and take away." },
+        { v: "⚙️📜", t: "In the 1800s, Charles Babbage drew plans for counting engines with wheels and gears. Some people call him the father of the computer." },
+        { h: SVGS.vacuum, t: "In 1945, a giant computer called ENIAC was finished. It used about 18,000 glass tubes and was heavier than four elephants!" },
+        { v: "🖥️ 💻 📱", t: "Today computers are small. A smartphone in your pocket is much faster than ENIAC." }],
+      wow: { v: "🔭", t: "Computer superpower: every year, engineers make computers smaller, faster and cheaper!" },
+      gens: [
+        () => picQ("Which one is an abacus?", "abacus", ["calculator", "laptop", "phone", "watch", "radio"], { why: "The abacus has beads for counting." }),
+        () => txtQ("People counted with beads on an…", "abacus", ["ATM", "printer", "speaker", "joystick"], { why: "An abacus." }),
+        () => txtQ("Who drew plans for counting engines in the 1800s?", "Charles Babbage", ["Bolt the robot", "a farmer", "a footballer"], { why: "Charles Babbage. Some call him the father of the computer." }),
+        () => txtQ("Early computers were…", "very big and heavy", ["small enough for a pocket", "made of paper", "made of bread"], { why: "Early computers filled whole rooms." }),
+        () => txtQ("Today's computers are…", "small and fast", ["as big as a house", "made of beads", "very slow"], { why: "Today's computers are small and fast." }),
+        () => txtQ("What was the name of the giant computer finished in 1945?", "ENIAC", ["Bolt", "Abacus", "Laptop"], { why: "It was called ENIAC." }),
+        () => { const order = ["abacus", "Babbage's engine plans", "ENIAC", "desktop computers", "smartphones"]; const i = rnd(1, 4); return txtQ(`Which came just BEFORE ${order[i]}?`, order[i - 1], order.filter((_, j) => j !== i - 1 && j !== i), { why: `${order[i - 1]} came before ${order[i]}.` }); },
+        () => { const order = ["abacus", "Babbage's engine plans", "ENIAC", "desktop computers", "smartphones"]; const i = rnd(0, 3); return txtQ(`Which came just AFTER ${order[i]}?`, order[i + 1], order.filter((_, j) => j !== i + 1 && j !== i), { why: `${order[i + 1]} came after ${order[i]}.` }); },
+        fromFacts([["Which is the OLDEST?", "the abacus", ["a smartphone", "a laptop", "a desktop computer"]], ["Which is the NEWEST?", "a smartphone", ["the abacus", "ENIAC", "Babbage's engine plans"]], ["What did people move on an abacus to count?", "beads", ["keys", "wires", "icons"]],
+          ["What did ENIAC use inside?", "glass tubes", ["beads", "paper", "sand"]], ["Babbage's engines had wheels and…", "gears", ["leaves", "feathers", "beads"]], ["Which one fits in a pocket?", "a smartphone", ["ENIAC", "a mainframe", "a room of glass tubes"]],
+          ["ENIAC was heavier than…", "four elephants", ["one mango", "a cat", "a pencil"]], ["Early computers filled a whole…", "room", ["cup", "pocket", "shoe"]], ["Charles Babbage lived in the…", "1800s", ["year 2020", "time of the dinosaurs", "future"]]],
+          ([q, a, w]) => txtQ(q, a, w, { why: `The answer is ${a}.` })),
+        fromFacts([["The abacus is very old.", true], ["Early computers were small enough for a pocket.", false], ["ENIAC used glass tubes.", true], ["Charles Babbage drew plans for counting engines.", true], ["A smartphone is a kind of computer.", true], ["Computers have always been tiny.", false], ["The abacus uses beads.", true], ["ENIAC was lighter than a cat.", false]], ([s, t]) => tfQ(s, t, { why: t ? "That is true." : "That is not true." })),
+      ] },
+    { id: "i2-io", nm: "Input and output", icon: "🕹️", desc: "Joystick, light pen, scanner and more", act: { type: "sort", nm: "Input or output?", items: [...P2_INPUT.map(x => ({ t: PIC[x.k].nm, a: true, h: PIC[x.k].h })), ...P2_OUTPUT.map(x => ({ t: PIC[x.k].nm, a: false, h: PIC[x.k].h }))], la: "Input: goes IN", lb: "Output: comes OUT", ia: "⬅️💻", ib: "💻➡️", ask: t => `Is the ${t} input or output?`, wrong: c => c.a ? `The ${c.t} puts information IN. It is input.` : `The ${c.t} gives information OUT. It is output.`, done: "You know input and output devices!" },
+      learn: [{ v: "⬅️ 💻", t: "Input devices put information INTO the computer: keyboard, mouse, scanner, microphone." },
+        { v: "💻 ➡️", t: "Output devices bring information OUT of the computer: monitor, printer, speakers." },
+        { v: "🕹️", t: "A joystick is an input device. We use it to move players in games." },
+        { h: SVGS.lightpen, t: "A light pen is an input device. We touch the screen with it to draw and point." },
+        { h: SVGS.scanner, t: "A scanner copies a paper or a picture into the computer. It is an input device." }],
+      wow: { v: "✈️", t: "Computer superpower: pilots learn to fly in simulators, using joysticks that are input devices!" },
+      gens: [
+        () => { const inp = Math.random() < 0.6, f = pick(inp ? P2_INPUT : P2_OUTPUT); return txtQ(`Is the ${PIC[f.k].nm} an input or an output device?`, inp ? "input" : "output", [inp ? "output" : "input", "a cooking tool"], { vis: PIC[f.k].h, why: `The ${PIC[f.k].nm} ${f.job}.` }); },
+        () => picQ("Which one is an INPUT device?", pick(P2_INPUT).k, P2_OUTPUT.map(x => x.k), { why: "Input devices put information into the computer." }),
+        () => picQ("Which one is an OUTPUT device?", pick(P2_OUTPUT).k, P2_INPUT.map(x => x.k), { why: "Output devices bring information out of the computer." }),
+        fromFacts([...P2_INPUT, ...P2_OUTPUT], f => picQ(`Which one ${f.job}?`, f.k, [...P2_INPUT, ...P2_OUTPUT].map(x => x.k), { why: `The ${PIC[f.k].nm} ${f.job}.` })),
+        fromFacts([...P2_INPUT, ...P2_OUTPUT], f => txtQ("What is this?", PIC[f.k].nm, [...P2_INPUT, ...P2_OUTPUT].filter(x => x !== f).map(x => PIC[x.k].nm), { vis: PIC[f.k].h, why: `It is a ${PIC[f.k].nm}.` })),
+      ] },
+    { id: "i2-ports", nm: "Ports and buttons", icon: "🔌", desc: "Where the cables go on the system unit", act: { type: "label", nm: "Find the ports", panel: true, parts: [{ k: "usb", x: 30, y: 30, s: .9 }, { k: "hdmi", x: 70, y: 30, s: .9 }, { k: "audio", x: 22, y: 64, s: .8 }, { k: "lan", x: 52, y: 64, s: .85 }, { k: "pport", x: 80, y: 66, s: .95 }], done: "You can find the ports on a computer!" },
+      learn: [{ h: SVGS.sysunit, t: "The system unit has buttons and ports. A port is a place where we plug in a cable." },
+        { h: SVGS.power, t: "The power button starts the computer. Some computers also have a reset button." },
+        { h: SVGS.usb, t: "The USB port is flat. We plug in flash drives, mice and keyboards." },
+        { h: SVGS.hdmi, t: "The monitor port connects the monitor, so it can show pictures." },
+        { h: SVGS.audio, t: "The round headphone port is for headphones. The network port is for the internet cable. The power port is for the power cable." }],
+      wow: { v: "🔌", t: "Computer superpower: one USB port can charge a phone, connect a printer or carry a whole school project!" },
+      gens: [
+        fromFacts(P2_PORTS, f => picQ(`Which one is the ${PIC[f.k].nm}?`, f.k, P2_PORTS.map(x => x.k), { why: f.pl })),
+        fromFacts(P2_PORTS, f => txtQ(`What do we plug into the ${PIC[f.k].nm}?`, f.use, P2_PORTS.filter(x => x !== f).map(x => x.use), { vis: PIC[f.k].h, why: f.pl })),
+        fromFacts(P2_PORTS, f => picQ(`Where do we plug in ${f.use}?`, f.k, P2_PORTS.map(x => x.k), { why: f.pl })),
+        () => txtQ("A place where we plug in a cable is called a…", "port", ["key", "icon", "mouse", "wallpaper"], { why: "It is called a port." }),
+        () => picQ("Which button starts the computer?", "power", ["restart", "usb", "audio", "socket"], { why: "The power button starts the computer." }),
+      ] },
+    { id: "i2-keys", nm: "Special keys", icon: "⌨️", desc: "Tab, Ctrl, Esc, Delete and function keys", act: { type: "speckeys", nm: "Find the special keys" },
+      learn: [{ h: `<div class="keyrow">${keycap("Esc")}${keycap("F1")}${keycap("F2")}</div>`, t: "Esc stops or cancels. The F keys along the top are function keys. F1 often opens Help." },
+        { h: `<div class="keyrow">${keycap("Tab ⇥")}${keycap("Caps Lock")}</div>`, t: "Tab jumps forward to the next box. Caps Lock makes every letter a capital letter." },
+        { h: `<div class="keyrow">${keycap("Ctrl")}${keycap("Alt")}</div>`, t: "Ctrl, the control key, works together with other keys to give orders." },
+        { h: `<div class="keyrow">${keycap("⌫ Back")}${keycap("Delete")}</div>`, t: "Backspace rubs out the letter before the cursor. Delete rubs out the letter after it." },
+        { h: `<div class="keyrow">${keycap("Enter ↵")}${keycap("space")}</div>`, t: "Enter starts a new line or says OK. The space bar puts a space between words." }],
+      wow: { v: "⚡", t: "Computer superpower: fast typists use the Ctrl key to do jobs in a flash!" },
+      gens: [
+        fromFacts(P2_SKEYS, f => ({ p: `Which key ${f.job}?`, vis: null, kind: "pic", ans: f.k, ch: shuffle([f.k, ...choose(P2_SKEYS.map(x => x.k), 2, [f.k])]).map(v => ({ v, h: keycap(P2_SKEYS.find(x => x.k === v).cap), nm: v })), key: "SK|" + f.k + "|" + Math.random().toString(36).slice(2, 5), hint: "Read the words on the keys.", why: `The ${f.k} key ${f.job}.` })),
+        fromFacts(P2_SKEYS, f => txtQ(`What does the ${f.k} key do?`, `It ${f.job}`, P2_SKEYS.filter(x => x !== f).map(x => `It ${x.job}`), { vis: keycap(f.cap), why: `The ${f.k} key ${f.job}.` })),
+        () => txtQ("The keys F1 to F12 are called…", "function keys", ["letter keys", "number keys", "mouse keys"], { vis: `<div class="keyrow">${keycap("F1")}${keycap("F2")}${keycap("F12")}</div>`, why: "They are function keys." }),
+        () => txtQ("Ctrl is short for…", "Control", ["Cutlass", "Carry", "Colour"], { vis: keycap("Ctrl"), why: "Ctrl means Control." }),
+        () => txtQ("Esc is short for…", "Escape", ["Eskimo", "Easy", "Eat"], { vis: keycap("Esc"), why: "Esc means Escape." }),
+      ] },
+  ] },
+  { nm: "Second term", sub: "Using computers well", topics: [
+    { id: "i2-setup", nm: "Setting up a computer", icon: "🧰", desc: "Building a workstation step by step", act: { type: "order", nm: "Set up the computer", sets: [{ nm: "set up a computer", steps: P2_SETUP }], done: "You can set up a computer workstation!" },
+      learn: [{ v: "🪑🖥️", t: "A workstation is the place where a person works with a computer: a strong table, a comfortable chair, the computer and a socket." },
+        { v: "1️⃣", t: "First, put the computer parts on a strong table." },
+        { v: "2️⃣ 🖥️", t: "Connect the monitor to the system unit, then connect the keyboard and the mouse." },
+        { v: "3️⃣ 🔌", t: "Connect the power cables. Then plug into the socket and switch on." },
+        { v: "💡👀", t: "A good workstation has good light, so we do not hurt our eyes." }],
+      wow: { v: "🏢", t: "Computer superpower: in big offices, technicians set up hundreds of workstations in one day!" },
+      gens: [
+        () => { const i = rnd(1, P2_SETUP.length - 1); return txtQ(`What do we do just before: "${P2_SETUP[i]}"?`, P2_SETUP[i - 1], P2_SETUP.filter((_, j) => j !== i - 1 && j !== i), { why: `First, "${P2_SETUP[i - 1]}".` }); },
+        () => { const i = rnd(0, P2_SETUP.length - 2); return txtQ(`What do we do just after: "${P2_SETUP[i]}"?`, P2_SETUP[i + 1], P2_SETUP.filter((_, j) => j !== i + 1 && j !== i), { why: `Next, "${P2_SETUP[i + 1]}".` }); },
+        () => txtQ("What is the FIRST step to set up a computer?", P2_SETUP[0], P2_SETUP.slice(1), { why: "First, put it on a strong table." }),
+        () => txtQ("What is the LAST step?", P2_SETUP[P2_SETUP.length - 1], P2_SETUP.slice(0, -1), { why: "We switch on last, when everything is connected." }),
+        () => txtQ("What do we need at a workstation?", pick(P2_WS), P2_NOTWS, { why: "We need that at a workstation." }),
+        () => txtQ("Which one does NOT belong at a workstation?", pick(P2_NOTWS), P2_WS, { why: "That does not belong near a computer!" }),
+        () => txtQ("A place where a person works with a computer is called a…", "workstation", ["bus stop", "kitchen", "football field"], { why: "It is called a workstation." }),
+        fromFacts([["We switch on before connecting the cables.", false], ["A workstation needs a strong table.", true], ["Good light helps our eyes.", true], ["We connect the monitor to the system unit.", true], ["We should set up a computer near water.", false]], ([s, t]) => tfQ(s, t, { why: t ? "That is right." : "That is not right." })),
+      ] },
+    { id: "i2-icons", nm: "Icons and what they do", icon: "🗑️", desc: "Recycle Bin, File Explorer, browser and more", act: { type: "icons", nm: "Use the icons" },
+      learn: [{ v: "🗑️", t: "The Recycle Bin holds files we delete. We can bring them back, or empty the bin." },
+        { v: "📁", t: "File Explorer helps us find our files and folders." },
+        { v: "🌐", t: "The web browser opens websites on the internet." },
+        { v: "🎵 ⚙️", t: "The media player plays music and videos. Settings change how the computer works." },
+        { v: "👆👆", t: "We double-click an icon to open it." }],
+      wow: { v: "♻️", t: "Computer superpower: the Recycle Bin can bring back a file you deleted by mistake!" },
+      gens: [
+        fromFacts(P2_ICONS, f => picQ(`Which icon ${f.use}?`, f.k, P2_ICONS.map(x => x.k), { why: `The ${PIC[f.k].nm} ${f.use}.` })),
+        fromFacts(P2_ICONS, f => txtQ(`What does the ${PIC[f.k].nm} do?`, `It ${f.use}`, P2_ICONS.filter(x => x !== f).map(x => `It ${x.use}`), { vis: PIC[f.k].h, why: `The ${PIC[f.k].nm} ${f.use}.` })),
+        fromFacts(P2_ICONS, f => txtQ("What is this icon?", PIC[f.k].nm, P2_ICONS.filter(x => x !== f).map(x => PIC[x.k].nm), { vis: PIC[f.k].h, why: `It is the ${PIC[f.k].nm}.` })),
+        () => txtQ("Where do deleted files go?", "the Recycle Bin", ["the printer", "the keyboard", "the speaker"], { why: "They go to the Recycle Bin." }),
+        () => txtQ("How do we open an icon?", "double-click it", ["shout at it", "turn off the computer", "press the speaker"], { why: "We double-click it." }),
+      ] },
+    { id: "i2-size", nm: "Computers by size", icon: "🏢", desc: "Super, mainframe, mini and micro", act: { type: "order", nm: "Biggest to smallest", sets: [{ nm: "put the computers in order, from the BIGGEST", steps: ["Supercomputer", "Mainframe computer", "Minicomputer", "Microcomputer, like a laptop"] }], done: "You know computers by size!" },
+      learn: [{ h: SVGS.super, t: "A supercomputer is the biggest and fastest kind. It can help forecast the weather for a whole country." },
+        { h: SVGS.mainframe, t: "A mainframe is a very big computer that many people use at the same time, for example in a big bank." },
+        { h: SVGS.minicomp, t: "A minicomputer is middle-sized. A small company can use it." },
+        { v: "💻 🖥️ 📱", t: "A microcomputer is small, for one person: desktops, laptops, tablets and smartphones." }],
+      wow: { v: "🌦️", t: "Computer superpower: supercomputers do millions and millions of sums every second!" },
+      gens: [
+        fromFacts(P2_SIZES, f => txtQ(`Which computer is ${f.fact}?`, f.nm, P2_SIZES.filter(x => x !== f).map(x => x.nm), { vis: PIC[f.k].h, why: `A ${f.nm} is ${f.fact}.` })),
+        fromFacts(P2_SIZES, f => txtQ(`Which computer could ${f.use}?`, f.nm, P2_SIZES.filter(x => x !== f).map(x => x.nm), { why: `A ${f.nm} could ${f.use}.` })),
+        () => txtQ("The BIGGEST and fastest computer is a…", "supercomputer", ["microcomputer", "calculator", "watch"], { vis: SVGS.super, why: "The supercomputer." }),
+        fromFacts([["A supercomputer is the fastest kind of computer.", true], ["Many people can use a mainframe at the same time.", true], ["A smartphone is a microcomputer.", true], ["A minicomputer is bigger than a supercomputer.", false],
+          ["A microcomputer is for one person.", true], ["A supercomputer fits in a pocket.", false], ["Big banks can use mainframe computers.", true], ["A tablet is a microcomputer.", true], ["Supercomputers can help forecast the weather.", true], ["A laptop is a supercomputer.", false]], ([q, t]) => tfQ(q, t, { why: t ? "That is true." : "That is not true." })),
+        () => txtQ("A laptop is a kind of…", "microcomputer", ["supercomputer", "mainframe computer"], { vis: em("💻"), why: "A laptop is a microcomputer." }),
+        () => picQ("Which one is a microcomputer?", pick(P2_MICRO), ["super", "mainframe", "minicomp"], { why: "Small computers for one person are microcomputers." }),
+        () => { const o = ["supercomputer", "mainframe computer", "minicomputer", "microcomputer"]; const [a, b] = shuffle([0, 1, 2, 3]).slice(0, 2); return txtQ(`Which is BIGGER: a ${o[a]} or a ${o[b]}?`, o[Math.min(a, b)], [o[Math.max(a, b)], "they are the same"], { why: `The ${o[Math.min(a, b)]} is bigger.` }); },
+        () => { const o = ["supercomputer", "mainframe computer", "minicomputer", "microcomputer"]; const [a, b] = shuffle([0, 1, 2, 3]).slice(0, 2); return txtQ(`Which is SMALLER: a ${o[a]} or a ${o[b]}?`, o[Math.max(a, b)], [o[Math.min(a, b)], "they are the same"], { why: `The ${o[Math.max(a, b)]} is smaller.` }); },
+      ] },
+    { id: "i2-phone", nm: "Phones and smart devices", icon: "📱", desc: "Parts and uses of a phone",
+      learn: [{ v: "📱", t: "A GSM phone is a small computer. GSM is the kind of network most phones in Nigeria use." },
+        { v: "📱👂🗣️", t: "A phone has a screen, an earpiece to hear, a mouthpiece to talk, and a keypad to type." },
+        { v: "🔋📷", t: "The battery gives it power. The camera takes pictures. The SIM card connects it to the network." },
+        { v: "📞💬🌐", t: "We use phones to call, send messages, take pictures, browse the internet and keep phone numbers." },
+        { v: "⌚", t: "A smartwatch is another small smart device. It can show the time and count our steps." }],
+      wow: { v: "🧑🏾‍🌾", t: "Computer superpower: farmers use phones to check market prices before they sell their crops!" },
+      gens: [
+        fromFacts(P2_PHONE, f => txtQ(`Which part of the phone ${f.job}?`, `the ${f.p}`, P2_PHONE.filter(x => x !== f).map(x => `the ${x.p}`), { vis: em("📱"), why: `The ${f.p} ${f.job}.` })),
+        fromFacts(P2_PHONE, f => txtQ(`What does the phone's ${f.p} do?`, `It ${f.job}`, P2_PHONE.filter(x => x !== f).map(x => `It ${x.job}`), { vis: em("📱"), why: `The ${f.p} ${f.job}.` })),
+        () => txtQ("We can use a phone to…", pick(P2_PHONEUSES), ["cook rice", "wash clothes", "sweep the floor", "plant maize"], { why: "Phones can do that." }),
+        () => picQ("Which one is a smartphone?", "smartphone", NONCOMP, { why: "That is a smartphone." }),
+        fromFacts([["A phone is a small computer.", true], ["The battery gives the phone power.", true], ["We hear through the mouthpiece.", false], ["The SIM card connects the phone to the network.", true], ["A phone can take pictures.", true], ["A phone can cook food.", false]], ([s, t]) => tfQ(s, t, { vis: em("📱"), why: t ? "That is true." : "That is not true." })),
+      ] },
+  ] },
+  { nm: "Third term", sub: "Kinds of computers", topics: [
+    { id: "i2-adh", nm: "Analogue, digital, hybrid", icon: "🌡️", desc: "Measuring, counting, or both", act: { type: "sort", nm: "Analogue or digital?", items: [...P2_ANALOGUE.map(x => ({ t: PIC[x.k].nm, a: true, h: PIC[x.k].h })), ...P2_DIGITAL.map(x => ({ t: PIC[x.k].nm, a: false, h: PIC[x.k].h }))], la: "Analogue: measures", lb: "Digital: counts in numbers", ia: "🌡️", ib: "🔢", ask: t => `Is the ${t} analogue or digital?`, wrong: c => c.a ? `The ${c.t} measures with something that moves. It is analogue.` : `The ${c.t} works with numbers. It is digital.`, done: "You can tell analogue from digital!" },
+      learn: [{ v: "🌡️", t: "An analogue device measures things that change smoothly, like heat or speed. It uses a line or a needle that moves." },
+        { h: SVGS.speedo, t: "A car speedometer with a needle and a clock with hands are analogue." },
+        { h: SVGS.calculator, t: "A digital computer works with numbers. Calculators, laptops, phones and digital watches are digital." },
+        { h: SVGS.heart, t: "A hybrid computer does both. A hospital heart monitor measures the heartbeat and shows it as numbers." },
+        { h: SVGS.pump, t: "A petrol pump measures the fuel flowing, then shows the price in numbers. It is hybrid too." }],
+      wow: { v: "🏥", t: "Computer superpower: hybrid machines in hospitals watch a patient's heart all night long!" },
+      gens: [
+        () => { const kind = pick(["analogue", "digital", "hybrid"]), f = pick(kind === "analogue" ? P2_ANALOGUE : kind === "digital" ? P2_DIGITAL : P2_HYBRID); return txtQ(`Is the ${PIC[f.k].nm} analogue, digital or hybrid?`, kind, ["analogue", "digital", "hybrid"].filter(x => x !== kind), { vis: PIC[f.k].h, why: `The ${PIC[f.k].nm} ${f.how}, so it is ${kind}.` }); },
+        () => picQ("Which one is ANALOGUE?", pick(P2_ANALOGUE).k, P2_DIGITAL.map(x => x.k), { why: "It measures with something that moves." }),
+        () => picQ("Which one is DIGITAL?", pick(P2_DIGITAL).k, P2_ANALOGUE.map(x => x.k), { why: "It works with numbers." }),
+        () => picQ("Which one is HYBRID?", pick(P2_HYBRID).k, [...P2_ANALOGUE, ...P2_DIGITAL].map(x => x.k), { why: "It measures AND shows numbers." }),
+        () => txtQ("A computer that works with numbers is…", "digital", ["analogue", "a hoe"], { why: "Digital computers work with numbers." }),
+        () => txtQ("A hybrid computer is…", "both analogue and digital", ["only analogue", "made of wood"], { why: "Hybrid means both." }),
+      ] },
+    { id: "i2-gens", nm: "Generations of computers", icon: "⏳", desc: "From glass tubes to clever computers", act: { type: "order", nm: "Generations in order", sets: [{ nm: "put the five generations in order, from the first", steps: P2_GENS.map(g => `${g.g[0].toUpperCase() + g.g.slice(1)}: ${g.part}`) }], done: "You know all five generations!" },
+      learn: [{ v: "1️⃣ 2️⃣ 3️⃣ 4️⃣ 5️⃣", t: "A generation is a family of computers from the same time. There are five generations." },
+        { h: SVGS.vacuum, t: "First generation computers used glass vacuum tubes. They were as big as a room!" },
+        { h: SVGS.transistor, t: "Second generation computers used small transistors instead of glass tubes." },
+        { h: SVGS.chip, t: "Third generation computers used chips, with many tiny parts on one chip. Fourth generation computers put a whole computer brain on one chip, so we got desktops and laptops." },
+        { h: SVGS.ai, t: "Fifth generation computers use artificial intelligence. They can learn, listen and talk with us." }],
+      wow: { v: "🧠", t: "Computer superpower: you are growing up in the fifth generation, the age of clever computers!" },
+      gens: [
+        fromFacts(P2_GENS, f => txtQ(`Which generation of computers used ${f.part}?`, `the ${f.g} generation`, P2_GENS.filter(x => x !== f).map(x => `the ${x.g} generation`), { vis: PIC[f.k].h, why: `The ${f.g} generation used ${f.part}.` })),
+        fromFacts(P2_GENS, f => txtQ(`What did ${f.g} generation computers use?`, f.part, P2_GENS.filter(x => x !== f).map(x => x.part), { why: `They used ${f.part}.` })),
+        fromFacts(P2_GENS, f => picQ(`Which one belongs to the ${f.g} generation?`, f.k, P2_GENS.map(x => x.k), { why: `The ${f.g} generation used ${f.part}.` })),
+        () => txtQ("How many generations of computers are there?", "five", ["two", "ten", "one"], { why: "There are five generations." }),
+        fromFacts(P2_GENS, f => tfQ(`${f.g[0].toUpperCase() + f.g.slice(1)} generation computers ${f.fact}.`, true, { why: "That is true." })),
+        () => { const a = pick(P2_GENS), b = pick(P2_GENS.filter(x => x !== a)); return tfQ(`${a.g[0].toUpperCase() + a.g.slice(1)} generation computers used ${b.part}.`, false, { why: `No. The ${a.g} generation used ${a.part}.` }); },
+      ] },
+    { id: "i2-purpose", nm: "Special and general purpose", icon: "🎯", desc: "One job, or many jobs", act: { type: "sort", nm: "One job or many jobs?", items: [...P2_SPECIAL.map(k => ({ t: PIC[k].nm, a: true, h: PIC[k].h })), ...["laptop", "desktop", "tablet", "smartphone"].map(k => ({ t: PIC[k].nm, a: false, h: PIC[k].h }))], la: "Special purpose: one job", lb: "General purpose: many jobs", ia: "🎯", ib: "🧰", ask: t => `Does the ${t} do one job, or many jobs?`, wrong: c => c.a ? `The ${c.t} does one special job.` : `The ${c.t} can do many jobs.`, done: "You know special and general purpose computers!" },
+      learn: [{ v: "🎯", t: "A special purpose computer is made to do ONE job." },
+        { v: "🏧 🚦", t: "An ATM gives out money. A traffic light controller changes the lights. Each does one job." },
+        { h: SVGS.calculator, t: "A calculator only does sums. A digital watch only tells the time. They are special purpose." },
+        { v: "💻 🧰", t: "A general purpose computer can do MANY jobs: type, draw, play games, play music. Laptops and desktops are general purpose." }],
+      wow: { v: "🚦", t: "Computer superpower: tiny special computers control traffic lights at busy junctions!" },
+      gens: [
+        () => picQ("Which one is a SPECIAL purpose computer?", pick(P2_SPECIAL), P2_GENERAL, { why: "It is made for one job." }),
+        () => picQ("Which one is a GENERAL purpose computer?", pick(P2_GENERAL), P2_SPECIAL, { why: "It can do many jobs." }),
+        () => { const sp = Math.random() < 0.6, k = pick(sp ? P2_SPECIAL : ["laptop", "desktop", "tablet"]); return txtQ(`Is the ${PIC[k].nm} special purpose or general purpose?`, sp ? "special purpose" : "general purpose", [sp ? "general purpose" : "special purpose", "no purpose"], { vis: PIC[k].h, why: sp ? "It does one special job." : "It can do many jobs." }); },
+        () => txtQ("A computer made to do only ONE job is…", "special purpose", ["general purpose", "a mainframe"], { why: "Special purpose." }),
+        () => txtQ("A computer that can do MANY jobs is…", "general purpose", ["special purpose", "a calculator"], { why: "General purpose." }),
+        fromFacts([["atm", "gives out money"], ["traffic", "changes the traffic lights"], ["calculator", "does sums"], ["watch", "tells the time"], ["pos", "takes payments in shops"], ["pump", "sells fuel"]], ([k, j]) => txtQ(`The ONE job of the ${PIC[k].nm} is to…`, j, ["gives out money", "changes the traffic lights", "does sums", "tells the time", "takes payments in shops", "sells fuel"].filter(x => x !== j), { vis: PIC[k].h, why: `It ${j}.` })),
+      ] },
+    { id: "i2-power", nm: "Sleep, restart, shut down", icon: "😴", desc: "The right way to switch off",
+      learn: [{ v: "⏻", t: "When we click Start, then the power button, we see choices: Sleep, Hibernate, Restart and Shut down." },
+        { v: "😴", t: "Sleep rests the computer. It uses very little power and wakes up fast. Good for a short break." },
+        { v: "🐻", t: "Hibernate saves our open work and switches off. Later, everything opens again, just as we left it." },
+        { h: SVGS.restart, t: "Restart switches off and starts again. We use it when the computer hangs or is very slow." },
+        { h: SVGS.power, t: "Shut down switches the computer off completely, at the end of the day. Always save your work first!" }],
+      wow: { v: "🔋", t: "Computer superpower: sleep mode saves electricity, which is good for families and for our planet!" },
+      gens: [
+        fromFacts(P2_POWER, f => txtQ(`Which choice ${f.what}?`, f.o, P2_POWER.filter(x => x !== f).map(x => x.o), { why: `${f.o} ${f.what}.` })),
+        fromFacts(P2_POWER, f => txtQ(`What should we choose when ${f.when}?`, f.o, P2_POWER.filter(x => x !== f).map(x => x.o), { why: `${f.o} ${f.what}.` })),
+        fromFacts(P2_POWER, f => txtQ(`What does ${f.o} do?`, `It ${f.what}`, P2_POWER.filter(x => x !== f).map(x => `It ${x.what}`), { why: `${f.o} ${f.what}.` })),
+        fromFacts([["School is over and you are going home.", "Shut down"], ["You are going to eat lunch for a few minutes.", "Sleep"], ["The game froze and the mouse does nothing.", "Restart"],
+          ["The computer is very, very slow.", "Restart"], ["You are travelling for a week but want your story to stay open.", "Hibernate"], ["It is night time and everyone is going to bed.", "Shut down"],
+          ["You will be back in five minutes.", "Sleep"], ["A new program asks the computer to start again.", "Restart"], ["You must stop now, but tomorrow you want all your windows just as they are.", "Hibernate"],
+          ["Mum is going to the market for a short time and will come back soon.", "Sleep"], ["The teacher says the computer lesson is finished for today.", "Shut down"], ["The screen has hung and nothing moves.", "Restart"]],
+          ([sit, o]) => txtQ(`${sit} What should you choose?`, o, ["Shut down", "Restart", "Sleep", "Hibernate"].filter(x => x !== o), { why: `${o} ${P2_POWER.find(x => x.o === o).what}.` })),
+        () => txtQ("What should we do before we shut down?", "save our work", ["pour water on it", "pull out the wire", "close our eyes"], { why: "Always save your work first." }),
+        fromFacts([["Sleep uses very little power.", true], ["Restart helps when the computer hangs.", true], ["Shut down switches the computer off completely.", true], ["We should pull out the wire to shut down.", false], ["Hibernate keeps our work for later.", true], ["Sleep means the computer goes to bed in a bedroom.", false]], ([s, t]) => tfQ(s, t, { why: t ? "That is true." : "That is not true." })),
+      ] },
+  ] },
+] };
+ICT_YEARS[2] = ICT_P2;
+
 /* ======================= SCHOOL ICT: screens, questions, hands-on activities ======================= */
 let curY = 1, curTerm = 0, curTopic = null;
 const sch = () => { const s = st(); s.school = s.school || { stars: {}, acts: {}, badges: {}, finals: {}, tries: {} }; ["stars", "acts", "badges", "finals", "tries"].forEach(k => s.school[k] = s.school[k] || {}); return s.school; };
@@ -3448,8 +3715,18 @@ async function finishQuiz() {
 }
 /* ---------- hands-on activities ---------- */
 let ACT = null;
-const ACT_NAMES = { click: "Mouse moves", keys: "Keyboard practice", label: "Find the parts", sortcan: "Can or cannot?", sortsafe: "Safe or not safe?", order: "Steps in order", desk: "Explore the desktop" };
-function startAct(t) { ACT = { t, kind: t.act, step: 0 }; $("#acTitle").textContent = "✋ " + ACT_NAMES[t.act]; show("act"); ({ click: actClick, keys: actKeys, label: actLabel, sortcan: () => actSort("can"), sortsafe: () => actSort("safe"), order: actOrder, desk: actDesk })[t.act](); }
+const P1_ACTS = {
+  click: { type: "click", nm: "Mouse moves" }, keys: { type: "keys", nm: "Keyboard practice" }, desk: { type: "desk", nm: "Explore the desktop" },
+  label: { type: "label", nm: "Find the parts", desk: true, parts: [{ k: "monitor", x: 42, y: 52, s: 1.5 }, { k: "sysunit", x: 82, y: 57, s: 1.15 }, { k: "keyboard", x: 40, y: 67, s: 1.2 }, { k: "mouse", x: 67, y: 68, s: .7 }, { k: "speaker", x: 13, y: 61, s: .8 }, { k: "printer", x: 50, y: 87, s: 1 }], done: "You know all the parts of a computer!" },
+  sortcan: { type: "sort", nm: "Can or cannot?", items: [], la: "A computer CAN", lb: "A computer CANNOT", ia: "✔️", ib: "✖️", card: t => `…${t}`, ask: t => `Can a computer ${t}?`, wrong: c => c.a ? `Yes, a computer can ${c.t}.` : `No. A computer cannot ${c.t}.`, done: "You know what computers can and cannot do!", A: () => P1_CAN, B: () => P1_CANNOT },
+  sortsafe: { type: "sort", nm: "Safe or not safe?", items: [], la: "Safe", lb: "Not safe", ia: "👍", ib: "⚠️", ask: t => `${t}. Is that safe?`, wrong: c => c.a ? "That one is safe." : "That one is not safe!", done: "You know how to stay safe in the computer room!", A: () => P1_SAFE, B: () => P1_UNSAFE },
+  order: { type: "order", nm: "Steps in order", sets: [{ nm: "start the computer", steps: P1_START }, { nm: "shut down the computer", steps: P1_STOP }], done: "You know how to start and shut down a computer!" },
+};
+function startAct(t) {
+  const A = typeof t.act === "string" ? P1_ACTS[t.act] : t.act;
+  ACT = { t, kind: A.type, step: 0 }; $("#acTitle").textContent = "✋ " + A.nm; $("#acProg").textContent = ""; show("act");
+  ({ click: actClick, keys: actKeys, label: actLabel, sort: actSort, order: actOrder, desk: actDesk, speckeys: actSpecKeys, icons: actIcons })[A.type](A);
+}
 $("#acBack").onclick = () => { hush(); show("stopic"); ACT = null; };
 $("#acSay").onclick = () => say($("#acTask").textContent);
 function task(t, prog) { $("#acTask").textContent = t; if (prog !== undefined) $("#acProg").textContent = prog; say(t); }
@@ -3507,46 +3784,45 @@ function actKeys() {
   go();
 }
 /* find the parts in a computer picture */
-function actLabel() {
-  const S = $("#acStage");
-  const parts = [{ k: "monitor", x: 42, y: 52, s: 1.5 }, { k: "sysunit", x: 82, y: 57, s: 1.15 }, { k: "keyboard", x: 40, y: 67, s: 1.2 }, { k: "mouse", x: 67, y: 68, s: .7 }, { k: "speaker", x: 13, y: 61, s: .8 }, { k: "printer", x: 50, y: 87, s: 1 }];
-  S.innerHTML = `<div class="lscene"><div class="ldesk"></div>${parts.map(p => `<div class="lpart" data-p="${p.k}" data-s="${p.s}" style="left:${p.x}%;top:${p.y}%">${PIC[p.k].h.replace('class="picem"', 'class="picem" style="font-size:inherit"')}</div>`).join("")}</div>`;
+function actLabel(A) {
+  const S = $("#acStage"), parts = A.parts;
+  S.innerHTML = `<div class="lscene">${A.desk ? `<div class="ldesk"></div>` : ""}${A.panel ? `<div class="lpanel"><span>Back of the system unit</span></div>` : ""}${parts.map(p => `<div class="lpart" data-p="${p.k}" data-s="${p.s}" style="left:${p.x}%;top:${p.y}%">${PIC[p.k].h.replace('class="picem"', 'class="picem" style="font-size:inherit"')}</div>`).join("")}</div>`;
   const fit = () => { const r = S.getBoundingClientRect(), base = Math.min(r.width / 4.2, r.height / 4.6); $$("#acStage .lpart").forEach(el => { const z = base * +el.dataset.s; el.style.width = el.style.height = z + "px"; el.style.fontSize = z * .78 + "px"; }); };
   fit(); ACT.fit = fit;
   const order = shuffle(parts.map(p => p.k)); let i = 0;
   const ask = () => task(`Tap the ${PIC[order[i]].nm}.`, `${i + 1} of ${order.length}`);
   S.querySelector(".lscene").onclick = e => {
     const el = e.target.closest("[data-p]"); if (!el || i >= order.length) return;
-    if (el.dataset.p === order[i]) { el.classList.add("hit"); el.insertAdjacentHTML("beforeend", `<span class="tag">${PIC[order[i]].nm}</span>`); SFX.good(); i++; if (i < order.length) ask(); else actDone("You know all the parts of a computer!"); }
+    if (el.dataset.p === order[i]) { el.classList.add("hit"); el.insertAdjacentHTML("beforeend", `<span class="tag">${PIC[order[i]].nm}</span>`); SFX.good(); i++; if (i < order.length) ask(); else actDone(A.done); }
     else { el.classList.remove("no"); void el.offsetWidth; el.classList.add("no"); SFX.oops(); say(`That is the ${PIC[el.dataset.p].nm}. Find the ${PIC[order[i]].nm}.`); }
   };
   ask();
 }
 /* sort cards into two groups */
-function actSort(kind) {
-  const [A, B, la, lb, ia, ib] = kind === "can" ? [P1_CAN, P1_CANNOT, "A computer CAN", "A computer CANNOT", "✔️", "✖️"] : [P1_SAFE, P1_UNSAFE, "Safe", "Not safe", "👍", "⚠️"];
-  const cards = shuffle([...shuffle(A).slice(0, 4).map(t => ({ t, a: true })), ...shuffle(B).slice(0, 4).map(t => ({ t, a: false }))]); let i = 0;
-  const S = $("#acStage"); S.innerHTML = `<div class="sortcard" id="aCard"></div><div class="sortbins"><button class="btn" data-b="1"><b>${ia}</b>${la}</button><button class="btn" data-b="0"><b>${ib}</b>${lb}</button></div>`;
-  const showC = () => { const c = cards[i]; $("#aCard").textContent = kind === "can" ? `…${c.t}` : c.t; task(kind === "can" ? `Can a computer ${c.t}?` : `${c.t}. Is that safe?`, `${i + 1} of ${cards.length}`); $("#aCard").style.animation = "none"; void $("#aCard").offsetWidth; $("#aCard").style.animation = ""; };
+function actSort(A) {
+  const items = A.A ? [...A.A().map(t => ({ t, a: true })), ...A.B().map(t => ({ t, a: false }))] : A.items;
+  const cards = shuffle([...shuffle(items.filter(x => x.a)).slice(0, 4), ...shuffle(items.filter(x => !x.a)).slice(0, 4)]); let i = 0;
+  const S = $("#acStage"); S.innerHTML = `<div class="sortcard" id="aCard"></div><div class="sortbins"><button class="btn" data-b="1"><b>${A.ia}</b>${A.la}</button><button class="btn" data-b="0"><b>${A.ib}</b>${A.lb}</button></div>`;
+  const showC = () => { const c = cards[i]; $("#aCard").innerHTML = c.h ? `<span class="sortpic">${c.h}</span>${esc(c.t)}` : esc(A.card ? A.card(c.t) : c.t); task(A.ask(c.t), `${i + 1} of ${cards.length}`); $("#aCard").style.animation = "none"; void $("#aCard").offsetWidth; $("#aCard").style.animation = ""; };
   S.querySelector(".sortbins").onclick = e => {
     const b = e.target.closest("[data-b]"); if (!b || i >= cards.length) return; const c = cards[i], yes = b.dataset.b === "1";
-    if (yes === c.a) { SFX.good(); i++; if (i < cards.length) showC(); else actDone(kind === "can" ? "You know what computers can and cannot do!" : "You know how to stay safe in the computer room!"); }
-    else { SFX.oops(); b.style.animation = "shake .4s"; setTimeout(() => b.style.animation = "", 450); say(kind === "can" ? (c.a ? `Yes, a computer can ${c.t}.` : `No. A computer cannot ${c.t}.`) : (c.a ? "That one is safe." : "That one is not safe!")); }
+    if (yes === c.a) { SFX.good(); i++; if (i < cards.length) showC(); else actDone(A.done); }
+    else { SFX.oops(); b.style.animation = "shake .4s"; setTimeout(() => b.style.animation = "", 450); say(A.wrong(c)); }
   };
   showC();
 }
 /* put steps in order: start up, then shut down */
-function actOrder() {
-  const sets = [{ nm: "start the computer", steps: P1_START }, { nm: "shut down the computer", steps: P1_STOP }]; let si = 0;
+function actOrder(A) {
+  const sets = A.sets; let si = 0;
   const run = () => {
     const set = sets[si]; let next = 0; const sh = shuffle(set.steps.map((t, k) => ({ t, k })));
     $("#acStage").innerHTML = `<div class="ordlist">${sh.map(x => `<button class="btn" data-k="${x.k}"><b>?</b>${esc(x.t)}</button>`).join("")}</div>`;
-    task(`Tap the steps to ${set.nm}, in the right order. What comes first?`, `${si + 1} of 2`);
+    task(`Tap to ${set.nm}, in the right order. What comes first?`, sets.length > 1 ? `${si + 1} of ${sets.length}` : "");
     $("#acStage .ordlist").onclick = e => {
       const b = e.target.closest("[data-k]"); if (!b || b.classList.contains("placed")) return;
       if (+b.dataset.k === next) { b.classList.add("placed"); b.querySelector("b").textContent = next + 1; SFX.good(); next++; say(set.steps[next - 1]);
-        if (next === set.steps.length) { si++; if (si < sets.length) setTimeout(run, 1400); else setTimeout(() => actDone("You know how to start and shut down a computer!"), 900); } }
-      else { b.classList.remove("bad"); void b.offsetWidth; b.classList.add("bad"); SFX.oops(); say(next === 0 ? "Not first. What do we do first?" : `Not yet. What comes after: ${set.steps[next - 1]}?`); }
+        if (next === set.steps.length) { si++; if (si < sets.length) setTimeout(run, 1400); else setTimeout(() => actDone(A.done), 900); } }
+      else { b.classList.remove("bad"); void b.offsetWidth; b.classList.add("bad"); SFX.oops(); say(next === 0 ? "Not first. Which one comes first?" : `Not yet. What comes after: ${set.steps[next - 1]}?`); }
     };
   };
   run();
@@ -3578,6 +3854,62 @@ function actDesk() {
 }
 ON_LEAVE.act = () => { if (ACT && ACT.keyHandler) removeEventListener("keydown", ACT.keyHandler); };
 addEventListener("resize", () => { if (curScreen === "act" && ACT && ACT.fit) ACT.fit(); });
+
+/* Primary 2: find the special keys on a full keyboard */
+function actSpecKeys() {
+  const K = (k, lbl, cls) => `<button class="${cls || ""}" data-k="${k}">${lbl || k}</button>`;
+  const rows = [K("Esc") + ["F1", "F2", "F3", "F4", "F5", "F6"].map(f => K(f)).join("") + K("Delete", "Del", "wide"),
+    K("Tab", "Tab ⇥", "wide") + [..."QWERTYUIOP"].map(c => K(c)).join("") + K("Backspace", "⌫", "wide"),
+    K("Caps Lock", "Caps", "wide") + [..."ASDFGHJKL"].map(c => K(c)).join("") + K("Enter", "Enter", "wide"),
+    K("Shift", "⇧ Shift", "wide") + [..."ZXCVBNM"].map(c => K(c)).join("") + K("Up", "↑"),
+    K("Ctrl", "Ctrl", "wide") + K("Alt", "Alt", "wide") + K(" ", "space", "space") + K("Left", "←") + K("Down", "↓") + K("Right", "→")];
+  $("#acStage").innerHTML = `<div class="typed" id="aTyped" style="height:22%"><span id="aTxt" style="font-size:.7em"></span></div><div class="kbd big" id="aKbd">${rows.map(r => `<div class="kr">${r}</div>`).join("")}</div>`;
+  const steps = shuffle([["Esc", "Press the Escape key. It stops or cancels."], ["Tab", "Press Tab. It jumps forward to the next box."], ["F1", "Press F1. It is a function key that often opens Help."],
+    ["Ctrl", "Press Ctrl, the control key."], ["Delete", "Press Delete. It rubs out the letter after the cursor."], ["Caps Lock", "Press Caps Lock. It makes every letter a capital."],
+    ["Alt", "Press the Alt key. It is next to Ctrl."], ["Backspace", "Press Backspace. It rubs out the letter before the cursor."], ["Up", "Press the up arrow key."]]).slice(0, 6);
+  let si = 0, miss = 0;
+  const go = () => { miss = 0; $$("#aKbd button").forEach(b => b.classList.remove("hot")); $("#aTxt").textContent = "Find: " + steps[si][0]; task(steps[si][1], `${si + 1} of ${steps.length}`); };
+  $("#aKbd").onclick = e => {
+    const b = e.target.closest("[data-k]"); if (!b || si >= steps.length) return; SFX.tap();
+    if (b.dataset.k === steps[si][0]) { SFX.good(); b.classList.add("hot"); si++; if (si < steps.length) setTimeout(go, 500); else actDone("You can find all the special keys!"); }
+    else { miss++; say(`That is ${b.dataset.k === " " ? "the space bar" : b.dataset.k}. ${miss >= 2 ? "Look for the yellow key." : steps[si][1]}`); if (miss >= 2) { const h = $(`#aKbd [data-k="${CSS.escape(steps[si][0])}"]`); if (h) h.classList.add("hot"); } }
+  };
+  go();
+}
+/* Primary 2: use the desktop icons */
+function actIcons() {
+  const S = $("#acStage");
+  const icons = [["browser", "🌐", "Browser"], ["folder", "📁", "File Explorer"], ["media", "🎵", "Media Player"], ["calc", "🧮", "Calculator"], ["bin", "🗑️", "Recycle Bin"]];
+  S.innerHTML = `<div class="deskscr" id="aDesk"><div class="dicons">${icons.map(([k, e, n]) => `<div class="dicon" data-d="${k}"><b>${e}</b>${n}</div>`).join("")}</div><div class="dicon dfile" id="aFile" data-d="file" style="left:60%;top:30%"><b>📄</b>old notes</div><div class="dtask"><span class="dstart">⊞ Start</span><span class="dclock">${new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}</span></div></div>`;
+  const WIN = { browser: ["🌐 Browser", "🌍 www.school.ng"], folder: ["📁 File Explorer", "📁📁📄"], media: ["🎵 Media Player", "🎶 ▶️"], calc: ["🧮 Calculator", "2 + 3 = 5"] };
+  const steps = [{ want: "browser", t: "Double-click the web browser icon to open a website." }, { want: "close", t: "Close the window. Tap the red ✕." }, { want: "media", t: "Double-click the media player to play music." }, { want: "close", t: "Close the media player." },
+    { want: "drag", t: "Drag the old notes file into the Recycle Bin. Hold it, move it, let go." }, { want: "folder", t: "Double-click File Explorer to see your files." }];
+  let si = 0, last = { d: null, t: 0 };
+  const ask = () => task(steps[si].t, `${si + 1} of ${steps.length}`);
+  const ok = () => { SFX.good(); si++; if (si < steps.length) ask(); else actDone("You can use the desktop icons!"); };
+  const desk = $("#aDesk");
+  desk.addEventListener("click", e => {
+    if (si >= steps.length) return; const want = steps[si].want;
+    if (e.target.closest(".dwin .bar button")) { e.target.closest(".dwin").remove(); if (want === "close") ok(); return; }
+    const el = e.target.closest("[data-d]"); if (!el) return; const d = el.dataset.d, now = performance.now(), dbl = last.d === d && now - last.t < 500; last = { d, t: now };
+    $$("#aDesk .dicon").forEach(x => x.classList.toggle("sel", x === el));
+    if (d === "file") return;
+    if (!dbl) { SFX.tap(); return; }
+    if (WIN[d]) { $$("#aDesk .dwin").forEach(w => w.remove()); desk.insertAdjacentHTML("beforeend", `<div class="dwin"><div class="bar">${WIN[d][0]}<button aria-label="Close">✕</button></div><div class="body">${WIN[d][1]}</div></div>`); if (d === "media") SFX.win(); }
+    if (d === "bin") { desk.insertAdjacentHTML("beforeend", `<div class="dwin"><div class="bar">🗑️ Recycle Bin<button aria-label="Close">✕</button></div><div class="body" style="font-size:clamp(14px,2.6cqh,22px)">${$("#aFile") ? "The bin is empty." : "📄 old notes"}</div></div>`); }
+    if (d === want) ok(); else if (want !== "close" && want !== "drag") say(steps[si].t);
+  });
+  const f = $("#aFile"); let drag = false, moved = false;
+  f.addEventListener("pointerdown", e => { drag = true; moved = false; f.setPointerCapture(e.pointerId); });
+  f.addEventListener("pointermove", e => { if (!drag) return; moved = true; const r = desk.getBoundingClientRect(); f.style.left = ((e.clientX - r.left) / r.width * 100 - 6) + "%"; f.style.top = ((e.clientY - r.top) / r.height * 100 - 6) + "%"; });
+  f.addEventListener("pointerup", e => {
+    if (!drag) return; drag = false; if (!moved) return;
+    const b = $('#aDesk [data-d="bin"]').getBoundingClientRect();
+    if (e.clientX > b.left - 10 && e.clientX < b.right + 10 && e.clientY > b.top - 10 && e.clientY < b.bottom + 10) { f.remove(); SFX.pick(); $('#aDesk [data-d="bin"] b').textContent = "🗑️"; if (steps[si] && steps[si].want === "drag") ok(); else say("The file is in the Recycle Bin."); }
+    else if (steps[si] && steps[si].want === "drag") { SFX.oops(); say("Move it all the way onto the Recycle Bin."); }
+  });
+  ask();
+}
 
 /* ======================= START ======================= */
 (function init() {
