@@ -145,6 +145,7 @@ h1, h2, h3, p { margin: 0; }
 @container app (min-width: 760px) and (orientation: landscape) {
   #homeBot { --s: clamp(90px, 22cqh, 210px); } .hello { flex-direction: column; text-align: center; }
   .bigtile { align-items: center; text-align: center; }
+  .bigtiles { grid-template-columns: repeat(3, 1fr); }
 }
 /* worlds + levels */
 .worldgrid { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: minmax(0, 1fr); gap: clamp(8px, 1.6cqh, 16px); }
@@ -544,6 +545,104 @@ canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-
   .wtype .wkbd { top: 6%; bottom: 6%; left: 54.5%; right: 1.5%; }
 }
 .lpanel.inside span { top: 4px; bottom: auto; }
+/* ---- How coding works demos ---- */
+.lvis .demo { width: 100%; height: 100%; position: relative; font-size: clamp(13px, 2.4cqh, 20px); line-height: 1.2; text-align: left; display: flex; }
+.lvis .demo svg { height: 100%; width: 100%; }
+.demo .bot.dbot { --s: 100%; display: block; width: 86%; height: 86%; }
+.demo .btn { font-size: clamp(14px, 2.6cqh, 22px); padding: 4px 12px; }
+.demo .dbtns { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+.demo .dcell { background: #FFF8E1; border: 2px solid #1D1B45; border-radius: 10px; display: grid; place-items: center; font-size: clamp(22px, 5cqh, 44px); aspect-ratio: 1; min-width: 0; position: relative; }
+.demo .dcell .bot { position: absolute; inset: 7%; width: auto; height: auto; }
+.dauto { flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 8px; }
+.dtile { border: 3px solid var(--ink); border-radius: 14px; background: #fff; color: #1D1B45; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 4px; min-height: 0; overflow: hidden; }
+.dtile.sel { outline: 4px solid var(--sun); }
+.dtile .dnm { font-weight: 800; font-size: clamp(12px, 2.2cqh, 18px); }
+.dscene { flex: 1; min-height: 0; width: 100%; display: grid; place-items: center; }
+.tl { display: flex; flex-direction: column; gap: 3px; background: #263238; padding: 4px; border-radius: 8px; }
+.tl i { width: clamp(12px, 3cqh, 26px); height: clamp(12px, 3cqh, 26px); border-radius: 50%; background: #455A64; display: block; }
+.tl i.r.on { background: #F44336; box-shadow: 0 0 10px #F44336; } .tl i.a.on { background: #FFC107; box-shadow: 0 0 10px #FFC107; } .tl i.g.on { background: #4CAF50; box-shadow: 0 0 10px #4CAF50; }
+.doorway { position: relative; width: 80%; height: 80%; background: #E3F2FD; border: 2px solid #1D1B45; border-radius: 4px; overflow: hidden; }
+.doorway i { position: absolute; top: 0; bottom: 0; width: 50%; background: rgba(100,181,246,.8); border: 1px solid #1565C0; animation: dleft 4s infinite; }
+.doorway .dl { left: 0; } .doorway .dr { right: 0; animation-name: dright; }
+.doorway .walker { position: absolute; bottom: 0; font-size: clamp(16px, 4cqh, 34px); animation: walkin 4s infinite; z-index: 2; }
+.doorway .eye { position: absolute; top: 0; left: 50%; transform: translateX(-50%); font-size: clamp(10px, 2cqh, 16px); }
+@keyframes dleft { 0%, 25% { transform: none; } 45%, 75% { transform: translateX(-90%); } 95% { transform: none; } }
+@keyframes dright { 0%, 25% { transform: none; } 45%, 75% { transform: translateX(90%); } 95% { transform: none; } }
+@keyframes walkin { 0% { left: -30%; opacity: 1; } 60% { left: 40%; opacity: 1; } 75% { left: 40%; opacity: 0; } 100% { left: 40%; opacity: 0; } }
+.gen, .atm { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: clamp(22px, 5cqh, 44px); }
+.gen b, .atm b { font-size: clamp(11px, 2cqh, 16px); background: #263238; color: #B9F6CA; border-radius: 6px; padding: 1px 6px; font-family: var(--mono); white-space: nowrap; }
+.bulb { transition: opacity .3s; }
+.dremote, .dbehind, .dexact, .dlayers { flex: 1; display: flex; flex-direction: column; gap: 8px; justify-content: center; min-height: 0; }
+.drow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
+.dlabel { text-align: center; font-weight: 800; }
+.dplan { display: flex; gap: 4px; justify-content: center; flex-wrap: wrap; min-height: 2em; align-items: center; }
+.dplan span { background: #fff; border: 2px solid #1D1B45; border-radius: 8px; padding: 0 4px; font-size: 1.2em; } .dplan span.now { background: var(--sun); }
+.dplan em, .dlines em { font-style: normal; color: var(--soft); font-size: .9em; }
+.dbehind { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr) auto; gap: 8px; }
+.dbehind .dbtns { grid-column: 1 / -1; }
+.dsee, .dcode { display: flex; flex-direction: column; gap: 4px; min-height: 0; }
+.dsee b, .dcode b { font-size: .85em; text-align: center; }
+.dgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; width: 100%; max-height: 100%; aspect-ratio: 1; margin: 0 auto; max-width: 100%; }
+.dgrid .dcell { font-size: clamp(16px, 3.4cqh, 32px); border-radius: 6px; }
+.dlines { flex: 1; min-height: 0; overflow: hidden; background: var(--code); color: var(--codeink); border: 3px solid var(--ink); border-radius: 10px; padding: 4px 6px; font-family: var(--mono); font-size: clamp(11px, 2cqh, 17px); display: flex; flex-direction: column; gap: 1px; }
+.dlines div { border-radius: 4px; padding: 0 3px; white-space: nowrap; overflow: hidden; } .dlines div i { opacity: .5; font-style: normal; margin-right: 6px; }
+.dlines div.now { background: var(--sun); color: #1D1B45; }
+.dlines code { color: #7FDBFF; } .dlines div.now code { color: #1D1B45; }
+.dsteps { display: flex; flex-direction: column; gap: 6px; }
+.dsteps div { background: #fff; color: #1D1B45; border: 3px solid var(--ink); border-radius: 12px; padding: 4px 10px; font-weight: 800; }
+.dsteps i { font-style: normal; background: var(--sun); border-radius: 50%; display: inline-grid; place-items: center; width: 1.5em; height: 1.5em; margin-right: 8px; border: 2px solid var(--ink); }
+.dres { flex: 1; min-height: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.dres .bot { width: clamp(50px, 14cqh, 120px); height: clamp(50px, 14cqh, 120px); }
+.dfeet { font-size: clamp(30px, 7cqh, 64px); }
+.dlayers { align-items: center; gap: 4px; }
+.dlay { display: flex; align-items: center; gap: 10px; background: #fff; color: #1D1B45; border: 3px solid var(--ink); border-radius: 12px; padding: 4px 12px; width: min(100%, 420px); font-weight: 800; animation: drop .3s; }
+.dlay > span:first-child { min-width: 7em; color: var(--soft); font-size: .85em; }
+.dbig { font-size: 1.8em; line-height: 1; } .dpy, .dbin { font-family: var(--mono); background: var(--code); color: #7FDBFF; padding: 2px 8px; border-radius: 6px; } .dbin { color: #B9F6CA; }
+.darr { line-height: 1; }
+.dlay .blk { pointer-events: none; }
+.train .brain { font-size: .85em; margin-right: 2px; }
+/* ---- mission coach + step ---- */
+.explain { flex: none; background: #FFF8E1; color: #1D1B45; border: 3px solid var(--ink); border-radius: 14px; padding: 6px 10px; font-weight: 700; font-size: clamp(13px, 2.2cqh, 19px); line-height: 1.25; display: flex; flex-direction: column; gap: 4px; max-height: 30cqh; overflow: auto; }
+.explain[hidden] { display: none; }
+.exphead { display: flex; align-items: center; gap: 8px; } .exphead span { flex: 1; color: var(--soft); font-size: .85em; } .exphead .btn { padding: 0 8px; min-height: 0; font-size: .9em; }
+.vchips { display: flex; gap: 4px; flex-wrap: wrap; } .vchip { background: #fff; border: 2px solid var(--ink); border-radius: 8px; padding: 0 6px; font-family: var(--mono); font-size: .9em; }
+.expend { border-radius: 8px; padding: 2px 8px; } .expend.ok { background: #C9F2DD; } .expend.bad { background: #FFD3D0; }
+.coach { animation: coachpulse 1s infinite !important; outline: 4px solid var(--sun) !important; outline-offset: 2px; position: relative; z-index: 3; }
+@keyframes coachpulse { 50% { outline-color: var(--berry); transform: scale(1.04); } }
+#mStepB.on { background: var(--sun); color: #1D1B45; }
+/* ---- Python Path ---- */
+.pphead { flex: none; }
+.ppgrid { flex: 1; min-height: 0; overflow-y: auto; display: grid; grid-template-columns: 1fr; gap: 6px; align-content: start; padding: 2px 2px 8px; }
+@container app (min-width: 760px) { .ppgrid { grid-template-columns: 1fr 1fr; } }
+.pplesson { display: flex; align-items: center; gap: 10px; text-align: left; padding: 6px 10px; font-size: clamp(13px, 2.3cqh, 19px); min-height: 0; }
+.pplesson .ppn { background: var(--leaf); color: #fff; border-radius: 50%; width: 1.8em; height: 1.8em; display: grid; place-items: center; font-weight: 800; flex: none; }
+.pplesson .ppic { font-size: 1.6em; flex: none; } .pplesson .pptx { flex: 1; display: flex; flex-direction: column; line-height: 1.15; } .pplesson .pptx span { font-size: .8em; color: var(--soft); font-weight: 700; }
+.pplesson.done { background: #E3F8EC; color: #1D1B45; } .pplesson.shut { opacity: .55; } .pplesson .ppst { flex: none; }
+.pltext { flex: none; display: flex; gap: 8px; align-items: flex-start; padding: 6px 10px; font-size: clamp(14px, 2.4cqh, 21px); font-weight: 700; line-height: 1.3; max-height: 24cqh; overflow-y: auto; }
+.pltext > div { flex: 1; } .plkind { display: inline-block; background: var(--leaf); color: #fff; border-radius: 8px; padding: 0 8px; margin-right: 6px; font-size: .8em; }
+.plmain { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 6px; }
+.plcode { flex: 1.25; min-height: 0; display: flex; flex-direction: column; gap: 6px; }
+.plcode .editor { flex: 1; }
+.plchoices { flex: none; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.plchoices[hidden] { display: none; }
+.plchoices .t-s { width: 100%; }
+.plc { font-family: var(--mono); font-size: clamp(13px, 2.3cqh, 19px); padding: 3px 12px; flex: 1 1 auto; }
+.plc.right { background: #C9F2DD; color: #1D1B45; } .plc.wrong { background: #FFD3D0; color: #1D1B45; text-decoration: line-through; } .plc.picked { outline: 3px solid var(--sun); }
+.plside { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 4px; }
+.plside .console { flex: 1; min-height: 0; }
+.console #plIn { font: inherit; background: #23214A; color: #fff; border: 2px solid #FFD866; border-radius: 6px; padding: 1px 6px; width: 60%; max-width: 240px; }
+.console #plInOk { font-size: 13px; padding: 0 8px; margin-left: 4px; box-shadow: none; }
+.plvars { flex: none; display: flex; flex-wrap: wrap; gap: 4px; min-height: 1.6em; font-size: clamp(11px, 1.9cqh, 15px); }
+.plvars .vchip { background: #FFF8E1; color: #1D1B45; }
+.plexp { flex: none; border: 3px solid var(--ink); border-radius: 12px; padding: 4px 10px; font-weight: 700; font-size: clamp(13px, 2.2cqh, 19px); line-height: 1.3; background: #FFF8E1; color: #1D1B45; max-height: 20cqh; overflow-y: auto; }
+.plexp[hidden] { display: none; }
+.plexp.ok { background: #C9F2DD; } .plexp.bad { background: #FFE1DE; } .plexp.watch { background: #E3ECFF; } .plexp.hint { background: #FFF1B8; }
+.plexp code { font-family: var(--mono); background: rgba(0,0,0,.08); border-radius: 4px; padding: 0 4px; }
+#plNext:disabled { opacity: .45; } #plNext.ready { animation: pulse 1.2s infinite; }
+#plHint[hidden] { display: none; }
+@container app (min-width: 760px) and (orientation: landscape) {
+  .plmain { flex-direction: row; } .plcode { flex: 1.3; } .plside { flex: 1; }
+}
 
 </style>
 </head>
@@ -597,8 +696,10 @@ canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-
       </div>
       <div class="colB" style="flex:1">
         <div class="bigtiles" id="homeTiles">
+          <button class="bigtile" data-home="how" style="background:var(--grape)"><span class="ic">🤔</span><span class="nm">How coding works</span><span class="ds">What is code? How do robots know?</span><span class="st" id="howStat"></span></button>
           <button class="bigtile" data-home="tod" style="background:#FF8A3D"><span class="ic">🧸</span><span class="nm">Toddler Zone</span><span class="ds">Ages 2 to 4. Tap and play</span><span class="st" id="todStat"></span></button>
           <button class="bigtile" data-home="missions" style="background:var(--blue)"><span class="ic">🤖</span><span class="nm">Robot Missions</span><span class="ds">Code a robot with blocks or Python</span><span class="st" id="misStat"></span></button>
+          <button class="bigtile" data-home="pypath" style="background:var(--leaf)"><span class="ic">🐍</span><span class="nm">Python Path</span><span class="ds">Learn Python step by step. Ages 8+</span><span class="st" id="pyStat"></span></button>
           <button class="bigtile" data-home="studio" style="background:var(--berry)"><span class="ic">🎨</span><span class="nm">Code Studio</span><span class="ds">Make your own games, art and stories</span><span class="st" id="stuStat"></span></button>
           <button class="bigtile" data-home="school" style="background:var(--teal)"><span class="ic">🏫</span><span class="nm">School ICT</span><span class="ds">Primary 1 to 6 [computer lessons]</span><span class="st" id="schStat"></span></button>
         </div>
@@ -652,6 +753,22 @@ canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-
       <div class="colB"><div class="card ltext" id="lnText" aria-live="polite"></div><div class="stepdots" id="lnDots"></div>
         <div class="row"><button class="btn" id="lnPrev" style="flex:1">◀ Back</button><button class="btn go" id="lnNext" style="flex:1.4">Next ▶</button></div></div></div>
   </section>
+  <!-- PYTHON PATH -->
+  <section class="screen" id="s-pypath" aria-label="Python Path">
+    <div class="topbar"><button class="btn iconbtn" id="ppBack" aria-label="Back">◀</button><h2 class="t-m" style="flex:1">🐍 Python Path</h2><span class="pill" id="ppCount"></span></div>
+    <p class="t-s pphead">Learn Python one small step at a time: read, run, watch it run line by line, predict, fill the gap, fix the bug, then write your own.</p>
+    <div class="ppgrid" id="ppGrid"></div>
+  </section>
+  <section class="screen" id="s-pyl" aria-label="Python lesson">
+    <div class="topbar"><button class="btn iconbtn" id="plBack" aria-label="Back">◀</button><h2 class="t-m" id="plTitle" style="flex:1"></h2><span class="todstars" id="plProg"></span></div>
+    <div class="card pltext"><div><span class="plkind" id="plKind"></span><span class="ttxt" id="plText"></span></div><button class="btn iconbtn" id="plSay" aria-label="Read again">🔊</button></div>
+    <div class="plmain">
+      <div class="plcode"><div class="editor" id="plEd"></div><div class="plchoices" id="plCh" hidden></div></div>
+      <div class="plside"><div class="console" id="plCon" aria-live="polite"></div><div class="plvars" id="plVars"></div></div>
+    </div>
+    <div class="plexp" id="plExp" hidden aria-live="polite"></div>
+    <div class="actrow"><button class="btn sm" id="plHint">💡 Hint</button><button class="btn sm" id="plWatch">👣 Watch</button><button class="btn run" id="plRun">▶ Run</button><button class="btn go" id="plNext">Next ▶</button></div>
+  </section>
   <!-- MISSION PLAY -->
   <section class="screen" id="s-mission" aria-label="Mission">
     <div class="topbar"><button class="btn iconbtn" id="mBack" aria-label="Back">◀</button><h2 class="t-m" id="mTitle" style="flex:1"></h2>
@@ -665,11 +782,12 @@ canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-
       <div class="mright">
         <div class="card mtip narrowonly" id="mTip"><span class="ttxt" id="mTipTxt"></span><button class="btn iconbtn" id="mSay" aria-label="Read">🔊</button></div>
         <div class="errbox" id="mErr" hidden></div>
+        <div class="explain" id="mExp" hidden aria-live="polite"></div>
         <div class="codezone" id="blockZone"><div class="prog" id="prog"></div><div class="pyview" id="pyview" aria-label="Python code"></div></div>
         <div class="editor" id="mEditor" hidden></div>
         <div class="palette" id="palette"></div>
         <div class="keys" id="mKeys" hidden></div>
-        <div class="actrow"><button class="btn sm" id="mDel" aria-label="Delete block">⌫</button><button class="btn sm" id="mReset">⟲ Reset</button><button class="btn sm" id="mSpeed" aria-label="Speed">🐢</button><button class="btn run" id="mRun">▶ Run</button></div>
+        <div class="actrow"><button class="btn sm" id="mDel" aria-label="Delete block">⌫</button><button class="btn sm" id="mReset">⟲ Reset</button><button class="btn sm" id="mSpeed" aria-label="Speed">🐢</button><button class="btn sm" id="mStepB" aria-label="Step one line">👣 Step</button><button class="btn run" id="mRun">▶ Run</button></div>
       </div>
     </div>
   </section>
@@ -1286,25 +1404,35 @@ const KidPy = (() => {
       const k = new KidError("Something went wrong: " + (e && e.message ? e.message : e), this.curLine); k.internal = e; return k;
     }
     /* ---- statements ---- */
+    get hooked() { return !!(this.opts.note || this.opts.pause); }
+    *hook(ev) { if (this.opts.note) this.opts.note(ev, this); if (this.opts.pause && !this.syncMode) yield { await: () => this.opts.pause(ev, this) }; }
+    /* the user's own variables (for showing in a 'variables' panel) */
+    userVars(sc) {
+      const out = [], seen = new Set(), add = (m) => { if (!m) return; for (const [k, v] of m) { if (seen.has(k) || k.startsWith("__")) continue; if (v instanceof PyFunc || v instanceof Builtin || v instanceof Module || typeof v === "function") continue; seen.add(k); out.push([k, v]); } };
+      if (sc && sc.vars) add(sc.vars); add(this.globals); return out;
+    }
     *execBlock(stmts, sc) { for (const s of stmts) yield* this.exec(s, sc); }
     *exec(s, sc) {
       this.curLine = s.line;
       if (++this.steps > this.maxSteps) throw new KidError(`Your code ran ${this.maxSteps.toLocaleString()} steps and didn't stop. Is there a loop that never ends?`, s.line);
       if (this.steps % 3000 === 0) yield { tick: true };
       if (this.opts.lineHook) this.opts.lineHook(s.line);
+      if (this.hooked) yield* this.hook({ k: "line", line: s.line, sc });
       try {
         switch (s.k) {
           case "Expr": yield* this.ev(s.e, sc); return;
-          case "Assign": { const v = yield* this.ev(s.v, sc); for (const t of s.targets) yield* this.assign(t, v, sc); return; }
+          case "Assign": { const v = yield* this.ev(s.v, sc); for (const t of s.targets) yield* this.assign(t, v, sc); if (this.hooked) yield* this.hook({ k: "set", line: s.line, names: s.targets.filter(t => t.k === "Name").map(t => t.id), sc }); return; }
           case "Aug": {
             const cur = yield* this.ev(s.tgt, sc), v = yield* this.ev(s.v, sc);
             let nv; if (s.op === "+" && isList(cur)) { if (!Array.isArray(v)) throw new KidError(`To add to a list with +=, use a list: items += [${repr(v)}] or items.append(${repr(v)})`, s.line); cur.push(...v); nv = cur; } else nv = this.binop(s.op, cur, v, s.line);
-            yield* this.assign(s.tgt, nv, sc); return;
+            yield* this.assign(s.tgt, nv, sc); if (this.hooked && s.tgt.k === "Name") yield* this.hook({ k: "set", line: s.line, names: [s.tgt.id], sc }); return;
           }
-          case "If": { if (truthy(yield* this.ev(s.test, sc))) yield* this.execBlock(s.body, sc); else yield* this.execBlock(s.orelse, sc); return; }
+          case "If": { const ok = truthy(yield* this.ev(s.test, sc)); if (this.hooked) yield* this.hook({ k: "if", line: s.line, val: ok, hasElse: s.orelse.length > 0, elif: s.orelse.length === 1 && s.orelse[0].k === "If" && s.orelse[0].line !== s.line, sc }); if (ok) yield* this.execBlock(s.body, sc); else yield* this.execBlock(s.orelse, sc); return; }
           case "While": {
-            for (;;) {
-              if (!truthy(yield* this.ev(s.test, sc))) break;
+            for (let round = 1; ; round++) {
+              const ok = truthy(yield* this.ev(s.test, sc));
+              if (this.hooked) yield* this.hook({ k: "while", line: s.line, val: ok, round, sc });
+              if (!ok) break;
               this.curLine = s.line;
               if (++this.steps > this.maxSteps) throw new KidError(`Your while loop ran ${this.maxSteps.toLocaleString()} times and didn't stop. Check that something inside the loop changes, so the loop can end.`, s.line);
               try { yield* this.execBlock(s.body, sc); } catch (e) { if (e instanceof BreakSig) break; if (e instanceof ContinueSig) continue; throw e; }
@@ -1312,9 +1440,10 @@ const KidPy = (() => {
             return;
           }
           case "For": {
-            const it = this.iterOf(yield* this.ev(s.iter, sc), s.line);
+            const it = this.iterOf(yield* this.ev(s.iter, sc), s.line); let idx = 0; const total = Array.isArray(it) ? it.length : null;
             for (const v of it) {
               yield* this.assign(s.tgt, v, sc);
+              if (this.hooked) yield* this.hook({ k: "for", line: s.line, name: s.tgt.k === "Name" ? s.tgt.id : null, value: v, i: idx, n: total, sc }); idx++;
               try { yield* this.execBlock(s.body, sc); } catch (e) { if (e instanceof BreakSig) break; if (e instanceof ContinueSig) continue; throw e; }
             }
             return;
@@ -1800,6 +1929,7 @@ ON_SHOW.home = () => {
   $("#misStat").textContent = `${done} of ${lv.length} missions`;
   const pj = PROJECTS.filter(x => (s.studio[x.id] || {}).ran).length; $("#stuStat").textContent = `${pj} of ${PROJECTS.length} projects tried`;
   $("#todStat").textContent = `${s.tod.stars || 0} ⭐`;
+  $("#howStat").textContent = (s.seenHow || {}).big || (s.seenHow || {}).tod ? "Watched ✔ Watch again" : "Start here!"; if (typeof PYP !== "undefined") { const pd = PYP.filter(l => (s.py || {})[l.id]).length; $("#pyStat").textContent = `${pd} of ${PYP.length} lessons`; }
   const sc = (s.school || { stars: {} }).stars || {}; const ys = Object.keys(ICT_YEARS).map(Number), tot = ys.reduce((a, y) => a + ictTopics(y).length, 0), dn = ys.reduce((a, y) => a + ictTopics(y).filter(t => sc[t.id]).length, 0); $("#schStat").textContent = `Primary 1–${ys.length}: ${dn} of ${tot} topics`;
   const rb = $("#royalBar"); if (s.legends.length >= 4) { rb.hidden = false; rb.innerHTML = `👑 <b>${royalTitle()} of Code</b> ${esc(p.name)}`; } else rb.hidden = true;
   $("#soundBtn").textContent = soundOn ? "🔊" : "🔇";
@@ -1809,6 +1939,9 @@ ON_SHOW.home = () => {
 };
 $("#homeTiles").onclick = e => {
   const t = e.target.closest("[data-home]"); if (!t) return; SFX.tap(); hush(); const h = t.dataset.home;
+  if (h === "how") { openHow(PL().age <= 5); return; }
+  if (h === "pypath") { show("pypath"); return; }
+  if (h === "missions" && !(st().seenHow || {}).big) { openHow(false, () => show("worlds")); return; }
   show(h === "missions" ? "worlds" : h === "studio" ? "studio" : h === "school" ? "school" : "tod");
 };
 $("#kidsBtn").onclick = () => show("players");
@@ -1857,7 +1990,7 @@ ON_SHOW.treasure = () => {
   if (tTab === "legends") body.innerHTML = `<div class="fillgrid">${Object.entries(LEGENDS).map(([k, L]) => { const got = s.legends.includes(k); return `<button class="tro ${got ? "got" : "no"}" data-lg="${k}"><b>${L.emoji}</b>${got ? L.nm : "???"}<span class="t-s">${got ? "Tap to read" : "Keep coding"}</span></button>`; }).join("")}</div>`;
   if (tTab === "stickers") { const bs = BADGES(); body.innerHTML = `<div class="fillgrid">${bs.map(b => `<div class="tro ${b.got ? "got" : "no"}"><b>${b.ic}</b>${b.nm}</div>`).join("")}</div>`; }
   if (tTab === "certs") {
-    const C = [...Object.keys(ICT_YEARS).map(y => ["school" + y, `Primary ${y} Computer Studies`, "🏫"]), ["missions", "Robot Missions", "🤖"], ["studio", "Code Studio", "🎨"]];
+    const C = [...Object.keys(ICT_YEARS).map(y => ["school" + y, `Primary ${y} Computer Studies`, "🏫"]), ["missions", "Robot Missions", "🤖"], ["studio", "Code Studio", "🎨"], ["python", "Python Path", "🐍"]];
     body.innerHTML = `<div class="fillgrid" style="grid-template-columns:1fr 1fr">${C.map(([k, nm, ic]) => { const got = s.certs.includes(k); return `<button class="tro ${got ? "got" : "no"}" data-ct="${k}"><b>${ic}</b>${nm}<span class="t-s">${got ? "Tap to open" : k === "missions" ? "Finish all missions" : k === "studio" ? "Finish all studio challenges" : "Pass the final challenge"}</span></button>`; }).join("")}</div>`;
   }
 };
@@ -1876,7 +2009,7 @@ async function showLegend(k, fresh) {
 }
 function openCert(k) {
   const y = k.startsWith("school") ? +k.slice(6) : 0;
-  $("#certName").textContent = PL().name; $("#certWhat").textContent = y ? `${ICT_YEARS[y].title} ${ICT_YEARS[y].subj}` : k === "missions" ? "Robot Missions: Young Coder" : "Code Studio: Creative Coder";
+  $("#certName").textContent = PL().name; $("#certWhat").textContent = y ? `${ICT_YEARS[y].title} ${ICT_YEARS[y].subj}` : k === "missions" ? "Robot Missions: Young Coder" : k === "python" ? "Python Path: Young Pythonist" : "Code Studio: Creative Coder";
   $("#certDate").textContent = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }); $("#cBot").innerHTML = botHTML(); show("cert");
 }
 $("#certBack").onclick = () => show(prevScreen || "home");
@@ -2178,7 +2311,8 @@ function openAt(W, x, y) { return x >= 0 && y >= 0 && x < W.w && y < W.h && !W.w
 /* Kid-Python commands for the robot. Every action is recorded in trace for the animation. */
 function robotBuiltins(W, L, trace, ip) {
   const MAXA = 400, wd = WORLDS[L.world - 1];
-  const act = (ev) => { ev.line = ip.curLine; trace.push(ev); if (trace.length > MAXA) throw new RobotStop("tired", `Bolt is tired! Your code made more than ${MAXA} moves. Is a loop going round and round?`); };
+  let nAct = 0;
+  const act = (ev) => { ev.line = ip.curLine; trace.push(ev); if (++nAct > MAXA) throw new RobotStop("tired", `Bolt is tired! Your code made more than ${MAXA} moves. Is a loop going round and round?`); };
   const isRed = () => W.light && W.tick < W.redFor;
   const step = () => {
     const [dx, dy] = DIRS[W.dir], nx = W.x + dx, ny = W.y + dy;
@@ -2208,9 +2342,10 @@ function robotBuiltins(W, L, trace, ip) {
 }
 const ROBOT_CMDS = ["forward", "turn_left", "turn_right", "pick", "stay", "say", "path_ahead", "path_left", "path_right", "at_goal", "item_here", "light"];
 /* run code on one variant: returns {ok, why, trace, err, W} */
-function runOn(L, vi, code) {
+function runOn(L, vi, code, explain) {
   const W = makeWorld(L, vi), trace = [];
-  const ip = new KidPy.Interp({ maxSteps: 60000, protect: ROBOT_CMDS, print: s => { const t = s.replace(/\n$/, ""); W.said.push(t); trace.push({ k: "say", x: W.x, y: W.y, dir: W.dir, text: t, line: ip.curLine }); } });
+  const note = explain ? (ev, ip) => { if (trace.length > 4000) return; const e = { k: ev.k, line: ev.line, val: ev.val, round: ev.round, i: ev.i, n: ev.n, hasElse: ev.hasElse }; if (ev.k === "set") e.vars = ip.userVars(ev.sc).map(([k, v]) => [k, KidPy.repr(v)]); trace.push(e); } : null;
+  const ip = new KidPy.Interp({ maxSteps: 60000, protect: ROBOT_CMDS, note, print: s => { const t = s.replace(/\n$/, ""); W.said.push(t); trace.push({ k: "say", x: W.x, y: W.y, dir: W.dir, text: t, line: ip.curLine }); } });
   const bi = robotBuiltins(W, L, trace, ip); for (const [k, f] of Object.entries(bi)) ip.def(k, f);
   ip.def("wait", () => { throw new KidPy.KidError("In missions, use stay() to wait one turn."); });
   let err = null, stop = null;
@@ -2285,14 +2420,16 @@ function openSlides(title, slides, done, endLabel) { lnSlides = slides; lnI = 0;
 function openLearn(w, first) { openSlides(`📖 ${w.concept.split(" (")[0]}`, LEARN[w.id], () => { st().seenLearn[w.id] = true; save(); show("levels"); }, "Start missions ▶"); }
 function glyphs(t) { try { return [...new Intl.Segmenter().segment(t.replace(/\s/g, ""))].length; } catch (e) { return [...t.replace(/\s/g, "")].length; } }
 function lnRender() {
-  const sl = lnSlides[lnI]; $("#lnVis").innerHTML = sl.code ? `<div class="codecard">${hiPy(sl.code, new Set(ROBOT_CMDS.concat(["my_move"]))).replace(/\n$/, "")}</div>` : sl.h ? sl.h : `<span style="white-space:nowrap;font-size:min(17cqh, ${Math.floor(72 / Math.max(1, glyphs(sl.v)))}cqw)">${sl.v.replace(/ /g, "\u2009")}</span>`;
+  const sl = lnSlides[lnI]; if (typeof DEMO !== "undefined") DEMO.stop(); $("#lnVis").innerHTML = sl.demo ? `<div class="demo" id="demoHost"></div>` : sl.code ? `<div class="codecard">${hiPy(sl.code, new Set(ROBOT_CMDS.concat(["my_move"]))).replace(/\n$/, "")}</div>` : sl.h ? sl.h : `<span style="white-space:nowrap;font-size:min(17cqh, ${Math.floor(72 / Math.max(1, glyphs(sl.v)))}cqw)">${sl.v.replace(/ /g, "\u2009")}</span>`;
   $("#lnText").textContent = sl.t; $("#lnDots").innerHTML = lnSlides.map((_, i) => `<i class="${i <= lnI ? "on" : ""}"></i>`).join("");
   $("#lnPrev").disabled = lnI === 0; $("#lnNext").textContent = lnI === lnSlides.length - 1 ? lnEnd : "Next ▶"; say(sl.t);
+  if (sl.demo) sl.demo($("#demoHost"));
 }
 $("#lnPrev").onclick = () => { if (lnI > 0) { lnI--; lnRender(); } };
 $("#lnNext").onclick = () => { if (lnI < lnSlides.length - 1) { lnI++; lnRender(); } else { hush(); lnDone(); } };
 $("#lnSay").onclick = () => say(lnSlides[lnI].t);
 $("#lnBack").onclick = () => { hush(); lnDone(); };
+ON_LEAVE.learn = () => { if (typeof DEMO !== "undefined") DEMO.stop(); };
 
 /* ---- mission screen ---- */
 function blkLabel(t) { const w = curW || WORLDS[0]; if (t === "ifi") return `❓ if ${w.item} here`; if (t === "p") return `🧺 pick up`; return BT[t].lb; }
@@ -2502,7 +2639,7 @@ async function runMission() {
 }
 function bubble(rb, t) { const d = document.createElement("div"); d.className = "bubble"; d.textContent = t; rb.appendChild(d); }
 async function missionWin(code) {
-  const s = st(), L = curL, before = s.stars[L.id] || 0; let n = starsFor(L, mMode, mProg, code); if (mShown) n = Math.min(n, 1);
+  const s = st(), L = curL, before = s.stars[L.id] || 0; let n = starsFor(L, mMode, mProg, code); if (mShown) n = Math.min(n, 1); else if (mGuided) n = Math.min(n, 2);
   const gain = Math.max(0, n - before) * 5 + (before ? 0 : 5); s.stars[L.id] = Math.max(before, n); s.coins += gain; save();
   const rb = $("#board .rbt"); rb.innerHTML = `<div class="dir"></div><div class="bot hop">${botSVG(playerBot(), "happy")}</div>`; placeBot(...rb._pos, true);
   SFX.good(); if (n === 3) confetti(80);
@@ -2520,6 +2657,244 @@ async function missionWin(code) {
   if (LEVELS.every(l => s.stars[l.id]) && !s.certs.includes("missions")) { s.certs.push("missions"); save(); await modal(`<div class="big">📜</div><h3>You finished every Robot Mission!</h3><p>You earned your Young Coder certificate.</p>`, [{ t: "See my certificate", v: true, cls: "go" }]); openCert("missions"); return; }
   if (v === "again") { resetBoard(); return; }
   if (nextL) openLevel(nextL); else show("worlds");
+}
+
+/* ======================= ROBOT MISSIONS: hand-holding (think hints, Show me how coach, Step mode, why slides) ======================= */
+const THINK = {
+  "1-1": "Count the squares between Bolt and the stall. How many forward steps is that?",
+  "1-2": "Where does the path bend? After the bend, is the stall on Bolt's left or its right?",
+  "1-3": "Trace the path with your finger. Every time it bends, Bolt needs a turn block.",
+  "1-4": "Where are the mangoes? Bolt must stand ON a mango square before it picks up.",
+  "1-5": "Plan it in parts: first reach mango one, then mango two, then the stall at the top.",
+  "2-1": "Is Bolt doing the same thing again and again? How many times?",
+  "2-2": "Look at ONE stair. Which steps make one stair? How many stairs are there?",
+  "2-3": "What does Bolt do at every pencil? Is it the same each time?",
+  "2-4": "All four sides of the field look the same. What does Bolt do on ONE side?",
+  "2-5": "One row is: forward and pick up, 4 times, then turn. How many rows are there?",
+  "3-1": "The path is a different length every day. How can Bolt know when to stop walking?",
+  "3-2": "Bolt can't see the whole map. What should it do when there is no path ahead?",
+  "3-3": "Eggs are in different places each day. How can Bolt tell if it is standing on an egg?",
+  "3-4": "If the way ahead is blocked, how can Bolt choose between left and right?",
+  "3-5": "On every square Bolt asks two questions: is there an egg here? Which way is open?",
+  "4-1": "Which steps make ONE stair? Give that group a name, then use the name many times.",
+  "4-2": "Bolt must remember how many parcels it picked up. What can remember a number?",
+  "4-3": "The light stays red for a different time each day. How long should Bolt wait?",
+  "4-4": "Each side of the city block is the same. Make ONE side into your new move.",
+  "4-5": "Use all your tools: keep walking until the post office, wait while red, count the parcels.",
+};
+/* why each idea matters: automation in real life */
+LEARN[1].unshift({ v: "🧑🏾‍💻➡️🤖", t: "Now YOU are the coder! Each block you tap is one instruction. Bolt can't see the map like you can. It only does what your blocks say, from top to bottom." });
+LEARN[2].splice(1, 0, { v: "🏭🍾🍾🍾", t: "Loops are why automation is so powerful. A drinks factory can fill thousands of bottles a day with one loop: fill, cap, label, and repeat!" });
+LEARN[3].splice(1, 0, { v: "🚗🚧👁️", t: "Machines decide using sensors. An automatic gate asks: is a car there? If yes, open. A street light asks: is it dark? If yes, switch on. Bolt has sensors too!" });
+LEARN[4].splice(1, 0, { v: "🍲📋", t: "When Mama says 'make jollof', that one name means many steps: wash the rice, make the stew, cook it together. A function works the same way." });
+LEARN[4].splice(3, 0, { v: "📱👣 1,250", t: "Your phone counts your steps with a variable. Every step, it adds 1 to the number in the box. Bolt can count too." });
+
+/* ---------- explain panel ---------- */
+function expShow(html, speak) { const e = $("#mExp"); e.innerHTML = html; e.hidden = false; if (speak) say(speak); setTimeout(fitBoard, 20); }
+function expHide() { $("#mExp").hidden = true; setTimeout(fitBoard, 20); }
+
+/* ---------- Step mode: one line at a time, explained ---------- */
+let mStep = null;
+function stopStep() { if (!mStep) return; mStep = null; $("#mStepB").classList.remove("on"); $("#mStepB").textContent = "👣 Step"; expHide(); clearHL(); }
+function groupTrace(tr) {
+  const G = []; let cur = null;
+  for (const ev of tr) {
+    if (ev.k === "line") { cur = { line: ev.line, evs: [] }; G.push(cur); continue; }
+    if (ev.k === "for" || ev.k === "while") { if (cur && cur.line === ev.line && !cur.evs.length) { cur.evs.push(ev); continue; } cur = { line: ev.line, evs: [ev] }; G.push(cur); continue; }
+    if (!cur) { cur = { line: ev.line, evs: [] }; G.push(cur); } cur.evs.push(ev);
+  }
+  return G;
+}
+function explainGroup(g, S) {
+  const t = (S.lines[g.line - 1] || "").trim(), W = curW, ev = g.evs, has = k => ev.find(e => e.k === k);
+  const thing = W.itemNm === "egg" ? "an egg" : "a " + W.itemNm;
+  const lp = ev.find(e => e.k === "for" || e.k === "while"), iff = has("if");
+  if (lp && lp.k === "for") return `🔁 Repeat: this is time ${lp.i + 1} of ${lp.n}. Bolt does the blocks inside the loop.`;
+  if (lp && lp.k === "while") {
+    if (/at_goal/.test(t)) return lp.val ? `🔄 Is Bolt at ${W.goalNm}? Not yet, so it does the blocks inside${lp.round > 1 ? ` again (round ${lp.round})` : ""}.` : `🔄 Is Bolt at ${W.goalNm}? Yes! So the loop stops.`;
+    if (/light/.test(t)) return lp.val ? "🚦 Is the light red? Yes, so Bolt does the blocks inside: it waits." : "🚦 Is the light red? No, it is green now, so the waiting stops.";
+    return lp.val ? "🔄 The test is True, so the loop runs again." : "🔄 The test is False, so the loop stops.";
+  }
+  if (iff) {
+    const q = /path_ahead/.test(t) ? "Is there a path ahead?" : /path_left/.test(t) ? "Is there a path on the left?" : /path_right/.test(t) ? "Is there a path on the right?" : /item_here/.test(t) ? `Is there ${thing} here?` : /light/.test(t) ? "Is the light red?" : "Is the test True?";
+    return `❓ Bolt checks: ${q} ${iff.val ? "Yes ✅ so it does the blocks inside the if." : `No ❌ so it skips them${iff.hasElse ? " and does the else part instead" : ""}.`}`;
+  }
+  if (/^def\s/.test(t)) return `⭐ This makes a new command called ${(t.match(/def\s+(\w+)/) || [])[1] || "my_move"}. Bolt remembers its steps, but does not do them yet.`;
+  const call = t.match(/^(\w+)\(\)$/); if (call && !ROBOT_CMDS.includes(call[1])) return `⭐ Bolt uses your command ${call[1]}, so it jumps to the steps inside it.`;
+  const bump = has("bump"), red = has("red");
+  if (/^forward/.test(t)) { const n = ev.filter(e => e.k === "move").length; if (red) return "🚗 Bolt walked onto the crossing while the light was red. Stop! That is dangerous."; if (bump) return `💥 Bolt tries to walk forward, but there is no path there. Bump! That is a bug.`; return `⬆️ Bolt walks forward ${n === 1 ? "one square" : n + " squares"}.`; }
+  if (/^turn_left/.test(t)) return "↰ Bolt turns to its LEFT. It stays on the same square, but now faces a new way.";
+  if (/^turn_right/.test(t)) return "↱ Bolt turns to its RIGHT. It stays on the same square, but now faces a new way.";
+  if (/^pick/.test(t)) return has("pick") ? `🧺 Bolt picks up the ${W.itemNm}. That makes ${S.picked} so far.` : `🧺 There is no ${W.itemNm} on this square, so there is nothing to pick up!`;
+  if (/^stay/.test(t)) return "✋ Bolt waits here for one turn.";
+  const sy = has("say"); if (sy) return `💬 Bolt says: ${sy.text}`;
+  const st_ = has("set"); if (st_) { const nm = (t.match(/^(\w+)/) || [])[1], v = (st_.vars.find(x => x[0] === nm) || [])[1]; return /\+=/.test(t) ? `➕ ${nm} goes up by 1. Now ${nm} is ${v}.` : `🔢 A box called ${nm} now holds ${v}.`; }
+  return `Line ${g.line} runs: ${t}`;
+}
+async function applyEv(e) {
+  const b = $("#board"), rb = b.querySelector(".rbt"); rb.classList.remove("bump"); rb.querySelectorAll(".bubble").forEach(x => x.remove());
+  if (e.k === "move") { placeBot(e.x, e.y, e.dir); SFX.step(); await wait(260); }
+  else if (e.k === "turn") { placeBot(e.x, e.y, e.dir); SFX.turn(); await wait(200); }
+  else if (e.k === "pick") { const it = $(`#cells .itm[data-k="${e.key}"]`); if (it) it.classList.add("got"); SFX.pick(); mStep.picked++; }
+  else if (e.k === "nopick") { SFX.oops(); bubble(rb, "Nothing here!"); }
+  else if (e.k === "stay") { bubble(rb, "…"); }
+  else if (e.k === "say") { bubble(rb, e.text); }
+  else if (e.k === "bump" || e.k === "red") { const [dx, dy] = DIRS[e.dir], cs = b._cs; rb.style.transform = `translate(${(e.x + dx * .3) * cs}px, ${(e.y + dy * .3) * cs}px)`; SFX.bump(); await wait(260); placeBot(e.x, e.y, e.dir); }
+  if (e.tick !== undefined) { const lc = $("#lightCell"); if (lc) lc.dataset.l = e.tick < b._W.redFor ? "🔴" : "🟢"; }
+}
+let stepBusy = false;
+async function stepNext() {
+  if (mRunning || stepBusy) return;
+  if (mCoach) stopCoach();
+  if (!mStep) {
+    const code = mMode === "blocks" ? genPy(mProg).code : mEd.get();
+    if (!code.trim()) { boardMsg("Add some blocks first!"); say("Add some blocks first!"); return; }
+    saveLevelWork(); hush(); $("#mErr").hidden = true;
+    const R = runOn(curL, mVar, code, true);
+    if (R.err && !R.trace.some(e => e.k === "line")) { const ln = R.err.line; if (mMode === "python") mEd.mark(ln, true); showErr(`<span>🐞</span><span><b>${ln ? "Line " + ln + ": " : ""}</b>${esc(R.err.message)}</span>`); say(R.err.message); return; }
+    const groups = groupTrace(R.trace);
+    if (!groups.length) { const t = mMode === "blocks" ? "Add some blocks first!" : "Type some Python first! Lines that start with # are notes, not code."; boardMsg(t); say(t); return; }
+    drawBoard(mVar);
+    mStep = { R, groups, i: 0, lines: code.split("\n"), vars: [], picked: 0 };
+    $("#mStepB").classList.add("on");
+  }
+  const S = mStep;
+  if (S.i >= S.groups.length) { stopStep(); resetBoard(); return; }
+  stepBusy = true; const g = S.groups[S.i++]; hlLine(g.line);
+  for (const e of g.evs) { if (!mStep) break; if (e.k === "set") S.vars = e.vars; else if (!["for", "while", "if", "line"].includes(e.k)) await applyEv(e); }
+  stepBusy = false; if (!mStep) return;
+  const cap = explainGroup(g, S), last = S.i >= S.groups.length, R = S.R;
+  let end = "";
+  if (last) {
+    end = R.ok ? `<div class="expend ok">🎉 Bolt finished the mission! Press ▶ Run to win your stars.</div>`
+      : R.err ? `<div class="expend bad">🐞 ${esc(R.err.message)}</div>` : `<div class="expend bad">🤔 ${esc(R.why)}</div>`;
+    $("#mStepB").textContent = "👣 Again";
+  }
+  const vars = S.vars.length ? `<div class="vchips">${S.vars.map(([k, v]) => `<span class="vchip">📦 ${esc(k)} = ${esc(v)}</span>`).join("")}</div>` : "";
+  expShow(`<div class="exphead"><b>👣 Line ${g.line}</b><span>${S.i} of ${S.groups.length}</span><button class="btn sm" id="expX" aria-label="Stop stepping">✕</button></div><div>${esc(cap)}</div>${vars}${end}`, cap + (last ? " " + (R.ok ? "Bolt finished the mission! Press Run to win your stars." : R.err ? R.err.message : R.why) : ""));
+  $("#expX").onclick = () => { stopStep(); resetBoard(); };
+}
+
+/* ---------- Show me how: the coach guides block by block, using the mission's answer ---------- */
+let mCoach = null, mGuided = false;
+const WHY_BLK = {
+  f: () => "⬆️ forward makes Bolt walk one square, the way its pink arrow points.",
+  l: () => "↰ turn left makes Bolt face a new way. It stays on the same square.",
+  r: () => "↱ turn right makes Bolt face a new way. It stays on the same square.",
+  p: () => `🧺 pick up: Bolt will be standing on the ${curW.itemNm} here, so it can pick it up.`,
+  stay: () => "✋ stay makes Bolt wait one turn.",
+  rep: () => "🔁 repeat is a loop. It does the blocks inside it many times, so you don't add them again and again.",
+  wg: () => `🔄 until at goal is a loop that keeps going until Bolt reaches ${curW.goalNm}, however long the path is.`,
+  wr: () => "🚦 while light is red: while the light is red, Bolt does what is inside, which is to wait.",
+  ifa: () => "❓ if path ahead: Bolt looks ahead. If the way is open, it does the blocks inside. If not, it does the else part.",
+  ifl: () => "❓ if path on left: Bolt looks to its left, then decides.",
+  ifi: () => `❓ if ${curW.item} here: Bolt checks the square it is standing on, and only picks up if there is ${curW.itemNm === "egg" ? "an egg" : "a " + curW.itemNm}.`,
+  def: () => "⭐ new move makes your own command. The blocks you put inside are its steps.",
+  call: () => "⭐ my_move uses your new command, so Bolt does all of its steps.",
+  set0: () => "🔢 count = 0 makes a box called count that starts at 0.",
+  inc: () => "➕ count + 1 adds one to the box, every time it runs.",
+  sayc: () => "💬 say count makes Bolt say the number in the count box.",
+};
+function coachSteps(sol) {
+  const out = [];
+  const walk = list => list.forEach(x => {
+    const t = typeof x === "string" ? x : x[0];
+    out.push({ add: t });
+    if (t === "rep") { out.push({ num: x[1] }); walk(x[2]); out.push({ out: t }); }
+    else if (BT[t].cont) { walk(x[1] || []); if (BT[t].els) { out.push({ els: t }); walk(x[2] || []); } out.push({ out: t }); }
+  });
+  walk(sol);
+  while (out.length && out[out.length - 1].out) out.pop();
+  return out;
+}
+function stopCoach() { if (!mCoach) return; mCoach = null; $$(".coach").forEach(x => x.classList.remove("coach")); expHide(); }
+async function startCoach() {
+  stopStep(); if (mMode !== "blocks") setMode("blocks");
+  mProg = []; mCursor = { pid: null, br: "kids", i: 0 }; renderProg(); resetBoard(); saveLevelWork();
+  mCoach = { steps: coachSteps(curL.sol), i: 0, stack: [], n: 0 }; mGuided = true;
+  coachShow(true);
+}
+function coachTarget() {
+  const S = mCoach, st_ = S.steps[S.i]; if (!st_) return null;
+  if (st_.add) return $(`#palette [data-add="${st_.add}"]`);
+  if (st_.num) return $(`#prog [data-num="${S.stack[S.stack.length - 1]}"]`);
+  if (st_.els) return $(`#prog .caret[data-cp="${S.stack[S.stack.length - 1]}"][data-cb="alt"]`);
+  if (st_.out) { const id = S.stack[S.stack.length - 1], loc = locate(mProg, id, null, "kids"); return loc ? $(`#prog .caret[data-cp="${loc.pid === null ? "" : loc.pid}"][data-cb="${loc.br}"][data-ci="${loc.i + 1}"]`) : null; }
+}
+function coachShow(first) {
+  const S = mCoach; $$(".coach").forEach(x => x.classList.remove("coach"));
+  const st_ = S.steps[S.i];
+  if (!st_) { const run = $("#mRun"); run.classList.add("coach"); expShow(`<div class="exphead"><b>🧑🏾‍🏫 Coach</b><span>Done!</span><button class="btn sm" id="expX" aria-label="Close coach">✕</button></div><div>Your program is ready. Press ▶ Run and watch Bolt follow it, block by block.</div>`, "Your program is ready. Press Run and watch Bolt follow it, block by block."); $("#expX").onclick = stopCoach; return; }
+  let txt;
+  if (st_.add) txt = `Tap the glowing block. ${WHY_BLK[st_.add]()}`;
+  else if (st_.num) txt = `Tap the number on the loop until it says ${st_.num}. That is how many times it repeats.`;
+  else if (st_.els) txt = "Now tap '＋ else blocks here'. The else part runs when the answer is No.";
+  else txt = `Now tap the glowing ＋ just below the ${st_.out === "rep" || st_.out.startsWith("w") ? "loop" : st_.out === "def" ? "new move" : "if block"}, so the next block goes AFTER it, not inside it.`;
+  const tg = coachTarget(); if (tg) { tg.classList.add("coach"); tg.scrollIntoView({ block: "nearest" }); }
+  const head = first ? `${esc(THINK[curL.id] || curL.hint)} Let's build it together! ` : "";
+  expShow(`<div class="exphead"><b>🧑🏾‍🏫 Coach</b><span>Step ${S.i + 1} of ${S.steps.length}</span><button class="btn sm" id="expX" aria-label="Close coach">✕</button></div><div>${head}${esc(txt)}</div>`, (first ? (THINK[curL.id] || "") + " Let's build it together! " : "") + txt);
+  $("#expX").onclick = stopCoach;
+}
+function coachNope(msg) { SFX.oops(); const tg = coachTarget(); if (tg) { tg.classList.remove("coach"); void tg.offsetWidth; tg.classList.add("coach"); } say(msg || "Not that one. Tap the glowing one."); }
+
+/* wrap the editor's click handlers */
+{
+  const pal = $("#palette").onclick, prog = $("#prog").onclick, del = $("#mDel").onclick;
+  $("#palette").onclick = e => {
+    const b = e.target.closest("[data-add]"); if (!b || mRunning) return;
+    stopStep();
+    if (mCoach) { const st_ = mCoach.steps[mCoach.i]; if (!st_ || st_.add !== b.dataset.add) { coachNope(); return; } }
+    pal(e);
+    if (mCoach) { const t = b.dataset.add; if (BT[t].cont) { const blk = BT[t].top ? mProg[0] : findBlk(mProg, mCursor.pid); mCoach.stack.push(blk.id); } mCoach.i++; SFX.good(); coachShow(); }
+  };
+  $("#prog").onclick = e => {
+    if (mRunning) return; stopStep();
+    if (mCoach) {
+      const st_ = mCoach.steps[mCoach.i], tg = coachTarget();
+      if (st_ && st_.num && e.target.closest("[data-num]")) { prog(e); const blk = findBlk(mProg, mCoach.stack[mCoach.stack.length - 1]); if (blk.n === st_.num) { mCoach.i++; SFX.good(); coachShow(); } else { $(`#prog [data-num="${blk.id}"]`).classList.add("coach"); say(`${blk.n}. Keep tapping until it says ${st_.num}.`); } return; }
+      const c = e.target.closest(".caret");
+      if (c && tg && c === tg) { prog(e); if (st_.out) mCoach.stack.pop(); mCoach.i++; SFX.good(); coachShow(); return; }
+      coachNope(st_ && st_.add ? "Tap the glowing block at the bottom." : "Tap the glowing one."); return;
+    }
+    prog(e);
+  };
+  $("#mDel").onclick = e => { if (mCoach) { coachNope("While the coach is helping, follow the glowing steps. Tap ✕ on the coach to stop."); return; } stopStep(); del(e); };
+}
+$("#mStepB").onclick = () => { SFX.tap(); stepNext(); };
+{
+  const run = $("#mRun").onclick, reset = $("#mReset").onclick, mode = $("#mMode").onclick;
+  $("#mRun").onclick = e => { stopStep(); if (mCoach && mCoach.i >= mCoach.steps.length) stopCoach(); $("#mRun").classList.remove("coach"); run(e); };
+  $("#mReset").onclick = e => { stopStep(); reset(e); };
+  $("#mMode").onclick = e => { stopStep(); stopCoach(); mode(e); };
+}
+ON_LEAVE.mission = (orig => () => { stopStep(); stopCoach(); orig(); })(ON_LEAVE.mission);
+
+/* ---------- hints in three levels: think, hint, show me ---------- */
+let mHintLv = 0;
+$("#mHelp").onclick = async () => {
+  stopStep(); mHintLv++;
+  const think = THINK[curL.id] || curL.hint, showAns = mFails >= 3;
+  const body = mHintLv === 1 ? `<div class="big">🤔</div><h3>Think first</h3><p>${esc(think)}</p><p class="t-s">Still stuck? Tap 💡 again for a hint.</p>`
+    : `<div class="big">💡</div><h3>Hint</h3><p>${esc(curL.hint)}</p>${curL.variants ? `<p class="t-s">Your code is tested on ${curL.variants.length} different paths, so it must work on all of them.</p>` : ""}<p class="t-s">The coach can build it with you, step by step, and explain every block.</p>`;
+  const btns = mHintLv === 1 ? [{ t: "💡 Hint", v: "more" }, { t: "OK", v: true, cls: "go" }]
+    : [{ t: "🧑🏾‍🏫 Show me how", v: "coach", cls: "go" }, { t: "🗑 Clear my code", v: "clear" }, ...(showAns ? [{ t: "👀 Show answer", v: "ans" }] : []), { t: "OK", v: true }];
+  const v = await modal(body, btns, { onOpen: () => say(mHintLv === 1 ? think : curL.hint) });
+  if (v === "more") { $("#mHelp").onclick(); return; }
+  if (v === "coach") { startCoach(); return; }
+  if (v === "clear") { stopCoach(); mProg = []; mCursor = { pid: null, br: "kids", i: 0 }; if (mEd) mEd.set(""); renderProg(); resetBoard(); }
+  if (v === "ans") { stopCoach(); mShown = true; mProg = mkBlocks(curL.sol); mCursor = { pid: null, br: "kids", i: mProg.length }; if (mMode === "python") mEd.set(solCode(curL)); renderProg(); }
+};
+/* offer the coach on the first mission of every world */
+{
+  const orig = openLevel;
+  openLevel = function (L) {
+    stopStep(); stopCoach(); mGuided = false; mHintLv = 0; orig(L);
+    const s = st(), first = LEVELS.filter(l => l.world === L.world)[0] === L;
+    if (first && !s.stars[L.id] && !(s.blocks[L.id] || []).length && !(s.coachOffered || {})[L.world]) {
+      s.coachOffered = s.coachOffered || {}; s.coachOffered[L.world] = true; save();
+      setTimeout(async () => { if (curScreen !== "mission" || curL !== L) return; const v = await modal(`<div class="big">🧑🏾‍🏫</div><h3>Want some help?</h3><p>${esc(THINK[L.id])}</p><p>I can build the first program WITH you, block by block, and explain why each block is needed.</p>`, [{ t: "I'll try myself", v: false }, { t: "Show me how", v: true, cls: "go" }], { onOpen: () => say("Want some help? I can build the first program with you, block by block.") }); if (v) startCoach(); }, 900);
+    }
+  };
 }
 
 /* ======================= TODDLER ZONE (ages 2 to 4: pictures, sounds, tap only) ======================= */
@@ -2548,6 +2923,7 @@ async function todRoundDone() {
 /* ---- Robot Road: absolute arrows; from level 6 the child plans arrows first, then presses GO ---- */
 let road = null;
 function startRoad() {
+  if (!(st().seenHow || {}).tod) { openHow(true, () => { show("tod"); startRoad(); }); return; }
   todGame = "road"; $("#todHub").hidden = true; $("#todRoad").hidden = false; $("#todFind").hidden = true; $("#todTitle").textContent = "Robot Road"; todStarsRow(); newRoad();
 }
 function newRoad() {
@@ -2568,7 +2944,7 @@ function drawRoad() {
   const g = road, bd = $("#todBoard"); bd.style.gridTemplateColumns = `repeat(${g.n},1fr)`; bd.style.gridTemplateRows = `repeat(${g.n},1fr)`;
   bd.innerHTML = Array.from({ length: g.n * g.n }, (_, i) => `<div class="todcell ${g.rocks.has(i) ? "rock" : ""}">${i === g.home ? "🏠" : g.rocks.has(i) ? "🪨" : ""}</div>`).join("") + `<div class="todbot" id="todBot"><span class="bot">${botSVG(playerBot())}</span></div>`;
   $("#todArrows").innerHTML = `${g.plan ? `<button class="undo" data-a="undo" aria-label="Undo">↩️</button><button class="go" data-a="go" aria-label="Go">▶ GO</button>` : ""}<button class="u" data-a="0" aria-label="Up">⬆️</button><button class="l" data-a="3" aria-label="Left">⬅️</button><button class="d" data-a="2" aria-label="Down">⬇️</button><button class="r" data-a="1" aria-label="Right">➡️</button>`;
-  $("#todTrain").innerHTML = ""; if (g.plan) drawPlan(); requestAnimationFrame(placeTodBot);
+  g.log = []; if (g.plan) drawPlan(); else drawLog(); requestAnimationFrame(placeTodBot);
 }
 function placeTodBot() {
   const g = road, bd = $("#todBoard"), cs = (bd.clientWidth - (g.n - 1) * 6) / g.n, b = $("#todBot"); if (!b) return;
@@ -2583,10 +2959,15 @@ function moveTod(d) {
   if (nx < 0 || ny < 0 || nx >= g.n || ny >= g.n || g.rocks.has(k)) { b.classList.remove("wobble"); void b.offsetWidth; b.classList.add("wobble"); SFX.bump(); return false; }
   g.bot = k; placeTodBot(); SFX.step(); return true;
 }
+/* direct mode: each tap is one instruction that the robot's brain reads at once */
+function drawLog(now) {
+  const g = road, L = g.log.slice(-8);
+  $("#todTrain").innerHTML = `<b class="brain" title="Robot's brain">🧠</b>` + (L.length ? L.map((d, i) => `<span class="${now && i === L.length - 1 ? "now" : ""}">${ARW[d]}</span>`).join("") : `<em class="trainhint">👆 Tap an arrow to give an instruction</em>`);
+}
 function planEnd() { const g = road; return g.path[g.path.length - 1]; }
 function drawPlan() {
   const g = road; $$("#todBoard .todcell").forEach((c, i) => { c.classList.toggle("step", i !== g.path[0] && g.path.includes(i)); c.classList.toggle("end", g.path.length > 1 && i === planEnd()); });
-  $("#todTrain").innerHTML = g.queue.length ? g.queue.map(d => `<span>${ARW[d]}</span>`).join("") : `<em class="trainhint">👆 Tap arrows to plan the way, then press ▶ GO</em>`;
+  $("#todTrain").innerHTML = `<b class="brain" title="Robot's brain">🧠</b>` + (g.queue.length ? g.queue.map(d => `<span>${ARW[d]}</span>`).join("") : `<em class="trainhint">👆 Plan the way with arrows, then ▶ GO</em>`);
   const go = $("#todArrows .go"); if (go) go.classList.toggle("ready", planEnd() === g.home);
 }
 $("#todArrows").onclick = async e => {
@@ -2610,11 +2991,17 @@ $("#todArrows").onclick = async e => {
     }
     drawPlan(); return;
   }
+  if (!/^[0-3]$/.test(a)) return;
+  g.log.push(+a); drawLog(true);
+  const tod = st().tod; tod.taps = (tod.taps || 0) + 1;
+  if (tod.taps === 1 || tod.taps === 6) say("You gave the robot an instruction. Its brain read it, and the robot moved!");
   if (moveTod(+a) && g.bot === g.home) roadWin();
 };
 async function roadWin() {
   todBusy = true; const b = $("#todBot .bot"); b.classList.add("hop"); b.innerHTML = botSVG(playerBot(), "happy");
-  const s = st(); s.tod.road = (s.tod.road || 0) + 1; save(); await todRoundDone(); await say(pick(["Home sweet home!", "You did it!", "Well done!", "Super!"])); todBusy = false; if (todGame === "road") newRoad();
+  const s = st(), g = road, nIns = g.plan ? g.queue.length : g.log.length; s.tod.road = (s.tod.road || 0) + 1; save();
+  if (s.tod.road <= 3 || s.tod.road % 4 === 0) await say(g.plan ? `Your plan had ${nIns} instructions, and the robot did them all by itself. That is a program!` : `You gave ${nIns} instructions. Every arrow is an instruction for the robot's brain.`);
+  await todRoundDone(); await say(pick(["Home sweet home!", "You did it!", "Well done!", "Super!"])); todBusy = false; if (todGame === "road") newRoad();
 }
 /* ---- Find It: computer things ---- */
 let findAns = null;
@@ -4523,6 +4910,416 @@ function wordFormat() {
   };
   ask();
 }
+
+/* ======================= HOW CODING WORKS: automation, programs, "behind the screen" ======================= */
+const DEMO = { timers: [], stop() { this.timers.forEach(t => { clearInterval(t); clearTimeout(t); }); this.timers = []; this.alive = (this.alive || 0) + 1; } };
+const dEvery = (fn, ms) => { const t = setInterval(fn, ms); DEMO.timers.push(t); return t; };
+const lnSay = t => { $("#lnText").textContent = t; say(t); };
+const botMini = () => `<span class="bot dbot">${botSVG(playerBot())}</span>`;
+
+/* 1. machines that work by themselves */
+function demoAuto(host, kid) {
+  const tiles = [
+    { k: "light", nm: "Traffic light", say: "A traffic light changes by itself, day and night. Its program says: red, then green, then amber, again and again." },
+    { k: "door", nm: "Sliding door", say: "At the supermarket, a sensor sees you coming, and the program opens the door. Nobody pushes it!" },
+    { k: "gen", nm: "Auto changeover", say: "When NEPA takes light, the changeover switches to the generator by itself. A program decides when." },
+    { k: "atm", nm: "ATM", say: "An ATM follows steps: read the card, check the PIN, count the money, give the cash. No banker inside!" }];
+  host.innerHTML = `<div class="dauto">${tiles.map(t => `<button class="dtile" data-t="${t.k}"><div class="dscene s-${t.k}">${{
+    light: `<div class="tl"><i class="r on"></i><i class="a"></i><i class="g"></i></div>`,
+    door: `<div class="doorway"><i class="dl"></i><i class="dr"></i><span class="walker">🚶🏾</span><span class="eye">👁️</span></div>`,
+    gen: `<div class="gen"><span class="bulb">💡</span><b class="src">NEPA ⚡</b></div>`,
+    atm: `<div class="atm"><span>🏧</span><b class="scr">Insert card</b></div>` }[t.k]}</div><span class="dnm">${t.nm}</span></button>`).join("")}</div>`;
+  let ph = 0;
+  dEvery(() => { ph++;
+    const lights = ["r", "g", "a"][ph % 3]; host.querySelectorAll(".tl i").forEach(i => i.classList.toggle("on", i.classList.contains(lights)));
+    const gs = ph % 4, src = host.querySelector(".gen .src"), bl = host.querySelector(".gen .bulb"); if (src) { src.textContent = ["NEPA ⚡", "Light off!", "Generator ⛽", "Generator ⛽"][gs]; bl.style.opacity = gs === 1 ? .15 : 1; }
+    const sc = host.querySelector(".atm .scr"); if (sc) sc.textContent = ["Insert card", "PIN: ****", "₦5,000", "Take cash 💵"][ph % 4];
+  }, 1300);
+  host.querySelector(".dauto").onclick = e => { const b = e.target.closest("[data-t]"); if (!b) return; SFX.tap(); $$(".dtile").forEach(x => x.classList.toggle("sel", x === b)); say(tiles.find(t => t.k === b.dataset.t).say); };
+}
+
+/* 2. remote control (you do every step) vs program (plan once, it runs by itself) */
+function demoRemote(host, kid) {
+  const N = 5; let pos = 0, phase = 1, plan = [], busy = false; const alive = DEMO.alive;
+  const draw = () => {
+    host.innerHTML = `<div class="dremote"><div class="drow">${Array.from({ length: N }, (_, i) => `<div class="dcell">${i === N - 1 ? "🏠" : ""}${i === pos ? botMini() : ""}</div>`).join("")}</div>
+      ${phase === 1 ? `<div class="dlabel">🎮 Remote control</div><div class="dbtns"><button class="btn go" data-r="step">➡️ One step</button></div>`
+      : phase === 2 ? `<div class="dlabel">📝 Program: plan first, then GO</div><div class="dplan">${plan.length ? plan.map(() => `<span>➡️</span>`).join("") : `<em>${kid ? "Tap ➡️ to plan" : "Your plan is empty. Tap ➡️ Add step"}</em>`}</div>
+        <div class="dbtns"><button class="btn" data-r="add">➡️ Add step</button><button class="btn" data-r="undo" aria-label="Undo">↩️</button><button class="btn go" data-r="go">▶ GO</button></div>`
+      : `<div class="dlabel">🎉 Automation!</div><div class="dbtns"><button class="btn" data-r="again">↺ Try again</button></div>`}</div>`;
+  };
+  const say_ = t => { if (DEMO.alive === alive) lnSay(t); };
+  host.onclick = async e => {
+    const b = e.target.closest("[data-r]"); if (!b || busy) return; const r = b.dataset.r;
+    if (r === "step") { pos++; SFX.step(); draw(); if (pos === N - 1) { SFX.good(); say_(kid ? "Home! You pressed the button for every step. That is a remote control." : "Home! But you had to press for EVERY step, like a remote control. Now let's write a program instead."); busy = true; setTimeout(() => { busy = false; if (DEMO.alive !== alive) return; phase = 2; pos = 0; draw(); say_(kid ? "Now plan all the steps first. Then press GO!" : "A program is a plan. Tap ➡️ Add step to plan every step, then press GO. The robot will do it by itself."); }, 3600); } else say("One step."); return; }
+    if (r === "add") { if (plan.length < 7) { plan.push(1); SFX.tap(); draw(); } return; }
+    if (r === "undo") { plan.pop(); SFX.turn(); draw(); return; }
+    if (r === "again") { phase = 1; pos = 0; plan = []; draw(); say_("Press ➡️ One step to move the robot."); return; }
+    if (r === "go") {
+      if (!plan.length) { say("Plan some steps first!"); return; }
+      busy = true; pos = 0; draw();
+      for (let i = 0; i < plan.length; i++) {
+        if (DEMO.alive !== alive) return;
+        host.querySelectorAll(".dplan span").forEach((s, j) => s.classList.toggle("now", j === i));
+        if (pos + 1 >= N) { SFX.bump(); say_("Bump! Too many steps. That is a bug. Take one step away with ↩️ and try again."); busy = false; return; }
+        await wait(550); pos++; SFX.step(); const spans = [...host.querySelectorAll(".dplan span")].map(s => s.className); draw(); host.querySelectorAll(".dplan span").forEach((s, j) => s.className = spans[j] || "");
+      }
+      busy = false;
+      if (pos === N - 1) { SFX.win(); phase = 3; draw(); say_(kid ? "The robot did it all by itself! Your plan is called code." : "The robot did every step BY ITSELF while you watched. That is automation! Your plan is called a program, or code."); }
+      else { SFX.oops(); say_("The robot stopped too early. The plan needs more steps. Add more, then GO again."); }
+    }
+  };
+  draw();
+}
+
+/* 3. behind the screen: every arrow writes a line of code, the brain reads it top to bottom */
+function demoBehind(host, kid) {
+  const n = 3, home = 8; let start = 0, plan = [], busy = false, done = false; const alive = DEMO.alive;
+  const D = [["⬆️", "move_up()", -3], ["➡️", "move_right()", 1], ["⬇️", "move_down()", 3], ["⬅️", "move_left()", -1]];
+  const cellOf = () => plan.reduce((c, d) => c + D[d][2], start);
+  const draw = (at, ptr) => {
+    host.innerHTML = `<div class="dbehind"><div class="dsee"><b>👀 What you see</b><div class="dgrid">${Array.from({ length: n * n }, (_, i) => `<div class="dcell">${i === home ? "🏠" : ""}${i === (at === undefined ? start : at) ? botMini() : ""}</div>`).join("")}</div></div>
+      <div class="dcode"><b>🧠 Behind the screen</b><div class="dlines">${plan.length ? plan.map((d, i) => `<div class="${i === ptr ? "now" : ""}"><i>${i + 1}</i>${kid ? D[d][0] : `${D[d][0]} <code>${D[d][1]}</code>`}</div>`).join("") : `<em>${kid ? "Tap an arrow" : "No code yet. Tap an arrow!"}</em>`}</div></div>
+      <div class="dbtns">${D.map((d, i) => `<button class="btn" data-d="${i}" aria-label="${d[1]}">${d[0]}</button>`).join("")}<button class="btn" data-d="undo" aria-label="Undo">↩️</button><button class="btn go" data-d="go">▶ GO</button></div></div>`;
+  };
+  const say_ = t => { if (DEMO.alive === alive) lnSay(t); };
+  host.onclick = async e => {
+    const b = e.target.closest("[data-d]"); if (!b || busy) return; const d = b.dataset.d;
+    if (d === "undo") { plan.pop(); SFX.turn(); draw(); return; }
+    if (d === "go") {
+      if (!plan.length) { say("Tap some arrows first!"); return; }
+      busy = true; let c = start;
+      for (let i = 0; i < plan.length; i++) {
+        if (DEMO.alive !== alive) return;
+        draw(c, i); if (!kid) say(`Line ${i + 1}: ${D[plan[i]][1].replace("_", " ").replace("()", "")}`); await wait(700);
+        const nc = c + D[plan[i]][2], x = c % n, nx = nc % n; if (nc < 0 || nc >= n * n || Math.abs(nx - x) > 1) { SFX.bump(); say_("Bump! That line sends the robot off the road. It is a bug. Fix it with ↩️."); busy = false; return; }
+        c = nc; SFX.step(); draw(c, i); await wait(250);
+      }
+      busy = false;
+      if (c === home) { SFX.win(); done = true; say_(kid ? "Home! Each arrow was an instruction. The robot's brain read them one by one." : "Home! Every arrow you tapped wrote one line of code. The robot's brain, a computer chip, read the lines from top to bottom, one at a time. All computers work like this!"); }
+      else { SFX.oops(); say_("The robot is not home yet. Add more lines of code, then GO again."); }
+      return;
+    }
+    if (plan.length >= 8) return;
+    plan.push(+d); SFX.tap(); draw();
+    if (plan.length === 1 && !kid) say_(`You tapped ${["up", "right", "down", "left"][+d]}, so the line ${D[+d][1]} was written behind the screen. Keep going to the house, then press GO.`);
+    else say(["up", "right", "down", "left"][+d]);
+  };
+  draw();
+}
+
+/* 4. a computer follows instructions EXACTLY, in order: socks and shoes */
+function demoExact(host) {
+  let order = ["shoes", "socks"]; const alive = DEMO.alive;
+  const C = { shoes: "👟 Put on shoes", socks: "🧦 Put on socks" };
+  const draw = (res) => {
+    host.innerHTML = `<div class="dexact"><div class="dsteps">${order.map((k, i) => `<div><i>${i + 1}</i>${C[k]}</div>`).join("")}</div>
+      <div class="dres">${res || botMini()}</div><div class="dbtns"><button class="btn" data-x="swap">⇅ Swap</button><button class="btn go" data-x="run">▶ Run</button></div></div>`;
+  };
+  host.onclick = e => {
+    const b = e.target.closest("[data-x]"); if (!b) return;
+    if (b.dataset.x === "swap") { order.reverse(); SFX.turn(); draw(); return; }
+    const right = order[0] === "socks";
+    if (right) { SFX.win(); draw(`<span class="dfeet">🦶➕🧦➕👟</span><b>😎 Perfect!</b>`); if (DEMO.alive === alive) lnSay("Socks first, then shoes. You fixed the bug! Fixing mistakes in code is called debugging."); }
+    else { SFX.oops(); draw(`<span class="dfeet">🦶➕👟➕🧦</span><b>🤪 Socks on top of the shoes!</b>`); if (DEMO.alive === alive) lnSay("Silly robot! It did EXACTLY what the steps said, in that order. A mistake in code is called a bug. Tap ⇅ Swap to fix it, then Run."); }
+  };
+  draw();
+}
+
+/* 5. one instruction, four ways: arrow, block, Python, machine code */
+function demoLayers(host) {
+  let n = 1; const L = [["You tap", `<span class="dbig">⬆️</span>`], ["Block", `<span class="blk c-move">⬆️ forward</span>`], ["Python", `<code class="dpy">forward()</code>`], ["Computer chip", `<code class="dbin">01100110 01101111</code>`]];
+  const T = ["You tap an arrow…", "…a block shows the same instruction. Blocks fit together like puzzle pieces, so there are no spelling mistakes.", "…and every block is one line of Python, the words real coders type.", "The computer chip only understands on and off: 1 and 0. It turns every line into 1s and 0s. That is all a computer really reads!"];
+  const draw = () => { host.innerHTML = `<div class="dlayers">${L.slice(0, n).map(([a, b], i) => `<div class="dlay"><span>${a}</span>${b}</div>${i < n - 1 ? `<div class="darr">⬇️</div>` : ""}`).join("")}${n < L.length ? `<button class="btn go" data-y="1">Show more ⬇️</button>` : ""}</div>`; };
+  host.onclick = e => { if (!e.target.closest("[data-y]")) return; n++; SFX.tap(); draw(); lnSay(T[n - 1]); };
+  draw();
+}
+
+const HOW_BIG = [
+  { v: "🤖❓", t: "How does a robot know what to do? It can't think like you. Someone has to give it instructions. Let's find out how!" },
+  { demo: demoAuto, t: "These machines work all by themselves. Tap each one to find out how. A machine that does a job by itself is automatic. This is called automation." },
+  { v: "📜➡️🤖", t: "Who tells them what to do? A list of instructions called a program, or code. A person wrote it: a coder. The machine follows the code again and again, day and night." },
+  { demo: demoRemote, t: "Press ➡️ One step to move the robot home. You are the remote control!" },
+  { demo: demoBehind, t: "Now look behind the screen! Tap the arrows to reach the house 🏠, then press ▶ GO. Watch the code being written." },
+  { demo: demoExact, t: "A computer does EXACTLY what the code says, in that order. Press ▶ Run and watch the robot get dressed." },
+  { v: "🐛📓", t: "Why is a mistake called a bug? In 1947, a real moth got stuck inside a big computer called the Harvard Mark II. Grace Hopper's team taped it into their notebook!" },
+  { demo: demoLayers, t: "One instruction can be written in different ways. Tap Show more." },
+  { v: "🧑🏾‍💻⭐", t: "Coding means writing instructions so machines can do jobs by themselves. In Robot Missions you will learn the coder's tools: steps in order, loops to repeat, if to decide, and your own new commands!" },
+];
+const HOW_TOD = [
+  { v: "🤖", t: "Robots need instructions. Then they know what to do!" },
+  { demo: demoAuto, t: "Some machines work all by themselves. Tap them!" },
+  { demo: (h) => demoRemote(h, true), t: "Press ➡️ to move the robot home." },
+  { demo: (h) => demoBehind(h, true), t: "Tap the arrows to reach the house 🏠. Then press ▶ GO." },
+  { v: "👆➡️🧠➡️🤖", t: "When you tap arrows, you give instructions. That is coding! Hooray!" },
+];
+function openHow(kid, done) {
+  const s = st(); s.seenHow = s.seenHow || {}; s.seenHow[kid ? "tod" : "big"] = true; save();
+  openSlides(kid ? "🤔 How robots know" : "🤔 How coding works", kid ? HOW_TOD : HOW_BIG, done || (() => show("home")), kid ? "Play ▶" : "Done ✔");
+}
+
+/* ======================= PYTHON PATH: lessons (data) =======================
+   step kinds: learn {t, code, want: "run"|"watch"} · predict {t, code, ch, ans, why} · fill {t, code with ___, ch, ans, expect, why}
+   fix {t, code, expect | check, hints, sol} · write {t, start, check, hints, sol}
+   check(ctx) gets {out, vars (Map name->value), code, inputs, ip} and returns true, or a sentence saying what is missing. */
+const outLines = o => o.split("\n").map(s => s.trim()).filter(Boolean);
+const pvGet = (c, n) => c.vars.get(n);
+const PYP = [
+  { id: "p1", nm: "Talk to the computer", ic: "💬", goal: "print, text and quote marks", steps: [
+    { k: "learn", t: "Python is a language for giving a computer instructions. The print command shows words on the screen. Words go inside quote marks. Press ▶ Run!", code: 'print("Hello, Nigeria!")', want: "run" },
+    { k: "learn", t: "The computer runs your lines from top to bottom, one at a time. Press 👣 Watch, then keep pressing 👣 Next line to see each line run.", code: 'print("Good morning")\nprint("I am learning Python")\nprint("Bye!")', want: "watch" },
+    { k: "predict", t: "Think first! What will the screen show when this runs?", code: 'print("Lagos")\nprint("Kano")', ch: ["Lagos, then Kano under it", "Kano, then Lagos under it", "LagosKano on one line"], ans: 0, why: "Python runs from the top. Each print starts a new line." },
+    { k: "fill", t: "Make the computer say Hello, Ada. Tap the piece that fits the gap.", code: "print(___)", ch: ['"Hello, Ada"', "Hello, Ada", "(Hello)"], ans: '"Hello, Ada"', expect: "Hello, Ada", why: "Words (we call them text, or strings) need quote marks at the start AND the end." },
+    { k: "fix", t: "This code has a bug 🐞. Press ▶ Run and read the message. It tells you what is wrong. Then fix it and run again.", code: 'print("I love jollof)', expect: "I love jollof", hints: ["Look at the end of the words. Is a quote mark missing?", 'Put a " just before the closing bracket.'], sol: 'print("I love jollof")' },
+    { k: "write", t: "Your turn! Write two lines: print your name, then print your favourite food.", start: "# Type your code below this line\n", check: c => outLines(c.out).length >= 2 || "Use print two times, one on each line.", hints: ["Use print two times, one on each line.", 'Like this: print("Tobi") and then print("Jollof rice")'], sol: 'print("Tobi")\nprint("Jollof rice")' },
+  ] },
+  { id: "p2", nm: "Memory boxes", ic: "📦", goal: "variables", steps: [
+    { k: "learn", t: "A variable is a box with a name. name = \"Ada\" puts the word Ada in a box called name. print(name) shows what is inside. Watch the box appear on the right!", code: 'name = "Ada"\nprint(name)\nprint("Hello", name)', want: "watch" },
+    { k: "learn", t: "Boxes can hold numbers too, and you can change what is inside. Watch age change from 8 to 9.", code: "age = 8\nprint(age)\nage = 9\nprint(age)", want: "watch" },
+    { k: "predict", t: "The box city gets a new value. What will be printed?", code: 'city = "Abuja"\ncity = "Enugu"\nprint(city)', ch: ["Enugu", "Abuja", "Abuja Enugu"], ans: 0, why: "A box holds one thing. The new value Enugu replaces Abuja." },
+    { k: "predict", t: "Look carefully at the quote marks! What will be printed?", code: 'food = "rice"\nprint("food")', ch: ["food", "rice", "an error"], ans: 0, why: "\"food\" with quote marks is just the word food. Without quotes, food would mean the box, which holds rice." },
+    { k: "fill", t: "Put the number 10 in a box called mangoes, then print it.", code: "mangoes = ___\nprint(mangoes)", ch: ["10", "mangoes", "print"], ans: "10", expect: "10", why: "Numbers don't need quote marks. mangoes = 10 puts 10 in the box." },
+    { k: "fix", t: "Bug alert! Run it, read the message, then fix it.", code: "score = 5\nprint(Score)", expect: "5", hints: ["Python cares about capital letters. Is Score the same as score?", "Change Score to score."], sol: "score = 5\nprint(score)" },
+    { k: "write", t: "Make a box called team that holds your favourite football team. Then print a message with it.", start: "# Make the team box, then print it\n", check: c => typeof pvGet(c, "team") !== "string" ? 'Make a box called team that holds text, like team = "Super Eagles"' : !c.out.includes(pvGet(c, "team")) ? "Now print the team box." : true, hints: ['Start with team = "Super Eagles"', 'Then print("I support", team)'], sol: 'team = "Super Eagles"\nprint("I support", team)' },
+  ] },
+  { id: "p3", nm: "Maths machine", ic: "🧮", goal: "+ - * / and working things out", steps: [
+    { k: "learn", t: "Python is a super calculator. + adds, - takes away, * multiplies and / divides. Numbers don't need quote marks.", code: "print(2 + 3)\nprint(10 - 4)\nprint(6 * 7)\nprint(7 / 2)", want: "run" },
+    { k: "learn", t: "Mama buys 3 tins of tomato paste at ₦400 each. Let Python work out the total with boxes. Watch total get its value.", code: 'price = 400\ntins = 3\ntotal = price * tins\nprint("Total:", total)', want: "watch" },
+    { k: "predict", t: "What does this print?", code: "print(2 + 3 * 4)", ch: ["14", "20", "9"], ans: 0, why: "Like BODMAS: Python multiplies first (3 * 4 = 12), then adds 2. That makes 14." },
+    { k: "predict", t: "Careful: these numbers are inside quote marks. What does this print?", code: 'print("2" + "3")', ch: ["23", "5", "an error"], ans: 0, why: "With quote marks they are text, not numbers. + joins text together: 2 and 3 make 23." },
+    { k: "fill", t: "Each pupil gets 4 pencils. There are 25 pupils. How many pencils altogether?", code: "pencils = 4 ___ 25\nprint(pencils)", ch: ["*", "+", "-"], ans: "*", expect: "100", why: "4 pencils for each of 25 pupils is 4 times 25, so we use * to multiply." },
+    { k: "write", t: "Ngozi has ₦1000. She buys bread for ₦650. Make a box called change that works out her change, then print it.", start: "money = 1000\nbread = 650\n", check: c => pvGet(c, "change") !== 350 ? "Make change = money - bread" : !c.out.includes("350") ? "Now print the change box." : true, hints: ["Take the bread price away from the money: money - bread", "change = money - bread, then print(change)"], sol: "money = 1000\nbread = 650\nchange = money - bread\nprint(change)" },
+  ] },
+  { id: "p4", nm: "Ask a question", ic: "❓", goal: "input() and int()", steps: [
+    { k: "learn", t: "input asks a question and WAITS for the answer. The answer goes into a box. Press ▶ Run and type your name in the black box.", code: 'name = input("What is your name? ")\nprint("Welcome,", name)', want: "run" },
+    { k: "learn", t: "input always gives TEXT. To do maths with the answer, turn it into a whole number with int( ).", code: 'age = int(input("How old are you? "))\nprint("Next year you will be", age + 1)', want: "run" },
+    { k: "predict", t: "You run this and type 5. What shows?", code: 'x = input("Number? ")\nprint(x + x)', ch: ["55", "10", "an error"], ans: 0, why: "input gives text, so \"5\" + \"5\" joins to make 55. With int(input()) it would be 10." },
+    { k: "fix", t: "This program crashes. Run it, type your age, and read the message. Then fix it with int( ).", code: 'age = input("How old are you? ")\nprint(age + 1)', check: c => !/int\s*\(/.test(c.code) ? "Turn the answer into a number with int( )." : true, hints: ["You can't add 1 to text. Turn the answer into a number.", 'age = int(input("How old are you? "))'], sol: 'age = int(input("How old are you? "))\nprint(age + 1)' },
+    { k: "write", t: "Make an adding machine: ask for two numbers, then print their sum.", start: "# Ask for the first number\n", check: c => c.inputs.length < 2 ? "Ask two questions with input." : !/int\s*\(/.test(c.code) ? "Turn the answers into numbers with int( )." : !c.out.includes(String(parseInt(c.inputs[0]) + parseInt(c.inputs[1]))) ? "Now print the two numbers added together." : true, hints: ['a = int(input("First number? "))', 'b = int(input("Second number? ")) and then print(a + b)'], sol: 'a = int(input("First number? "))\nb = int(input("Second number? "))\nprint(a + b)' },
+  ] },
+  { id: "p5", nm: "Decisions", ic: "🔀", goal: "if, else and comparing", steps: [
+    { k: "learn", t: "if lets the computer decide. The lines pushed in under if run only when the test is True. else runs when it is False. Watch which line runs!", code: 'temp = 35\nif temp > 30:\n    print("It is hot! Drink water.")\nelse:\n    print("Nice weather!")', want: "watch" },
+    { k: "learn", t: "Tests give True or False. > means bigger than, < means smaller than, == means equal. Notice: == has two equal signs!", code: "print(5 > 3)\nprint(2 == 2)\nprint(10 < 4)", want: "run" },
+    { k: "predict", t: "What will be printed?", code: 'score = 45\nif score >= 50:\n    print("Pass")\nelse:\n    print("Try again")', ch: ["Try again", "Pass", "Pass and Try again"], ans: 0, why: "45 is not 50 or more, so the test is False and the else part runs." },
+    { k: "fill", t: "Only people 18 or older can vote. Fill the gap so a 12-year-old gets Not yet.", code: 'age = 12\nif age ___ 18:\n    print("You can vote")\nelse:\n    print("Not yet")', ch: [">=", "<", "="], ans: ">=", expect: "Not yet", why: ">= means bigger than or equal to. 12 >= 18 is False, so it prints Not yet." },
+    { k: "fix", t: "Bug! Run it and read the message carefully.", code: 'money = 500\nif money > 300\n    print("Buy suya")', expect: "Buy suya", hints: ["Every if line ends with something special.", "Add a colon : at the end of the if line."], sol: 'money = 500\nif money > 300:\n    print("Buy suya")' },
+    { k: "write", t: "Make a box called mark with any number. If mark is 50 or more, print Pass. Else, print Fail.", start: "mark = 72\n", check: c => typeof pvGet(c, "mark") !== "number" ? "Keep a number in the mark box." : !/\bif\b/.test(c.code) || !/\belse\b/.test(c.code) ? "Use if and else." : outLines(c.out).slice(-1)[0] !== (pvGet(c, "mark") >= 50 ? "Pass" : "Fail") ? `With mark = ${pvGet(c, "mark")} it should print ${pvGet(c, "mark") >= 50 ? "Pass" : "Fail"}.` : true, hints: ["if mark >= 50:  (don't forget the colon)", 'Push print("Pass") in under the if. Then else: and push print("Fail") in.'], sol: 'mark = 72\nif mark >= 50:\n    print("Pass")\nelse:\n    print("Fail")' },
+  ] },
+  { id: "p6", nm: "More choices", ic: "🚦", goal: "elif", steps: [
+    { k: "learn", t: "elif means else if. Python checks each test from the top and stops at the FIRST one that is True. Watch it check!", code: 'score = 72\nif score >= 70:\n    print("A")\nelif score >= 60:\n    print("B")\nelif score >= 50:\n    print("C")\nelse:\n    print("Try again")', want: "watch" },
+    { k: "predict", t: "Now score is 65. What is printed?", code: 'score = 65\nif score >= 70:\n    print("A")\nelif score >= 60:\n    print("B")\nelse:\n    print("C")', ch: ["B", "A", "B and C"], ans: 0, why: "65 >= 70 is False. 65 >= 60 is True, so it prints B and stops checking." },
+    { k: "predict", t: "A traffic light program. What is printed?", code: 'light = "amber"\nif light == "red":\n    print("Stop")\nelif light == "amber":\n    print("Get ready")\nelse:\n    print("Go")', ch: ["Get ready", "Stop", "Go"], ans: 0, why: "The first test is False. The second test, light == \"amber\", is True." },
+    { k: "fix", t: "The spaces are wrong. Run it and fix it.", code: 'time = 14\nif time < 12:\n    print("Good morning")\n  elif time < 16:\n    print("Good afternoon")\nelse:\n    print("Good evening")', expect: "Good afternoon", hints: ["elif must line up with if, right at the start of the line.", "Remove the two spaces before elif."], sol: 'time = 14\nif time < 12:\n    print("Good morning")\nelif time < 16:\n    print("Good afternoon")\nelse:\n    print("Good evening")' },
+    { k: "write", t: "Bus fare! Make a box called age. Under 5: print Free. Under 13: print Half price. Everyone else: print Full price.", start: "age = 9\n", check: c => { const a = pvGet(c, "age"); if (typeof a !== "number") return "Keep a number in the age box."; if (!/\belif\b/.test(c.code)) return "Use elif for the middle choice."; const want = a < 5 ? "Free" : a < 13 ? "Half price" : "Full price"; return outLines(c.out).slice(-1)[0] === want || `With age = ${a} it should print ${want}.`; }, hints: ["if age < 5:  then  elif age < 13:  then  else:", 'Push a print in under each one, like print("Free")'], sol: 'age = 9\nif age < 5:\n    print("Free")\nelif age < 13:\n    print("Half price")\nelse:\n    print("Full price")' },
+  ] },
+  { id: "p7", nm: "Repeat with for", ic: "🔁", goal: "for loops and range", steps: [
+    { k: "learn", t: "A for loop repeats the lines pushed in under it. range(5) gives the numbers 0, 1, 2, 3, 4, so the loop runs 5 times. Watch i change!", code: 'for i in range(5):\n    print("Hello", i)', want: "watch" },
+    { k: "learn", t: "range(1, 6) starts at 1 and stops BEFORE 6. Here is the 3 times table, worked out by the computer.", code: 'for i in range(1, 6):\n    print(3, "x", i, "=", 3 * i)', want: "run" },
+    { k: "predict", t: "How many times is Go! printed?", code: 'for i in range(3):\n    print("Go!")', ch: ["3 times", "4 times", "once"], ans: 0, why: "range(3) gives 0, 1 and 2. That is 3 numbers, so 3 times." },
+    { k: "predict", t: "What is printed at the end?", code: "total = 0\nfor i in range(4):\n    total += 2\nprint(total)", ch: ["8", "2", "6"], ans: 0, why: "The loop runs 4 times and adds 2 each time: 2, 4, 6, 8." },
+    { k: "fill", t: "Print the numbers 1 to 10.", code: "for n in range(1, ___):\n    print(n)", ch: ["11", "10", "9"], ans: "11", expect: "1\n2\n3\n4\n5\n6\n7\n8\n9\n10", why: "range stops BEFORE the last number, so to reach 10 we write 11." },
+    { k: "write", t: "Print the 5 times table, from 5 x 1 up to 5 x 10.", start: "# Use a for loop with range\n", check: c => { const L = outLines(c.out); if (L.length < 10) return "Print 10 lines: one for each sum."; return /\b50\b/.test(L[L.length - 1]) && /\b5\b/.test(L[0]) || "The first line should give 5 and the last line 50."; }, hints: ["for i in range(1, 11):", 'Push in: print(5, "x", i, "=", 5 * i)'], sol: 'for i in range(1, 11):\n    print(5, "x", i, "=", 5 * i)' },
+  ] },
+  { id: "p8", nm: "Keep going with while", ic: "🔄", goal: "while loops", steps: [
+    { k: "learn", t: "while repeats AS LONG AS its test is True. Something inside must change, or it would loop forever! Watch n count down.", code: 'n = 5\nwhile n > 0:\n    print(n)\n    n -= 1\nprint("Blast off! 🚀")', want: "watch" },
+    { k: "learn", t: "A guessing game! The loop keeps asking until you guess right. The secret number is between 1 and 10.", code: 'secret = 7\nguess = 0\nwhile guess != secret:\n    guess = int(input("Guess my number (1 to 10): "))\nprint("You got it!")', want: "run" },
+    { k: "predict", t: "x doubles each time round the loop. What is printed?", code: "x = 1\nwhile x < 20:\n    x = x * 2\nprint(x)", ch: ["32", "20", "16"], ans: 0, why: "x goes 1, 2, 4, 8, 16, 32. At 32 the test x < 20 is False, so the loop stops." },
+    { k: "fix", t: "This loop never ends! Run it, then fix it so it prints 3, 2, 1 and then Done.", code: 'n = 3\nwhile n > 0:\n    print(n)\nprint("Done")', expect: "3\n2\n1\nDone", hints: ["n never changes, so n > 0 stays True for ever.", "Inside the loop, add the line  n -= 1  (pushed in with 4 spaces)."], sol: 'n = 3\nwhile n > 0:\n    print(n)\n    n -= 1\nprint("Done")' },
+    { k: "write", t: "Saving up! Start with savings = 0. Each week add ₦200, while savings is less than 1000. Count the weeks and print how many.", start: "savings = 0\nweeks = 0\n", check: c => pvGet(c, "weeks") !== 5 || pvGet(c, "savings") !== 1000 ? "Each time round: savings += 200 and weeks += 1. You should get 5 weeks." : !c.out.includes("5") ? "Now print the weeks box." : true, hints: ["while savings < 1000:", "Push in: savings += 200 and weeks += 1. After the loop: print(weeks)"], sol: "savings = 0\nweeks = 0\nwhile savings < 1000:\n    savings += 200\n    weeks += 1\nprint(weeks)" },
+  ] },
+  { id: "p9", nm: "Lists", ic: "🧺", goal: "lists, positions, append, len", steps: [
+    { k: "learn", t: "A list keeps many things in order, inside square brackets. Positions start at 0! len tells you how many things are in the list.", code: 'basket = ["mango", "orange", "banana"]\nprint(basket)\nprint(basket[0])\nprint(len(basket))', want: "run" },
+    { k: "learn", t: "append adds a new thing at the end. A for loop can visit every item in a list. Watch fruit change!", code: 'basket = ["mango", "orange"]\nbasket.append("pawpaw")\nfor fruit in basket:\n    print("I like", fruit)', want: "watch" },
+    { k: "predict", t: "What is printed?", code: 'days = ["Mon", "Tue", "Wed"]\nprint(days[1])', ch: ["Tue", "Mon", "Wed"], ans: 0, why: "Positions start at 0: Mon is 0, Tue is 1, Wed is 2." },
+    { k: "fill", t: "Add up all the scores in the list.", code: "scores = [7, 9, 5]\ntotal = 0\nfor s in scores:\n    total ___ s\nprint(total)", ch: ["+=", "=", "-="], ans: "+=", expect: "21", why: "total += s adds each score to the total: 7 + 9 + 5 = 21." },
+    { k: "write", t: "Make a list of 3 Nigerian states. Add one more with append. Then print each state with a for loop.", start: "# Make your list here\n", check: c => { const L = [...c.vars.values()].find(v => Array.isArray(v)); if (!L) return 'Make a list, like states = ["Lagos", "Kano", "Oyo"]'; if (!/\.append\s*\(/.test(c.code)) return "Add one more state with append."; if (L.length < 4) return "Your list needs 4 states after append."; return /\bfor\b/.test(c.code) && outLines(c.out).length >= 4 || "Print each state using a for loop."; }, hints: ['states = ["Lagos", "Kano", "Oyo"]  then  states.append("Enugu")', "for s in states:  and push in  print(s)"], sol: 'states = ["Lagos", "Kano", "Oyo"]\nstates.append("Enugu")\nfor s in states:\n    print(s)' },
+  ] },
+  { id: "p10", nm: "Your own commands", ic: "⭐", goal: "def, parameters and return", steps: [
+    { k: "learn", t: "def makes your own command, called a function. name is a parameter: a box that gets whatever you put in the brackets. Watch Python jump into greet.", code: 'def greet(name):\n    print("Hello,", name)\n\ngreet("Ada")\ngreet("Tunde")', want: "watch" },
+    { k: "learn", t: "return sends an answer back from your function, so you can use it.", code: "def double(n):\n    return n * 2\n\nprint(double(4))\nprint(double(21))", want: "run" },
+    { k: "predict", t: "What is printed?", code: "def add(a, b):\n    return a + b\n\nprint(add(3, 4))", ch: ["7", "34", "a + b"], ans: 0, why: "a gets 3 and b gets 4. The function returns 3 + 4, which is 7." },
+    { k: "fix", t: "Nothing happens when this runs! Find out why and fix it.", code: 'def cheer():\n    print("Up Super Eagles!")\n\ncheer', expect: "Up Super Eagles!", hints: ["To USE a function, you call it with brackets.", "Change the last line to cheer()"], sol: 'def cheer():\n    print("Up Super Eagles!")\n\ncheer()' },
+    { k: "write", t: "Write a function area(length, width) that returns length times width. Then print area(5, 3).", start: "# def area(length, width):\n", check: c => { const f = c.ip.globals.get("area"); if (!f || !f.params) return "Make a function with def area(length, width):"; try { const r = c.ip.callSync(f, [2, 3]); if (r !== 6) return "area should return length * width."; } catch (e) { return "area should return length * width."; } return c.out.includes("15") || "Now print(area(5, 3))"; }, hints: ["def area(length, width):", "Push in: return length * width. Then print(area(5, 3))"], sol: "def area(length, width):\n    return length * width\n\nprint(area(5, 3))" },
+  ] },
+  { id: "p11", nm: "Project: quiz game", ic: "🏆", goal: "put it all together", steps: [
+    { k: "learn", t: "Let's put it all together: a box for the score, input for questions, and if to check answers. Run it and play!", code: 'score = 0\nanswer = input("What is the capital of Nigeria? ")\nif answer == "Abuja":\n    print("Correct!")\n    score += 1\nelse:\n    print("The answer is Abuja")\nprint("Score:", score)', want: "run" },
+    { k: "predict", t: "If a player types abuja with a small a, what happens?", code: 'answer = "abuja"\nif answer == "Abuja":\n    print("Correct!")\nelse:\n    print("The answer is Abuja")', ch: ["The answer is Abuja", "Correct!", "an error"], ans: 0, why: "== must match exactly. abuja and Abuja are different, because of the capital letter." },
+    { k: "fill", t: "Make the check work for small or capital letters. .lower() turns text into small letters.", code: 'answer = "ABUJA"\nif answer.___() == "abuja":\n    print("Correct!")\nelse:\n    print("Wrong")', ch: ["lower", "upper", "print"], ans: "lower", expect: "Correct!", why: "\"ABUJA\".lower() is \"abuja\", so now it matches." },
+    { k: "write", t: "Make your own quiz with 3 questions. Add 1 to score for each right answer, and print the score at the end. Play it to finish!", start: 'score = 0\nanswer = input("What is the capital of Nigeria? ")\nif answer.lower() == "abuja":\n    print("Correct!")\n    score += 1\n\n# Add two more questions here\n\nprint("Score:", score)', check: c => (c.code.match(/input\s*\(/g) || []).length < 3 ? "Ask 3 questions: you need input three times." : typeof pvGet(c, "score") !== "number" ? "Keep a score box with a number." : !/score/i.test(c.out) ? "Print the score at the end." : true, hints: ["Copy the 4 lines that ask about Abuja, and change the question and answer.", 'Try: answer = input("How many states are in Nigeria? ")  and  if answer == "36":'], sol: 'score = 0\nanswer = input("What is the capital of Nigeria? ")\nif answer.lower() == "abuja":\n    print("Correct!")\n    score += 1\nanswer = input("How many states are in Nigeria? ")\nif answer == "36":\n    print("Correct!")\n    score += 1\nanswer = input("What colours are on our flag? ")\nif "green" in answer.lower():\n    print("Correct!")\n    score += 1\nprint("Score:", score)' },
+  ] },
+];
+
+/* ======================= PYTHON PATH: lesson map + lesson player ======================= */
+let PL_L = null, PL_I = 0, PL_ED = null, PL_OK = false, PL_PICK = null, PL_HINT = 0, PL_RUN = null, PL_W = null, PL_SEEN = false;
+const pyDone = () => { const s = st(); s.py = s.py || {}; return s.py; };
+const pyOpen = i => st().parent.unlockAll || i === 0 || !!pyDone()[PYP[i - 1].id];
+const KIND = { learn: "📖 Learn", predict: "🤔 Predict", fill: "🧩 Fill the gap", fix: "🐞 Fix the bug", write: "✍️ Your turn" };
+
+ON_SHOW.pypath = () => {
+  const d = pyDone(), n = PYP.filter(l => d[l.id]).length;
+  $("#ppCount").textContent = `${n} of ${PYP.length}`;
+  $("#ppGrid").innerHTML = PYP.map((l, i) => { const op = pyOpen(i), ok = d[l.id]; return `<button class="btn pplesson ${op ? "" : "shut"} ${ok ? "done" : ""}" data-pl="${i}"><span class="ppn">${i + 1}</span><span class="ppic">${l.ic}</span><span class="pptx"><b>${l.nm}</b><span>${l.goal}</span></span><span class="ppst">${ok ? "✅" : op ? "▶" : "🔒"}</span></button>`; }).join("");
+  if (PL().age < 8 && !PL_SEEN) { PL_SEEN = true; say("Python Path is for big kids, 8 and up. You can still try!"); }
+};
+$("#ppBack").onclick = () => { hush(); show("home"); };
+$("#ppGrid").onclick = e => {
+  const b = e.target.closest("[data-pl]"); if (!b) return; const i = +b.dataset.pl;
+  if (!pyOpen(i)) { SFX.oops(); say(`Finish lesson ${i} first.`); b.classList.remove("nudge"); void b.offsetWidth; b.classList.add("nudge"); return; }
+  SFX.tap(); PL_L = i; PL_I = 0; show("pyl"); plStep();
+};
+
+/* ---- console ---- */
+function plPrint(t, cls) { const el = $("#plCon"), sp = document.createElement("span"); if (cls) sp.className = cls; sp.textContent = t; el.appendChild(sp); while (el.childNodes.length > 300) el.removeChild(el.firstChild); el.scrollTop = el.scrollHeight; }
+let plAskRes = null;
+function plAsk(q) {
+  return new Promise(res => {
+    const el = $("#plCon"); if (q) plPrint(q, "ask");
+    const inp = document.createElement("input"); inp.autocomplete = "off"; inp.setAttribute("aria-label", q || "Your answer"); inp.id = "plIn";
+    const ok = document.createElement("button"); ok.className = "btn"; ok.textContent = "OK"; ok.id = "plInOk";
+    const done = () => { const v = inp.value; inp.remove(); ok.remove(); plPrint(v + "\n", "ask"); plAskRes = null; res(v); };
+    plAskRes = () => { inp.remove(); ok.remove(); plAskRes = null; res(""); };
+    inp.onkeydown = e => { if (e.key === "Enter") done(); }; ok.onclick = done;
+    el.append(inp, ok); el.scrollTop = el.scrollHeight; setTimeout(() => inp.focus(), 30); say(q);
+  });
+}
+function plVars(list) { $("#plVars").innerHTML = list && list.length ? list.map(([k, v]) => `<span class="vchip">📦 ${esc(k)} = ${esc(KidPy.repr(v))}</span>`).join("") : `<span class="t-s">📦 Variables (boxes) show here</span>`; }
+function plExp(html, cls) { const e = $("#plExp"); if (!html) { e.hidden = true; return; } e.className = "plexp " + (cls || ""); e.innerHTML = html; e.hidden = false; }
+
+/* ---- explaining one line (watch mode) ---- */
+function pyExplain(ev, text) {
+  const t = text.trim(), test = (t.match(/^(?:if|elif|while)\s+(.*):\s*$/) || [])[1] || "the test";
+  if (ev.k === "if") return `❓ Is <code>${esc(test)}</code> True? ${ev.val ? "Yes ✅ so the lines pushed in under it run." : `No ❌ so Python skips them${ev.hasElse ? " and moves on to the next choice" : ""}.`}`;
+  if (ev.k === "while") return ev.val ? `🔄 Is <code>${esc(test)}</code> True? Yes, so the loop runs${ev.round > 1 ? ` again (round ${ev.round})` : ""}.` : `🔄 Is <code>${esc(test)}</code> True? No, so the loop stops.`;
+  if (ev.k === "for") return `🔁 <code>${esc(ev.name || "it")}</code> is now <code>${esc(KidPy.repr(ev.value))}</code>${ev.n ? ` (time ${ev.i + 1} of ${ev.n})` : ""}. The lines pushed in run again.`;
+  const nm = (t.match(/^(\w+)\s*([-+*/]?=)/) || []);
+  if (/^def\s+(\w+)/.test(t)) return `⭐ This makes a new command called <code>${t.match(/^def\s+(\w+)/)[1]}</code>. Its lines run only when it is called.`;
+  if (/^return\b/.test(t)) return "↩️ return sends the answer back to where the function was called.";
+  if (/input\s*\(/.test(t)) return `❓ input asks a question and waits for the answer${nm[1] ? `, which goes into the box <code>${nm[1]}</code>` : ""}.`;
+  if (nm[2] === "+=") return `➕ Add to the box <code>${nm[1]}</code>.`;
+  if (nm[2] === "-=") return `➖ Take away from the box <code>${nm[1]}</code>.`;
+  if (nm[2] === "=") return `📦 Work out the right side, then put it in the box <code>${nm[1]}</code>.`;
+  if (/\.append\s*\(/.test(t)) return "🧺 append adds a new item at the end of the list.";
+  if (/^print\s*\(/.test(t)) return "🖨️ print shows something on the screen.";
+  if (/^\w+\(.*\)$/.test(t)) return `⭐ Call the function <code>${t.match(/^(\w+)/)[1]}</code>: Python jumps to its lines.`;
+  return `▶ Run this line.`;
+}
+async function plPause(ev, ip) {
+  if (!PL_W || PL_W.fast) return;
+  if (ev.k === "set") { plVars(ip.userVars(ev.sc)); return; }
+  const text = PL_ED.get().split("\n")[ev.line - 1] || "";
+  if (ev.k === "line" && /^\s*(if|elif|while|for)\b/.test(text)) return; // its decision event explains it
+  PL_ED.mark(ev.line); plVars(ip.userVars(ev.sc));
+  PL_W.n++; plExp(`<b>👣 ${ev.k === "line" ? "Next: line" : "Line"} ${ev.line}</b> ${pyExplain(ev, text)}`, "watch"); window.__lastWatch = $("#plExp").textContent;
+  say(pyExplain(ev, text).replace(/<[^>]+>/g, ""));
+  await new Promise(res => { PL_W.gate = res; });
+}
+
+/* ---- run the code (normal or watch) ---- */
+function plCode() { const S = PYP[PL_L].steps[PL_I]; return S.k === "fill" ? S.code.replace("___", PL_PICK || "___") : PL_ED.get(); }
+async function plExec(watch) {
+  if (PL_RUN) return null;
+  const code = plCode(); hush(); $("#plCon").innerHTML = ""; PL_ED.clearMarks(); plVars([]); plExp("");
+  const out = [], inputs = [];
+  const ip = new KidPy.Interp({ maxSteps: 30000, print: s => { out.push(s); plPrint(s); }, pause: watch ? plPause : null });
+  PL_RUN = { ip }; PL_W = watch ? { n: 0, gate: null, fast: false } : null; plButtons();
+  let err = null;
+  try { await ip.run(code, { onInput: async q => { const a = await plAsk(q); inputs.push(a); return a; }, onWait: async s => { await wait(Math.min(3000, s * 1000)); } }); }
+  catch (e) { err = e; }
+  const wasStopped = ip.stopped; PL_RUN = null; const W = PL_W; PL_W = null; plButtons(); PL_ED.mark(0);
+  if (wasStopped) { plPrint("⏹ Stopped.\n", "sys"); plExp(""); return null; }
+  if (err) {
+    const msg = err.kid ? err.message : "Something went wrong: " + (err.message || err); plPrint("🐞 " + msg + "\n", "err");
+    if (err.line) PL_ED.mark(err.line, true);
+    plExp(`<b>🐞 ${err.line ? "Line " + err.line : "Bug"}:</b> ${esc(msg)}`, "bad"); say(msg);
+  } else if (W) { plExp(`<b>✔ Finished!</b> Python ran every line, from top to bottom.`, "watch"); }
+  else if (!out.length) plPrint("(Your code ran, but it did not print anything.)\n", "sys");
+  const vars = new Map(ip.userVars(null)); plVars([...vars]);
+  return { err, out: out.join(""), vars, inputs, code, ip, watched: !!W };
+}
+function plButtons() {
+  const S = PYP[PL_L].steps[PL_I], running = !!PL_RUN, watching = !!PL_W;
+  $("#plRun").textContent = running ? (watching ? "⏩ Finish" : "■ Stop") : S.k === "write" || S.k === "fix" ? "▶ Run & check" : "▶ Run";
+  $("#plWatch").textContent = watching ? "👣 Next line" : "👣 Watch";
+  $("#plWatch").disabled = running && !watching;
+  $("#plNext").disabled = !PL_OK || running; $("#plNext").classList.toggle("ready", PL_OK && !running);
+  $("#plHint").hidden = !(S.k === "fix" || S.k === "write");
+}
+$("#plRun").onclick = async () => {
+  if (PL_RUN) { if (PL_W) { PL_W.fast = true; if (PL_W.gate) PL_W.gate(); } else { PL_RUN.ip.stopped = true; if (plAskRes) plAskRes(); } return; }
+  SFX.tap(); const r = await plExec(false); if (r) plAfter(r);
+};
+$("#plWatch").onclick = async () => {
+  if (PL_W) { SFX.tap(); if (PL_W.gate) { const g = PL_W.gate; PL_W.gate = null; g(); } return; }
+  if (PL_RUN) return; SFX.tap(); const r = await plExec(true); if (r) plAfter(r);
+};
+/* after a run: decide if the step is passed */
+function plAfter(r) {
+  const S = PYP[PL_L].steps[PL_I];
+  if (S.k === "learn") { if (!S.want || S.want === "run" || r.watched) plPass(r.err ? null : r.watched ? "You watched Python run every line, from top to bottom. Try changing the code and watching again, or press Next." : "Great! Now read the output in the black box. Press Next when you are ready."); else if (!r.watched) say("Now press 👣 Watch to see it run one line at a time."); return; }
+  if (S.k === "predict") return;
+  if (S.k === "fill") { if (r.err) return; if (outLines(r.out).join("\n") === S.expect.trim()) plPass(`Yes! ${S.why}`); else { SFX.oops(); plExp(`<b>Not quite.</b> The output should be <code>${esc(S.expect.split("\n")[0])}${S.expect.includes("\n") ? "…" : ""}</code>. Try another piece.`, "bad"); } return; }
+  if (r.err) { if (S.k === "fix") say("Read the red message. It tells you what to fix."); return; }
+  let ok = true;
+  if (S.expect !== undefined) ok = outLines(r.out).join("\n") === S.expect.trim() || `The output should be: ${S.expect.replace(/\n/g, ", ")}`;
+  if (ok === true && S.check) { try { ok = S.check(r); } catch (e) { ok = "Check your code and try again."; } }
+  if (ok === true) plPass(S.k === "fix" ? "Bug fixed! 🐞➡️✅ You are a debugger!" : "Brilliant! Your code works!");
+  else { SFX.oops(); plExp(`<b>🤔 Almost!</b> ${esc(ok)}`, "bad"); say(ok); }
+}
+function plPass(msg) {
+  if (!PL_OK) { PL_OK = true; SFX.good(); }
+  if (msg) { plExp(`<b>✅</b> ${esc(msg)}`, "ok"); say(msg); }
+  plButtons();
+}
+/* ---- show a step ---- */
+function plStep() {
+  const L = PYP[PL_L], S = L.steps[PL_I]; PL_OK = false; PL_PICK = null; PL_HINT = 0;
+  $("#plTitle").textContent = `${L.ic} ${PL_L + 1}. ${L.nm}`; $("#plProg").textContent = `${PL_I + 1} of ${L.steps.length}`;
+  $("#plKind").textContent = KIND[S.k]; $("#plText").textContent = S.t;
+  if (!PL_ED) PL_ED = createEditor($("#plEd"), { onChange: () => { if (PYP[PL_L].steps[PL_I].k === "fill") return; PL_ED.clearMarks(); } });
+  PL_ED.set(S.k === "write" ? (pyDone()["w_" + L.id + PL_I] || S.start) : S.k === "fill" ? S.code.replace("___", "▢▢▢") : S.code);
+  PL_ED.ta.readOnly = S.k === "predict" || S.k === "fill";
+  $("#plCon").innerHTML = ""; plPrint(S.k === "predict" ? "Pick your answer first. Then you can run it to check.\n" : "Output appears here.\n", "sys"); plVars([]); plExp("");
+  const ch = $("#plCh");
+  if (S.k === "predict" || S.k === "fill") {
+    ch.hidden = false; ch.innerHTML = `<span class="t-s">${S.k === "predict" ? "What will happen?" : "Tap a piece:"}</span>` + S.ch.map((c, i) => `<button class="btn plc" data-c="${i}">${esc(c)}</button>`).join("");
+  } else { ch.hidden = true; ch.innerHTML = ""; }
+  if (S.k === "learn" && !S.want) PL_OK = true;
+  $("#plRun").disabled = S.k === "predict"; $("#plWatch").disabled = S.k === "predict";
+  plButtons(); $("#plRun").disabled = S.k === "predict"; $("#plWatch").disabled = S.k === "predict";
+  say(S.t);
+}
+$("#plCh").onclick = async e => {
+  const b = e.target.closest("[data-c]"); if (!b || PL_RUN) return; const S = PYP[PL_L].steps[PL_I], i = +b.dataset.c;
+  if (S.k === "predict") {
+    if (i === S.ans) { $$("#plCh .plc").forEach((x, j) => { x.classList.toggle("right", j === i); x.disabled = true; }); $("#plRun").disabled = false; $("#plWatch").disabled = false; plPass(`Correct! ${S.why} Now press ▶ Run to see it for real.`); }
+    else { b.classList.add("wrong"); b.disabled = true; SFX.oops(); plExp(`<b>Not quite.</b> Read the code again, one line at a time, from the top.`, "bad"); say("Not quite. Read the code again, one line at a time, from the top."); }
+    return;
+  }
+  // fill: put the piece in the gap and run it
+  PL_PICK = S.ch[i]; $$("#plCh .plc").forEach((x, j) => x.classList.toggle("picked", j === i)); PL_ED.set(S.code.replace("___", PL_PICK)); SFX.tap();
+  const r = await plExec(false); if (!r) return;
+  if (PL_PICK !== S.ans && r.err) say("That piece makes a bug. Read the red message, then try another piece.");
+  plAfter(r);
+};
+$("#plHint").onclick = async () => {
+  const S = PYP[PL_L].steps[PL_I]; if (!S.hints) return; SFX.tap();
+  if (PL_HINT < S.hints.length) { const h = S.hints[PL_HINT++]; plExp(`<b>💡 Hint ${PL_HINT}:</b> ${esc(h)}`, "hint"); say(h); return; }
+  const v = await modal(`<div class="big">👀</div><h3>See an answer?</h3><p>Look at it, understand each line, then press Run.</p>`, [{ t: "Not yet", v: false }, { t: "Show me", v: true, cls: "go" }]);
+  if (v) { PL_ED.set(S.sol); plExp(`<b>👀 One answer.</b> Read it line by line, then press ▶ Run & check. You can change it too!`, "hint"); }
+};
+$("#plSay").onclick = () => say($("#plText").textContent);
+$("#plNext").onclick = async () => {
+  if (!PL_OK || PL_RUN) return; SFX.tap(); hush();
+  const L = PYP[PL_L];
+  if (PL_I < L.steps.length - 1) { PL_I++; plStep(); return; }
+  const d = pyDone(), first = !d[L.id]; d[L.id] = true; if (first) st().coins += 5; save(); confetti(70); SFX.win();
+  const allDone = PYP.every(l => d[l.id]), s = st(), next = PYP[PL_L + 1];
+  await modal(`<div class="big">🐍🎉</div><h3>Lesson ${PL_L + 1} complete!</h3><p>You learned: ${esc(L.goal)}.${first ? " +5 🪙" : ""}</p>`, [{ t: next ? "Next lesson ▶" : "Finish ▶", v: true, cls: "go" }], { onOpen: () => say(`Lesson ${PL_L + 1} complete! You learned ${L.goal}.`) });
+  if (allDone && !s.certs.includes("python")) { s.certs.push("python"); save(); await modal(`<div class="big">📜</div><h3>You finished the Python Path!</h3><p>You are a Young Pythonist. Here is your certificate.</p>`); openCert("python"); return; }
+  if (next) { PL_L++; PL_I = 0; plStep(); } else show("pypath");
+};
+$("#plBack").onclick = () => { if (PL_RUN) { PL_RUN.ip.stopped = true; if (PL_W) { PL_W.fast = true; if (PL_W.gate) PL_W.gate(); } if (plAskRes) plAskRes(); } hush(); show("pypath"); };
+ON_LEAVE.pyl = () => { if (PL_RUN) { PL_RUN.ip.stopped = true; if (PL_W) { PL_W.fast = true; if (PL_W.gate) PL_W.gate(); } if (plAskRes) plAskRes(); } const S = PL_L !== null && PYP[PL_L].steps[PL_I]; if (S && S.k === "write" && PL_ED) { pyDone()["w_" + PYP[PL_L].id + PL_I] = PL_ED.get(); save(); } };
 
 /* ======================= START ======================= */
 (function init() {

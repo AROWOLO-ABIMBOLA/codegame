@@ -2,7 +2,7 @@
    The page itself is fetched fresh whenever there is internet, so updates you upload reach children
    the next time they open the game. Fonts and icons are kept for offline play.
    Real Python (Pyodide) is large, so it is only cached after a child has loaded it once online. */
-const CACHE = "code-buddies-v4";
+const CACHE = "code-buddies-v5";
 const SHELL = ["./", "./index.html", "./manifest.webmanifest", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/favicon-64.png"];
 self.addEventListener("install", (e) => { e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", (e) => { e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k.startsWith("code-buddies") && k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim())); });
