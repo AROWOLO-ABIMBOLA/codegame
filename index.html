@@ -471,6 +471,79 @@ canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-
 .kbd.big { height: 66%; } .kbd.big button { max-width: 8.5%; font-size: clamp(10px, 2.1cqh, 20px); }
 .kbd.big button.wide { max-width: 15%; }
 .dfile { color: #1D1B45; text-shadow: none; z-index: 2; touch-action: none; }
+/* ---- Primary 3 activities ---- */
+.lpanel.inside { background: #A5D6A7; background-image: linear-gradient(#81C784 2px, transparent 2px), linear-gradient(90deg, #81C784 2px, transparent 2px); background-size: 28px 28px; }
+.match { position: absolute; inset: 3%; display: grid; grid-template-columns: 1fr 1fr; gap: 3%; }
+.mcol { display: flex; flex-direction: column; gap: 2.2%; min-height: 0; }
+.mh { text-align: center; font-weight: 800; color: var(--soft); font-size: clamp(12px, 2.2cqh, 20px); }
+.mcol .btn { flex: 1; min-height: 0; font-size: clamp(12px, min(2.5cqh, 3.6cqw), 22px); line-height: 1.15; padding: 4px 6px; color: #1D1B45; background: #F4F5FB; }
+.mcol .btn.sel { background: #FFF1B8; outline: 4px solid var(--sun); }
+.mcol .btn.done { box-shadow: none; transform: none; opacity: .95; }
+.mcol .btn.bad { animation: shake .4s; }
+.m2win, .m2field { position: absolute; inset: 4%; border: 3px solid var(--ink); border-radius: 12px; background: #fff; overflow: hidden; }
+.m2pic { position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; font-size: clamp(60px, 16cqh, 150px); line-height: 1; cursor: pointer; padding: 10px; border-radius: 16px; -webkit-touch-callout: none; touch-action: none; }
+.m2pic small { font-size: clamp(13px, 2.4cqh, 20px); font-weight: 800; color: #1D1B45; margin-top: 6px; }
+.m2menu { position: absolute; left: 54%; top: 48%; display: flex; flex-direction: column; background: #fff; border: 3px solid var(--ink); border-radius: 10px; box-shadow: 0 6px 0 rgba(0,0,0,.25); overflow: hidden; animation: drop .2s; }
+.m2menu button { border: 0; border-bottom: 2px solid var(--track); background: #fff; color: #1D1B45; text-align: left; font-weight: 800; font-size: clamp(14px, 2.6cqh, 22px); padding: 6px 16px; }
+.m2menu button:hover { background: #E3ECFF; }
+.m2toast, .wd-toast { position: absolute; left: 50%; bottom: 8%; transform: translateX(-50%); background: var(--good); color: #fff; font-weight: 800; padding: 6px 16px; border-radius: 12px; font-size: clamp(14px, 2.6cqh, 22px); animation: drop .25s; white-space: nowrap; z-index: 5; }
+.m2scroll { position: absolute; inset: 4%; border: 3px solid var(--ink); border-radius: 12px; background: #fff; overflow-y: auto; touch-action: pan-y; overscroll-behavior: contain; }
+.m2page { display: flex; flex-direction: column; align-items: center; gap: 0; padding: 10px; color: #1D1B45; font-weight: 800; }
+.m2page p { height: 22cqh; display: grid; place-items: center; font-size: clamp(28px, 7cqh, 64px); margin: 0; }
+.m2page p:first-child { font-size: clamp(16px, 3cqh, 26px); }
+.m2ball { font-size: clamp(50px, 12cqh, 110px); background: none; border: 0; padding: 10px; margin: 10px 0 30px; }
+.m2field { background: linear-gradient(#7CCB72, #4CAF50); }
+.m2goal { position: absolute; right: 4%; top: 50%; transform: translateY(-50%); font-size: clamp(70px, 20cqh, 170px); line-height: 1; }
+.m2drag { position: absolute; left: 18%; top: 50%; transform: translate(-50%, -50%); font-size: clamp(44px, 10cqh, 90px); line-height: 1; cursor: grab; touch-action: none; z-index: 2; }
+/* pretend Word */
+.wd { position: absolute; inset: 2.5%; display: flex; flex-direction: column; background: #E9EBF2; border: 3px solid var(--ink); border-radius: 10px; overflow: hidden; color: #1D1B45; font-family: system-ui, "Segoe UI", Arial, sans-serif; }
+.wd-title { display: flex; align-items: center; justify-content: center; position: relative; background: #2B579A; color: #fff; font-weight: 700; font-size: clamp(11px, min(2.2cqh, 3.4cqw), 18px); padding: 4px 40px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wd-x { position: absolute; right: 0; top: 0; bottom: 0; width: clamp(30px, 6cqh, 46px); border: 0; background: #E53935; color: #fff; font-weight: 900; font-size: 1em; }
+.wd-rib { background: #fff; border-bottom: 2px solid #C5CAE0; }
+.wd-tabs { display: flex; gap: 2px; padding: 2px 4px 0; background: #2B579A; }
+.wd-tabs button { flex: 1 1 0; min-width: 0; border: 0; border-radius: 6px 6px 0 0; background: transparent; color: #fff; font-weight: 700; font-size: clamp(10px, min(2cqh, 3cqw), 16px); padding: 4px 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wd-tabs button.on { background: #fff; color: #2B579A; }
+.wd-btns { display: flex; gap: 3px; padding: 4px; min-height: clamp(42px, 8cqh, 70px); position: relative; }
+.wd-btns > button { flex: 1 1 0; min-width: 0; max-width: 90px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; border: 1.5px solid transparent; border-radius: 6px; background: #F4F6FB; color: #1D1B45; padding: 2px; }
+.wd-btns > button:hover { border-color: #2B579A; }
+.wd-btns > button span { font-size: clamp(15px, 3.2cqh, 26px); line-height: 1.1; font-family: Georgia, serif; }
+.wd-btns > button small { font-size: clamp(8px, min(1.5cqh, 2.3cqw), 12px); line-height: 1; text-align: center; }
+.wd-pal { position: absolute; top: 100%; left: 40%; display: flex; gap: 6px; padding: 6px; background: #fff; border: 2px solid var(--ink); border-radius: 10px; z-index: 6; box-shadow: 0 4px 0 rgba(0,0,0,.2); }
+.wd-pal button { width: clamp(28px, 5cqh, 42px); height: clamp(28px, 5cqh, 42px); border-radius: 50%; border: 3px solid #fff; outline: 2px solid var(--ink); }
+.wd-body { flex: 1; min-height: 0; display: flex; padding: 6px 0 6px 6px; gap: 4px; }
+.wd-page { flex: 1; min-width: 0; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.25); padding: clamp(8px, 2cqh, 22px) clamp(10px, 3cqw, 30px); font-family: Calibri, "Segoe UI", Arial, sans-serif; font-size: clamp(14px, min(2.8cqh, 4cqw), 24px); line-height: 1.5; overflow: hidden; }
+.wd-page p { margin: 0 0 .4em; }
+.wd-cur { display: inline-block; width: 2px; height: 1.15em; vertical-align: text-bottom; background: #1D1B45; animation: blink 1s steps(1) infinite; margin-left: 1px; position: relative; }
+.wd-cur[data-w]::after { content: ""; position: absolute; inset: -10px -14px; }
+.wd-bad { color: #E53935; text-decoration: underline wavy #E53935; }
+.wd-scroll { width: clamp(14px, 2.6cqh, 22px); background: #DADDE8; position: relative; }
+.wd-scroll span { position: absolute; left: 3px; right: 3px; top: 4px; height: 30%; background: #9EA3BA; border-radius: 6px; }
+.wd-status { background: #2B579A; color: #fff; font-size: clamp(10px, 1.9cqh, 15px); padding: 2px 8px; }
+.wd-hit { animation: hitflash .8s; }
+@keyframes hitflash { 0%, 100% { box-shadow: none; } 30% { box-shadow: inset 0 0 0 4px var(--good), 0 0 0 4px var(--good); } }
+.wd-w { cursor: text; border-radius: 3px; }
+.wd-w.sel { background: #9EC5FF; }
+.wd-tp { min-height: 1.5em; }
+.wd-dlg { position: absolute; left: 50%; top: 22%; transform: translateX(-50%); width: min(88%, 380px); background: #fff; border: 3px solid var(--ink); border-radius: 12px; padding: 10px 14px; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 8px 0 rgba(0,0,0,.25); z-index: 6; font-size: clamp(13px, 2.4cqh, 20px); animation: drop .25s; }
+.wd-in { border: 2px solid #2B579A; border-radius: 6px; padding: 4px 8px; min-height: 1.8em; font-family: var(--mono); font-weight: 700; }
+.wd-dlg .btn { align-self: flex-end; padding: 4px 22px; }
+.wmenu { position: absolute; left: 1%; bottom: 13%; width: min(70%, 340px); background: #262869; color: #fff; border: 2px solid #fff; border-radius: 10px 10px 0 0; padding: 8px; display: flex; flex-direction: column; gap: 4px; font-size: clamp(13px, 2.3cqh, 20px); animation: drop .2s; }
+.wmenu button { text-align: left; border: 0; border-radius: 8px; background: rgba(255,255,255,.12); color: #fff; font-weight: 700; padding: 6px 10px; font-size: 1em; }
+.wstart { position: absolute; inset: 5% 5% 16%; background: #fff; border: 3px solid var(--ink); border-radius: 12px; display: flex; flex-direction: column; gap: 6px; padding: 10px; color: #1D1B45; animation: drop .25s; font-size: clamp(13px, 2.4cqh, 20px); }
+.wstart > b { color: #2B579A; font-size: 1.3em; }
+.wstart > div { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.wstart > div button { border: 2px solid #C5CAE0; border-radius: 10px; background: #F4F6FB; color: #1D1B45; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: clamp(11px, min(2.2cqh, 3.2cqw), 18px); padding: 4px; }
+.wstart > div button span { font-size: clamp(28px, 7cqh, 64px); line-height: 1; }
+.wtype .wd { inset: 1.5% 1.5% 47% 1.5%; }
+.wtype .wkbd { top: 54.5%; bottom: 1.5%; height: auto; left: 1.5%; right: 1.5%; }
+.wkbd button { max-width: 9.5%; font-size: clamp(11px, min(2.4cqh, 3.6cqw), 24px); }
+.wkbd button.wide { max-width: 20%; } .wkbd button.space { max-width: 60%; }
+.wkbd.shift [data-k="Shift"] { background: #9EC5FF; }
+@container app (orientation: landscape) {
+  .wtype .wd { inset: 2% 47% 2% 1.5%; }
+  .wtype .wkbd { top: 6%; bottom: 6%; left: 54.5%; right: 1.5%; }
+}
+.lpanel.inside span { top: 4px; bottom: auto; }
 
 </style>
 </head>
@@ -3595,6 +3668,333 @@ const ICT_P2 = { y: 2, title: "Primary 2", subj: "Computer Studies", terms: [
 ] };
 ICT_YEARS[2] = ICT_P2;
 
+/* ---------------- PRIMARY 3 ---------------- */
+Object.assign(SVGS, {
+  board: SV(`<rect x="8" y="8" width="84" height="84" rx="4" fill="#2E7D32" stroke="${INK}" stroke-width="4"/><path d="M18 30 H44 V52 M60 20 V44 H84 M20 74 H54 V60 M70 60 V82" stroke="#C5E1A5" stroke-width="2.5" fill="none"/><rect x="36" y="34" width="22" height="22" rx="2" fill="#212121"/><rect x="64" y="62" width="18" height="10" fill="#FFC83D" stroke="${INK}" stroke-width="1.5"/><rect x="14" y="56" width="6" height="30" fill="#1D1B45"/><rect x="24" y="56" width="6" height="30" fill="#1D1B45"/><circle cx="76" cy="26" r="7" fill="#CFD8DC" stroke="${INK}" stroke-width="2"/>`),
+  ram: SV(`<rect x="4" y="34" width="92" height="30" rx="2" fill="#2E7D32" stroke="${INK}" stroke-width="3.5"/>${[0, 1, 2, 3].map(i => `<rect x="${10 + i * 22}" y="39" width="16" height="15" fill="#212121"/>`).join("")}${Array.from({ length: 15 }, (_, i) => `<rect x="${8 + i * 6}" y="58" width="3" height="6" fill="#FFC83D"/>`).join("")}`),
+  fan: SV(`<rect x="10" y="10" width="80" height="80" rx="10" fill="#37474F" stroke="${INK}" stroke-width="4"/><circle cx="50" cy="50" r="34" fill="#263238"/>${[0, 1, 2, 3, 4].map(i => `<path d="M50 50 Q${50 + 30 * Math.cos(i * 1.2566)} ${50 + 30 * Math.sin(i * 1.2566)} ${50 + 26 * Math.cos(i * 1.2566 + .8)} ${50 + 26 * Math.sin(i * 1.2566 + .8)} Z" fill="#90A4AE"/>`).join("")}<circle cx="50" cy="50" r="8" fill="#ECEFF1" stroke="${INK}" stroke-width="2"/>`),
+  psu: SV(`<rect x="8" y="20" width="84" height="62" rx="4" fill="#90A4AE" stroke="${INK}" stroke-width="4"/><circle cx="40" cy="51" r="22" fill="#546E7A" stroke="${INK}" stroke-width="2.5"/>${[-12, -4, 4, 12].map(d => `<path d="M${24} ${51 + d} H56" stroke="#263238" stroke-width="2.5"/>`).join("")}<path d="M72 74 Q80 92 94 92" stroke="#1D1B45" stroke-width="5" fill="none"/><text x="78" y="44" font-size="15" font-weight="900" text-anchor="middle" fill="#FFC83D" stroke="${INK}" stroke-width=".8">⚡</text>`),
+  hdd: SV(`<rect x="14" y="8" width="72" height="84" rx="6" fill="#B0BEC5" stroke="${INK}" stroke-width="4"/><circle cx="50" cy="42" r="26" fill="#ECEFF1" stroke="${INK}" stroke-width="2.5"/><circle cx="50" cy="42" r="5" fill="#78909C"/><path d="M76 76 L56 46" stroke="#455A64" stroke-width="5" stroke-linecap="round"/><circle cx="76" cy="76" r="5" fill="#455A64"/>`),
+  cmos: SV(`<circle cx="50" cy="50" r="38" fill="#CFD8DC" stroke="${INK}" stroke-width="4"/><circle cx="50" cy="50" r="30" fill="#ECEFF1" stroke="#90A4AE" stroke-width="2"/><text x="50" y="45" font-size="18" font-weight="900" text-anchor="middle" fill="${INK}">+</text><text x="50" y="66" font-size="16" font-weight="900" text-anchor="middle" fill="${INK}">3V</text>`),
+  napier: SV(`${[0, 1, 2, 3].map(i => `<rect x="${12 + i * 20}" y="8" width="16" height="84" rx="2" fill="#FFF3D6" stroke="${INK}" stroke-width="2.5"/>${[0, 1, 2, 3].map(r => `<path d="M${12 + i * 20} ${30 + r * 20} H${28 + i * 20} M${28 + i * 20} ${12 + r * 20} L${12 + i * 20} ${28 + r * 20}" stroke="#8D6E63" stroke-width="1.5"/><text x="${20 + i * 20}" y="${24 + r * 20}" font-size="8" text-anchor="middle" fill="${INK}">${((i + 2) * (r + 1)) % 10}</text>`).join("")}`).join("")}`),
+  pascaline: SV(`<rect x="6" y="28" width="88" height="50" rx="5" fill="#C8A165" stroke="${INK}" stroke-width="4"/>${[0, 1, 2, 3].map(i => `<circle cx="${20 + i * 20}" cy="60" r="8" fill="#FFE082" stroke="${INK}" stroke-width="2.5"/><path d="M${20 + i * 20} 52 V60" stroke="${INK}" stroke-width="2"/><rect x="${13 + i * 20}" y="34" width="14" height="10" fill="#fff" stroke="${INK}" stroke-width="1.5"/><text x="${20 + i * 20}" y="42" font-size="8" text-anchor="middle" fill="${INK}">${[1, 6, 4, 2][i]}</text>`).join("")}`),
+  engine: SV(`<rect x="8" y="84" width="84" height="8" fill="#8D6E63" stroke="${INK}" stroke-width="2"/>${[0, 1, 2].map(i => `<path d="M${24 + i * 26} 84 V10" stroke="#5D4037" stroke-width="4"/>${[0, 1, 2, 3].map(r => `<circle cx="${24 + i * 26}" cy="${20 + r * 18}" r="9" fill="#FFC83D" stroke="${INK}" stroke-width="2" stroke-dasharray="3 2"/>`).join("")}`).join("")}`),
+  tally: SV(`<rect x="6" y="18" width="88" height="64" rx="8" fill="#D7B98E" stroke="${INK}" stroke-width="4"/>${[0, 1, 2, 3].map(i => `<path d="M${22 + i * 10} 32 V68" stroke="#5D4037" stroke-width="4" stroke-linecap="round"/>`).join("")}<path d="M16 62 L60 36" stroke="#5D4037" stroke-width="4" stroke-linecap="round"/><path d="M72 32 V68 M82 32 V68" stroke="#5D4037" stroke-width="4" stroke-linecap="round"/>`),
+  sdcard: SV(`<path d="M24 8 H66 L80 22 V92 H24 Z" fill="#1565C0" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/>${[0, 1, 2, 3].map(i => `<rect x="${32 + i * 10}" y="12" width="6" height="14" fill="#FFC83D"/>`).join("")}<rect x="32" y="50" width="40" height="22" rx="3" fill="#fff"/><text x="52" y="66" font-size="14" font-weight="900" text-anchor="middle" fill="#1565C0">SD</text>`),
+  ergo: SV(`<path d="M6 40 L46 30 L48 74 L10 82 Z" fill="#ECEFF1" stroke="${INK}" stroke-width="3.5"/><path d="M94 40 L54 30 L52 74 L90 82 Z" fill="#ECEFF1" stroke="${INK}" stroke-width="3.5"/>${[0, 1, 2].map(r => [0, 1, 2].map(c => `<rect x="${14 + c * 10}" y="${42 + r * 10 - c * 2}" width="7" height="6" fill="#90A4AE"/><rect x="${79 - c * 10}" y="${42 + r * 10 - c * 2}" width="7" height="6" fill="#90A4AE"/>`).join("")).join("")}`),
+  touchpad: SV(`<rect x="6" y="20" width="88" height="62" rx="8" fill="#B0BEC5" stroke="${INK}" stroke-width="4"/><rect x="26" y="30" width="48" height="34" rx="5" fill="#ECEFF1" stroke="${INK}" stroke-width="2.5"/><path d="M26 70 H74" stroke="${INK}" stroke-width="2.5"/><path d="M50 64 V76" stroke="${INK}" stroke-width="2"/>`),
+  osk: SV(`<rect x="22" y="4" width="56" height="92" rx="9" fill="#263238" stroke="${INK}" stroke-width="3.5"/><rect x="27" y="12" width="46" height="76" rx="3" fill="#E3F2FD"/>${[0, 1, 2].map(r => Array.from({ length: 5 - (r === 2 ? 1 : 0) }, (_, c) => `<rect x="${30 + c * 8.6 + (r === 2 ? 4 : 0)}" y="${58 + r * 9}" width="7" height="7" rx="1.5" fill="#fff" stroke="#90A4AE" stroke-width="1"/>`).join("")).join("")}`),
+});
+Object.assign(PIC, {
+  board: { h: SVGS.board, nm: "motherboard" }, ram: { h: SVGS.ram, nm: "RAM" }, fan: { h: SVGS.fan, nm: "fan" }, psu: { h: SVGS.psu, nm: "power supply" }, hdd: { h: SVGS.hdd, nm: "hard disk" },
+  cmos: { h: SVGS.cmos, nm: "CMOS battery" }, proc: { h: SVGS.cpu, nm: "processor" }, napier: { h: SVGS.napier, nm: "Napier's bones" }, pascaline: { h: SVGS.pascaline, nm: "Pascaline" },
+  engine: { h: SVGS.engine, nm: "Babbage's engine" }, tally: { h: SVGS.tally, nm: "tally marks" }, cowrie: { h: em("🐚"), nm: "cowries" }, fingers: { h: em("🖐️"), nm: "fingers" },
+  sdcard: { h: SVGS.sdcard, nm: "memory card" }, dvd: { h: em("💿"), nm: "CD" }, floppy: { h: em("💾"), nm: "floppy disk" }, cloud: { h: em("☁️"), nm: "cloud storage" },
+  ergo: { h: SVGS.ergo, nm: "ergonomic keyboard" }, touchpad: { h: SVGS.touchpad, nm: "touchpad" }, osk: { h: SVGS.osk, nm: "on-screen keyboard" },
+});
+const P3_COUNT = [{ k: "fingers", how: "counted on their fingers and toes" }, { k: "cowrie", how: "counted with cowries, seeds and pebbles" }, { k: "tally", how: "scratched tally marks on wood, clay or walls" }, { k: "abacus", how: "moved beads on an abacus" }];
+const P3_INV = [
+  { who: "John Napier", k: "napier", from: "Scotland", yr: "1617", did: "made counting rods called Napier's bones, to help people multiply" },
+  { who: "Blaise Pascal", k: "pascaline", from: "France", yr: "1642", did: "built the Pascaline, a machine with wheels that could add and subtract" },
+  { who: "Charles Babbage", k: "engine", from: "England", yr: "the 1800s", did: "planned the Analytical Engine, a machine that could follow instructions" },
+  { who: "Ada Lovelace", k: "engine", from: "England", yr: "1843", did: "wrote the first computer program, for Babbage's engine" }];
+const P3_INSIDE = [
+  { k: "board", job: "is the big board that all the other parts plug into", like: "a street that joins all the houses" },
+  { k: "proc", job: "is the brain that does the thinking and the sums", like: "the brain in your head" },
+  { k: "ram", job: "holds the work we are doing now, and forgets it when the power goes off", like: "a chalkboard that is wiped clean" },
+  { k: "hdd", job: "keeps our files and programs for a long time, even when the computer is off", like: "a cupboard that keeps our things" },
+  { k: "psu", job: "gives electricity to all the parts", like: "the heart that pumps blood to the body" },
+  { k: "fan", job: "blows air to keep the computer cool", like: "a ceiling fan on a hot day" },
+  { k: "cmos", job: "is a small round battery that keeps the date and time when the computer is off", like: "a wrist watch battery" }];
+const P3_ALU = ["add 25 and 17", "take 9 away from 30", "multiply 6 by 7", "share 20 sweets among 4 children", "check which number is bigger, 58 or 85", "check if two passwords are the same", "work out the total of a market bill", "check if a score is more than 50"];
+const P3_CU = ["tell the printer to start printing", "decide which job to do next", "tell the monitor what to show", "fetch the next instruction from memory", "send the answer to the screen", "tell the speakers to play a sound", "make all the parts work together in order", "send a sum to the ALU to work out"];
+const P3_KEYB = [{ k: "keyboard", nm: "standard keyboard", job: "is the usual desktop keyboard with letters, numbers and a number pad" }, { k: "laptop", nm: "laptop keyboard", job: "is built into a laptop and is flat and small" },
+  { k: "osk", nm: "on-screen keyboard", job: "appears on the touch screen of a phone or tablet" }, { k: "ergo", nm: "ergonomic keyboard", job: "is split and curved so our hands and wrists stay comfortable" }];
+const P3_MICE = [{ nm: "optical mouse", job: "uses a small red light underneath to see how it moves" }, { nm: "wireless mouse", job: "has no cable and uses a battery" }, { nm: "ball mouse", job: "is an old mouse with a rubber ball underneath" }, { nm: "touchpad", job: "is the flat square on a laptop that we touch and slide our finger on" }];
+const P3_MACT = [{ a: "click", job: "selects or presses something" }, { a: "double-click", job: "opens a file, folder or program" }, { a: "right-click", job: "opens a small shortcut menu" }, { a: "drag", job: "moves something across the screen" }, { a: "scroll", job: "moves the page up and down" }];
+const P3_HW = ["monitor", "keyboard", "mouse", "printer", "sysunit", "speaker", "flash", "scanner", "headphones", "microphone"];
+const P3_SW = [{ t: "Microsoft Word", e: "📝" }, { t: "a computer game", e: "🎮" }, { t: "a web browser", e: "🌐" }, { t: "Windows", e: "⚙️" }, { t: "Paint", e: "🎨" }, { t: "a calculator app", e: "🔢" }, { t: "Android", e: "🤖" }, { t: "a typing tutor", e: "⌨️" }];
+const P3_OS = [{ nm: "Windows", by: "made by Microsoft", on: "computers" }, { nm: "Linux", by: "free for everyone to use and share", on: "computers" }, { nm: "Ubuntu", by: "a kind of Linux, started by Mark Shuttleworth from South Africa", on: "computers" },
+  { nm: "macOS", by: "made by Apple for Mac computers", on: "computers" }, { nm: "Android", by: "made by Google, used on most phones", on: "phones and tablets" }, { nm: "iOS", by: "made by Apple for iPhones", on: "phones and tablets" }];
+const P3_APPS = [{ nm: "Microsoft Word", e: "📝", job: "type letters, stories and notes" }, { nm: "Microsoft Excel", e: "📊", job: "make tables of numbers, like class scores" }, { nm: "Microsoft PowerPoint", e: "📽️", job: "make slides for a talk" },
+  { nm: "Paint", e: "🎨", job: "draw and colour pictures" }, { nm: "a typing tutor (like Mavis Beacon)", e: "⌨️", job: "learn to type fast with all ten fingers" }, { nm: "a web browser", e: "🌐", job: "visit websites on the internet" },
+  { nm: "a media player", e: "🎵", job: "play music and videos" }, { nm: "a calculator app", e: "🔢", job: "do quick sums" }];
+const P3_STORE = [{ k: "hdd", job: "sits inside the computer and keeps lots of files" }, { k: "flash", job: "is small, fits in a pocket and plugs into a USB port" }, { k: "dvd", job: "is a shiny round disc read by a laser" },
+  { k: "sdcard", job: "is a tiny card used in phones and cameras" }, { k: "floppy", job: "is an old square disk that held very little" }, { k: "cloud", job: "keeps our files on the internet, so we can open them anywhere" }];
+const P3_DO = ["hold a CD by its edges", "keep disks in their cases", "keep flash drives away from water", "eject the flash drive before pulling it out", "keep disks away from heat and sunlight", "save your work often"];
+const P3_DONT = ["bend a CD", "scratch the shiny side of a CD", "drop the computer on the floor", "pull out a flash drive while it is copying", "leave a disk in the hot sun", "put a magnet on a floppy disk", "eat and drink over the keyboard"];
+const P3_TABS = [{ tab: "File", has: ["Save", "Open", "Print", "New"] }, { tab: "Home", has: ["Bold", "Italic", "Underline", "Font colour", "Font size", "Centre"] }, { tab: "Insert", has: ["Pictures", "Table", "Shapes"] },
+  { tab: "Layout", has: ["Margins", "Page direction"] }, { tab: "Review", has: ["Spelling"] }, { tab: "View", has: ["Zoom"] }];
+const P3_WPARTS = [{ p: "title bar", job: "shows the name of the document, at the very top" }, { p: "ribbon", job: "holds the tabs and buttons, like Bold and Print" }, { p: "typing area", job: "is the white page where we type" },
+  { p: "cursor", job: "is the blinking line that shows where the next letter will go" }, { p: "scroll bar", job: "moves the page up and down" }, { p: "status bar", job: "shows the page number and how many words, at the bottom" }, { p: "close button", job: "is the ✕ that closes Word" }];
+const P3_FMT = [{ b: "B", nm: "Bold", job: "makes words thick and dark", key: "Ctrl + B" }, { b: "I", nm: "Italic", job: "makes words lean to the side", key: "Ctrl + I" }, { b: "U", nm: "Underline", job: "draws a line under words", key: "Ctrl + U" },
+  { b: "A+", nm: "Grow font", job: "makes words bigger" }, { b: "A", nm: "Font colour", job: "changes the colour of words" }, { b: "≡", nm: "Centre", job: "puts words in the middle of the line", key: "Ctrl + E" }];
+const P3_SAVE = ["Click the File tab", "Click Save As", "Type a name for the file", "Click the Save button"];
+const P3_OPEN = ["Click the Start button", "Find Microsoft Word and click it", "Click Blank document", "Start typing"];
+const wbtn = t => `<span class="keycap" style="font-family:var(--font)">${esc(t)}</span>`;
+
+const ICT_P3 = { y: 3, title: "Primary 3", subj: "Computer Studies", terms: [
+  { nm: "First term", sub: "Inside the computer", topics: [
+    { id: "i3-inventors", nm: "Counting and inventors", icon: "🐚", desc: "Cowries, Napier's bones, Pascal and Babbage",
+      act: { type: "match", nm: "Who made what?", rounds: [
+        { la: "Inventor", lb: "What they made", pairs: [["John Napier", "Napier's bones"], ["Blaise Pascal", "the Pascaline"], ["Charles Babbage", "the Analytical Engine"], ["Ada Lovelace", "the first computer program"]] },
+        { la: "Counting tool", lb: "How it worked", pairs: [["the abacus", "move beads"], ["Napier's bones", "line up rods to multiply"], ["the Pascaline", "turn wheels to add"], ["tally marks", "scratch lines"]] }], done: "You know the counting inventors!" },
+      learn: [{ v: "🖐️ 🐚", t: "Long ago, people counted on their fingers and toes, and with cowries, seeds and pebbles. In many places, cowries were used as money too." },
+        { h: SVGS.tally, t: "People scratched tally marks on wood, clay or walls. Four lines and one line across make five." },
+        { h: SVGS.napier, t: "In 1617, John Napier from Scotland made counting rods called Napier's bones. They helped people multiply." },
+        { h: SVGS.pascaline, t: "In 1642, Blaise Pascal from France built the Pascaline. Its wheels could add and subtract numbers." },
+        { h: SVGS.engine, t: "In the 1800s, Charles Babbage planned the Analytical Engine, a machine that could follow instructions. He is called the father of the computer." },
+        { v: "👩🏽‍💻", t: "Ada Lovelace worked with Babbage. In 1843 she wrote the first computer program, so she is called the first computer programmer." }],
+      wow: { v: "🧠", t: "Computer superpower: every computer today grew from people who just wanted to count faster!" },
+      gens: [
+        fromFacts(P3_INV, f => txtQ(`Who ${f.did}?`, f.who, P3_INV.filter(x => x.who !== f.who).map(x => x.who).concat(["Bolt the robot", "a farmer"]), { why: `${f.who} ${f.did}.` })),
+        fromFacts(P3_INV, f => txtQ(`${f.who} came from…`, f.from, ["Scotland", "France", "England", "Nigeria", "Ghana"].filter(x => x !== f.from), { why: `${f.who} came from ${f.from}.` })),
+        fromFacts(P3_INV.slice(0, 3), f => picQ(`Which one did ${f.who} make?`, f.k, ["napier", "pascaline", "engine", "abacus", "tally", "laptop"], { why: `${f.who} ${f.did}.` })),
+        fromFacts([...P3_COUNT, { k: "napier", how: "lined up Napier's bones to multiply" }, { k: "pascaline", how: "turned the wheels of the Pascaline to add" }], f => picQ(`Long ago, people ${f.how}. Which picture shows this?`, f.k, ["fingers", "cowrie", "tally", "abacus", "napier", "pascaline", "smartphone"], { why: `People ${f.how}.` })),
+        fromFacts(["napier", "pascaline", "engine", "tally", "abacus", "cowrie"], k => txtQ("What is this?", PIC[k].nm, ["Napier's bones", "Pascaline", "Babbage's engine", "tally marks", "abacus", "cowries", "laptop"].filter(x => x !== PIC[k].nm), { vis: PIC[k].h, why: `It is ${PIC[k].nm}.` })),
+        fromFacts([["Who is called the father of the computer?", "Charles Babbage", ["John Napier", "Blaise Pascal", "Ada Lovelace"]], ["Who is called the first computer programmer?", "Ada Lovelace", ["Charles Babbage", "Blaise Pascal", "John Napier"]],
+          ["Napier's bones helped people to…", "multiply", ["sing", "cook", "print"]], ["The Pascaline could add and…", "subtract", ["draw", "fly", "talk"]], ["The Pascaline used turning…", "wheels", ["beads", "keys", "wires"]],
+          ["Napier's bones were made in…", "1617", ["2017", "1945", "1999"]], ["Blaise Pascal built the Pascaline in…", "1642", ["2042", "1990", "1800"]], ["Ada Lovelace wrote the first program in…", "1843", ["2020", "1600", "1960"]],
+          ["Four tally lines and one line across make…", "5", ["4", "10", "2"]], ["Long ago, small shells called ___ were used for counting and as money.", "cowries", ["chips", "mice", "icons"]],
+          ["Which is the OLDEST way to count?", "fingers", ["the Pascaline", "Babbage's engine", "a laptop"]], ["Babbage's Analytical Engine was planned to follow…", "instructions", ["cows", "the wind", "music"]]],
+          ([q, a, w]) => txtQ(q, a, w, { why: `The answer is ${a}.` })),
+        fromFacts([["John Napier made Napier's bones.", true], ["Blaise Pascal came from Nigeria.", false], ["The Pascaline could add numbers.", true], ["Ada Lovelace wrote the first computer program.", true], ["Charles Babbage is called the father of the computer.", true],
+          ["Napier's bones were real bones from animals.", false], ["People once counted with cowries.", true], ["Tally marks are made with a mouse.", false], ["The Pascaline was made after the smartphone.", false], ["Babbage lived in the 1800s.", true]], ([s, t]) => tfQ(s, t, { why: t ? "That is true." : "That is not true." })),
+      ] },
+    { id: "i3-inside", nm: "Inside the system unit", icon: "🔧", desc: "Motherboard, processor, RAM, fan and more",
+      act: { type: "label", nm: "Look inside", panel: "inside", panelText: "Inside the system unit", bw: 4.6, bh: 3.3, parts: [{ k: "proc", x: 20, y: 36, s: 1 }, { k: "cmos", x: 50, y: 36, s: .62 }, { k: "ram", x: 79, y: 36, s: 1.2 }, { k: "fan", x: 20, y: 72, s: 1 }, { k: "hdd", x: 50, y: 72, s: .95 }, { k: "psu", x: 79, y: 72, s: 1.15 }], done: "You know what is inside a computer!" },
+      learn: [{ h: SVGS.sysunit, t: "Let's look inside the system unit! Only a grown-up should open a real one, after switching it off and unplugging it." },
+        { h: SVGS.board, t: "The motherboard is the big board that all the other parts plug into." },
+        { h: SVGS.cpu, t: "The processor, or CPU, is the brain. It does the thinking and the sums." },
+        { h: SVGS.ram, t: "RAM holds the work we are doing now. When the power goes off, RAM forgets everything. RAM sticks sit in RAM slots." },
+        { h: SVGS.hdd, t: "The hard disk keeps our files and programs for a long time, even when the computer is off." },
+        { h: SVGS.psu, t: "The power supply gives electricity to all the parts. The fan blows air to keep everything cool." },
+        { h: SVGS.cmos, t: "The CMOS battery, also called the BIOS battery, is a small round battery. It keeps the date and time when the computer is switched off." }],
+      wow: { v: "🌬️", t: "Computer superpower: a busy processor gets hot, so fans and metal coolers keep it from overheating!" },
+      gens: [
+        fromFacts(P3_INSIDE, f => picQ(`Which part ${f.job}?`, f.k, P3_INSIDE.map(x => x.k), { why: `The ${PIC[f.k].nm} ${f.job}.` })),
+        fromFacts(P3_INSIDE, f => txtQ("What is this part called?", PIC[f.k].nm, P3_INSIDE.filter(x => x !== f).map(x => PIC[x.k].nm), { vis: PIC[f.k].h, why: `It is the ${PIC[f.k].nm}. It ${f.job}.` })),
+        fromFacts(P3_INSIDE, f => txtQ(`The ${PIC[f.k].nm} is like…`, f.like, P3_INSIDE.filter(x => x !== f).map(x => x.like), { vis: PIC[f.k].h, why: `The ${PIC[f.k].nm} ${f.job}, like ${f.like}.` })),
+        fromFacts([["If the CMOS battery dies, the computer may show the wrong…", "date and time", ["colours", "keyboard", "wallpaper"]], ["What happens to RAM when the power goes off?", "it forgets everything", ["it gets bigger", "it prints", "it keeps everything"]],
+          ["Where do RAM sticks go?", "into RAM slots", ["into the printer", "into the mouse", "into a cup"]], ["Which part should only a grown-up open?", "the system unit", ["a book", "a door", "a lunch box"]],
+          ["Before opening a computer, we must first…", "switch it off and unplug it", ["pour water on it", "shake it hard", "turn the volume up"]], ["CPU is short for…", "Central Processing Unit", ["Computer Picture Unit", "Cool Power Unit", "Cable Plug Unit"]],
+          ["Which part makes a humming sound to keep the computer cool?", "the fan", ["the RAM", "the CMOS battery", "the mouse"]], ["Which part keeps files for a long time?", "the hard disk", ["the RAM", "the fan", "the power supply"]]],
+          ([q, a, w]) => txtQ(q, a, w, { why: `The answer is ${a}.` })),
+        fromFacts([["The motherboard joins all the parts together.", true], ["RAM keeps our work after the power goes off.", false], ["The fan keeps the computer cool.", true], ["The CMOS battery is as big as a car battery.", false],
+          ["The processor is the brain of the computer.", true], ["Children should open the system unit alone.", false], ["The hard disk keeps files when the computer is off.", true], ["The power supply gives electricity to the parts.", true]], ([s, t]) => tfQ(s, t, { why: t ? "That is true." : "That is not true." })),
+      ] },
+    { id: "i3-cpu", nm: "The CPU's helpers", icon: "🧠", desc: "Control unit, ALU and memory",
+      act: { type: "sort", nm: "ALU or Control Unit?", A: () => P3_ALU, B: () => P3_CU, la: "ALU: sums and checks", lb: "Control Unit: gives orders", ia: "➕", ib: "📣", card: t => `To ${t}`, ask: t => `Which part of the CPU would ${t}?`, wrong: c => c.a ? `Working out and checking is the ALU's job.` : `Giving orders is the Control Unit's job.`, done: "You know the CPU's helpers!" },
+      learn: [{ h: SVGS.cpu, t: "CPU means Central Processing Unit. It is the brain of the computer, and it has helpers inside." },
+        { v: "📣", t: "The Control Unit gives the orders. Like a class captain, it tells every part what to do and when." },
+        { v: "➕ ⚖️", t: "The ALU, the Arithmetic and Logic Unit, does sums like add and multiply. It also checks things, like which number is bigger." },
+        { v: "🗂️", t: "The memory unit keeps the numbers and instructions the CPU is using right now." },
+        { v: "⌨️ ➡️ 🧠 ➡️ 🖥️", t: "Input goes in, the CPU processes it, then the answer comes out as output. This is the input, process, output cycle." }],
+      wow: { v: "⚡", t: "Computer superpower: a modern CPU can do billions of sums in one second!" },
+      gens: [
+        () => { const alu = Math.random() < .5, t = pick(alu ? P3_ALU : P3_CU); return txtQ(`Which part of the CPU would ${t}?`, alu ? "the ALU" : "the Control Unit", [alu ? "the Control Unit" : "the ALU", "the mouse", "the speaker"], { why: alu ? "Working out and checking is the ALU's job." : "Giving orders is the Control Unit's job." }); },
+        fromFacts([["CPU stands for…", "Central Processing Unit", ["Computer Power Unit", "Cool Printing Unit", "Central Picture Unit"]], ["ALU stands for…", "Arithmetic and Logic Unit", ["Always Loud Unit", "All Letters Unit", "Arrow and Line Unit"]],
+          ["Which part gives the orders?", "the Control Unit", ["the ALU", "the speaker", "the mouse"]], ["Which part does the sums?", "the ALU", ["the Control Unit", "the monitor", "the printer"]],
+          ["Which part keeps the instructions the CPU is using now?", "the memory unit", ["the ALU", "the fan", "the speaker"]], ["The Control Unit is like a…", "class captain", ["cooking pot", "football", "pencil"]],
+          ["The CPU is the computer's…", "brain", ["shoe", "ear", "hat"]], ["Arithmetic means working with…", "numbers", ["colours", "songs", "animals"]],
+          ["What comes after input in the cycle?", "process", ["sleep", "input again", "switch off"]], ["What comes after process in the cycle?", "output", ["input", "sleep", "unplug"]],
+          ["Logic is about…", "checking and comparing", ["drawing", "singing", "running"]], ["Is 85 bigger than 58? Which unit checks this?", "the ALU", ["the Control Unit", "the printer", "the fan"]]],
+          ([q, a, w]) => txtQ(q, a, w, { why: `The answer is ${a}.` })),
+        () => { const a = rnd(11, 49), b = rnd(11, 49); return txtQ(`The ALU adds ${a} and ${b}. What answer does it get?`, String(a + b), [String(a + b + 10), String(a + b - 1), String(a + b + 1), String(Math.abs(a - b))], { vis: em("➕"), why: `${a} + ${b} = ${a + b}.` }); },
+        () => { const a = rnd(20, 99), b = rnd(20, 99); if (a === b) return null; return txtQ(`The ALU compares ${a} and ${b}. Which is bigger?`, String(Math.max(a, b)), [String(Math.min(a, b)), "they are the same"], { vis: em("⚖️"), why: `${Math.max(a, b)} is bigger.` }); },
+        fromFacts([["The ALU does sums.", true], ["The Control Unit gives orders.", true], ["The CPU is the computer's foot.", false], ["The ALU can check which number is bigger.", true], ["Output comes before input.", false], ["The memory unit keeps instructions the CPU is using.", true], ["The Control Unit is a kind of printer.", false]], ([s, t]) => tfQ(s, t, { why: t ? "That is true." : "That is not true." })),
+      ] },
+    { id: "i3-km", nm: "Keyboards and mice", icon: "🖱️", desc: "Types of keyboard and mouse, and right-click",
+      act: { type: "mouse2", nm: "Mouse skills" },
+      learn: [{ h: PIC.keyboard.h, t: "A standard keyboard is the usual desktop keyboard. Its letters start Q W E R T Y, so we call it a QWERTY keyboard." },
+        { h: SVGS.osk, t: "There are other keyboards too: a laptop keyboard, a wireless keyboard, and an on-screen keyboard that appears on a phone or tablet." },
+        { h: SVGS.ergo, t: "An ergonomic keyboard is split and curved, so our hands and wrists stay comfortable." },
+        { v: "🖱️", t: "An optical mouse uses a small light underneath. A wireless mouse has no cable. Old ball mice had a rubber ball. A laptop has a touchpad." },
+        { v: "👆", t: "Click to select. Double-click to open. Right-click to open a shortcut menu. Drag to move things. Scroll the wheel to move the page." }],
+      wow: { v: "📱", t: "Computer superpower: on a phone, pressing and holding does the same job as a right-click!" },
+      gens: [
+        fromFacts(P3_KEYB, f => picQ(`Which one is the ${f.nm}?`, f.k, P3_KEYB.map(x => x.k), { why: `The ${f.nm} ${f.job}.` })),
+        fromFacts(P3_KEYB, f => txtQ(`Which keyboard ${f.job}?`, f.nm, P3_KEYB.filter(x => x !== f).map(x => x.nm), { why: `The ${f.nm} ${f.job}.` })),
+        fromFacts(P3_MICE, f => txtQ(`Which one ${f.job}?`, f.nm, P3_MICE.filter(x => x !== f).map(x => x.nm), { vis: f.nm === "touchpad" ? SVGS.touchpad : em("🖱️"), why: `The ${f.nm} ${f.job}.` })),
+        fromFacts(P3_MACT, f => txtQ(`Which mouse action ${f.job}?`, f.a, P3_MACT.filter(x => x !== f).map(x => x.a), { vis: em("🖱️"), why: `To ${f.a} ${f.job}.` })),
+        fromFacts(P3_MACT, f => txtQ(`What does a ${f.a} do?`, `It ${f.job}`, P3_MACT.filter(x => x !== f).map(x => `It ${x.job}`), { vis: em("🖱️"), why: `A ${f.a} ${f.job}.` })),
+        fromFacts([["Why is it called a QWERTY keyboard?", "its first letters are Q W E R T Y", ["it was made by Mr Qwerty", "it has no letters", "it is very old"]], ["A wireless mouse needs a…", "battery", ["cable to the wall", "cup of water", "ball of wool"]],
+          ["On a phone, which does the job of a right-click?", "press and hold", ["shake the phone", "blow on it", "turn it off"]], ["The flat square on a laptop that works like a mouse is the…", "touchpad", ["keypad", "scanner", "speaker"]]],
+          ([q, a, w]) => txtQ(q, a, w, { why: `The answer is ${a}.` })),
+        fromFacts([["Right-click opens a shortcut menu.", true], ["An ergonomic keyboard keeps hands comfortable.", true], ["A wireless mouse has a long cable.", false], ["The scroll wheel moves the page up and down.", true], ["A touchpad is found on a laptop.", true], ["Double-click closes the computer forever.", false]], ([s, t]) => tfQ(s, t, { why: t ? "That is true." : "That is not true." })),
+      ] },
+  ] },
+  { nm: "Second term", sub: "Software", topics: [
+    { id: "i3-hwsw", nm: "Hardware and software", icon: "💿", desc: "Parts we can touch and programs we can't",
+      act: { type: "sort", nm: "Hardware or software?", items: [...P3_HW.map(k => ({ t: PIC[k].nm, a: true, h: PIC[k].h })), ...P3_SW.map(x => ({ t: x.t, a: false, h: em(x.e) }))], la: "Hardware: I can touch it", lb: "Software: a program", ia: "✋", ib: "💾", ask: t => `Is ${/^[A-Z]/.test(t) || /^a /.test(t) ? t : "the " + t} hardware or software?`, wrong: c => c.a ? `We can touch the ${c.t}. It is hardware.` : `${c.t[0].toUpperCase() + c.t.slice(1)} is a program. It is software.`, done: "You can tell hardware from software!" },
+      learn: [{ v: "✋ 🖥️", t: "Hardware is every part of the computer we can touch: the monitor, keyboard, mouse, system unit and printer." },
+        { v: "📝 🎮 🌐", t: "Software is the programs that tell the computer what to do. We cannot touch software. Word, games and web browsers are software." },
+        { v: "🤝", t: "Hardware and software work together. A keyboard is no use without a program to type in, and a program needs hardware to run on." },
+        { v: "🪟 📝", t: "There are two kinds of software. System software, like Windows, runs the computer. Application software, like Word, helps us do our jobs." }],
+      wow: { v: "📲", t: "Computer superpower: the same phone can become a camera, a map or a calculator just by changing its software!" },
+      gens: [
+        () => { const hw = Math.random() < .5; if (hw) { const k = pick(P3_HW); return txtQ(`Is the ${PIC[k].nm} hardware or software?`, "hardware", ["software", "a food"], { vis: PIC[k].h, why: `We can touch the ${PIC[k].nm}. It is hardware.` }); } const x = pick(P3_SW); return txtQ(`Is ${x.t} hardware or software?`, "software", ["hardware", "a food"], { vis: em(x.e), why: `${x.t} is a program. It is software.` }); },
+        () => { const sw = pick(P3_SW), hw = choose(P3_HW, 2, []); return txtQ("Which one is SOFTWARE?", sw.t, hw.map(k => `the ${PIC[k].nm}`), { why: `${sw.t} is a program, so it is software.` }); },
+        () => picQ("Which one is HARDWARE?", pick(P3_HW), ["fingers", "cowrie", "tally", "goat", "banana"], { why: "Hardware is the computer parts we can touch." }),
+        fromFacts([["Parts of the computer we can touch are called…", "hardware", ["software", "the internet", "wallpaper"]], ["Programs that tell the computer what to do are called…", "software", ["hardware", "cables", "furniture"]],
+          ["Windows is…", "system software", ["application software", "hardware", "a printer"]], ["Microsoft Word is…", "application software", ["system software", "hardware", "a cable"]],
+          ["Which software runs the whole computer?", "system software", ["a game", "a drawing", "a song"]], ["Can we touch software?", "No, we cannot", ["Yes, it is soft like cotton", "Yes, it is in a box", "Only on Sundays"]],
+          ["Hardware without software is like…", "a radio with no stations", ["a happy song", "a full plate", "a fast car"]], ["A game on a phone is…", "software", ["hardware", "a cable", "a battery"]]],
+          ([q, a, w]) => txtQ(q, a, w, { why: `The answer is ${a}.` })),
+        fromFacts([["A keyboard is hardware.", true], ["A game is hardware.", false], ["We can touch software.", false], ["Hardware and software work together.", true], ["Windows is software.", true], ["A printer is software.", false], ["A web browser is software.", true]], ([s, t]) => tfQ(s, t, { why: t ? "That is true." : "That is not true." })),
+      ] },
+    { id: "i3-os", nm: "Operating systems", icon: "🪟", desc: "Windows, Linux, Ubuntu, Android and more",
+      act: { type: "sort", nm: "Computer or phone?", items: P3_OS.map(o => ({ t: o.nm, a: o.on === "computers" })), la: "Runs computers", lb: "Runs phones and tablets", ia: "🖥️", ib: "📱", ask: t => `Where is ${t} used most?`, wrong: c => c.a ? `${c.t} runs computers.` : `${c.t} runs phones and tablets.`, done: "You know the operating systems!" },
+      learn: [{ v: "🧑🏾‍✈️ 🖥️", t: "The operating system is the boss software. It starts when we switch on, and it runs the whole computer." },
+        { v: "📂 🖨️ 🎮", t: "It looks after our files, starts our programs, and helps the computer talk to the keyboard, mouse, screen and printer." },
+        { v: "🪟", t: "Windows is made by Microsoft. It is the operating system on many school and office computers." },
+        { v: "🐧", t: "Linux is free for everyone to use and share. Ubuntu is a kind of Linux. It was started by Mark Shuttleworth from South Africa, and first came out in 2004." },
+        { v: "🤝🏾", t: "Ubuntu is an African word that means humanity to others: I am because we are." },
+        { v: "🍎 📱", t: "macOS runs Apple's Mac computers. On phones, Android is made by Google, and iOS runs Apple's iPhones." }],
+      wow: { v: "🌍", t: "Computer superpower: Ubuntu carries an African word around the world, on millions of computers!" },
+      gens: [
+        fromFacts(P3_OS, o => txtQ(`Which operating system is ${o.by}?`, o.nm, P3_OS.filter(x => x !== o).map(x => x.nm), { why: `${o.nm} is ${o.by}.` })),
+        fromFacts(P3_OS, o => txtQ(`${o.nm} mostly runs on…`, o.on, ["computers", "phones and tablets", "cooking pots", "bicycles"].filter(x => x !== o.on), { why: `${o.nm} runs ${o.on}.` })),
+        () => { const os = pick(P3_OS); return txtQ("Which one is an operating system?", os.nm, ["Microsoft Word", "Paint", "a printer", "a mouse", "PowerPoint", "a game"], { why: `${os.nm} is an operating system.` }); },
+        fromFacts([["The operating system is the ___ software.", "boss", ["sleeping", "smallest", "food"]], ["When does the operating system start?", "when we switch on the computer", ["only at night", "when we print", "never"]],
+          ["Ubuntu means…", "humanity to others", ["fast computer", "big window", "blue sky"]], ["Ubuntu is a kind of…", "Linux", ["printer", "mouse", "Word"]], ["Ubuntu first came out in…", "2004", ["1617", "1945", "2024"]],
+          ["Who started Ubuntu?", "Mark Shuttleworth", ["Charles Babbage", "Blaise Pascal", "John Napier"]], ["Mark Shuttleworth is from…", "South Africa", ["France", "Scotland", "Japan"]],
+          ["Which company makes Windows?", "Microsoft", ["Apple", "Google", "a bakery"]], ["Which company makes Android?", "Google", ["Microsoft", "a farm", "a bank"]], ["iOS runs on…", "iPhones", ["Windows computers", "radios", "cars"]],
+          ["Which job does an operating system do?", "looks after our files", ["cooks rice", "sweeps the floor", "waters plants"]], ["Linux is…", "free to use and share", ["only for kings", "a kind of mouse", "a printer"]]],
+          ([q, a, w]) => txtQ(q, a, w, { why: `The answer is ${a}.` })),
+        fromFacts([["Windows is an operating system.", true], ["Android runs most phones.", true], ["Microsoft Word is an operating system.", false], ["Ubuntu is a kind of Linux.", true], ["A computer can start without an operating system.", false], ["iOS is made by Apple.", true], ["Ubuntu is an African word.", true]], ([s, t]) => tfQ(s, t, { why: t ? "That is true." : "That is not true." })),
+      ] },
+    { id: "i3-apps", nm: "Application software", icon: "📝", desc: "Word, Excel, PowerPoint, Paint and more",
+      act: { type: "match", nm: "Which app for the job?", rounds: [
+        { la: "Job", lb: "App", pairs: P3_APPS.slice(0, 4).map(a => [a.job, `${a.e} ${a.nm}`]) },
+        { la: "Job", lb: "App", pairs: P3_APPS.slice(4).map(a => [a.job, `${a.e} ${a.nm.replace(" (like Mavis Beacon)", "")}`]) }], done: "You can choose the right app for every job!" },
+      learn: [{ v: "📱 🧰", t: "Application software, or apps, are programs that help us do jobs. Each app is like a tool in a toolbox." },
+        { v: "📝", t: "Microsoft Word is for typing letters, stories and notes." },
+        { v: "📊", t: "Microsoft Excel is for tables of numbers, like class scores. Microsoft PowerPoint is for making slides for a talk." },
+        { v: "🎨 🎮", t: "Paint is for drawing. Games are apps too, for fun and learning." },
+        { v: "⌨️", t: "A typing tutor, like Mavis Beacon, teaches us to type fast with all ten fingers." },
+        { v: "📚", t: "Long ago, Encarta was an encyclopedia on a CD. It stopped in 2009. Today we look things up on the internet with a web browser." }],
+      wow: { v: "🧰", t: "Computer superpower: millions of apps exist, and one day you could make your own, like the games in Code Studio!" },
+      gens: [
+        fromFacts(P3_APPS, a => txtQ(`Which app helps us ${a.job}?`, a.nm, P3_APPS.filter(x => x !== a).map(x => x.nm), { vis: em(a.e), why: `We use ${a.nm} to ${a.job}.` })),
+        fromFacts(P3_APPS, a => txtQ(`What do we use ${a.nm} for?`, `to ${a.job}`, P3_APPS.filter(x => x !== a).map(x => `to ${x.job}`), { why: `We use ${a.nm} to ${a.job}.` })),
+        fromFacts([["Tunde wants to type a letter to his uncle. Which app?", "Microsoft Word", ["Paint", "a media player", "Microsoft Excel"]], ["Mrs Okafor wants a table of class test scores. Which app?", "Microsoft Excel", ["Paint", "a media player", "a typing tutor"]],
+          ["Amina will give a talk with slides. Which app?", "Microsoft PowerPoint", ["a calculator app", "Paint", "a typing tutor"]], ["Chidi wants to draw a lion. Which app?", "Paint", ["Microsoft Excel", "a calculator app", "a web browser"]],
+          ["Bola wants to type faster. Which app?", "a typing tutor", ["a media player", "Paint", "a calculator app"]], ["Ngozi wants to find facts about Zuma Rock. Which app?", "a web browser", ["Paint", "a typing tutor", "a calculator app"]],
+          ["Apps are also called…", "application software", ["hardware", "cables", "keyboards"]], ["Encarta was an encyclopedia on a…", "CD", ["banana leaf", "radio", "chair"]], ["Encarta stopped in…", "2009", ["1617", "2025", "1843"]],
+          ["Mavis Beacon is a…", "typing tutor", ["printer", "football club", "phone"]]],
+          ([q, a, w]) => txtQ(q, a, w, { why: `The answer is ${a}.` })),
+        fromFacts([["Word is good for typing a story.", true], ["Paint is for doing tables of numbers.", false], ["PowerPoint makes slides.", true], ["A typing tutor teaches us to type.", true], ["Excel is for drawing pictures.", false], ["Games are application software.", true], ["Encarta is still sold today.", false]], ([s, t]) => tfQ(s, t, { why: t ? "That is true." : "That is not true." })),
+      ] },
+    { id: "i3-storage", nm: "Storage devices", icon: "💾", desc: "Hard disk, flash drive, CD, memory card, cloud",
+      act: { type: "sort", nm: "Do or don't?", A: () => P3_DO, B: () => P3_DONT, la: "Do it", lb: "Don't do it", ia: "👍", ib: "🚫", card: t => t[0].toUpperCase() + t.slice(1), ask: t => `Should we ${t}?`, wrong: c => c.a ? `Yes, we should ${c.t}. It keeps our files safe.` : `No! Never ${c.t}. It can damage our files.`, done: "You can keep your files safe!" },
+      learn: [{ v: "💾", t: "Storage devices keep our files, pictures and programs safe, even when the computer is off." },
+        { h: SVGS.hdd, t: "The hard disk sits inside the computer and keeps lots of files." },
+        { h: SVGS.flash, t: "A flash drive is small and fits in a pocket. It plugs into a USB port." },
+        { v: "💿", t: "A CD or DVD is a shiny round disc. A laser reads it. Hold it by the edges and don't scratch it." },
+        { h: SVGS.sdcard, t: "A memory card is a tiny card used in phones and cameras." },
+        { v: "💾 ☁️", t: "Floppy disks are old and held very little. Today, cloud storage keeps files on the internet, so we can open them anywhere." }],
+      wow: { v: "📦", t: "Computer superpower: one small memory card can hold more photos than a whole room of old floppy disks!" },
+      gens: [
+        fromFacts(P3_STORE, f => picQ(`Which storage device ${f.job}?`, f.k, P3_STORE.map(x => x.k), { why: `The ${PIC[f.k].nm} ${f.job}.` })),
+        fromFacts(P3_STORE, f => txtQ("What is this?", PIC[f.k].nm, P3_STORE.filter(x => x !== f).map(x => PIC[x.k].nm), { vis: PIC[f.k].h, why: `It is a ${PIC[f.k].nm}. It ${f.job}.` })),
+        () => { const d = Math.random() < .5, t = pick(d ? P3_DO : P3_DONT); return txtQ(`Should we ${t}?`, d ? "Yes" : "No", [d ? "No" : "Yes", "Only on Saturdays"], { why: d ? `Yes, we should ${t}.` : `No, never ${t}.` }); },
+        () => txtQ("Which is the SAFE way to look after storage?", pick(P3_DO), P3_DONT, { why: "That keeps our files safe." }),
+        fromFacts([["Which keeps files when the computer is off: RAM or the hard disk?", "the hard disk", ["the RAM", "the fan", "the mouse"]], ["Which is the oldest kind of storage here?", "floppy disk", ["memory card", "cloud storage", "flash drive"]],
+          ["A CD is read by a…", "laser", ["mouse", "fan", "pencil"]], ["Cloud storage keeps our files on the…", "internet", ["roof", "sky above Lagos", "bed"]], ["A flash drive plugs into a…", "USB port", ["socket on the wall", "headphone port", "power button"]],
+          ["Which storage is used in phones and cameras?", "memory card", ["floppy disk", "hard disk", "CD"]], ["We should hold a CD by its…", "edges", ["shiny side", "middle hole only", "teeth"]], ["Storage devices keep our…", "files", ["food", "clothes", "shoes"]]],
+          ([q, a, w]) => txtQ(q, a, w, { why: `The answer is ${a}.` })),
+        fromFacts([["A flash drive fits in a pocket.", true], ["We should bend CDs.", false], ["Cloud storage uses the internet.", true], ["Floppy disks hold more than memory cards.", false], ["The hard disk is inside the computer.", true], ["Magnets are good for floppy disks.", false]], ([s, t]) => tfQ(s, t, { why: t ? "That is true." : "That is not true." })),
+      ] },
+  ] },
+  { nm: "Third term", sub: "Microsoft Word", topics: [
+    { id: "i3-word", nm: "Starting Microsoft Word", icon: "🚀", desc: "Open Word and know its parts",
+      act: { type: "word", mode: "open", nm: "Open Word" },
+      learn: [{ v: "📝", t: "Microsoft Word is a word processor. We use it to type, change and print letters, stories and notes." },
+        { v: "⊞ ➡️ 📝", t: "To start Word: click the Start button, find Microsoft Word and click it, then click Blank document." },
+        { v: "🏷️", t: "The title bar at the very top shows the name of the document. The ribbon below it holds the tabs and buttons." },
+        { v: "📄 |", t: "The white page is the typing area. The blinking line is the cursor. It shows where the next letter will go." },
+        { v: "↕️", t: "The scroll bar on the side moves the page up and down. The status bar at the bottom shows the page number and the number of words." },
+        { v: "✖️", t: "The ✕ button in the top corner closes Word. Always save your work first!" }],
+      wow: { v: "🌍", t: "Computer superpower: people all over the world use Microsoft Word to write books, letters and school work!" },
+      gens: [
+        fromFacts(P3_WPARTS, f => txtQ(`Which part of the Word window ${f.job}?`, `the ${f.p}`, P3_WPARTS.filter(x => x !== f).map(x => `the ${x.p}`), { vis: em("📝"), why: `The ${f.p} ${f.job}.` })),
+        fromFacts(P3_WPARTS, f => txtQ(`What does the ${f.p} do?`, `It ${f.job}`, P3_WPARTS.filter(x => x !== f).map(x => `It ${x.job}`), { why: `The ${f.p} ${f.job}.` })),
+        () => { const i = rnd(0, 2); return txtQ(`To start Word, what comes after "${P3_OPEN[i]}"?`, P3_OPEN[i + 1], P3_OPEN.filter((_, j) => j !== i + 1 && j !== i).concat(["Switch off the computer"]), { why: `After "${P3_OPEN[i]}", we ${P3_OPEN[i + 1].toLowerCase()}.` }); },
+        fromFacts([["Microsoft Word is a…", "word processor", ["drawing app", "game", "printer"]], ["What do we click first to start Word?", "the Start button", ["the close button", "the printer", "the speaker"]],
+          ["To get a new empty page, we click…", "Blank document", ["Shut down", "Recycle Bin", "Restart"]], ["The blinking line in Word is the…", "cursor", ["mouse", "ribbon", "title bar"]],
+          ["What should we do before closing Word?", "save our work", ["unplug the computer", "pour water on it", "nothing at all"]], ["Where is the title bar?", "at the very top", ["at the bottom", "inside the mouse", "on the keyboard"]],
+          ["Which is NOT a part of the Word window?", "the joystick", ["the ribbon", "the status bar", "the scroll bar"]], ["Word is made by…", "Microsoft", ["Google", "a farmer", "the post office"]]],
+          ([q, a, w]) => txtQ(q, a, w, { why: `The answer is ${a}.` })),
+        fromFacts([["Word is used for typing letters.", true], ["The cursor shows where the next letter goes.", true], ["The status bar is at the very top.", false], ["The ✕ button closes Word.", true], ["The scroll bar moves the page up and down.", true], ["The title bar shows the name of the document.", true], ["Word is a game.", false]], ([s, t]) => tfQ(s, t, { why: t ? "That is true." : "That is not true." })),
+      ] },
+    { id: "i3-ribbon", nm: "Tabs, menus and buttons", icon: "🎀", desc: "File, Home, Insert and the ribbon",
+      act: { type: "word", mode: "tabs", nm: "Find the buttons" },
+      learn: [{ v: "🎀", t: "Word has a ribbon at the top. It has tabs: File, Home, Insert, Layout, Review, View and more." },
+        { v: "📁", t: "The File tab is where we Save, Open, Print and start a New document." },
+        { v: "🏠", t: "The Home tab has Bold, Italic, Underline, the font size, the font colour and Centre." },
+        { v: "🖼️", t: "The Insert tab adds Pictures, Tables and Shapes to our work." },
+        { v: "🔍", t: "The Layout tab sets the margins and the page direction. The Review tab checks Spelling. The View tab can Zoom in." },
+        { v: "📜", t: "Older Word had a menu bar with words like File, Edit and Format, and toolbars of buttons. Today they live together on the ribbon." }],
+      wow: { v: "⌨️", t: "Computer superpower: shortcut keys are even faster than buttons. Ctrl + S saves, and Ctrl + P prints!" },
+      gens: [
+        () => { const t = pick(P3_TABS), b = pick(t.has); return txtQ(`Which tab has the ${b} button?`, t.tab, P3_TABS.filter(x => x !== t).map(x => x.tab), { vis: wbtn(b), why: `${b} is on the ${t.tab} tab.` }); },
+        () => { const t = pick(P3_TABS), b = pick(t.has), others = P3_TABS.filter(x => x !== t).flatMap(x => x.has); return txtQ(`Which button is on the ${t.tab} tab?`, b, others, { why: `${b} is on the ${t.tab} tab.` }); },
+        fromFacts([["To print our work, we open the…", "File tab", ["Insert tab", "View tab", "Review tab"]], ["To add a picture, we open the…", "Insert tab", ["File tab", "Review tab", "Layout tab"]],
+          ["To check spelling, we open the…", "Review tab", ["Insert tab", "File tab", "Layout tab"]], ["The long strip of tabs and buttons is called the…", "ribbon", ["scroll bar", "status bar", "cursor"]],
+          ["Ctrl + S is a shortcut to…", "save", ["sing", "sleep", "scroll"]], ["Ctrl + P is a shortcut to…", "print", ["paint", "play", "pause"]], ["Ctrl + B is a shortcut for…", "bold", ["blue", "back", "bin"]],
+          ["Older Word had a ___ with File, Edit and Format.", "menu bar", ["status bar", "scroll bar", "power bar"]], ["Which tab do we open to Zoom in?", "View", ["Insert", "File", "Review"]],
+          ["Margins and page direction are on the…", "Layout tab", ["Home tab", "Review tab", "File tab"]]],
+          ([q, a, w]) => txtQ(q, a, w, { why: `The answer is ${a}.` })),
+        fromFacts([["Save is on the File tab.", true], ["Bold is on the Home tab.", true], ["Pictures are on the Insert tab.", true], ["Spelling is on the Insert tab.", false], ["Print is on the Home tab.", false], ["The ribbon holds tabs and buttons.", true], ["Ctrl + S prints.", false]], ([s, t]) => tfQ(s, t, { why: t ? "That is true." : "That is not true." })),
+      ] },
+    { id: "i3-type", nm: "Typing and saving", icon: "⌨️", desc: "Type a sentence and save it as a file",
+      act: { type: "word", mode: "type", nm: "Type and save" },
+      learn: [{ v: "⌨️ 📄", t: "To type in Word, click on the page, then press the keys. The cursor moves along as you type." },
+        { h: `<div class="keyrow">${keycap("⇧ Shift")}${keycap("I")}</div>`, t: "Every sentence starts with a capital letter. Hold Shift and press a letter to make one capital." },
+        { h: `<div class="keyrow">${keycap("space")}${keycap(".")}</div>`, t: "Press the space bar between words. End a sentence with a full stop." },
+        { h: `<div class="keyrow">${keycap("⌫ Back")}${keycap("Enter ↵")}</div>`, t: "Made a mistake? Press Backspace to rub it out. Press Enter to start a new line." },
+        { v: "💾", t: "To save: click the File tab, click Save As, type a name for your file, then click Save. Or press Ctrl + S." },
+        { v: "📄", t: "Our saved work is called a file, or a document. Word files usually end with .docx." }],
+      wow: { v: "☁️", t: "Computer superpower: save your work often, and a power cut (NEPA!) won't take your story away!" },
+      gens: [
+        () => { const i = rnd(0, 2); return txtQ(`To save, what comes after "${P3_SAVE[i]}"?`, P3_SAVE[i + 1], P3_SAVE.filter((_, j) => j !== i + 1 && j !== i).concat(["Unplug the computer"]), { why: `After "${P3_SAVE[i]}", we ${P3_SAVE[i + 1].toLowerCase()}.` }); },
+        fromFacts([["Which key makes ONE capital letter?", "Shift", ["Space", "Backspace", "Enter"]], ["Which key rubs out a mistake before the cursor?", "Backspace", ["Shift", "Space", "Tab"]], ["Which key starts a new line?", "Enter", ["Space", "Shift", "Esc"]],
+          ["Which key puts a gap between words?", "the space bar", ["Enter", "Shift", "Ctrl"]], ["A sentence starts with a…", "capital letter", ["full stop", "space", "number"]], ["A sentence ends with a…", "full stop", ["capital letter", "space", "comma at the start"]],
+          ["Our saved work is called a…", "file", ["mouse", "port", "fan"]], ["Word files usually end with…", ".docx", [".mp3", ".jpg", ".cake"]], ["The shortcut to save is…", "Ctrl + S", ["Ctrl + P", "Ctrl + B", "Esc"]],
+          ["Why should we save our work often?", "so we don't lose it", ["to make the screen brighter", "to make the mouse faster", "to switch off the fan"]], ["Where do we click to start typing?", "on the white page", ["on the speaker", "on the title bar", "on the close button"]],
+          ["Which is a good name for a file?", "my story", ["?", "", "///"]]],
+          ([q, a, w]) => txtQ(q, a, w.filter(Boolean), { why: `The answer is ${a}.` })),
+        () => { const l = pick([..."ABCDEFGHJKLMNOPRSTUWY"]); return txtQ(`You hold Shift and press ${l.toLowerCase()}. What appears on the page?`, l, [l.toLowerCase(), l + l, "nothing", `${l.toLowerCase()}.`], { vis: `<div class="keyrow">${keycap("⇧ Shift")}${keycap(l)}</div>`, why: `Shift + ${l.toLowerCase()} gives a capital ${l}.` }); },
+        () => { const s = pick(["I love my school.", "Lagos is a big city.", "My name is Ada.", "We play football.", "Abuja is our capital.", "Mama cooks jollof rice.", "Kano is in the north.", "The sun is hot."]);
+          const w = [s[0].toLowerCase() + s.slice(1), s.slice(0, -1), s.replace(/ /g, ""), s.toLowerCase().slice(0, -1)]; return txtQ("Which sentence is typed correctly?", s, w, { why: `"${s}" has a capital letter, spaces between words and a full stop.` }); },
+        () => { const s = pick(["i love my school.", "Lagos is a big city", "My name is Ada.", "we play football", "Abuja is our capital."]); const ok = /^[A-Z]/.test(s) && s.endsWith("."); return tfQ(`"${s}" starts with a capital letter and ends with a full stop.`, ok, { why: ok ? "Yes, it does." : "No. A sentence needs a capital letter at the start and a full stop at the end." }); },
+        fromFacts([["Shift makes a capital letter.", true], ["Backspace saves our work.", false], ["Save As lets us give our file a name.", true], ["A power cut can lose work we did not save.", true], ["Enter rubs out letters.", false], ["Ctrl + S saves our work.", true]], ([s, t]) => tfQ(s, t, { why: t ? "That is true." : "That is not true." })),
+      ] },
+    { id: "i3-format", nm: "Formatting text", icon: "🅱️", desc: "Bold, italic, underline, size, colour, centre",
+      act: { type: "word", mode: "format", nm: "Make it beautiful" },
+      learn: [{ v: "✨", t: "Formatting means changing how our words look, to make our work clear and beautiful." },
+        { v: "👆", t: "First select the words: double-click a word, or drag across the words. Selected words turn blue." },
+        { h: `<div class="keyrow">${wbtn("B")}${wbtn("I")}${wbtn("U")}</div>`, t: "B makes words Bold. I makes them Italic, leaning to the side. U Underlines them." },
+        { h: `<div class="keyrow">${wbtn("A+")}${wbtn("A")}</div>`, t: "A+ makes the font bigger. The coloured A changes the font colour." },
+        { h: `<div class="keyrow">${wbtn("≡")}</div>`, t: "Centre puts words in the middle of the line. It is great for a title." }],
+      wow: { v: "📰", t: "Computer superpower: every newspaper, book and poster uses formatting to catch our eyes!" },
+      gens: [
+        fromFacts(P3_FMT, f => txtQ(`Which button ${f.job}?`, f.nm, P3_FMT.filter(x => x !== f).map(x => x.nm), { vis: wbtn(f.b), why: `${f.nm} ${f.job}.` })),
+        fromFacts(P3_FMT, f => txtQ(`What does the ${f.nm} button do?`, `It ${f.job}`, P3_FMT.filter(x => x !== f).map(x => `It ${x.job}`), { vis: wbtn(f.b), why: `${f.nm} ${f.job}.` })),
+        fromFacts(P3_FMT.filter(f => f.key), f => txtQ(`Which shortcut is for ${f.nm}?`, f.key, P3_FMT.filter(x => x.key && x !== f).map(x => x.key).concat(["Ctrl + S"]), { why: `${f.key} is for ${f.nm}.` })),
+        fromFacts([["Before we format words, we must first…", "select them", ["delete them", "print them", "close Word"]], ["Formatting changes how words…", "look", ["taste", "smell", "sound"]],
+          ["To select one word, we…", "double-click it", ["shake the mouse", "press Esc", "switch off"]], ["Selected words turn…", "blue", ["invisible", "into pictures", "upside down"]],
+          ["Which is best for a title?", "Centre", ["Delete", "Shut down", "Recycle Bin"]], ["Which tab has the formatting buttons?", "Home", ["Insert", "Review", "View"]],
+          ["Bold words look…", "thick and dark", ["thin and grey", "upside down", "very small"]], ["Italic words…", "lean to the side", ["stand on their heads", "disappear", "turn green"]]],
+          ([q, a, w]) => txtQ(q, a, w, { why: `The answer is ${a}.` })),
+        () => { const f = pick(P3_FMT.slice(0, 3)), w = pick(["Lagos", "mango", "Abuja", "football", "Kano"]); const style = f.b === "B" ? "font-weight:900" : f.b === "I" ? "font-style:italic" : "text-decoration:underline"; return txtQ("Which button made this word look like this?", f.nm, P3_FMT.filter(x => x !== f).map(x => x.nm), { vis: `<span style="${style};font-size:clamp(28px,6cqh,60px);color:#1D1B45">${w}</span>`, why: `That is ${f.nm}.` }); },
+        fromFacts([["B stands for Bold.", true], ["U stands for Underline.", true], ["I stands for Ink.", false], ["We must select words before we format them.", true], ["Centre puts words in the middle.", true], ["Formatting deletes our work.", false]], ([s, t]) => tfQ(s, t, { why: t ? "That is true." : "That is not true." })),
+      ] },
+  ] },
+] };
+ICT_YEARS[3] = ICT_P3;
+
 /* ======================= SCHOOL ICT: screens, questions, hands-on activities ======================= */
 let curY = 1, curTerm = 0, curTopic = null;
 const sch = () => { const s = st(); s.school = s.school || { stars: {}, acts: {}, badges: {}, finals: {}, tries: {} }; ["stars", "acts", "badges", "finals", "tries"].forEach(k => s.school[k] = s.school[k] || {}); return s.school; };
@@ -3725,7 +4125,7 @@ const P1_ACTS = {
 function startAct(t) {
   const A = typeof t.act === "string" ? P1_ACTS[t.act] : t.act;
   ACT = { t, kind: A.type, step: 0 }; $("#acTitle").textContent = "✋ " + A.nm; $("#acProg").textContent = ""; show("act");
-  ({ click: actClick, keys: actKeys, label: actLabel, sort: actSort, order: actOrder, desk: actDesk, speckeys: actSpecKeys, icons: actIcons })[A.type](A);
+  ({ click: actClick, keys: actKeys, label: actLabel, sort: actSort, order: actOrder, desk: actDesk, speckeys: actSpecKeys, icons: actIcons, match: actMatch, mouse2: actMouse2, word: actWord })[A.type](A);
 }
 $("#acBack").onclick = () => { hush(); show("stopic"); ACT = null; };
 $("#acSay").onclick = () => say($("#acTask").textContent);
@@ -3786,8 +4186,8 @@ function actKeys() {
 /* find the parts in a computer picture */
 function actLabel(A) {
   const S = $("#acStage"), parts = A.parts;
-  S.innerHTML = `<div class="lscene">${A.desk ? `<div class="ldesk"></div>` : ""}${A.panel ? `<div class="lpanel"><span>Back of the system unit</span></div>` : ""}${parts.map(p => `<div class="lpart" data-p="${p.k}" data-s="${p.s}" style="left:${p.x}%;top:${p.y}%">${PIC[p.k].h.replace('class="picem"', 'class="picem" style="font-size:inherit"')}</div>`).join("")}</div>`;
-  const fit = () => { const r = S.getBoundingClientRect(), base = Math.min(r.width / 4.2, r.height / 4.6); $$("#acStage .lpart").forEach(el => { const z = base * +el.dataset.s; el.style.width = el.style.height = z + "px"; el.style.fontSize = z * .78 + "px"; }); };
+  S.innerHTML = `<div class="lscene">${A.desk ? `<div class="ldesk"></div>` : ""}${A.panel ? `<div class="lpanel ${A.panel === "inside" ? "inside" : ""}"><span>${A.panelText || "Back of the system unit"}</span></div>` : ""}${parts.map(p => `<div class="lpart" data-p="${p.k}" data-s="${p.s}" style="left:${p.x}%;top:${p.y}%">${PIC[p.k].h.replace('class="picem"', 'class="picem" style="font-size:inherit"')}</div>`).join("")}</div>`;
+  const fit = () => { const r = S.getBoundingClientRect(), base = Math.min(r.width / (A.bw || 4.2), r.height / (A.bh || 4.6)); $$("#acStage .lpart").forEach(el => { const z = base * +el.dataset.s; el.style.width = el.style.height = z + "px"; el.style.fontSize = z * .78 + "px"; }); };
   fit(); ACT.fit = fit;
   const order = shuffle(parts.map(p => p.k)); let i = 0;
   const ask = () => task(`Tap the ${PIC[order[i]].nm}.`, `${i + 1} of ${order.length}`);
@@ -3908,6 +4308,219 @@ function actIcons() {
     if (e.clientX > b.left - 10 && e.clientX < b.right + 10 && e.clientY > b.top - 10 && e.clientY < b.bottom + 10) { f.remove(); SFX.pick(); $('#aDesk [data-d="bin"] b').textContent = "🗑️"; if (steps[si] && steps[si].want === "drag") ok(); else say("The file is in the Recycle Bin."); }
     else if (steps[si] && steps[si].want === "drag") { SFX.oops(); say("Move it all the way onto the Recycle Bin."); }
   });
+  ask();
+}
+
+/* ======================= SCHOOL ICT Primary 3: match, mouse skills, pretend Word ======================= */
+const MCOL = ["#C9F2DD", "#FFE8A3", "#D7E3FF", "#FFD6E7", "#E5D4FF"];
+/* tap a box on the left, then its partner on the right */
+function actMatch(A) {
+  let ri = 0;
+  const run = () => {
+    const R = A.rounds[ri], n = R.pairs.length; let sel = null, got = 0;
+    const col = (side, list) => `<div class="mcol"><div class="mh">${esc(side)}</div>${list.map(x => `<button class="btn" data-s="${x.s}" data-i="${x.i}">${esc(x.t)}</button>`).join("")}</div>`;
+    $("#acStage").innerHTML = `<div class="match">${col(R.la, shuffle(R.pairs.map((p, i) => ({ t: p[0], i, s: "L" }))))}${col(R.lb, shuffle(R.pairs.map((p, i) => ({ t: p[1], i, s: "R" }))))}</div>`;
+    task("Tap a box on the left, then its partner on the right.", A.rounds.length > 1 ? `${ri + 1} of ${A.rounds.length}` : "");
+    $("#acStage .match").onclick = e => {
+      const b = e.target.closest("[data-s]"); if (!b || b.classList.contains("done") || got >= n) return;
+      if (!sel || sel.dataset.s === b.dataset.s) { if (sel) sel.classList.remove("sel"); sel = b; b.classList.add("sel"); SFX.tap(); say(b.textContent); return; }
+      if (sel.dataset.i === b.dataset.i) {
+        const pr = R.pairs[+b.dataset.i]; [sel, b].forEach(x => { x.classList.remove("sel"); x.classList.add("done"); x.style.background = MCOL[got % MCOL.length]; }); sel = null; got++; SFX.good(); say(`${pr[0]}: ${pr[1]}.`);
+        if (got === n) { ri++; if (ri < A.rounds.length) setTimeout(run, 1500); else setTimeout(() => actDone(A.done), 900); }
+      } else { b.classList.remove("bad"); void b.offsetWidth; b.classList.add("bad"); SFX.oops(); say(`${b.textContent} does not go with ${sel.textContent}. Try another one.`); }
+    };
+  };
+  run();
+}
+
+/* right-click (or press and hold), menu, scroll, drag, double-click */
+function actMouse2() {
+  const S = $("#acStage"); let si = 0;
+  const ok = () => { SFX.good(); si++; if (si < steps.length) go(); else actDone("You have super mouse skills!"); };
+  const dblTap = (el, fn) => { let last = 0; el.addEventListener("click", () => { const now = performance.now(); if (now - last < 500) { last = 0; fn(); } else { last = now; SFX.tap(); } }); };
+  const steps = [
+    { t: "Right-click the mango to open its menu. On a phone, press and hold it.", html: `<div class="m2win" id="m2Win"><div class="m2pic" id="m2Pic">🥭<small>mango.jpg</small></div></div>`,
+      init() {
+        const p = $("#m2Pic"); let tm = null, opened = false, longp = false;
+        const open = () => { if (opened) return; opened = true; SFX.tap(); $("#m2Win").insertAdjacentHTML("beforeend", `<div class="m2menu" id="m2Menu"><button data-m="open">📂 Open</button><button data-m="copy">📋 Copy</button><button data-m="del">🗑️ Delete</button></div>`); ok(); };
+        p.addEventListener("contextmenu", e => { e.preventDefault(); open(); });
+        p.addEventListener("pointerdown", e => { longp = false; if (e.button !== 0) return; clearTimeout(tm); tm = setTimeout(() => { longp = true; open(); }, 650); });
+        ["pointerup", "pointerleave", "pointercancel"].forEach(ev => p.addEventListener(ev, () => clearTimeout(tm)));
+        p.addEventListener("click", () => { if (!opened && !longp) say("That was a normal click. Use the right mouse button, or press and hold."); });
+      } },
+    { t: "Now choose Copy from the menu.", keep: true,
+      init() { $("#m2Win").addEventListener("click", e => { const m = e.target.closest("[data-m]"); if (!m || si !== 1) return; if (m.dataset.m === "copy") { $("#m2Menu").remove(); $("#m2Win").insertAdjacentHTML("beforeend", `<div class="m2toast">📋 Copied!</div>`); ok(); } else { SFX.oops(); say("Find the word Copy."); } }); } },
+    { t: "Scroll down to find the hidden football, then click it.",
+      html: `<div class="m2scroll" id="m2Scr"><div class="m2page"><p>⬇️ Scroll down ⬇️</p>${["🌳 🏠 🌳", "🚌 🛺 🚗", "🌽 🍠 🥭", "🐐 🐓 🐄", "🏫 📚 ✏️", "🌴 🌞 🌴"].map(r => `<p>${r}</p>`).join("")}<button class="m2ball" id="m2Ball" aria-label="football">⚽</button></div></div>`,
+      init() { $("#m2Ball").onclick = () => ok(); } },
+    { t: "Drag the football into the goal. Hold it, move it, let go.", html: `<div class="m2field" id="m2Field"><div class="m2goal" id="m2Goal">🥅</div><div class="m2drag" id="m2Drag">⚽</div></div>`,
+      init() {
+        const f = $("#m2Field"), b = $("#m2Drag"); let drag = false;
+        b.addEventListener("pointerdown", e => { drag = true; b.setPointerCapture(e.pointerId); });
+        b.addEventListener("pointermove", e => { if (!drag) return; const r = f.getBoundingClientRect(); b.style.left = ((e.clientX - r.left) / r.width * 100) + "%"; b.style.top = ((e.clientY - r.top) / r.height * 100) + "%"; });
+        b.addEventListener("pointerup", e => {
+          if (!drag) return; drag = false; const g = $("#m2Goal").getBoundingClientRect();
+          if (e.clientX > g.left && e.clientX < g.right && e.clientY > g.top && e.clientY < g.bottom) { b.style.left = "82%"; b.style.top = "50%"; SFX.win(); say("Goal!"); ok(); } else { SFX.oops(); say("Move it all the way into the goal."); }
+        });
+      } },
+    { t: "Double-click the My Work folder to open it. Click it two times quickly.", html: `<div class="m2win" id="m2Win2"><div class="m2pic m2fold" id="m2Fold">📁<small>My Work</small></div></div>`,
+      init() { dblTap($("#m2Fold"), () => { $("#m2Win2").insertAdjacentHTML("beforeend", `<div class="dwin"><div class="bar">📁 My Work</div><div class="body">📄 📄 🖼️</div></div>`); ok(); }); } },
+  ];
+  const go = () => { const st_ = steps[si]; if (!st_.keep) S.innerHTML = st_.html; task(st_.t, `${si + 1} of ${steps.length}`); st_.init(); };
+  go();
+}
+
+/* ---- pretend Microsoft Word ---- */
+const WTABS = { File: [["new", "📄", "New"], ["open", "📂", "Open"], ["save", "💾", "Save"], ["saveas", "💾", "Save As"], ["print", "🖨️", "Print"]],
+  Home: [["bold", "<b>B</b>", "Bold"], ["italic", "<i>I</i>", "Italic"], ["underline", "<u>U</u>", "Underline"], ["grow", "A+", "Grow font"], ["colour", `<span style="color:#E53935;font-weight:900">A</span>`, "Font colour"], ["centre", "≡", "Centre"]],
+  Insert: [["pictures", "🖼️", "Pictures"], ["table", "▦", "Table"], ["shapes", "⬟", "Shapes"]], Layout: [["margins", "▭", "Margins"], ["direction", "🔄", "Page direction"]],
+  Review: [["spelling", "✔️", "Spelling"]], View: [["zoom", "🔍", "Zoom"]] };
+const WDONE = { print: "🖨️ Printing…", save: "💾 Saved!", new: "📄 A new page!", open: "📂 Open a file", pictures: "🖼️ Pick a picture", table: "▦ A table!", shapes: "⬟ A shape!", margins: "▭ Margins set", direction: "🔄 Page turned", spelling: "✔️ No spelling mistakes!", zoom: "🔍 Zoomed in", bold: "B", italic: "I", underline: "U", grow: "A+", colour: "A", centre: "≡", saveas: "💾" };
+function wordWin(name, page, tab = "Home") {
+  return `<div class="wd" id="wd"><div class="wd-title" data-w="title"><span>📝 <span id="wdName">${esc(name)}</span> - Word</span><button class="wd-x" data-w="close" aria-label="Close">✕</button></div>
+    <div class="wd-rib" data-w="ribbon"><div class="wd-tabs">${Object.keys(WTABS).map(t => `<button data-tab="${t}" class="${t === tab ? "on" : ""}">${t}</button>`).join("")}</div><div class="wd-btns" id="wdBtns"></div></div>
+    <div class="wd-body"><div class="wd-page" data-w="page" id="wdPage">${page}</div><div class="wd-scroll" data-w="scroll"><span></span></div></div>
+    <div class="wd-status" data-w="status">Page 1 of 1 · <span id="wdWords">0</span> words</div></div>`;
+}
+function wdTab(tab) { $$("#wd .wd-tabs button").forEach(b => b.classList.toggle("on", b.dataset.tab === tab)); $("#wdBtns").innerHTML = WTABS[tab].map(([k, ic, nm]) => `<button data-b="${k}" aria-label="${nm}"><span>${ic}</span><small>${nm}</small></button>`).join(""); }
+function wdToast(t) { const w = $("#wd"); if (!w) return; $$("#wd .wd-toast").forEach(x => x.remove()); w.insertAdjacentHTML("beforeend", `<div class="wd-toast">${t}</div>`); setTimeout(() => { const x = $("#wd .wd-toast"); if (x) x.remove(); }, 1300); }
+function wdCount() { const p = $("#wdPage"); if (p && $("#wdWords")) $("#wdWords").textContent = (p.textContent.trim().match(/[A-Za-z]+/g) || []).length; }
+
+function actWord(A) { ({ open: wordOpen, tabs: wordTabs, type: wordType, format: wordFormat })[A.mode](A); }
+
+/* open Word from the Start menu, then find the parts of the window */
+function wordOpen() {
+  const S = $("#acStage"); let si = 0;
+  const parts = shuffle([["title", "Tap the title bar. It shows the name of the document."], ["ribbon", "Tap the ribbon. It holds the tabs and buttons."], ["page", "Tap the typing area, the white page."],
+    ["cursor", "Tap the cursor, the blinking line where the next letter goes."], ["scroll", "Tap the scroll bar. It moves the page up and down."], ["status", "Tap the status bar at the bottom."], ["close", "Tap the close button, the red ✕."]]).slice(0, 5);
+  const steps = [{ w: "start", t: "Click the Start button to begin." }, { w: "app-word", t: "Find Microsoft Word and click it." }, { w: "blank", t: "Click Blank document." }, ...parts.map(([w, t]) => ({ w, t }))];
+  S.innerHTML = `<div class="deskscr" id="aDesk"><div class="dtask"><span class="dstart" data-w="start">⊞ Start</span><span class="dclock">${new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}</span></div></div>`;
+  const ask = () => task(steps[si].t, `${si + 1} of ${steps.length}`);
+  const ok = () => { SFX.good(); si++; if (si < steps.length) ask(); else actDone("You can open Word and name its parts!"); };
+  S.onclick = e => {
+    if (si >= steps.length) return; const want = steps[si].w, el = e.target.closest("[data-w]"); if (!el) return; const d = el.dataset.w;
+    if (d === want) {
+      if (d === "start") $("#aDesk").insertAdjacentHTML("beforeend", `<div class="wmenu" id="wMenu"><b>All apps</b>${[["app-excel", "📊 Microsoft Excel"], ["app-paint", "🎨 Paint"], ["app-word", "📝 Microsoft Word"], ["app-ppt", "📽️ Microsoft PowerPoint"]].map(([k, n]) => `<button data-w="${k}">${n}</button>`).join("")}</div>`);
+      if (d === "app-word") { $("#wMenu").remove(); $("#aDesk").insertAdjacentHTML("beforeend", `<div class="wstart" id="wStart"><b>📝 Word</b><span>Welcome! Pick a new document.</span><div>${[["blank", "📄", "Blank document"], ["tpl-letter", "✉️", "Letter"], ["tpl-story", "📖", "Story"]].map(([k, i, n]) => `<button data-w="${k}"><span>${i}</span>${n}</button>`).join("")}</div></div>`); }
+      if (d === "blank") { S.innerHTML = wordWin("Document1", `<span class="wd-cur" data-w="cursor"></span>`); wdTab("Home"); }
+      if (d === "close") { el.style.background = "#B71C1C"; }
+      if (["title", "ribbon", "page", "cursor", "scroll", "status"].includes(d)) { el.classList.remove("wd-hit"); void el.offsetWidth; el.classList.add("wd-hit"); }
+      ok(); return;
+    }
+    if (want.startsWith("app") || want === "blank") { SFX.oops(); say(steps[si].t); return; }
+    SFX.oops(); const NM = { title: "title bar", ribbon: "ribbon", page: "typing area", cursor: "cursor", scroll: "scroll bar", status: "status bar", close: "close button", start: "Start button" }; say(`That is the ${NM[d] || "wrong place"}. ${steps[si].t}`);
+  };
+  ask();
+}
+
+/* find buttons on the right tab */
+function wordTabs() {
+  const S = $("#acStage");
+  S.innerHTML = wordWin("My story", `<p>Our school went on a trip to Yankari. We saw elephants!<span class="wd-cur"></span></p>`); wdTab("Home"); wdCount();
+  const pickOne = (tab, keys) => { const k = pick(keys); return { tab, k, nm: WTABS[tab].find(x => x[0] === k)[2] }; };
+  const tasks = shuffle([pickOne("File", ["print", "save"]), pickOne("Home", ["bold", "italic", "underline", "colour"]), pickOne("Insert", ["pictures", "table", "shapes"]), pickOne("Layout", ["margins"]), pickOne("Review", ["spelling"]), pickOne("View", ["zoom"])]);
+  const words = { print: "Print your story", save: "Save your story", bold: "Find the Bold button", italic: "Find the Italic button", underline: "Find the Underline button", colour: "Find the Font colour button", pictures: "Add a picture", table: "Add a table", shapes: "Add a shape", margins: "Find Margins", spelling: "Check the spelling", zoom: "Zoom in" };
+  let si = 0;
+  const ask = () => task(`${words[tasks[si].k]}. Which tab is the ${tasks[si].nm} button on?`, `${si + 1} of ${tasks.length}`);
+  S.onclick = e => {
+    if (si >= tasks.length) return; const T = tasks[si];
+    const tb = e.target.closest("[data-tab]"); if (tb) { SFX.tap(); wdTab(tb.dataset.tab); return; }
+    const b = e.target.closest("[data-b]"); if (!b) return;
+    if (b.dataset.b === T.k) { wdToast(WDONE[T.k].length > 2 ? WDONE[T.k] : `${T.nm} ✔️`); SFX.good(); si++; if (si < tasks.length) setTimeout(ask, 500); else setTimeout(() => actDone("You can find every button on the ribbon!"), 600); }
+    else { SFX.oops(); say(`That is ${WTABS[Object.keys(WTABS).find(t => WTABS[t].some(x => x[0] === b.dataset.b))].find(x => x[0] === b.dataset.b)[2]}. Look for ${T.nm}. It is on the ${T.tab} tab.`); }
+  };
+  ask();
+}
+
+/* type a sentence, then save it with File > Save As */
+function wordType() {
+  const S = $("#acStage"), TARGET = "I love my school.", FILE = "school";
+  const rows = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM."];
+  S.innerHTML = `<div class="wtype">${wordWin("Document1", `<span id="wdTxt"></span><span class="wd-cur"></span>`)}<div class="kbd wkbd" id="aKbd">${rows.map((r, i) => `<div class="kr">${i === 2 ? `<button class="wide" data-k="Shift">⇧ Shift</button>` : ""}${[...r].map(c => `<button data-k="${c}">${c}</button>`).join("")}${i === 0 ? `<button class="wide" data-k="Backspace" aria-label="Backspace">⌫</button>` : ""}${i === 1 ? `<button class="wide" data-k="Enter" aria-label="Enter">↵</button>` : ""}</div>`).join("")}<div class="kr"><button class="space" data-k=" ">space</button></div></div></div>`;
+  wdTab("Home");
+  let phase = "type", typed = "", fname = "", shift = false, warned = false;
+  const kb = $("#aKbd");
+  const hot = k => $$("#aKbd button").forEach(b => b.classList.toggle("hot", b.dataset.k === k));
+  const goal = () => phase === "type" ? TARGET : FILE;
+  const cur = () => phase === "type" ? typed : fname;
+  const nextKey = () => { const g = goal(), t = cur(); if (!g.startsWith(t)) return "Backspace"; if (t === g) return null; const c = g[t.length]; if (/[A-Z]/.test(c) && !shift) return "Shift"; return c.toUpperCase(); };
+  const render = () => {
+    const g = goal(), t = cur(), good = g.startsWith(t);
+    if (phase === "type") { $("#wdTxt").innerHTML = good ? esc(t) : `${esc(t.slice(0, [...t].findIndex((c, i) => c !== g[i])))}<span class="wd-bad">${esc(t.slice([...t].findIndex((c, i) => c !== g[i])))}</span>`; wdCount(); }
+    else if ($("#wdName2")) $("#wdName2").innerHTML = esc(fname) + `<span class="wd-cur"></span>`;
+    kb.classList.toggle("shift", shift); hot(phase === "type" || phase === "name" ? nextKey() : null);
+  };
+  const steps = { type: `Type this sentence: ${TARGET}`, file: "Well done! Now save it. Click the File tab.", saveas: "Click Save As.", name: `Type a name for your file: ${FILE}`, savebtn: "Click the Save button." };
+  const setPhase = p => { phase = p; task(steps[p], { type: "1 of 5", file: "2 of 5", saveas: "3 of 5", name: "4 of 5", savebtn: "5 of 5" }[p]); render(); };
+  const openDialog = () => { $("#wd").insertAdjacentHTML("beforeend", `<div class="wd-dlg" id="wdDlg"><b>💾 Save As</b><label>File name:</label><div class="wd-in" id="wdName2"><span class="wd-cur"></span></div><button class="btn go" data-dlg="save">Save</button></div>`); };
+  const press = k => {
+    if (!ACT || (phase !== "type" && phase !== "name")) return; SFX.tap();
+    let t = cur();
+    if (k === "Shift") { shift = !shift; render(); return; }
+    if (k === "Backspace") t = t.slice(0, -1); else if (k === "Enter") { if (phase === "type" && t !== TARGET) say("Finish the sentence first."); render(); return; }
+    else { const ch = k.length === 1 && /[A-Z]/i.test(k) ? (shift ? k.toUpperCase() : k.toLowerCase()) : k; t += ch; if (shift && /[A-Z]/i.test(k)) shift = false; }
+    if (phase === "type") typed = t; else fname = t;
+    const g = goal();
+    if (!g.startsWith(t) && !warned) { warned = true; SFX.oops(); say("Oops! That letter is not right. Press Backspace to rub it out."); }
+    if (g.startsWith(t)) warned = false;
+    if (t === g) { SFX.good(); if (phase === "type") { setTimeout(() => setPhase("file"), 300); } else setTimeout(() => setPhase("savebtn"), 300); }
+    render();
+  };
+  S.onclick = e => {
+    const k = e.target.closest("[data-k]"); if (k) { press(k.dataset.k); return; }
+    const tb = e.target.closest("[data-tab]"), b = e.target.closest("[data-b]"), dl = e.target.closest("[data-dlg]");
+    if (tb) { SFX.tap(); wdTab(tb.dataset.tab); if (phase === "file") { if (tb.dataset.tab === "File") { SFX.good(); setPhase("saveas"); } else say("Click the File tab."); } return; }
+    if (b) { if (phase === "saveas" && (b.dataset.b === "saveas" || b.dataset.b === "save")) { SFX.good(); openDialog(); setPhase("name"); } else if (phase === "type") say("Type the sentence first."); else { SFX.oops(); say(steps[phase]); } return; }
+    if (dl && phase === "savebtn") { $("#wdDlg").remove(); $("#wdName").textContent = FILE + ".docx"; wdToast("💾 Saved!"); setTimeout(() => actDone(`You typed and saved ${FILE}.docx!`), 700); phase = "done"; render(); return; }
+    if (dl) say(phase === "name" ? `First type the name: ${FILE}` : steps[phase]);
+  };
+  ACT.keyHandler = e => {
+    if (curScreen !== "act" || !ACT || ACT.kind !== "word") return;
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") { e.preventDefault(); if (phase === "file" || phase === "saveas") { SFX.good(); openDialog(); setPhase("name"); } return; }
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (e.key === "Enter" && phase === "savebtn") { e.preventDefault(); $('[data-dlg="save"]').click(); return; }
+    let k = null; if (e.key === "Backspace") k = "Backspace"; else if (e.key === " ") k = " "; else if (e.key === "." || e.key === "Enter") k = e.key; else if (/^[a-z]$/i.test(e.key)) { shift = e.key !== e.key.toLowerCase(); k = e.key.toUpperCase(); }
+    if (k) { e.preventDefault(); press(k); }
+  };
+  addEventListener("keydown", ACT.keyHandler);
+  setPhase("type");
+}
+
+/* select words (double-click) and format them */
+function wordFormat() {
+  const S = $("#acStage");
+  const para = "I went to Lagos with my family. We ate mango and rice. It was so much fun!";
+  const words = para.split(" ").map((w, i) => { const m = w.match(/^([A-Za-z]+)(.*)$/); return `<span class="wd-w" data-word="${m[1].toLowerCase()}">${m[1]}</span>${esc(m[2])}`; }).join(" ");
+  S.innerHTML = wordWin("My holiday", `<p class="wd-tp" id="wdTP"><span class="wd-w" data-word="title">My Holiday</span></p><p>${words}<span class="wd-cur"></span></p>`); wdTab("Home"); wdCount();
+  const F = {}; const f = w => (F[w] = F[w] || {});
+  const tasks = [{ t: "Make the title bold. Double-click the title to select it, then click B.", ok: () => f("title").bold, w: "title" },
+    { t: "Make the word Lagos italic. Double-click Lagos, then click I.", ok: () => f("lagos").italic, w: "lagos" },
+    { t: "Underline the word mango. Double-click mango, then click U.", ok: () => f("mango").underline, w: "mango" },
+    { t: "Make the title bigger. Select the title, then click A+.", ok: () => f("title").grow, w: "title" },
+    { t: "Make the word fun red. Select fun, click the coloured A, then pick red.", ok: () => f("fun").colour === "#E53935", w: "fun" },
+    { t: "Put the title in the centre. Select the title, then click Centre.", ok: () => f("title").centre, w: "title" }];
+  let si = 0, sel = null, last = { w: null, t: 0 };
+  const ask = () => task(tasks[si].t, `${si + 1} of ${tasks.length}`);
+  const paint = () => {
+    $$("#wdPage .wd-w").forEach(el => { const s = F[el.dataset.word] || {}; el.style.fontWeight = s.bold ? "900" : ""; el.style.fontStyle = s.italic ? "italic" : ""; el.style.textDecoration = s.underline ? "underline" : ""; el.style.color = s.colour || ""; el.style.fontSize = s.grow ? "1.5em" : ""; el.classList.toggle("sel", el.dataset.word === sel); });
+    $("#wdTP").style.textAlign = f("title").centre ? "center" : "";
+  };
+  const check = () => { if (si < tasks.length && tasks[si].ok()) { SFX.good(); si++; if (si < tasks.length) setTimeout(ask, 450); else setTimeout(() => actDone("Your page looks beautiful!"), 600); return true; } return false; };
+  S.onclick = e => {
+    if (si >= tasks.length) return;
+    const tb = e.target.closest("[data-tab]"); if (tb) { SFX.tap(); wdTab(tb.dataset.tab); return; }
+    const pal = e.target.closest("[data-col]"); if (pal) { if (sel) { f(sel).colour = pal.dataset.col; paint(); } $("#wdPal").remove(); if (!check()) { SFX.tap(); if (si < tasks.length && sel !== tasks[si].w) say(tasks[si].t); else say("Pick the red colour."); } return; }
+    const w = e.target.closest(".wd-w");
+    if (w) { const now = performance.now(), dbl = last.w === w.dataset.word && now - last.t < 550; last = { w: w.dataset.word, t: now };
+      if (dbl) { sel = w.dataset.word; SFX.tap(); paint(); if (sel !== tasks[si].w) say(`You selected ${w.textContent}. ${tasks[si].t}`); } else { SFX.tap(); } return; }
+    const b = e.target.closest("[data-b]"); if (!b) return; const k = b.dataset.b;
+    if (!["bold", "italic", "underline", "grow", "colour", "centre"].includes(k)) { SFX.oops(); say(tasks[si].t); return; }
+    if (!sel) { SFX.oops(); say("First double-click the word to select it. It turns blue."); return; }
+    if (k === "colour") { $$("#wdPal").forEach(x => x.remove()); b.insertAdjacentHTML("afterend", `<div class="wd-pal" id="wdPal">${["#E53935", "#1E88E5", "#43A047", "#1D1B45"].map(c => `<button data-col="${c}" style="background:${c}" aria-label="colour"></button>`).join("")}</div>`); say("Pick a colour."); return; }
+    if (k === "centre") { if (sel !== "title") { SFX.oops(); say("Select the title first."); return; } f("title").centre = !f("title").centre; }
+    else { const map = { bold: "bold", italic: "italic", underline: "underline", grow: "grow" }; f(sel)[map[k]] = !f(sel)[map[k]]; }
+    paint(); if (!check()) { SFX.tap(); say(sel !== tasks[si].w ? `That changed ${sel === "title" ? "the title" : sel}. ${tasks[si].t}` : tasks[si].t); }
+  };
   ask();
 }
 
