@@ -747,6 +747,52 @@ canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-
 .pmain .pslide.big { width: min(100cqw, 100cqh * 16 / 9); max-height: none; font-size: clamp(12px, 9cqh, 34px); }
 .lpart .tag { pointer-events: none; } .phonescene .lpart .tag { font-size: 10px; }
 .qans .btn { overflow-wrap: anywhere; }
+/* ---- Primary 5 activities ---- */
+.kdoc { position: absolute; left: 3%; right: 3%; top: 3%; height: 30%; }
+.kpage { position: absolute; inset: 0; background: #fff; border: 3px solid var(--ink); border-radius: 12px; padding: 10px 14px; font-size: clamp(15px, 3cqh, 26px); color: #1D1B45; overflow: hidden; }
+.ksel { background: #9EC5FF; }
+.kbd.kshort { height: 60%; } .kbd.kshort button { max-width: 9.5%; } .kbd.kshort button.wide { max-width: 18%; } .kbd button.down { background: #9EC5FF; transform: translateY(2px); }
+.netbox { position: absolute; inset: 2%; background: #F4F6FB; border-radius: 12px; }
+.netsvg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.netsvg line { stroke: #1E88E5; stroke-width: 1.2; vector-effect: non-scaling-stroke; stroke-width: 4px; stroke-linecap: round; }
+.netsvg line.busline { stroke: #1D1B45; stroke-width: 9px; }
+.netnode { position: absolute; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; background: #fff; border: 3px solid var(--ink); border-radius: 12px; padding: 2px 6px; color: #1D1B45; font-weight: 800; font-size: clamp(10px, 1.9cqh, 15px); z-index: 2; }
+.netnode b { font-size: clamp(20px, 4.6cqh, 40px); line-height: 1.1; } .netnode.sel { background: #FFF1B8; outline: 4px solid var(--sun); }
+.netbus { position: absolute; left: 50%; bottom: 0; transform: translate(-50%, 30%); z-index: 2; background: #1D1B45; color: #fff; border: 0; border-radius: 8px; padding: 2px 12px; font-weight: 800; font-size: clamp(11px, 2cqh, 16px); }
+.netundo { position: absolute; right: 6px; top: 6px; z-index: 3; padding: 2px 8px; font-size: clamp(11px, 2cqh, 15px); }
+.br, .se, .em, .ht { position: absolute; inset: 2.5%; display: flex; flex-direction: column; border: 3px solid var(--ink); border-radius: 12px; overflow: hidden; background: #fff; color: #1D1B45; font-size: clamp(12px, 2.1cqh, 18px); }
+.brtabs { display: flex; gap: 3px; background: #DADDE8; padding: 4px 4px 0; } .brtab { border: 0; border-radius: 8px 8px 0 0; background: #EEF0F6; color: #1D1B45; padding: 4px 10px; font-weight: 700; font-size: .9em; max-width: 45%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.brtab.on { background: #fff; } .brplus { border: 0; background: transparent; font-size: 1.2em; font-weight: 800; color: #1D1B45; }
+.brbar { display: flex; gap: 4px; align-items: center; padding: 4px; border-bottom: 2px solid #E4E7FA; } .brbar > button { border: 0; background: #F4F6FB; border-radius: 8px; padding: 3px 6px; font-size: 1em; }
+.brbar .braddr { flex: 1; min-width: 0; text-align: left; background: #F1F3F8; border: 2px solid #C5CAE0; border-radius: 999px; padding: 3px 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #1D1B45; }
+.brbar .braddr i { color: #888; } .brbar .spin { animation: spin .6s linear; } @keyframes spin { to { transform: rotate(360deg); } }
+.brsug { display: flex; flex-direction: column; border-bottom: 2px solid #E4E7FA; } .brsug button { text-align: left; border: 0; border-bottom: 1px solid #EEE; background: #fff; padding: 6px 12px; font-size: 1em; color: #1D1B45; }
+.brbody { flex: 1; min-height: 0; overflow: auto; padding: 10px; } .brnew { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: #888; } .brnew b { font-size: 3em; }
+.brpg h3 { margin: 0 0 6px; } .brpg p { margin: 0 0 8px; } .brlink { border: 0; background: none; color: #1A0DAB; text-decoration: underline; font-size: 1em; font-weight: 700; padding: 4px 0; margin-right: 10px; }
+.sehead { padding: 6px 10px; background: #E3ECFF; display: flex; flex-direction: column; gap: 2px; } .sehead b { color: #3D5AFE; font-size: 1.2em; }
+.sebox { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; padding: 6px 10px; border-bottom: 2px solid #E4E7FA; } .sebox > span { background: #FFF1B8; border-radius: 6px; padding: 1px 6px; font-weight: 700; } .sebox i { color: #888; flex: 1; } .sebox .btn { padding: 2px 10px; margin-left: auto; } .sebox .btn + .btn { margin-left: 0; }
+.sechips { flex: 1; display: flex; flex-wrap: wrap; gap: 6px; align-content: center; justify-content: center; padding: 8px; } .sechips .btn { padding: 4px 12px; } .sechips .btn:disabled { opacity: .35; }
+.seres { flex: 1; overflow: auto; display: flex; flex-direction: column; gap: 6px; padding: 8px; }
+.seitem { display: flex; gap: 8px; align-items: center; text-align: left; border: 2px solid #C5CAE0; border-radius: 10px; background: #fff; padding: 6px 10px; color: #1A0DAB; font-weight: 700; font-size: 1em; } .seitem b { font-size: 1.4em; } .seitem.bad { background: #FFE1DE; border-color: var(--oops); animation: shake .4s; }
+.em { flex-direction: row; } .emside { flex: none; width: 30%; display: flex; flex-direction: column; gap: 4px; padding: 6px; background: #F4F6FB; }
+.emside button { text-align: left; border: 2px solid transparent; border-radius: 8px; background: transparent; color: #1D1B45; font-weight: 700; padding: 6px; font-size: 1em; } .emside .btn { text-align: center; padding: 4px; } .emside button.on { border-color: #42A5F5; background: #E3F2FD; }
+.emmain { flex: 1; min-width: 0; display: flex; flex-direction: column; overflow: auto; }
+.emlist { display: flex; flex-direction: column; } .emitem { display: flex; flex-direction: column; text-align: left; border: 0; border-bottom: 1px solid #E4E7FA; background: #fff; padding: 8px 10px; color: #1D1B45; font-size: 1em; } .emitem span { color: var(--soft); font-size: .9em; } .emlist i { padding: 10px; color: #888; }
+.emread, .emwrite { padding: 8px 10px; display: flex; flex-direction: column; gap: 6px; } .emread small { color: var(--soft); }
+.emacts { display: flex; gap: 6px; flex-wrap: wrap; } .emacts .btn { padding: 3px 12px; }
+.emfld { text-align: left; border: 0; border-bottom: 2px solid #E4E7FA; background: #fff; padding: 4px 2px; font-size: 1em; color: #1D1B45; }
+.embody { min-height: 3em; border: 2px solid #E4E7FA; border-radius: 8px; padding: 6px; } .embody i { color: #888; } .ematt { margin-top: 6px; background: #FFF8E1; border-radius: 6px; padding: 2px 6px; display: inline-block; }
+.emchips { display: flex; flex-direction: column; gap: 4px; } .emchips .btn { padding: 3px 10px; text-align: left; }
+.ht { flex-direction: column; } .htleft { flex: 1.2; min-height: 0; display: flex; flex-direction: column; } .htright { flex: 1; min-height: 0; display: flex; flex-direction: column; border-top: 3px solid var(--ink); }
+.ht textarea { flex: 1; min-height: 0; resize: none; border: 0; background: var(--code); color: var(--codeink); font-family: var(--mono); font-size: clamp(12px, 2cqh, 16px); line-height: 1.45; padding: 6px 8px; user-select: text; -webkit-user-select: text; touch-action: auto; }
+.httags { display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; background: #F4F6FB; } .httags .btn { padding: 2px 8px; font-family: var(--mono); font-size: .9em; }
+.httab { background: #DADDE8; padding: 3px 10px; font-weight: 700; font-size: .9em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.htpage { flex: 1; min-height: 0; overflow: auto; padding: 6px 10px; font-family: Georgia, "Times New Roman", serif; color: #111; } .htpage h1 { font-size: 1.6em; margin: .2em 0; } .htpage h2 { font-size: 1.3em; margin: .2em 0; } .htpage p { margin: .3em 0; } .htpage ul { margin: .3em 0; padding-left: 1.4em; }
+.hcode { font-family: var(--mono); background: var(--code); color: #7FDBFF; padding: 2px 8px; border-radius: 6px; white-space: pre; font-size: clamp(14px, 3cqh, 26px); }
+.hcol { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; } .qvis .hcode { font-size: clamp(16px, 3.4cqh, 30px); }
+@container app (min-width: 760px) and (orientation: landscape) { .ht { flex-direction: row; } .htright { border-top: 0; border-left: 3px solid var(--ink); } }
+#s-act .mtip .ttxt { -webkit-line-clamp: 4; }
+.lvis .hcode { font-size: clamp(11px, min(3cqh, 3.5cqw), 26px); max-width: 100%; white-space: pre-wrap; overflow-wrap: anywhere; } .lvis .hcol { max-width: 100%; }
 
 </style>
 </head>
@@ -4780,6 +4826,248 @@ const ICT_P4 = { y: 4, title: "Primary 4", subj: "Basic Digital Literacy", terms
 ] };
 ICT_YEARS[4] = ICT_P4;
 
+/* ---------------- PRIMARY 5: Basic Digital Literacy ---------------- */
+const P5_SC = [{ k: "C", job: "copy", what: "copies what you selected" }, { k: "V", job: "paste", what: "pastes what you copied or cut" }, { k: "X", job: "cut", what: "cuts what you selected, to move it" },
+  { k: "Z", job: "undo", what: "undoes your last change" }, { k: "S", job: "save", what: "saves your work" }, { k: "P", job: "print", what: "prints your work" }, { k: "A", job: "select all", what: "selects everything" },
+  { k: "F", job: "find", what: "finds a word on the page" }, { k: "Y", job: "redo", what: "redoes what you undid" }];
+const P5_DRIVES = [["Local Disk (C:)", "the hard disk inside the computer"], ["Flash drive (E:)", "a flash drive plugged into a USB port"], ["DVD drive (D:)", "a disc drive for CDs and DVDs"]];
+const P5_TERMS = [{ t: "website", d: "a group of web pages under one name" }, { t: "web page", d: "one page that you see in a browser" }, { t: "URL", d: "the address of a web page" }, { t: "browser", d: "an app for visiting websites" },
+  { t: "download", d: "copying something from the internet to your device" }, { t: "upload", d: "sending something from your device to the internet" }, { t: "ISP", d: "the company that connects you to the internet" }, { t: "Wi-Fi", d: "a way to connect to a network without cables" },
+  { t: "link", d: "words or a picture you click to go to another page" }, { t: "search engine", d: "a website that finds information for you" }];
+const P5_NET = [{ n: "LAN", full: "Local Area Network", d: "connects computers in one building, like a school lab" }, { n: "WAN", full: "Wide Area Network", d: "connects computers across cities and countries" }, { n: "PAN", full: "Personal Area Network", d: "connects devices close to one person, like a phone and earbuds" }];
+const P5_NDEV = [{ d: "router", job: "connects your network to the internet and sends data the right way" }, { d: "switch", job: "joins many computers together in a LAN" }, { d: "network cable", job: "carries data between computers and the switch" }, { d: "modem", job: "turns the internet signal from your ISP into data the computer can use" }, { d: "Wi-Fi access point", job: "lets devices join the network without cables" }];
+const P5_BR = ["Google Chrome", "Microsoft Edge", "Mozilla Firefox", "Safari", "Opera"];
+const P5_BRP = [{ p: "address bar", job: "where you type the address (URL) of a website" }, { p: "tab", job: "lets you open many pages in one window" }, { p: "back button", job: "takes you to the page you saw before" }, { p: "refresh button", job: "loads the page again" }, { p: "bookmark (star)", job: "saves a page so you can find it again quickly" }, { p: "home button", job: "takes you to your start page" }];
+const P5_SE = ["Google", "Bing", "Yahoo", "DuckDuckGo"];
+const P5_EM = [{ p: "To", job: "the email address of the person you are writing to" }, { p: "Cc", job: "another person who gets a copy" }, { p: "Subject", job: "a short title that says what the email is about" }, { p: "Attach (📎)", job: "adds a file to the email" }, { p: "Send", job: "sends the email" }, { p: "Reply", job: "answers the person who wrote to you" }, { p: "Forward", job: "sends an email you got on to someone else" }, { p: "Inbox", job: "where emails you receive arrive" }];
+const P5_SAFE = ["Asking a parent before joining a new website", "Using a strong password", "Telling a trusted adult about a scary message", "Checking for https and a padlock 🔒 before typing a password", "Keeping your home address private", "Logging out of a shared computer"];
+const P5_UNSAFE = ["Meeting an online friend alone", "Sharing your school name and photo with strangers", "Clicking a 'You won!' pop-up", "Telling someone your password", "Downloading apps from strange websites", "Posting your phone number publicly"];
+const P5_OK = ["Writing the answer in your own words", "Quoting one sentence and naming the website", "Using a picture marked free to use", "Asking the owner before using their photo", "Listing your sources at the end of a project"];
+const P5_NOTOK = ["Copying a whole essay and saying you wrote it", "Downloading a film from an illegal site", "Using a classmate's drawing as your own", "Selling copies of someone else's song", "Copying a website's page without naming it"];
+const P5_CBF = [{ f: "harassment", d: "sending mean messages again and again" }, { f: "exclusion", d: "leaving someone out of a group on purpose" }, { f: "impersonation", d: "pretending to be someone else online" }, { f: "outing", d: "sharing someone's secret or private photo" }, { f: "trolling", d: "posting rude things to upset people" }];
+const P5_TAGS = [{ t: "<h1>", d: "the biggest heading" }, { t: "<p>", d: "a paragraph of text" }, { t: "<b>", d: "bold text" }, { t: "<i>", d: "italic text" }, { t: "<title>", d: "the title shown on the browser tab" }, { t: "<body>", d: "everything you see on the page" }, { t: "<img>", d: "a picture" }, { t: "<a>", d: "a link to another page" }, { t: "<ul>", d: "a list with bullet points" }];
+const P5_LANG = [{ l: "Python", u: "data science, AI and school coding" }, { l: "JavaScript", u: "making websites interactive" }, { l: "HTML", u: "building the structure of web pages (it is a markup language)" }, { l: "Scratch", u: "learning to code with blocks" }, { l: "Java", u: "Android apps and big business programs" }, { l: "Swift", u: "iPhone apps" }];
+const P5_NEX = [["the computers in your school lab", "LAN"], ["a bank joining its branches in Lagos, Kano and Enugu", "WAN"], ["a phone and wireless earbuds", "PAN"], ["the internet", "WAN"], ["the computers in one office", "LAN"], ["a smartwatch linked to a phone", "PAN"], ["computers in one hospital building", "LAN"], ["offices of one company in different countries", "WAN"]];
+const P5_GOOD = ["an encyclopedia", "a .gov.ng government website", "a .edu.ng school website", "a well-known news website", "a library book"];
+const P5_BAD = ["a pop-up advert", "a 'WIN A FREE PHONE' page", "a stranger's comment", "a page with no author and many spelling mistakes", "a chain message on WhatsApp"];
+const P5_KW = [["How high is Zuma Rock?", "Zuma Rock height"], ["What is the capital of Nigeria?", "capital of Nigeria"], ["How many states does Nigeria have?", "Nigeria number of states"], ["What do elephants eat?", "elephants food"], ["When did Nigeria become independent?", "Nigeria independence date"], ["How tall is the tallest building in Lagos?", "tallest building Lagos height"]];
+const hcode = t => `<code class="hcode">${esc(t)}</code>`;
+
+const ICT_P5 = { y: 5, title: "Primary 5", subj: "Basic Digital Literacy", terms: [
+  { nm: "First term", sub: "Files, shortcuts and networks", topics: [
+    { id: "i5-files", nm: "Copy, cut and paste files", icon: "📋", desc: "Drives, folders, copying and moving files",
+      act: { type: "files", mode: "copy", nm: "Copy and move files" },
+      learn: [{ v: "💽💾", t: "A computer stores files on drives. Each drive has a letter: C: is usually the hard disk inside, and a flash drive might be E:." },
+        { v: "📋", t: "COPY makes a second copy of a file. The file stays where it was AND appears in the new place." },
+        { v: "✂️", t: "CUT moves a file. It leaves the old place and goes to the new place when you paste." },
+        { v: "📌", t: "PASTE puts what you copied or cut into the folder you are in. Copied things wait on the clipboard until you paste." },
+        { v: "⌨️", t: "Fast keys: Ctrl + C copies, Ctrl + X cuts and Ctrl + V pastes. Always keep a copy of important work on a flash drive or in the cloud." }],
+      wow: { v: "☁️", t: "Digital superpower: a backup copy means a broken computer can never take your project away!" },
+      gens: [
+        fromFacts(P5_SC.slice(0, 3), s => tq(`Which shortcut is used to ${s.job}?`, `Ctrl + ${s.k}`, P5_SC.filter(x => x !== s).map(x => `Ctrl + ${x.k}`), { vis: em("⌨️"), why: `Ctrl + ${s.k} ${s.what}.` })),
+        fromFacts(P5_DRIVES, ([d, w]) => tq(`On many computers, ${d} is…`, w, P5_DRIVES.filter(x => x[0] !== d).map(x => x[1]).concat(["the printer", "the monitor"]), { why: `${d} is ${w}.` })),
+        facts([["After you COPY a file and paste it, the file is…", "in both places", ["only in the new place", "deleted", "printed"]], ["After you CUT a file and paste it, the file is…", "only in the new place", ["in both places", "deleted forever", "on the printer"]],
+          ["Copied things wait on the…", "clipboard", ["desktop", "monitor", "keyboard"]], ["A spare copy of important files is called a…", "backup", ["virus", "cursor", "folder"]],
+          ["The hard disk inside most computers is drive…", "C:", ["E:", "Z:", "P:"]], ["To move a file to a new folder, we use…", "cut and paste", ["copy and delete the copy", "print", "rename"]],
+          ["Where can you keep a backup?", "on a flash drive or in the cloud", ["in the Recycle Bin", "on the keyboard", "in the printer"]], ["Before pulling out a flash drive, you should…", "eject it safely", ["shake it", "rename it", "turn off the monitor"]]]),
+        tfs([["Copy leaves the file in the old place too.", true], ["Cut makes two copies.", false], ["Ctrl + V pastes.", true], ["A backup protects your work.", true]]),
+      ] },
+    { id: "i5-keys", nm: "Keyboard shortcuts", icon: "⌨️", desc: "Ctrl + C, V, X, Z, S, P and more",
+      act: { type: "shortcut", nm: "Press the shortcut" },
+      learn: [{ h: `<div class="keyrow">${keycap("Ctrl")}${keycap("C")}</div>`, t: "A keyboard shortcut is a quick way to give an order. Hold Ctrl, tap a letter, then let go." },
+        { h: `<div class="keyrow">${keycap("Ctrl")}${keycap("C")}${keycap("X")}${keycap("V")}</div>`, t: "Ctrl + C copies. Ctrl + X cuts. Ctrl + V pastes. They sit side by side at the bottom of the keyboard." },
+        { h: `<div class="keyrow">${keycap("Ctrl")}${keycap("Z")}${keycap("Y")}</div>`, t: "Ctrl + Z undoes a mistake. Ctrl + Y redoes it. Undo is a coder's best friend!" },
+        { h: `<div class="keyrow">${keycap("Ctrl")}${keycap("S")}${keycap("P")}${keycap("A")}</div>`, t: "Ctrl + S saves. Ctrl + P prints. Ctrl + A selects all. Ctrl + F finds a word." },
+        { h: `<div class="keyrow">${keycap("Alt")}${keycap("Tab ⇥")}</div>`, t: "Alt + Tab switches between open windows. On a Mac, use the Command ⌘ key instead of Ctrl." }],
+      wow: { v: "⚡", t: "Digital superpower: shortcuts can make you twice as fast at the computer!" },
+      gens: [
+        fromFacts(P5_SC, s => tq(`What does Ctrl + ${s.k} do?`, `It ${s.what}`, P5_SC.filter(x => x !== s).map(x => `It ${x.what}`), { vis: `<div class="keyrow">${keycap("Ctrl")}${keycap(s.k)}</div>`, why: `Ctrl + ${s.k} ${s.what}.` })),
+        fromFacts(P5_SC, s => tq(`Which shortcut ${s.what}?`, `Ctrl + ${s.k}`, P5_SC.filter(x => x !== s).map(x => `Ctrl + ${x.k}`), { why: `Ctrl + ${s.k} ${s.what}.` })),
+        facts([["Which keys switch between open windows?", "Alt + Tab", ["Ctrl + P", "Shift + A", "Esc + F1"]], ["On a Mac, Ctrl is often replaced by…", "Command ⌘", ["Shift", "Caps Lock", "Space"]],
+          ["You deleted a paragraph by mistake. Press…", "Ctrl + Z", ["Ctrl + P", "Ctrl + A", "Ctrl + F"]], ["A keyboard shortcut is…", "a quick way to give an order with keys", ["a short keyboard", "a broken key", "a kind of mouse"]]]),
+        tfs([["Ctrl + S saves your work.", true], ["Ctrl + P pastes.", false, "No. Ctrl + P prints. Ctrl + V pastes."], ["Ctrl + A selects all.", true], ["Ctrl + Z undoes a mistake.", true]]),
+      ] },
+    { id: "i5-internet", nm: "The internet", icon: "🌐", desc: "What it is, its history and its words",
+      act: { type: "match", nm: "Internet words", rounds: [
+        { la: "Word", lb: "Meaning", pairs: P5_TERMS.slice(0, 5).map(x => [x.t, x.d]) }, { la: "Word", lb: "Meaning", pairs: P5_TERMS.slice(5, 10).map(x => [x.t, x.d]) }], done: "You know the words of the internet!" },
+      learn: [{ v: "🌐", t: "The internet is a giant network that joins millions of computers and phones all over the world, so they can share information." },
+        { v: "🇺🇸1969", t: "It began as ARPANET in the USA in 1969, joining a few university computers." },
+        { v: "🕸️", t: "In 1989, Tim Berners-Lee, working at CERN, invented the World Wide Web: pages joined by links. It opened to everyone in 1991." },
+        { v: "📧1971", t: "In 1971, Ray Tomlinson sent the first network email and chose the @ sign for email addresses." },
+        { v: "🔗", t: "Important words: a website, a web page, a URL (web address), a browser, a link, download, upload, and an ISP, the company that connects you." }],
+      wow: { v: "🛰️", t: "Digital superpower: undersea cables carry the internet across the oceans to Nigeria's coast!" },
+      gens: [
+        fromFacts(P5_TERMS, x => tq(`Which internet word means: ${x.d}?`, x.t, P5_TERMS.filter(y => y !== x).map(y => y.t), { why: `${x.t}: ${x.d}.` })),
+        fromFacts(P5_TERMS, x => tq(`What does "${x.t}" mean?`, x.d, P5_TERMS.filter(y => y !== x).map(y => y.d), { why: `${x.t}: ${x.d}.` })),
+        facts([["The internet began as…", "ARPANET", ["Facebook", "Google", "Windows"]], ["ARPANET started in…", "1969", ["1999", "2010", "1850"]], ["Who invented the World Wide Web?", "Tim Berners-Lee", ["Bill Gates", "Charles Babbage", "Ray Tomlinson"]],
+          ["Who sent the first network email?", "Ray Tomlinson", ["Tim Berners-Lee", "Ada Lovelace", "Guido van Rossum"]], ["The first network email was sent in…", "1971", ["1990", "2005", "1800"]], ["Which sign is in every email address?", "@", ["#", "%", "&"]],
+          ["The web was invented at…", "CERN", ["NASA", "a bakery", "the post office"]], ["The internet is a…", "giant network of computers", ["single computer", "kind of printer", "TV channel"]]]),
+        tfs([["The internet joins computers all over the world.", true], ["The World Wide Web opened to everyone in 1991.", true], ["Downloading means sending a file to the internet.", false, "No. That is uploading. Downloading brings a file to your device."], ["A URL is a web address.", true]]),
+      ] },
+    { id: "i5-network", nm: "Computer networks", icon: "🔌", desc: "LAN, WAN, routers and switches",
+      act: { type: "network", mode: "connect", nm: "Build a school network" },
+      learn: [{ v: "🖥️🔗🖥️", t: "A network is two or more computers joined together so they can share files, printers and the internet." },
+        { v: "🏫", t: "A LAN, a Local Area Network, joins computers in one building, like your school's computer lab." },
+        { v: "🌍", t: "A WAN, a Wide Area Network, joins computers across cities and countries. The internet is the biggest WAN of all." },
+        { v: "📦➡️", t: "A switch joins the computers in a LAN. A router connects the network to the internet. Cables or Wi-Fi carry the data." },
+        { v: "🖨️👫", t: "Why network? To share one printer, share files, play and learn together, and all use one internet connection." }],
+      wow: { v: "📡", t: "Digital superpower: Wi-Fi sends data through the air using radio waves!" },
+      gens: [
+        fromFacts(P5_NET, x => tq(`Which network ${x.d}?`, x.n, P5_NET.filter(y => y !== x).map(y => y.n).concat(["CPU", "USB"]), { why: `A ${x.n} (${x.full}) ${x.d}.` })),
+        fromFacts(P5_NET, x => tq(`${x.n} stands for…`, x.full, P5_NET.filter(y => y !== x).map(y => y.full).concat(["Large Access Number", "Wireless Area Name"]), { why: `${x.n} means ${x.full}.` })),
+        fromFacts(P5_NEX, ([e, n]) => tq(`What type of network is ${e}?`, n, ["LAN", "WAN", "PAN", "USB", "CPU"].filter(x => x !== n), { vis: em("🔌"), why: `${e[0].toUpperCase() + e.slice(1)} is a ${n}.` })),
+        () => { const n = pick(["LAN", "WAN", "PAN"]), L = P5_NEX.filter(x => x[1] === n); return tq(`Which is an example of a ${n}?`, pick(L)[0], P5_NEX.filter(x => x[1] !== n).map(x => x[0]), { why: `That is a ${n}.` }); },
+        fromFacts(P5_NDEV, x => tq(`Which network device ${x.job}?`, `a ${x.d}`, P5_NDEV.filter(y => y !== x).map(y => `a ${y.d}`), { vis: em("🔌"), why: `A ${x.d} ${x.job}.` })),
+        facts([["Your school computer lab is a…", "LAN", ["WAN", "printer", "browser"]], ["The biggest WAN is…", "the internet", ["a school lab", "a phone", "a mouse"]], ["One good reason for a network is to…", "share one printer", ["make computers heavier", "stop the internet", "break files"]],
+          ["Wi-Fi sends data using…", "radio waves", ["water", "sound you can hear", "smoke signals"]]]),
+        tfs([["A network joins two or more computers.", true], ["A router connects a network to the internet.", true], ["A LAN covers many countries.", false], ["Networks let computers share files.", true]]),
+      ] },
+  ] },
+  { nm: "Second term", sub: "Using the internet", topics: [
+    { id: "i5-browser", nm: "Web browsers", icon: "🧭", desc: "Address bar, tabs, back, refresh and bookmarks",
+      act: { type: "browser", nm: "Browse the web" },
+      learn: [{ v: "🧭", t: "A web browser is an app for visiting websites. Examples: Google Chrome, Microsoft Edge, Mozilla Firefox, Safari and Opera." },
+        { v: "🔤", t: "Type a website's address, its URL, in the address bar. For example: www.example.ng. The .ng ending is Nigeria's country domain." },
+        { v: "⬅️🔄🏠", t: "Back takes you to the page before. Refresh loads the page again. Home goes to your start page." },
+        { v: "🗂️⭐", t: "Tabs let you open many pages at once. A bookmark (the star) saves a page so you can find it again." },
+        { v: "🔒", t: "A padlock and https at the start of the address mean the connection is private. Look for it before typing a password." }],
+      wow: { v: "🇳🇬", t: "Digital superpower: websites ending in .gov.ng are run by the Nigerian government, and .edu.ng by schools!" },
+      gens: [
+        fromFacts(P5_BRP, x => tq(`Which part of a browser ${x.job}?`, `the ${x.p}`, P5_BRP.filter(y => y !== x).map(y => `the ${y.p}`), { vis: em("🧭"), why: `The ${x.p} ${x.job}.` })),
+        () => tq("Which one is a web browser?", pick(P5_BR), ["Microsoft Word", "Paint", "Excel", "Calculator", "File Explorer"], { why: "It is a web browser." }),
+        facts([["Websites ending in .ng are from…", "Nigeria", ["Norway", "Niger only", "the moon"]], ["A padlock 🔒 in the address bar means…", "the connection is private (https)", ["the site is closed", "the computer is locked", "you must pay"]],
+          ["Which ending belongs to a Nigerian government website?", ".gov.ng", [".com.zz", ".fun", ".xyz"]], ["To see many pages at once in one window, open…", "tabs", ["folders", "printers", "drives"]],
+          ["The address of a web page is called a…", "URL", ["PIN", "CPU", "USB"]], ["What does https mean for you?", "a safer, private connection", ["a faster printer", "free data", "a virus"]]]),
+        tfs([["Chrome is a web browser.", true], ["The back button closes the computer.", false], ["A bookmark saves a page to find later.", true], ["You should check for the padlock before typing a password.", true]]),
+      ] },
+    { id: "i5-search", nm: "Search engines", icon: "🔎", desc: "Good keywords and good sources",
+      act: { type: "search", nm: "Search like a pro" },
+      learn: [{ v: "🔎", t: "A search engine is a website that finds information for you. Examples: Google, Bing, Yahoo and DuckDuckGo." },
+        { v: "🗝️", t: "Use keywords: the most important words. For 'How high is Zuma Rock?' search: Zuma Rock height." },
+        { v: "\"…\"", t: "Put a phrase in quote marks to find those exact words together, like \"Olumo Rock\"." },
+        { v: "🧐", t: "Not every result is true! Trust well-known sources: encyclopedias, government (.gov.ng) and school (.edu.ng) sites. Be careful with adverts and random blogs." },
+        { v: "✅✅", t: "Check important facts on two good websites. Write the answer in your own words, and name your source." }],
+      wow: { v: "⚡", t: "Digital superpower: a search engine looks through billions of web pages in less than a second!" },
+      gens: [
+        () => tq("Which source is the most trustworthy?", pick(P5_GOOD), P5_BAD, { vis: em("🧐"), why: "Well-known, checked sources are the most trustworthy." }),
+        () => tq("Which source should you be MOST careful with?", pick(P5_BAD), P5_GOOD, { vis: em("⚠️"), why: "It may be false, a trick or an advert." }),
+        fromFacts(P5_KW, ([q, k]) => tq(`Best keywords for "${q}"`, k, P5_KW.filter(x => x[1] !== k).map(x => x[1]).concat(["please tell me", "what is how"]), { vis: em("🗝️"), why: `Use the important words: ${k}.` })),
+        () => tq("Which one is a search engine?", pick(P5_SE), ["Microsoft Word", "WhatsApp", "Paint", "Excel"], { vis: em("🔎"), why: "It is a search engine." }),
+        facts([["Best keywords for 'How high is Zuma Rock?'", "Zuma Rock height", ["how", "please tell me something", "rock"]], ["Best keywords for 'What is the capital of Nigeria?'", "capital of Nigeria", ["what is", "the", "city please"]],
+          ["Which source is most trustworthy?", "an encyclopedia", ["a pop-up advert", "a random comment", "a 'WIN A PHONE' page"]], ["To find exact words together, put them in…", "quote marks", ["brackets", "capital letters", "colours"]],
+          ["Before using an important fact, you should…", "check it on another good website", ["believe the first result", "copy every word", "ask a stranger online"]], ["A search engine is a…", "website that finds information", ["printer", "keyboard", "folder"]],
+          ["Which website ending is run by Nigerian schools?", ".edu.ng", [".win", ".fun", ".zip"]], ["How high is Zuma Rock above the land around it?", "about 300 metres", ["about 3 metres", "about 30 kilometres", "about 3,000 kilometres"]],
+          ["Zuma Rock appears on the…", "₦100 note", ["₦5 coin", "₦1000 note", "₦20 note"]], ["When you use a fact in a project, you should…", "name your source", ["hide where it came from", "say you invented it", "copy a whole page"]]]),
+        tfs([["Every website tells the truth.", false], ["Keywords make searching faster.", true], ["Adverts are always the best source.", false], ["Checking two good sources is wise.", true]]),
+      ] },
+    { id: "i5-email", nm: "Electronic mail", icon: "📧", desc: "Addresses, compose, attach, send and reply",
+      act: { type: "email", nm: "Send an email" },
+      learn: [{ v: "📧", t: "Email (electronic mail) sends messages and files from one person to another over the internet." },
+        { v: "@", t: "An email address has a name, the @ sign, and a domain: like ada.obi@myschool.ng. Every address is different." },
+        { v: "✏️", t: "To write an email: click Compose (or New), fill in To, write a Subject, type the message, then click Send." },
+        { v: "📎", t: "Attach adds a file, like your project. Cc sends a copy to someone else." },
+        { v: "↩️➡️", t: "Reply answers the sender. Forward sends the email on to someone new. New emails arrive in your Inbox." },
+        { v: "🙋🏾", t: "Be polite: greet the person, use a clear subject, and sign your name. Never open attachments from strangers." }],
+      wow: { v: "🚀", t: "Digital superpower: an email can reach a friend on the other side of the world in a few seconds!" },
+      gens: [
+        fromFacts(P5_EM, x => tq(`In an email, what is "${x.p}"?`, x.job, P5_EM.filter(y => y !== x).map(y => y.job), { vis: em("📧"), why: `${x.p}: ${x.job}.` })),
+        fromFacts(P5_EM, x => tq(`Which button or box is for ${x.job}?`, x.p, P5_EM.filter(y => y !== x).map(y => y.p), { why: `${x.p}: ${x.job}.` })),
+        () => { const good = pick(["ada.obi@myschool.ng", "tunde2026@mail.ng", "mrs.okafor@myschool.ng"]); return tq("Which is a real email address?", good, ["ada.obi.myschool.ng", "tunde@", "@mail.ng", "mrs okafor myschool"], { why: "It has a name, the @ sign, and a domain." }); },
+        facts([["Every email address has the sign…", "@", ["#", "!", "$"]], ["Where do emails you receive go?", "the Inbox", ["the Recycle Bin", "the printer", "the clipboard"]],
+          ["A good subject line is…", "short and clear", ["empty", "very long", "only emojis"]], ["An attachment from a stranger should be…", "left unopened", ["opened at once", "forwarded to everyone", "printed"]]]),
+        tfs([["Email can carry files.", true], ["Reply sends the email to a stranger.", false], ["You should greet people politely in emails.", true], ["Every email address is the same.", false]]),
+      ] },
+    { id: "i5-safety", nm: "Internet safety", icon: "🛡️", desc: "Online threats and safe habits",
+      act: { type: "sort", nm: "Safe or unsafe?", A: () => P5_SAFE, B: () => P5_UNSAFE, la: "Safe ✅", lb: "Unsafe ⛔", ia: "🛡️", ib: "⚠️", ask: t => "Is this safe or unsafe online?", wrong: c => c.a ? "This is a safe habit." : "This is unsafe! It can put you in danger.", done: "You know how to stay safe online!" },
+      learn: [{ v: "🛡️", t: "Internet safety means using the internet in a way that protects you, your information and your devices." },
+        { v: "⚠️", t: "Online threats include scams, phishing, viruses, strangers who lie about who they are, and people who bully." },
+        { v: "🤐", t: "Keep private information private: your home address, school, phone number, passwords and photos of you." },
+        { v: "🔒🧐", t: "Use strong passwords, look for https and the padlock, log out of shared computers, and download only from official stores." },
+        { v: "🙋🏾‍♀️", t: "If anything online makes you scared or uncomfortable, stop and tell a trusted adult. It is never your fault." }],
+      wow: { v: "🦸🏾", t: "Digital superpower: smart, safe users are the internet's real superheroes!" },
+      gens: [
+        () => { const s = Math.random() < .5, t = pick(s ? P5_SAFE : P5_UNSAFE); return tq(`"${t}" Is this safe?`, s ? "Yes, it is safe" : "No, it is unsafe", [s ? "No, it is unsafe" : "Yes, it is safe", "Only at night", "Only on Mondays"], { why: s ? "It is a safe habit." : "It can put you in danger." }); },
+        () => tq("Which one is SAFE online?", pick(P5_SAFE), P5_UNSAFE, { vis: em("🛡️"), why: "That is a safe habit." }),
+        () => tq("Which one is UNSAFE online?", pick(P5_UNSAFE), P5_SAFE, { vis: em("⚠️"), why: "That can put you in danger." }),
+        facts([["An online friend asks to meet you alone. You should…", "say no and tell a trusted adult", ["go quietly", "send your address", "keep it secret"]], ["Which is private information?", "your home address", ["the name of a planet", "your favourite colour", "a famous song"]],
+          ["After using a computer in a café or library, you should…", "log out", ["leave everything open", "write your password down there", "switch off the lights"]], ["Who should you tell if something online scares you?", "a trusted adult", ["nobody", "a stranger online", "the whole class chat"]]]),
+        tfs([["Strangers online may lie about who they are.", true], ["It is fine to share your password with a new online friend.", false], ["You should log out of shared computers.", true], ["If something online scares you, it is your fault.", false, "No. It is never your fault. Tell a trusted adult."]]),
+      ] },
+  ] },
+  { nm: "Third term", sub: "Digital citizenship and creating", topics: [
+    { id: "i5-diglit", nm: "Digital literacy and copyright", icon: "©️", desc: "Digital skills, copyright and plagiarism",
+      act: { type: "sort", nm: "OK or not OK?", A: () => P5_OK, B: () => P5_NOTOK, la: "OK 👍", lb: "Not OK 🚫", ia: "✅", ib: "©️", ask: t => "Is this OK to do?", wrong: c => c.a ? "This is honest and respects the owner. It is OK." : "This takes someone else's work without permission or credit. It is not OK.", done: "You respect other people's work!" },
+      learn: [{ v: "🧠💻", t: "Digital literacy means being able to find, understand, create and share information safely and wisely with digital tools." },
+        { v: "🧰", t: "Digital skills include typing, searching well, making documents and slides, staying safe, and communicating kindly online." },
+        { v: "©️", t: "Copyright means the person who made a song, book, picture or video owns it. Others must ask before copying or selling it." },
+        { v: "🚫📋", t: "Plagiarism is copying someone else's words or ideas and pretending they are yours. It is cheating." },
+        { v: "✍🏾📚", t: "Do it right: write in your own words, put quotes in quote marks, name your sources, and use pictures marked free to use." }],
+      wow: { v: "🎵", t: "Digital superpower: copyright protects Nigerian musicians, writers and film makers, so they get paid for their work!" },
+      gens: [
+        () => { const ok = Math.random() < .5, t = pick(ok ? P5_OK : P5_NOTOK); return tq(`"${t}" Is this OK?`, ok ? "Yes, it is honest" : "No, it is not OK", [ok ? "No, it is not OK" : "Yes, it is honest", "Only if nobody sees", "Only on Fridays"], { why: ok ? "It respects the owner." : "It takes someone's work without permission or credit." }); },
+        () => tq("Which one is OK to do?", pick(P5_OK), P5_NOTOK, { vis: em("✅"), why: "It is honest and respects the owner." }),
+        () => tq("Which one is NOT OK?", pick(P5_NOTOK), P5_OK, { vis: em("🚫"), why: "It takes someone's work without permission or credit." }),
+        () => tq("Which one is plagiarism?", pick(["Copying a whole essay and saying you wrote it", "Using a classmate's drawing as your own", "Copying a website's page without naming it"]), P5_OK, { why: "Taking someone's work as your own is plagiarism." }),
+        facts([["Copying someone's work and saying it is yours is called…", "plagiarism", ["coding", "browsing", "formatting"]], ["The law that protects people's creative work is…", "copyright", ["Wi-Fi", "phishing", "RAM"]],
+          ["When you use a sentence from a website, you should…", "put it in quote marks and name the website", ["change one word and keep it", "say you wrote it", "delete the website"]], ["Digital literacy means…", "using digital tools wisely and safely", ["only playing games", "fixing cars", "reading paper books only"]],
+          ["Which picture can you use freely?", "one marked free to use", ["any photo from a stranger's page", "a famous film poster", "a classmate's private photo"]], ["Who owns a song?", "the person who made it", ["anyone who hears it", "the first person to download it", "the radio"]]]),
+        tfs([["Plagiarism is a kind of cheating.", true], ["Naming your sources is good practice.", true], ["Anything on the internet is free to copy.", false], ["Copyright protects people who create things.", true]]),
+      ] },
+    { id: "i5-cyber", nm: "Cyberbullying", icon: "🛑", desc: "Forms of cyberbullying and what to do",
+      act: { type: "order", nm: "What to do", sets: [
+        { nm: "deal with a bully who keeps sending mean messages", steps: ["Don't reply", "Take a screenshot to keep proof", "Block the person", "Report it on the app", "Tell a trusted adult"] },
+        { nm: "help a friend who is being bullied online", steps: ["Don't share or like the mean post", "Send your friend a kind message", "Report the post", "Tell a trusted adult together"] }], done: "You know what to do about cyberbullying!" },
+      learn: [{ v: "📱😢", t: "Cyberbullying is using phones, games or the internet to hurt, scare or embarrass someone, usually again and again." },
+        { v: "💬🚪🎭", t: "Forms: harassment (mean messages again and again), exclusion (leaving someone out), impersonation (pretending to be someone), outing (sharing secrets or private photos) and trolling." },
+        { v: "🛑📸🚫🚩🙋🏾", t: "What to do: don't reply, take a screenshot, block the person, report it on the app, and tell a trusted adult." },
+        { v: "🤝🏾", t: "Be an upstander, not a bystander: don't share mean posts, support the person, and report it." },
+        { v: "⚖️", t: "In Nigeria, the Cybercrimes Act of 2015 (updated in 2024) makes serious online bullying, stalking and threats a crime." }],
+      wow: { v: "💛", t: "Digital superpower: one brave upstander can stop a bully and change someone's life!" },
+      gens: [
+        fromFacts(P5_CBF, x => tq(`Which form of cyberbullying is ${x.d}?`, x.f, P5_CBF.filter(y => y !== x).map(y => y.f).concat(["coding"]), { vis: em("🛑"), why: `${x.f[0].toUpperCase() + x.f.slice(1)} is ${x.d}.` })),
+        fromFacts(P5_CBF, x => tq(`What is ${x.f}?`, x.d, P5_CBF.filter(y => y !== x).map(y => y.d), { why: `${x.f[0].toUpperCase() + x.f.slice(1)} is ${x.d}.` })),
+        () => { const s = ["Don't reply", "Take a screenshot", "Block the person", "Report it", "Tell a trusted adult"], i = rnd(0, 3); return tq(`When dealing with a bully, what comes after "${s[i]}"?`, s[i + 1], s.filter((_, j) => j !== i + 1 && j !== i), { why: `Don't reply, screenshot, block, report, tell a trusted adult.` }); },
+        facts([["Someone who helps a person being bullied is an…", "upstander", ["onlooker", "outsider", "uploader"]], ["Why take a screenshot?", "to keep proof", ["to make it go viral", "to reply faster", "to delete the app"]],
+          ["Nigeria's law against cybercrime is the…", "Cybercrimes Act", ["Copyright Act only", "Traffic Law", "School Rules Act"]], ["Should you reply to a bully with rude words?", "No, don't reply", ["Yes, ruder words", "Yes, in capital letters", "Yes, every hour"]]]),
+        tfs([["Cyberbullying can happen in games too.", true], ["Sharing a mean post makes the bullying worse.", true], ["Blocking a bully is a good step.", true], ["You must keep cyberbullying a secret.", false]]),
+      ] },
+    { id: "i5-html", nm: "Make a web page with HTML", icon: "🧱", desc: "Tags, the document structure and syntax",
+      act: { type: "html", nm: "Build a web page" },
+      learn: [{ v: "🧱", t: "HTML (HyperText Markup Language) is the language web pages are built with. Tim Berners-Lee created it for the World Wide Web." },
+        { h: hcode("<p>Hello</p>"), t: "HTML uses tags in angle brackets. Most come in pairs: an opening tag <p> and a closing tag </p> with a slash. The words go in between." },
+        { h: `<div class="hcol">${hcode("<html>")}${hcode("  <head><title>My page</title></head>")}${hcode("  <body> … </body>")}${hcode("</html>")}</div>`, t: "Every page has a structure: <html> wraps everything. <head> holds the <title> shown on the tab. <body> holds what you see." },
+        { h: `<div class="hcol">${hcode("<h1>Big heading</h1>")}${hcode("<p>A paragraph</p>")}${hcode("<b>bold</b> <i>italic</i>")}</div>`, t: "<h1> is the biggest heading. <p> is a paragraph. <b> makes words bold and <i> makes them italic." },
+        { v: "🌐👀", t: "Save the file as page.html and open it in a browser, and the browser draws your page!" }],
+      wow: { v: "🌍", t: "Digital superpower: every website you have ever visited is built on HTML!" },
+      gens: [
+        fromFacts(P5_TAGS, x => tq(`Which tag makes ${x.d}?`, x.t, P5_TAGS.filter(y => y !== x).map(y => y.t), { vis: em("🧱"), why: `${x.t} makes ${x.d}.` })),
+        fromFacts(P5_TAGS, x => tq(`What does the ${x.t} tag make?`, x.d, P5_TAGS.filter(y => y !== x).map(y => y.d), { vis: hcode(x.t), why: `${x.t} makes ${x.d}.` })),
+        () => { const t = pick(["p", "h1", "b", "i", "title"]); return tq(`Which is the closing tag for <${t}>?`, `</${t}>`, [`<${t}/`, `<\\${t}>`, `(${t})`, `<${t}>`], { vis: hcode(`<${t}>…`), why: `Closing tags have a slash: </${t}>.` }); },
+        facts([["HTML stands for…", "HyperText Markup Language", ["High Tech Modern Language", "Home Tool Making Language", "Hello To My Laptop"]], ["Which part holds everything you SEE on the page?", "<body>", ["<head>", "<title>", "</html>"]],
+          ["Where does <title> go?", "inside <head>", ["inside <b>", "after </html>", "inside <p>"]], ["An HTML file name ends with…", ".html", [".mp3", ".xlsx", ".jpg"]],
+          ["Which app shows an HTML page as a web page?", "a web browser", ["a calculator", "a music player", "Paint"]], ["Who created HTML?", "Tim Berners-Lee", ["Ray Tomlinson", "Guido van Rossum", "Blaise Pascal"]]]),
+        tfs([["Most HTML tags come in pairs.", true], ["A closing tag has a slash.", true], ["<h1> makes the smallest text.", false], ["The <title> shows on the browser tab.", true]]),
+      ] },
+    { id: "i5-langs", nm: "Python, Scratch and app making", icon: "🐍", desc: "Languages, loops, web and app development",
+      act: { type: "scratch", mode: "loops", nm: "Loops in Scratch" },
+      learn: [{ v: "🧩⌨️", t: "Programming languages can be visual (blocks, like Scratch) or text (typed, like Python and JavaScript)." },
+        { h: `<div class="sblkcol">${sblk("repeat 10", SC.co)}${sblk("   move 10 steps", SC.mo)}</div>`, t: "Loops repeat blocks. 'repeat 10' does the blocks inside 10 times. 'forever' keeps going until you click stop." },
+        { code: 'for i in range(10):\n    print("Hello!")', t: "In Python, the same loop is typed: for i in range(10). Python was made by Guido van Rossum and is used for AI, data and websites." },
+        { v: "🌐📱", t: "Web development builds websites with HTML, CSS and JavaScript. App development builds phone apps, often with Java, Kotlin or Swift." },
+        { v: "🐍🎓", t: "Want to learn Python for real? Try the Python Path on the home screen!" }],
+      wow: { v: "🧑🏾‍💻", t: "Digital superpower: Nigerian developers build apps used across Africa, for payments, farming, health and learning!" },
+      gens: [
+        fromFacts(P5_LANG, x => tq(`Which language is mainly used for ${x.u}?`, x.l, P5_LANG.filter(y => y !== x).map(y => y.l), { vis: em("🧑🏾‍💻"), why: `${x.l} is used for ${x.u}.` })),
+        () => tq("Which is a TEXT programming language?", pick(["Python", "JavaScript", "Java", "Swift"]), ["Scratch", "ScratchJr", "Blockly", "MIT App Inventor"], { why: "It is typed as words." }),
+        facts([["'repeat 10' in Scratch runs the blocks inside…", "10 times", ["once", "forever", "never"]], ["Which loop never stops on its own?", "forever", ["repeat 10", "repeat 2", "wait 1"]],
+          ["In Python, a loop that runs 5 times is…", "for i in range(5):", ["repeat(5)", "loop 5 times", "5.times"]], ["Building websites is called…", "web development", ["farming", "printing", "booting"]],
+          ["Which three languages build websites?", "HTML, CSS and JavaScript", ["Paint, Word and Excel", "Python, Scratch and Swift", "Bluetooth, Wi-Fi and USB"]], ["What does a loop help a programmer do?", "repeat steps without writing them again", ["delete the computer", "print faster", "change the wallpaper"]]]),
+        tfs([["Scratch is a visual language.", true], ["Python is used in AI.", true], ["A forever loop stops by itself after 3 times.", false], ["Apps for phones are made with code.", true]]),
+      ] },
+  ] },
+] };
+ICT_YEARS[5] = ICT_P5;
+
 /* ======================= SCHOOL ICT: screens, questions, hands-on activities ======================= */
 let curY = 1, curTerm = 0, curTopic = null;
 const sch = () => { const s = st(); s.school = s.school || { stars: {}, acts: {}, badges: {}, finals: {}, tries: {} }; ["stars", "acts", "badges", "finals", "tries"].forEach(k => s.school[k] = s.school[k] || {}); return s.school; };
@@ -5534,7 +5822,7 @@ const SMODES = {
   loops: { pal: ["flag", "move", "turn", "cost", "wait", "repeat", "forever", "bounce"], tasks: [
     { t: "Use a loop: tap 'when 🟢 clicked', then 'repeat 10', then 'move 10 steps' (it goes INSIDE the repeat). Press 🟢.", ok: (r, sc) => r.loopMoves >= 5 },
     { t: "Make it walk: add 'next costume' inside the same repeat, so its legs change every step. Press 🟢.", ok: r => r.loopCostumes >= 5 },
-    { t: "Now make it go for ever: start again with 🗑️, then 'when 🟢 clicked', 'forever', 'move 10 steps' and 'if on edge, bounce'. Press 🟢, then 🛑.", ok: r => r.forever && r.bounced } ] },
+    { t: "Now make it go for ever: start again with 🗑️, then 'when 🟢 clicked', 'forever', 'move 10 steps' and 'if on edge, bounce'. Press 🟢, watch it bounce, then press 🛑.", ok: r => r.forever && r.bounced } ] },
   pen: { pal: ["flag", "pendown", "penup", "move", "turn", "repeat"], tasks: [
     { t: "Draw a SQUARE: 'when 🟢 clicked', '✏️ pen down', 'repeat 4' with 'move 100 steps' and 'turn ↻ 90 degrees' inside. Tap the numbers to change them. Press 🟢.", ok: r => r.shape === 4 },
     { t: "Now a TRIANGLE: change repeat to 3 and the turn to 120 degrees (3 × 120 = 360). Press 🟢.", ok: r => r.shape === 3 },
@@ -5598,7 +5886,7 @@ ACTS_MORE.scratch = function (A) {
         else if (T === "seta") R.vars.a = b.v; else if (T === "setb") R.vars.b = b.v;
         else if (T === "sayop") { const { a, b: bb } = R.vars, v = { "+": a + bb, "−": a - bb, "×": a * bb, "÷": bb ? Math.round(a / bb * 100) / 100 : "?" }[b.v]; R.said.push(String(v)); $("#scBub").hidden = false; $("#scBub").textContent = v; say(String(v)); await sleep(1300); }
         else if (T === "repeat") { R.fast = b.v * b.kids.length > 12; for (let i = 0; i < b.v && !R.stop; i++) await run(b.kids, true); }
-        else if (T === "forever") { R.forever = true; for (let i = 0; i < 80 && !R.stop; i++) await run(b.kids, true); }
+        else if (T === "forever") { R.forever = true; R.fast = true; for (let i = 0; i < 400 && !R.stop; i++) await run(b.kids, true); }
       }
     };
     $("#scGo").classList.add("on"); await run(script, false); $("#scGo").classList.remove("on"); running = null;
@@ -5607,9 +5895,219 @@ ACTS_MORE.scratch = function (A) {
     const T = M.tasks[ti];
     if (T.ok(R, script)) { SFX.good(); ti++; if (ti < M.tasks.length) setTimeout(ask, 900); else setTimeout(() => actDone("You are a Scratch coder!"), 900); }
     else if (!R.stop) { SFX.oops(); say(M.tasks[ti].t.split(".")[0] + ". Check your blocks and try again."); }
+    else if (R.forever && !R.bounced) say("Let it run until it touches the edge and bounces, then press stop.");
   };
   ACT.cleanup = () => { if (running) running.stop = true; };
   drawScript(); requestAnimationFrame(place); ask();
+};
+
+/* ======================= SCHOOL ICT Primary 5–6: shortcuts, networks, browser, search, email, HTML ======================= */
+/* ---------- keyboard shortcuts ---------- */
+ACTS_MORE.shortcut = function () {
+  const S = $("#acStage"), JOBS = { C: "COPY", V: "PASTE", X: "CUT", Z: "UNDO", S: "SAVE", P: "PRINT", A: "SELECT ALL" };
+  const order = ["A", "C", "V", "Z", "X", "S", "P"]; let si = 0, ctrl = false, miss = 0, text = "We love coding.", sel = false, clip = "", hist = [];
+  const draw = (fx) => {
+    S.innerHTML = `<div class="kdoc"><div class="kpage"><span class="${sel ? "ksel" : ""}">${esc(text)}</span><span class="wd-cur"></span></div>${fx ? `<div class="wd-toast">${fx}</div>` : ""}</div>
+      <div class="kbd big kshort" id="aKbd">${["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"].map((r, i) => `<div class="kr">${[...r].map(c => `<button data-k="${c}" class="${miss >= 2 && c === order[si] ? "hot" : ""}">${c}</button>`).join("")}</div>`).join("")}<div class="kr"><button class="wide ${ctrl ? "down" : ""} ${miss >= 2 && !ctrl ? "hot" : ""}" data-k="Ctrl">Ctrl</button><button class="wide" data-k="Alt">Alt</button><button class="space" data-k=" ">space</button></div></div>`;
+  };
+  const ask = () => task(`Press the shortcut to ${JOBS[order[si]]}. Tap Ctrl, then the letter (or press them on a real keyboard).`, `${si + 1} of ${order.length}`);
+  const doIt = k => {
+    let fx = "";
+    if (k === "A") { sel = true; fx = "All text selected"; } else if (k === "C") { clip = text; fx = "📋 Copied!"; } else if (k === "V") { hist.push(text); text = text + " " + clip; fx = "📌 Pasted!"; }
+    else if (k === "Z") { text = hist.pop() || text; fx = "↩️ Undone!"; } else if (k === "X") { hist.push(text); clip = text; text = ""; fx = "✂️ Cut!"; } else if (k === "S") fx = "💾 Saved!"; else if (k === "P") fx = "🖨️ Printing…";
+    return fx;
+  };
+  const press = (k, withCtrl) => {
+    if (si >= order.length || !ACT) return;
+    if (k === "Ctrl") { ctrl = !ctrl; SFX.tap(); draw(); return; }
+    if (!(withCtrl || ctrl)) { SFX.oops(); miss++; draw(); say("Hold Ctrl first, then the letter."); return; }
+    ctrl = false; const want = order[si];
+    if (k === want) { const fx = doIt(k); miss = 0; SFX.good(); si++; draw(fx); if (si < order.length) setTimeout(() => { if (si < order.length) ask(); }, 700); else actDone("You know the keyboard shortcuts! You are fast!"); }
+    else { miss++; SFX.oops(); draw(); say(JOBS[k] ? `Ctrl + ${k} is ${JOBS[k].toLowerCase()}. To ${JOBS[want].toLowerCase()}, use Ctrl + ${want}.` : `Ctrl + ${k} is not the one. To ${JOBS[want].toLowerCase()}, use Ctrl + ${want}.`); }
+  };
+  S.onclick = e => { const b = e.target.closest("[data-k]"); if (b) press(b.dataset.k, false); };
+  ACT.keyHandler = e => { if (curScreen !== "act" || !ACT || ACT.kind !== "shortcut") return; if ((e.ctrlKey || e.metaKey) && /^[a-z]$/i.test(e.key)) { e.preventDefault(); press(e.key.toUpperCase(), true); } };
+  addEventListener("keydown", ACT.keyHandler);
+  draw(); ask();
+};
+
+/* ---------- networks: connect a school LAN (P5) or build star, ring and bus topologies (P6) ---------- */
+ACTS_MORE.network = function (A) {
+  const S = $("#acStage"); let si = 0, sel = null, edges = [];
+  const conn = A.mode === "connect";
+  const N = conn ? { pc1: [12, 22, "💻"], pc2: [12, 50, "💻"], pc3: [12, 78, "💻"], pc4: [38, 86, "💻"], prn: [38, 12, "🖨️"], sw: [50, 50, "🔀"], rt: [76, 50, "📶"], net: [92, 22, "☁️"] }
+    : { a: [50, 12, "💻"], b: [86, 38, "💻"], c: [72, 84, "💻"], d: [28, 84, "💻"], e: [14, 38, "💻"], hub: [50, 50, "🔀"] };
+  const NM = { pc1: "computer", pc2: "computer", pc3: "computer", pc4: "computer", prn: "printer", sw: "switch", rt: "router", net: "internet", hub: "hub", a: "computer A", b: "computer B", c: "computer C", d: "computer D", e: "computer E" };
+  const has = (x, y) => edges.some(([p, q]) => (p === x && q === y) || (p === y && q === x));
+  const PCS = ["a", "b", "c", "d", "e"];
+  const steps = conn ? [
+    { t: "Build the school LAN: connect every computer and the printer to the switch 🔀. Tap a device, then tap the switch.", ok: () => ["pc1", "pc2", "pc3", "pc4", "prn"].every(d => has(d, "sw")), allow: (x, y) => [x, y].includes("sw") && ![x, y].some(z => ["rt", "net"].includes(z)) },
+    { t: "Now connect the switch 🔀 to the router 📶.", ok: () => has("sw", "rt"), allow: (x, y) => [x, y].sort().join() === "rt,sw" },
+    { t: "Connect the router 📶 to the internet ☁️. The router joins your LAN to the internet, the biggest WAN.", ok: () => has("rt", "net"), allow: (x, y) => [x, y].sort().join() === "net,rt" }]
+    : [
+    { t: "Build a STAR network: connect every computer to the hub 🔀 in the middle.", ok: () => PCS.every(p => has(p, "hub")) && edges.length === 5, allow: (x, y) => [x, y].includes("hub") },
+    { t: "Now a RING: every computer joins the next one round the circle, A-B, B-C, C-D, D-E and E back to A. (The hub is not used.)", ok: () => PCS.every((p, i) => has(p, PCS[(i + 1) % 5])) && edges.length === 5, allow: (x, y) => !([x, y].includes("hub")) && [1, 4].includes(Math.abs(PCS.indexOf(x) - PCS.indexOf(y))) },
+    { t: "Now a BUS: one long main cable runs along the bottom. Connect every computer to the bus cable.", ok: () => PCS.every(p => has(p, "bus")), allow: (x, y) => [x, y].includes("bus") }];
+  const draw = () => {
+    const bus = !conn && si === 2;
+    const line = ([p, q]) => { const P = p === "bus" ? [N[q][0], 96] : N[p], Q = q === "bus" ? [N[p][0], 96] : N[q]; return `<line x1="${P[0]}" y1="${P[1]}" x2="${Q[0]}" y2="${Q[1]}"/>`; };
+    S.innerHTML = `<div class="netbox"><svg class="netsvg" viewBox="0 0 100 100" preserveAspectRatio="none">${bus ? `<line class="busline" x1="4" y1="96" x2="96" y2="96"/>` : ""}${edges.map(line).join("")}</svg>
+      ${Object.entries(N).filter(([k]) => !(bus && k === "hub") && !(!conn && si === 1 && k === "hub")).map(([k, [x, y, ic]]) => `<button class="netnode ${sel === k ? "sel" : ""}" data-n="${k}" style="left:${x}%;top:${y}%"><b>${ic}</b><span>${NM[k]}</span></button>`).join("")}
+      ${bus ? `<button class="netbus" data-n="bus">main bus cable</button>` : ""}
+      ${conn && si >= steps.length ? "" : ""}<button class="btn sm netundo" data-u="1" aria-label="Remove last cable">↩️ Undo cable</button></div>`;
+  };
+  const ask = () => task(steps[si].t, `${si + 1} of ${steps.length}`);
+  const next = () => { SFX.good(); si++; if (!conn) edges = []; sel = null; draw(); if (si < steps.length) ask(); else actDone(conn ? "Your school LAN is connected to the internet!" : "You built star, ring and bus networks!"); };
+  S.onclick = e => {
+    if (si >= steps.length) return;
+    if (e.target.closest("[data-u]")) { edges.pop(); SFX.turn(); draw(); return; }
+    const b = e.target.closest("[data-n]"); if (!b) return; const k = b.dataset.n;
+    if (!sel) { sel = k; SFX.tap(); draw(); return; }
+    if (sel === k) { sel = null; draw(); return; }
+    const x = sel, y = k; sel = null;
+    if (has(x, y)) { draw(); return; }
+    if (!steps[si].allow(x, y)) { SFX.oops(); draw(); say(conn ? `Not that way. ${steps[si].t}` : `That cable doesn't belong in this network. ${steps[si].t}`); return; }
+    edges.push([x, y]); SFX.pick(); draw();
+    if (steps[si].ok()) setTimeout(next, 500);
+  };
+  draw(); ask();
+};
+
+/* ---------- web browser ---------- */
+ACTS_MORE.browser = function () {
+  const S = $("#acStage"); let si = 0, tabs = [{ page: "new" }], ti = 0, hist = [], marked = false, sug = false, spin = false;
+  const PAGES = { new: { url: "", title: "New tab" }, fun: { url: "https://www.funfacts.ng", title: "Fun Facts Nigeria" }, ani: { url: "https://www.funfacts.ng/animals", title: "Animals of Nigeria" } };
+  const steps = ["Click the address bar at the top.", "Choose the real address: www.funfacts.ng. Careful, one is a trick!", "Click the link 'Animals of Nigeria'.", "Go back to the page before with ⬅️.", "Refresh the page with 🔄.", "Bookmark this page with the ⭐.", "Open a new tab with ＋."];
+  const ask = () => task(steps[si], `${si + 1} of ${steps.length}`);
+  const ok = () => { SFX.good(); si++; if (si < steps.length) ask(); else actDone("You can browse the web like a pro!"); };
+  const body = p => p === "new" ? `<div class="brnew"><b>🔎</b><span>Search or type an address</span></div>`
+    : p === "fun" ? `<div class="brpg"><h3>🇳🇬 Fun Facts Nigeria</h3><p>Did you know? Nigeria has 36 states and the Federal Capital Territory.</p><button class="brlink" data-l="ani">🐘 Animals of Nigeria</button> <button class="brlink" data-l="riv">🌊 Rivers</button></div>`
+    : `<div class="brpg"><h3>🐘 Animals of Nigeria</h3><p>Elephants live in Yankari Game Reserve in Bauchi State.</p></div>`;
+  const draw = () => {
+    const T = tabs[ti], P = PAGES[T.page];
+    S.innerHTML = `<div class="br"><div class="brtabs">${tabs.map((t, i) => `<button class="brtab ${i === ti ? "on" : ""}" data-tab="${i}">${esc(PAGES[t.page].title)}</button>`).join("")}<button class="brplus" data-b="plus" aria-label="New tab">＋</button></div>
+      <div class="brbar"><button data-b="back" aria-label="Back">⬅️</button><button data-b="fwd" aria-label="Forward">➡️</button><button data-b="ref" aria-label="Refresh" class="${spin ? "spin" : ""}">🔄</button><button class="braddr" data-b="addr">${P.url ? `🔒 ${esc(P.url)}` : "<i>Search or type a web address</i>"}</button><button data-b="star" aria-label="Bookmark">${marked ? "⭐" : "☆"}</button></div>
+      ${sug ? `<div class="brsug">${["www.mathsland.ng", "www.funfacts.ng.win-a-phone.biz", "www.funfacts.ng"].map(u => `<button data-u="${u}">🌐 ${u}</button>`).join("")}</div>` : ""}
+      <div class="brbody">${body(T.page)}</div></div>`;
+  };
+  S.onclick = e => {
+    const b = e.target.closest("[data-b]"), u = e.target.closest("[data-u]"), l = e.target.closest("[data-l]"), tb = e.target.closest("[data-tab]");
+    if (tb) { ti = +tb.dataset.tab; draw(); return; }
+    if (u) { if (u.dataset.u === "www.funfacts.ng" && si === 1) { sug = false; hist.push(tabs[ti].page); tabs[ti].page = "fun"; draw(); ok(); } else if (u.dataset.u.includes("win-a-phone")) { SFX.oops(); say("Careful! That address is a trick. Real addresses don't promise free phones."); } else { SFX.oops(); say("Choose www.funfacts.ng."); } return; }
+    if (l) { if (l.dataset.l === "ani" && si === 2) { hist.push(tabs[ti].page); tabs[ti].page = "ani"; draw(); ok(); } else { SFX.oops(); say(steps[si]); } return; }
+    if (!b) return; const k = b.dataset.b;
+    if (k === "addr" && si === 0) { sug = true; draw(); ok(); return; }
+    if (k === "back" && si === 3) { tabs[ti].page = hist.pop() || "fun"; draw(); ok(); return; }
+    if (k === "ref" && si === 4) { spin = true; draw(); setTimeout(() => { spin = false; draw(); ok(); }, 600); return; }
+    if (k === "star" && si === 5) { marked = true; draw(); ok(); return; }
+    if (k === "plus" && si === 6) { tabs.push({ page: "new" }); ti = tabs.length - 1; draw(); ok(); return; }
+    SFX.oops(); say(steps[si]);
+  };
+  draw(); ask();
+};
+
+/* ---------- search engine ---------- */
+ACTS_MORE.search = function () {
+  const S = $("#acStage"); let ri = 0, words = [], phase = "words"; const chips = [];
+  const R = [{ q: "How high is Zuma Rock above the land around it?", key: ["Zuma", "Rock", "height"], fill: ["please", "tell", "me", "how", "is"], res: [["📚", "Encyclopedia: Zuma Rock", "Zuma Rock rises about 300 metres above the land around it. It is near Madalla in Niger State and is on the ₦100 note.", true], ["🎁", "WIN A FREE PHONE!!! Click now!!!", "", false], ["💬", "random comment: zuma rock is 5 km tall lol", "", false], ["🏛️", "Niger State Government (.gov.ng): Zuma Rock", "Zuma Rock, near Madalla, rises about 300 metres above its surroundings.", true]] },
+    { q: "How many states does Nigeria have?", key: ["Nigeria", "states", "number"], fill: ["what", "about", "the", "please", "of"], res: [["🏛️", "Federal Government (.gov.ng): States of Nigeria", "Nigeria has 36 states and the Federal Capital Territory, Abuja.", true], ["📢", "Chain message: forward to 20 people!!", "", false], ["📚", "Encyclopedia: States of Nigeria", "Nigeria is a federation of 36 states and the FCT.", true], ["🤷🏾", "someone's blog with no name: 'i think 50 states'", "", false]] }];
+  const draw = () => {
+    const r = R[ri];
+    S.innerHTML = `<div class="se"><div class="sehead"><b>🔎 Searchy</b><span>Question: ${esc(r.q)}</span></div>
+      <div class="sebox">${words.length ? words.map(w => `<span>${esc(w)}</span>`).join(" ") : "<i>tap keywords…</i>"}<button class="btn go" data-a="go">🔎 Search</button><button class="btn" data-a="clr" aria-label="Clear">✕</button></div>
+      ${phase === "words" ? `<div class="sechips">${(chips[ri] = chips[ri] || shuffle([...r.key, ...r.fill])).map(w => `<button class="btn" data-w="${w}" ${words.includes(w) ? "disabled" : ""}>${w}</button>`).join("")}</div>`
+      : `<div class="seres">${r.res.map((x, i) => `<button class="seitem" data-r="${i}"><b>${x[0]}</b><span>${esc(x[1])}</span></button>`).join("")}</div>`}</div>`;
+  };
+  const ask = () => task(phase === "words" ? "Tap the KEYWORDS (the most important words), then press Search." : "Results! Tap the result you can TRUST.", `${ri + 1} of ${R.length}`);
+  S.onclick = async e => {
+    const w = e.target.closest("[data-w]"), a = e.target.closest("[data-a]"), r = e.target.closest("[data-r]"); const Q = R[ri];
+    if (w && phase === "words") { if (words.length < 5) words.push(w.dataset.w); SFX.tap(); draw(); return; }
+    if (a && a.dataset.a === "clr") { words = []; phase = "words"; draw(); ask(); return; }
+    if (a && a.dataset.a === "go") {
+      const fill = words.filter(x => Q.fill.includes(x)).length, keys = Q.key.every(k => words.includes(k));
+      if (keys && fill === 0) { SFX.good(); phase = "res"; draw(); ask(); }
+      else { SFX.oops(); say(!keys ? `Add all the important words: ${Q.key.join(", ")}.` : `Leave out small words like ${words.filter(x => Q.fill.includes(x)).join(", ")}. Press ✕ and try again.`); }
+      return;
+    }
+    if (r && phase === "res") {
+      const x = Q.res[+r.dataset.r];
+      if (x[3]) { SFX.good(); await modal(`<div class="big">${x[0]}</div><h3>${esc(x[1])}</h3><p>${esc(x[2])}</p>`, [{ t: "Got it ✔", v: true, cls: "go" }], { onOpen: () => say(x[2]) }); ri++; words = []; phase = "words"; if (ri < R.length) { draw(); ask(); } else actDone("You search like a pro: good keywords and good sources!"); }
+      else { SFX.oops(); say("Careful! That source can't be trusted. Choose an encyclopedia or a government website."); r.classList.add("bad"); }
+    }
+  };
+  draw(); ask();
+};
+
+/* ---------- email ---------- */
+ACTS_MORE.email = function () {
+  const S = $("#acStage"); let si = 0, view = "inbox", draft = null, sent = [];
+  const IN = [{ from: "Mrs Okafor", addr: "mrs.okafor@myschool.ng", sub: "Science project", body: "Good morning class. Please send me your science project by Friday. Thank you." }];
+  const steps = ["Open the email from Mrs Okafor in your Inbox.", "Click ↩️ Reply to answer her.", "Write your message: tap the three sentences.", "Attach your project: click 📎 and choose the right file.", "Click Send ➤.",
+    "Now write to your friend: click ✏️ Compose.", "Click To: and choose the CORRECT email address for Tunde.", "Add a subject: click Subject and choose one. Then Send ➤."];
+  const ask = () => task(steps[si], `${si + 1} of ${steps.length}`);
+  const ok = () => { SFX.good(); si++; draw(); if (si < steps.length) ask(); else actDone("You can read, reply to, attach and send emails!"); };
+  const LINES = ["Good morning Ma,", "here is my science project.", "Thank you, Ada"];
+  const draw = () => {
+    const list = view === "sent" ? sent : IN;
+    S.innerHTML = `<div class="em"><div class="emside"><button class="btn go" data-a="compose">✏️ Compose</button><button class="${view === "inbox" || view === "read" ? "on" : ""}" data-a="inbox">📥 Inbox</button><button class="${view === "sent" ? "on" : ""}" data-a="sent">📤 Sent ${sent.length ? `(${sent.length})` : ""}</button></div>
+      <div class="emmain">${view === "read" ? `<div class="emread"><b>${esc(IN[0].sub)}</b><small>From: ${esc(IN[0].from)} &lt;${esc(IN[0].addr)}&gt;</small><p>${esc(IN[0].body)}</p><div class="emacts"><button class="btn" data-a="reply">↩️ Reply</button><button class="btn" data-a="fwd">➡️ Forward</button></div></div>`
+      : view === "write" ? `<div class="emwrite"><button class="emfld" data-a="to"><b>To:</b> ${esc(draft.to || "")}</button><button class="emfld" data-a="subj"><b>Subject:</b> ${esc(draft.sub || "")}</button>
+          <div class="embody">${draft.lines.map(l => esc(l)).join(" ") || "<i>Your message…</i>"}${draft.att ? `<div class="ematt">📎 ${esc(draft.att)}</div>` : ""}</div>
+          ${draft.reply && draft.lines.length < 3 ? `<div class="emchips">${LINES.filter(l => !draft.lines.includes(l)).map(l => `<button class="btn" data-l="${esc(l)}">${esc(l)}</button>`).join("")}</div>` : ""}
+          <div class="emacts"><button class="btn" data-a="attach">📎 Attach</button><button class="btn go" data-a="send">Send ➤</button></div></div>`
+      : `<div class="emlist">${list.map((m, i) => `<button class="emitem" data-a="open" data-i="${i}"><b>${esc(m.from || m.to)}</b><span>${esc(m.sub)}</span></button>`).join("") || "<i>Nothing here yet.</i>"}</div>`}</div></div>`;
+  };
+  S.onclick = async e => {
+    const a = e.target.closest("[data-a]"), l = e.target.closest("[data-l]");
+    if (l && si === 2) { draft.lines.push(l.dataset.l); SFX.tap(); draw(); if (draft.lines.length === 3) ok(); return; }
+    if (!a) return; const k = a.dataset.a;
+    if (k === "open" && si === 0 && view === "inbox") { view = "read"; ok(); return; }
+    if (k === "reply" && si === 1) { draft = { to: IN[0].addr, sub: "Re: " + IN[0].sub, lines: [], reply: true }; view = "write"; ok(); return; }
+    if (k === "attach" && si === 3) {
+      const v = await modal(`<h3>📎 Attach a file</h3>`, [{ t: "🎵 song.mp3", v: "song.mp3" }, { t: "⚠️ free_game.exe", v: "exe" }, { t: "📝 science_project.docx", v: "science_project.docx", cls: "go" }]);
+      if (v === "science_project.docx") { draft.att = v; draw(); ok(); } else if (v === "exe") { SFX.oops(); say("Never send or open .exe files you are not sure about. They can be viruses. Choose your project."); } else if (v) { SFX.oops(); say("That is a song. Choose your science project."); }
+      return;
+    }
+    if (k === "send" && (si === 4 || si === 7)) {
+      if (si === 7 && !draft.sub) { SFX.oops(); say("Add a subject first."); return; }
+      sent.push({ to: draft.to, sub: draft.sub }); draft = null; view = "sent"; SFX.pick(); ok(); return;
+    }
+    if (k === "compose" && si === 5) { draft = { to: "", sub: "", lines: [] }; view = "write"; ok(); return; }
+    if (k === "to" && si === 6) {
+      const v = await modal(`<h3>To:</h3><p>Which is a correct email address for Tunde?</p>`, [{ t: "tunde2026.mail.ng", v: "x1" }, { t: "@tunde", v: "x2" }, { t: "tunde2026@mail.ng", v: "ok" }]);
+      if (v === "ok") { draft.to = "tunde2026@mail.ng"; draw(); ok(); } else if (v) { SFX.oops(); say("An email address needs a name, then @, then a domain, like name@mail.ng."); }
+      return;
+    }
+    if (k === "subj" && si === 7) { const v = await modal(`<h3>Subject</h3>`, [{ t: "Football on Saturday?", v: "Football on Saturday?" }, { t: "(leave it empty)", v: "" }]); if (v) { draft.sub = v; draw(); } else if (v === "") { say("A clear subject helps your friend. Choose one."); } return; }
+    if (k === "inbox" || k === "sent") { if (si === 0 || si >= 5) { view = k; draw(); } return; }
+    SFX.oops(); say(steps[si]);
+  };
+  draw(); ask();
+};
+
+/* ---------- HTML page builder with live preview ---------- */
+ACTS_MORE.html = function () {
+  const S = $("#acStage"); let si = 0, viewed = false;
+  const START = "<html>\n<head>\n<title>My page</title>\n</head>\n<body>\n<h1>Hello!</h1>\n\n</body>\n</html>";
+  const steps = [
+    { t: "This is HTML. Press 👀 View to see it as a web page.", ok: () => viewed },
+    { t: "Change the words between <title> and </title> to: My Nigeria. Watch the tab!", ok: d => /nigeria/i.test(d.title) },
+    { t: "Change the <h1> heading to: Welcome to my page", ok: d => d.querySelector("h1") && /welcome/i.test(d.querySelector("h1").textContent) },
+    { t: "Add a paragraph: put the cursor on the empty line under </h1>, tap <p></p>, and write a sentence about your town inside it.", ok: d => [...d.querySelectorAll("p")].some(p => p.textContent.trim().length >= 5 && !/write here/i.test(p.textContent)) },
+    { t: "Make one word bold: tap <b></b> and put a word inside.", ok: d => [...d.querySelectorAll("b")].some(b => b.textContent.trim().length > 0 && !/word/i.test(b.textContent)) },
+    { t: "Add a list of 3 foods: tap <ul> list and change the words inside the <li> tags.", ok: d => d.querySelectorAll("li").length >= 3 && [...d.querySelectorAll("li")].every(li => li.textContent.trim() && !/^food$/i.test(li.textContent.trim())) }];
+  S.innerHTML = `<div class="ht"><div class="htleft"><textarea id="htCode" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="HTML code">${esc(START)}</textarea>
+    <div class="httags"><button class="btn" data-t="<p>Write here</p>">&lt;p&gt;</button><button class="btn" data-t="<b>word</b>">&lt;b&gt;</button><button class="btn" data-t="<i>word</i>">&lt;i&gt;</button><button class="btn" data-t="<h2>Heading</h2>">&lt;h2&gt;</button><button class="btn" data-t="<ul>\n<li>food</li>\n<li>food</li>\n<li>food</li>\n</ul>">&lt;ul&gt; list</button><button class="btn go" id="htView">👀 View</button></div></div>
+    <div class="htright"><div class="httab" id="htTab"></div><div class="htpage" id="htPage"></div></div></div>`;
+  const ta = $("#htCode");
+  const parse = () => new DOMParser().parseFromString(ta.value, "text/html");
+  const clean = d => { d.querySelectorAll("script,iframe,object,embed,link,style,meta").forEach(x => x.remove()); d.querySelectorAll("*").forEach(el => [...el.attributes].forEach(at => { if (/^on/i.test(at.name) || /javascript:/i.test(at.value)) el.removeAttribute(at.name); })); return d; };
+  const render = () => { const d = clean(parse()); $("#htTab").textContent = "📄 " + (d.title || "Untitled"); $("#htPage").innerHTML = d.body ? d.body.innerHTML : ""; return d; };
+  const check = () => { const d = render(); if (si < steps.length && steps[si].ok(d)) { SFX.good(); si++; if (si < steps.length) setTimeout(() => task(steps[si].t, `${si + 1} of ${steps.length}`), 400); else setTimeout(() => actDone("You built a web page with HTML!"), 500); } };
+  ta.addEventListener("input", () => { clearTimeout(ta._t); ta._t = setTimeout(check, 350); });
+  $("#htView").onclick = () => { viewed = true; SFX.tap(); check(); };
+  S.querySelector(".httags").onclick = e => { const b = e.target.closest("[data-t]"); if (!b) return; const s0 = ta.selectionStart, s1 = ta.selectionEnd; ta.setRangeText(b.dataset.t, s0, s1, "end"); ta.focus(); SFX.tap(); check(); };
+  render(); task(steps[0].t, `1 of ${steps.length}`);
 };
 
 /* ======================= HOW CODING WORKS: automation, programs, "behind the screen" ======================= */
