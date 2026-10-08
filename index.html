@@ -701,7 +701,7 @@ canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-
 .pslide { width: 100%; aspect-ratio: 16 / 9; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6%; color: #1D1B45; position: relative; }
 .pslide.big { width: min(100%, calc((100cqh - 0px) * .5)); max-width: 100%; box-shadow: 0 2px 8px rgba(0,0,0,.25); font-size: clamp(14px, 3cqh, 30px); }
 .pmain .pslide.big { width: 100%; max-height: 100%; }
-.ptitle { font-weight: 800; text-align: center; } .ptitle.ghost { opacity: .4; } .ppic { font-size: 2.6em; line-height: 1; }
+.ptitle { font-weight: 800; text-align: center; } .ptitle.ghost { opacity: .4; } .pslpic { font-size: 2.6em; line-height: 1; }
 .pph { border: 2px dashed #90A4AE; background: transparent; color: #607D8B; font-size: 1em; padding: 6px 14px; border-radius: 6px; font-weight: 700; }
 .pph.on { border-style: solid; border-color: #C43E1C; color: #1D1B45; }
 .ptiles { flex: none; display: flex; gap: 6px; justify-content: center; padding: 6px; flex-wrap: wrap; background: #FFF8E1; }
@@ -723,7 +723,7 @@ canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-
 .pwparts .btn { font-family: var(--mono); padding: 4px 12px; font-size: 1em; }
 .pwacts { display: flex; gap: 6px; justify-content: center; } .pwacts .btn { padding: 4px 14px; }
 /* mini Scratch */
-.scr { position: absolute; inset: 2%; display: flex; flex-direction: column; gap: 6px; }
+.mscr { position: absolute; inset: 2%; display: flex; flex-direction: column; gap: 6px; }
 .scrstage { flex: none; position: relative; width: min(100%, calc(38cqh * 4 / 3)); aspect-ratio: 4 / 3; margin: 0 auto; background: #fff; border: 3px solid var(--ink); border-radius: 10px; overflow: hidden; background-image: radial-gradient(#E3ECFF 1px, transparent 1px); background-size: 20px 20px; }
 .scrstage canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .scsprite { position: absolute; width: 16%; aspect-ratio: 1; transition: left .2s linear, top .2s linear, transform .15s; }
@@ -739,7 +739,7 @@ canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-
 .scctl { flex: none; display: flex; gap: 6px; } .scctl .btn { padding: 4px 10px; font-size: clamp(13px, 2.2cqh, 19px); } .scctl .btn[hidden] { display: none; }
 .scflag { background: #DCF5E5; } .scflag.on { animation: pulse .8s infinite; }
 @container app (min-width: 760px) and (orientation: landscape) {
-  .scr { flex-direction: row; } .scrstage { width: auto; height: 100%; max-width: 50%; align-self: center; margin: 0; }
+  .mscr { flex-direction: row; } .scrstage { width: auto; height: 100%; max-width: 50%; align-self: center; margin: 0; }
 }
 .lscene.phonescene { left: 50%; right: auto; width: min(56%, 46cqh); transform: translateX(-50%); top: 3%; bottom: 3%; }
 .lscene.phonescene .lpanel.phone { inset: 0; left: 0; width: auto; transform: none; }
@@ -793,6 +793,31 @@ canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-
 @container app (min-width: 760px) and (orientation: landscape) { .ht { flex-direction: row; } .htright { border-top: 0; border-left: 3px solid var(--ink); } }
 #s-act .mtip .ttxt { -webkit-line-clamp: 4; }
 .lvis .hcode { font-size: clamp(11px, min(3cqh, 3.5cqw), 26px); max-width: 100%; white-space: pre-wrap; overflow-wrap: anywhere; } .lvis .hcol { max-width: 100%; }
+/* ---- Primary 6 activities ---- */
+.lpanel.scratchui { left: 2%; right: 2%; top: 2%; bottom: 2%; background: #E9EEF7; border-radius: 12px; border-width: 3px; }
+.tr { position: absolute; inset: 2.5%; display: flex; flex-direction: column; gap: 6px; color: #1D1B45; font-size: clamp(12px, 2.2cqh, 19px); }
+.trtop { display: flex; justify-content: space-between; align-items: center; font-weight: 800; } .trtop span { color: var(--soft); font-size: .85em; }
+.trm { display: inline-block; width: 2.4em; height: 2.4em; } .trm svg { width: 100%; height: 100%; } .trm.big { width: min(42cqh, 70cqw); height: min(30cqh, 50cqw); }
+.trcard { flex: 1; min-height: 0; display: grid; place-items: center; background: #FFF8E1; border: 3px solid var(--ink); border-radius: 14px; }
+.trbtns { display: flex; gap: 8px; } .trbtns .btn { flex: 1; font-size: 1.1em; padding: 8px; }
+.trex { display: flex; flex-wrap: wrap; gap: 4px; min-height: 2.6em; } .trex > span { position: relative; } .trex i { position: absolute; right: -2px; bottom: -2px; font-style: normal; font-weight: 900; font-size: .7em; background: #fff; border: 2px solid var(--ink); border-radius: 50%; width: 1.5em; height: 1.5em; display: grid; place-items: center; }
+.trex .unripe i { background: #C8E6C9; } .trex .ripe i { background: #FFE0B2; }
+.trres { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; } .trres > div { border: 3px solid var(--good); border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fff; }
+.trres > div.no { border-color: var(--oops); background: #FFE1DE; } .trres small { font-weight: 800; font-size: .8em; text-align: center; }
+.trready { flex: 1; display: grid; place-items: center; font-weight: 800; font-size: 1.2em; text-align: center; }
+.trbar { display: flex; justify-content: center; } .trbar .btn { padding: 6px 18px; font-size: 1.05em; }
+.pt { position: absolute; inset: 2.5%; display: flex; flex-direction: column; border: 3px solid var(--ink); border-radius: 12px; overflow: hidden; background: #E9EEF7; color: #1D1B45; font-size: clamp(11px, 2cqh, 17px); }
+.ptbar { background: #fff; padding: 3px 10px; font-weight: 800; border-bottom: 2px solid #C5CAE0; }
+.pttools { display: flex; gap: 3px; padding: 4px; background: #fff; flex-wrap: wrap; } .pttools button { flex: 1 1 0; min-width: 44px; display: flex; flex-direction: column; align-items: center; border: 2px solid transparent; border-radius: 8px; background: #F4F6FB; padding: 2px; color: #1D1B45; }
+.pttools button b { font-size: 1.4em; line-height: 1.1; } .pttools button small { font-size: .7em; } .pttools button.on { border-color: #1E88E5; background: #E3F2FD; }
+.ptcols { display: flex; gap: 6px; padding: 4px 8px; background: #fff; border-bottom: 2px solid #C5CAE0; } .ptcols button { width: clamp(24px, 4.4cqh, 36px); height: clamp(24px, 4.4cqh, 36px); border-radius: 50%; border: 2px solid #90A4AE; } .ptcols button.on { outline: 3px solid var(--ink); outline-offset: 2px; }
+.ptwrap { flex: 1; min-height: 0; display: grid; place-items: center; padding: 6px; container-type: size; }
+.ptwrap canvas { width: min(100cqw, 100cqh * 4 / 3); height: auto; aspect-ratio: 4 / 3; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.25); touch-action: none; cursor: crosshair; }
+@container app (orientation: landscape) and (max-height: 520px) {
+  .pt { display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto minmax(0, 1fr); }
+  .ptbar, .ptwrap { grid-column: 1 / -1; } .pttools { flex-wrap: nowrap; } .pttools button small { display: none; }
+  .ptcols { border-bottom: 0; align-items: center; } .ptwrap { border-top: 2px solid #C5CAE0; }
+}
 
 </style>
 </head>
@@ -2140,7 +2165,7 @@ ON_SHOW.treasure = () => {
   if (tTab === "legends") body.innerHTML = `<div class="fillgrid">${Object.entries(LEGENDS).map(([k, L]) => { const got = s.legends.includes(k); return `<button class="tro ${got ? "got" : "no"}" data-lg="${k}"><b>${L.emoji}</b>${got ? L.nm : "???"}<span class="t-s">${got ? "Tap to read" : "Keep coding"}</span></button>`; }).join("")}</div>`;
   if (tTab === "stickers") { const bs = BADGES(); body.innerHTML = `<div class="fillgrid">${bs.map(b => `<div class="tro ${b.got ? "got" : "no"}"><b>${b.ic}</b>${b.nm}</div>`).join("")}</div>`; }
   if (tTab === "certs") {
-    const C = [...Object.keys(ICT_YEARS).map(y => ["school" + y, `Primary ${y} Computer Studies`, "🏫"]), ["missions", "Robot Missions", "🤖"], ["studio", "Code Studio", "🎨"], ["python", "Python Path", "🐍"]];
+    const C = [...Object.keys(ICT_YEARS).map(y => ["school" + y, `Primary ${y} ${ICT_YEARS[y].subj}`, "🏫"]), ["missions", "Robot Missions", "🤖"], ["studio", "Code Studio", "🎨"], ["python", "Python Path", "🐍"]];
     body.innerHTML = `<div class="fillgrid" style="grid-template-columns:1fr 1fr">${C.map(([k, nm, ic]) => { const got = s.certs.includes(k); return `<button class="tro ${got ? "got" : "no"}" data-ct="${k}"><b>${ic}</b>${nm}<span class="t-s">${got ? "Tap to open" : k === "missions" ? "Finish all missions" : k === "studio" ? "Finish all studio challenges" : "Pass the final challenge"}</span></button>`; }).join("")}</div>`;
   }
 };
@@ -2175,7 +2200,7 @@ function openGate() { const a = rnd(6, 9), b = rnd(6, 9); gateAns = a * b; $("#g
 $("#gateGo").onclick = () => { if (+$("#gateIn").value === gateAns) { pTab = "set"; show("parent"); } else { $("#gateHint").textContent = "Not quite. Ask a grown-up!"; SFX.oops(); } };
 $("#gateIn").onkeydown = e => { if (e.key === "Enter") $("#gateGo").click(); };
 let pTab = "set";
-const MSG_WHEN = () => [["w1", "Finishing Market Run"], ["w2", "Finishing School Run"], ["w3", "Finishing Farm Friends"], ["w4", "Finishing Lagos Lights"], ["studio", "Finishing a studio project"], ["tod", "Finishing a Toddler Zone game"], ["p1", "Passing Primary 1 Computer Studies"], ["p2", "Passing Primary 2 Computer Studies"]];
+const MSG_WHEN = () => [["w1", "Finishing Market Run"], ["w2", "Finishing School Run"], ["w3", "Finishing Farm Friends"], ["w4", "Finishing Lagos Lights"], ["studio", "Finishing a studio project"], ["tod", "Finishing a Toddler Zone game"], ...Object.keys(ICT_YEARS).map(y => ["p" + y, `Passing Primary ${y} ${ICT_YEARS[y].subj}`])];
 ON_SHOW.parent = () => {
   $("#pTabs").innerHTML = [["set", "⚙️", "Settings"], ["prog", "📊", "Progress"], ["msgs", "💌", "Messages"]].map(([k, ic, nm]) => `<button class="btn" data-pt="${k}" aria-pressed="${k === pTab}"><b>${ic}</b>${nm}</button>`).join("");
   $("#pMsgs").hidden = pTab !== "msgs"; $("#pProg").hidden = pTab !== "prog"; $("#pSet").hidden = pTab !== "set";
@@ -5068,6 +5093,253 @@ const ICT_P5 = { y: 5, title: "Primary 5", subj: "Basic Digital Literacy", terms
 ] };
 ICT_YEARS[5] = ICT_P5;
 
+/* ---------------- PRIMARY 6: Basic Digital Literacy ---------------- */
+const P6_AIEX = [{ e: "a phone unlocking when it sees your face", ai: "face recognition" }, { e: "a voice assistant answering a spoken question", ai: "speech recognition" }, { e: "an app translating English to Hausa", ai: "translation" },
+  { e: "a video app suggesting what to watch next", ai: "recommendation" }, { e: "a chatbot answering questions in writing", ai: "a chatbot" }, { e: "a self-driving car seeing the road", ai: "computer vision" }, { e: "an email app moving scam messages to spam", ai: "spam filtering" }];
+const P6_AIGOOD = ["Checking AI answers in a book or with a teacher", "Using AI to explain a hard maths idea, then practising yourself", "Telling a grown-up when AI says something strange", "Keeping personal details out of chatbots"];
+const P6_AIBAD = ["Copying an AI essay and saying you wrote it", "Believing everything AI says without checking", "Typing your home address into a chatbot", "Using AI to make fake photos of a classmate"];
+const P6_PKG = [{ p: "Microsoft Paint", u: "simple drawings and colouring" }, { p: "CorelDRAW", u: "logos, posters and vector drawings" }, { p: "Adobe Photoshop", u: "editing photos" }, { p: "GIMP", u: "free photo editing" }, { p: "Canva", u: "quick designs from ready-made templates" }];
+const P6_IMG = [{ t: "pixel", d: "one tiny square of colour in a picture" }, { t: "vector picture", d: "a picture made of lines and shapes that stays sharp when made bigger" }, { t: "resolution", d: "how many pixels a picture has" }, { t: "raster picture", d: "a picture made of pixels, like a photo" }];
+const P6_PT = [{ t: "Pencil", d: "draws thin free-hand lines" }, { t: "Brush", d: "paints thicker strokes" }, { t: "Fill (bucket)", d: "fills a closed shape with colour" }, { t: "Eraser", d: "rubs out part of the picture" }, { t: "Shapes", d: "draws rectangles, circles and other shapes" }, { t: "Text", d: "adds words to the picture" }, { t: "Colour picker", d: "picks up a colour from the picture" }, { t: "Select", d: "chooses a part of the picture to move or copy" }];
+const P6_S3 = [{ s: "Sprites", d: "the characters that do things" }, { s: "Stage", d: "the place where the sprites act" }, { s: "Scripts", d: "the stacks of blocks that tell sprites what to do" }];
+const P6_SUI = [{ k: "su_stage", nm: "stage", job: "is where the sprites move and act" }, { k: "su_sprite", nm: "sprite", job: "is a character that the code controls" }, { k: "su_flag", nm: "green flag", job: "starts the project" }, { k: "su_stop", nm: "stop sign", job: "stops the project" },
+  { k: "su_pal", nm: "block palette", job: "holds all the blocks, sorted by colour" }, { k: "su_script", nm: "script area", job: "is where you snap blocks together into scripts" }, { k: "su_list", nm: "sprite list", job: "shows all the sprites in the project" }];
+Object.assign(PIC, {
+  su_stage: { h: SV(`<rect x="4" y="12" width="92" height="72" rx="4" fill="#fff" stroke="${INK}" stroke-width="4"/><circle cx="76" cy="30" r="8" fill="#FFC83D"/><path d="M4 70 Q30 56 50 70 T96 66 V84 H4 Z" fill="#A5D6A7"/>`), nm: "stage" },
+  su_sprite: { h: botSVG ? `<span class="bot" style="--s:100%;display:block;width:100%;height:100%">${botSVG(BOTS[1])}</span>` : em("🤖"), nm: "sprite" },
+  su_flag: { h: SV(`<path d="M30 10 V90" stroke="#2E7D32" stroke-width="8" stroke-linecap="round"/><path d="M32 12 Q55 4 72 14 T86 18 V52 Q68 44 52 52 T32 50 Z" fill="#4CAF50" stroke="${INK}" stroke-width="3"/>`), nm: "green flag" },
+  su_stop: { h: SV(`<path d="M32 8 H68 L92 32 V68 L68 92 H32 L8 68 V32 Z" fill="#E53935" stroke="${INK}" stroke-width="4"/>`), nm: "stop sign" },
+  su_pal: { h: SV(`${[["#FFBF00", 8], ["#4C97FF", 24], ["#9966FF", 40], ["#CF63CF", 56], ["#FFAB19", 72]].map(([c, y]) => `<rect x="10" y="${y}" width="80" height="13" rx="4" fill="${c}"/>`).join("")}<rect x="4" y="4" width="92" height="92" rx="6" fill="none" stroke="${INK}" stroke-width="4"/>`), nm: "block palette" },
+  su_script: { h: SV(`<rect x="4" y="4" width="92" height="92" rx="6" fill="#F4F6FB" stroke="${INK}" stroke-width="4"/><rect x="16" y="18" width="56" height="14" rx="7" fill="#FFBF00"/><rect x="16" y="34" width="62" height="12" rx="3" fill="#4C97FF"/><rect x="16" y="48" width="50" height="12" rx="3" fill="#9966FF"/>`), nm: "script area" },
+  su_list: { h: SV(`<rect x="4" y="18" width="92" height="64" rx="6" fill="#E3ECFF" stroke="${INK}" stroke-width="4"/><rect x="14" y="30" width="22" height="22" rx="4" fill="#fff" stroke="#4C97FF" stroke-width="3"/><rect x="40" y="30" width="22" height="22" rx="4" fill="#fff" stroke="#999" stroke-width="2"/><rect x="66" y="30" width="22" height="22" rx="4" fill="#fff" stroke="#999" stroke-width="2"/>`), nm: "sprite list" },
+});
+const P6_PS = [{ t: "Move tool", d: "moves a layer or a selected part" }, { t: "Crop tool", d: "cuts away the edges of a photo" }, { t: "Brush tool", d: "paints on the photo" }, { t: "Eraser tool", d: "rubs out part of a layer" },
+  { t: "Text tool", d: "adds words to the photo" }, { t: "Magic Wand", d: "selects an area of the same colour" }, { t: "Layers", d: "stack pictures on top of each other like clear sheets" }, { t: "Clone Stamp", d: "copies one part of a photo onto another part" }];
+const P6_TOP = [{ t: "star", d: "every computer connects to one central hub or switch", plus: "easy to add computers, and one broken cable stops only one computer", minus: "if the hub breaks, the whole network stops" },
+  { t: "ring", d: "each computer connects to the next in a circle", plus: "data flows round in one direction in order", minus: "one broken link can stop the whole ring" },
+  { t: "bus", d: "every computer connects to one long main cable", plus: "cheap and uses little cable", minus: "if the main cable breaks, everything stops" },
+  { t: "mesh", d: "computers connect to many other computers", plus: "very reliable, because data can take another path", minus: "uses a lot of cable and is costly" }];
+const P6_ANG = [[4, 90, "square"], [3, 120, "triangle"], [5, 72, "pentagon"], [6, 60, "hexagon"], [8, 45, "octagon"]];
+const P6_BIG = [{ a: "internet banking", u: "check your balance and send money online" }, { a: "e-commerce", u: "buy and sell things online" }, { a: "teleconferencing", u: "hold meetings by video over the internet" }, { a: "e-learning", u: "take lessons online" },
+  { a: "telemedicine", u: "talk to a doctor by video call" }, { a: "e-government", u: "use government services online" }, { a: "USSD mobile banking", u: "send money with a short code like *123#, even on a small phone" }, { a: "e-ticketing", u: "buy bus, train or flight tickets online" }];
+const P6_SM = [{ c: "messaging", e: "WhatsApp" }, { c: "video sharing", e: "YouTube" }, { c: "photo sharing", e: "Instagram" }, { c: "social networking", e: "Facebook" }, { c: "microblogging", e: "X (Twitter)" }, { c: "professional networking", e: "LinkedIn" }, { c: "short videos", e: "TikTok" }, { c: "group chat and voice for gamers", e: "Discord" }];
+const P6_RIGHT = ["Using a computer to research a school project", "Reporting a scam message to a grown-up", "Buying a game from the official store", "Asking before posting a friend's photo", "Keeping customers' data safe at work", "Using antivirus and updates"];
+const P6_WRONG = ["Hacking into someone's account", "Writing a virus to damage computers", "Sending scam messages to steal money", "Reading someone's private messages without permission", "Copying and selling pirated films", "Visiting illegal websites"];
+const P6_JOB = [{ j: "software developer (programmer)", d: "writes the code for apps, games and websites" }, { j: "systems analyst", d: "studies how a business works and plans the computer system it needs" }, { j: "computer engineer", d: "designs and builds computer hardware" }, { j: "data scientist", d: "finds useful patterns in large amounts of data" },
+  { j: "computer technician", d: "repairs and maintains computers" }, { j: "network engineer", d: "builds and looks after networks" }, { j: "cybersecurity analyst", d: "protects computers and data from hackers" }, { j: "UX designer", d: "plans apps and websites so they are easy to use" }];
+
+const wrongNums = (v, extra) => [...new Set([...extra, v + 1, v - 1, v + 2, v + 10].filter(x => x !== v && x >= 0).map(String))];
+const TOPS = ["star", "ring", "bus", "mesh", "tree", "point-to-point"];
+const P6_TSC = [["A school wants one broken cable to stop only ONE computer. Which topology?", "star"], ["Every computer plugs into one central switch. Which topology?", "star"], ["Data travels round a circle from computer to computer. Which topology?", "ring"],
+  ["All computers clip onto one long backbone cable. Which topology?", "bus"], ["Each computer links to many others, so data can always find another path. Which topology?", "mesh"], ["A cheap network that uses the least cable is usually a…", "bus"],
+  ["If the central hub fails, every computer stops. Which topology?", "star"], ["A very reliable but expensive network with lots of cables is a…", "mesh"], ["Which topology looks like a circle when drawn?", "ring"], ["Which topology do most schools and offices use today?", "star"]];
+const ICT_P6 = { y: 6, title: "Primary 6", subj: "Basic Digital Literacy", terms: [
+  { nm: "First term", sub: "AI and digital art", topics: [
+    { id: "i6-ai", nm: "Artificial intelligence", icon: "🧠", desc: "How AI learns, where we meet it, using it wisely",
+      act: { type: "train", nm: "Teach the AI" },
+      learn: [{ v: "🧠💻", t: "Artificial intelligence, AI, is when computers do things that usually need human thinking: seeing, listening, understanding language and making predictions." },
+        { v: "📚➡️🧠", t: "AI learns from examples, called data. Show it thousands of photos labelled 'cat' and 'dog', and it learns to tell them apart. This is machine learning." },
+        { v: "📱🗣️🚗", t: "We meet AI every day: face unlock, voice assistants, translation apps, video suggestions, chatbots and spam filters." },
+        { v: "🗑️➡️🗑️", t: "AI is only as good as its data. Wrong or unfair examples teach it wrong or unfair answers. AI can also make up facts that sound true." },
+        { v: "✅🧑🏾‍🏫", t: "Use AI wisely: check its answers, never copy its work as yours, keep personal details private, and ask a grown-up when unsure." },
+        { v: "1956🇳🇬", t: "The words 'artificial intelligence' were first used in 1956. In 2020 Nigeria opened its National Centre for Artificial Intelligence and Robotics in Abuja." }],
+      wow: { v: "🌾", t: "Digital superpower: AI can look at a photo of a cassava leaf and spot a plant disease, helping farmers save their crops!" },
+      gens: [
+        fromFacts(P6_AIEX, x => tq(`What kind of AI is ${x.e}?`, x.ai, P6_AIEX.filter(y => y !== x).map(y => y.ai), { vis: em("🧠"), why: `That is ${x.ai}.` })),
+        () => tq("Which is a WISE way to use AI?", pick(P6_AIGOOD), P6_AIBAD, { vis: em("✅"), why: "That uses AI wisely and safely." }),
+        () => tq("Which is a WRONG way to use AI?", pick(P6_AIBAD), P6_AIGOOD, { vis: em("⚠️"), why: "That is unsafe, unfair or dishonest." }),
+        facts([["AI learns from examples called…", "data", ["paint", "cables", "volume"]], ["Learning from examples is called…", "machine learning", ["machine washing", "typing", "booting"]],
+          ["If an AI learns from wrong examples, it will…", "give wrong answers", ["always be right", "become a human", "switch off"]], ["When were the words 'artificial intelligence' first used?", "1956", ["2020", "1800", "2010"]],
+          ["Nigeria's centre for AI and robotics opened in…", "2020", ["1956", "1900", "1999"]], ["An AI chatbot gives you a 'fact' for homework. You should…", "check it in a good source", ["copy it at once", "never tell anyone", "believe it because it's a computer"]],
+          ["Can AI make mistakes?", "Yes, it can", ["No, never", "Only on Sundays", "Only when it rains"]], ["Which should you NEVER type into a chatbot?", "your home address", ["a maths question", "a science word", "the name of a planet"]]]),
+        tfs([["AI learns from data.", true], ["AI is always right.", false], ["Copying an AI essay as your own is cheating.", true], ["Face unlock on a phone uses AI.", true], ["Unfair data can make AI unfair.", true]]),
+      ] },
+    { id: "i6-draw", nm: "Drawing and design software", icon: "🖌️", desc: "Paint, CorelDRAW, Photoshop and more",
+      act: { type: "match", nm: "Which program for the job?", rounds: [
+        { la: "Program", lb: "Best for", pairs: P6_PKG.slice(0, 4).map(x => [x.p, x.u]) }, { la: "Word", lb: "Meaning", pairs: P6_IMG.map(x => [x.t, x.d]) }], done: "You know your drawing programs!" },
+      learn: [{ v: "🖌️💻", t: "Drawing and design programs let us create pictures, posters, logos and edit photos on a computer." },
+        { v: "🎨", t: "Microsoft Paint is simple and free with Windows: great for drawing, colouring and adding text." },
+        { v: "✒️", t: "CorelDRAW makes vector drawings: logos and posters made of lines and shapes that stay sharp at any size." },
+        { v: "📷", t: "Adobe Photoshop edits photos with tools like crop, brush, eraser and layers. GIMP is a free photo editor, and Canva makes quick designs from templates." },
+        { v: "🟥🟩🟦", t: "Photos are raster pictures made of tiny squares called pixels. More pixels means higher resolution and a sharper picture." }],
+      wow: { v: "🖼️", t: "Digital superpower: the posters, book covers and adverts you see in Lagos traffic were designed on computers!" },
+      gens: [
+        fromFacts(P6_PKG, x => tq(`Which program is best for ${x.u}?`, x.p, P6_PKG.filter(y => y !== x).map(y => y.p), { vis: em("🖌️"), why: `${x.p} is best for ${x.u}.` })),
+        fromFacts(P6_PKG, x => tq(`What is ${x.p} best for?`, x.u, P6_PKG.filter(y => y !== x).map(y => y.u), { why: `${x.p}: ${x.u}.` })),
+        fromFacts(P6_IMG, x => tq(`Which word means ${x.d}?`, x.t, P6_IMG.filter(y => y !== x).map(y => y.t).concat(["printer"]), { why: `A ${x.t} is ${x.d}.` })),
+        facts([["Which drawing program comes free with Windows?", "Microsoft Paint", ["Adobe Photoshop", "CorelDRAW", "Excel"]], ["A logo that stays sharp when made very big is a…", "vector drawing", ["blurry photo", "pixel", "folder"]],
+          ["Which is a FREE photo editor?", "GIMP", ["Microsoft Word", "PowerPoint", "Calculator"]], ["More pixels in a photo means…", "a sharper picture", ["a smaller file always", "no colours", "a louder sound"]]]),
+        tfs([["Photoshop is used to edit photos.", true], ["Pixels are tiny squares of colour.", true], ["CorelDRAW is a web browser.", false], ["Vector drawings stay sharp when you make them bigger.", true]]),
+      ] },
+    { id: "i6-paint", nm: "Microsoft Paint", icon: "🎨", desc: "Pencil, fill, shapes, eraser and text",
+      act: { type: "paint", nm: "Draw in Paint" },
+      learn: [{ v: "🎨", t: "Microsoft Paint is a drawing program. Open it from the Start menu. The big white space is the canvas." },
+        { v: "✏️🖌️", t: "The pencil draws thin lines. The brush paints thicker strokes. Choose a colour from the colour box first." },
+        { v: "🪣", t: "The fill bucket pours colour into a closed shape. If the shape has a gap, the colour leaks out!" },
+        { v: "▭⬭", t: "The shapes tools draw rectangles, circles and more. Click and drag to make the shape the size you want." },
+        { v: "🧽🔤", t: "The eraser rubs out mistakes, and the text tool adds words. Save your picture as a .png or .jpg file." }],
+      wow: { v: "🖼️", t: "Digital superpower: Paint has come with Windows since 1985, and is still loved by young artists!" },
+      gens: [
+        fromFacts(P6_PT, x => tq(`Which Paint tool ${x.d}?`, x.t, P6_PT.filter(y => y !== x).map(y => y.t), { vis: em("🎨"), why: `The ${x.t} tool ${x.d}.` })),
+        fromFacts(P6_PT, x => tq(`What does the ${x.t} tool do?`, `It ${x.d}`, P6_PT.filter(y => y !== x).map(y => `It ${y.d}`), { why: `The ${x.t} tool ${x.d}.` })),
+        facts([["Why did the fill colour leak out of the shape?", "the shape had a gap", ["the colour was too dark", "the computer was off", "the pencil was blue"]], ["The white area where you draw is the…", "canvas", ["taskbar", "ribbon", "keyboard"]],
+          ["Paint pictures are often saved as…", ".png or .jpg", [".mp3 or .mp4", ".xlsx", ".pptx"]], ["To draw a perfect circle, use the…", "shapes tool", ["eraser", "text tool", "fill bucket"]]]),
+        tfs([["The eraser rubs out parts of the picture.", true], ["The fill bucket works best in a closed shape.", true], ["Paint is used to send emails.", false], ["You choose a colour before you draw.", true]]),
+      ] },
+    { id: "i6-scratch", nm: "Scratch: the 3 S's", icon: "🐱", desc: "Sprites, Stage, Scripts and the Scratch screen",
+      act: { type: "label", nm: "Find the parts of Scratch", panel: "scratchui", panelText: "", bw: 4.8, bh: 3.6, parts: [{ k: "su_pal", x: 15, y: 55, s: 1.2 }, { k: "su_script", x: 42, y: 55, s: 1.5 }, { k: "su_stage", x: 78, y: 36, s: 1.3 }, { k: "su_sprite", x: 73, y: 42, s: .4 }, { k: "su_flag", x: 70, y: 8, s: .45 }, { k: "su_stop", x: 82, y: 8, s: .4 }, { k: "su_list", x: 78, y: 80, s: 1 }], done: "You know the Scratch screen!" },
+      learn: [{ v: "🐱🎭📜", t: "Scratch has 3 S's: Sprites (the characters), the Stage (where they act) and Scripts (the stacks of blocks that tell them what to do)." },
+        { h: PIC.su_pal.h, t: "On the left is the block palette, sorted by colour: Motion, Looks, Sound, Events, Control, Sensing, Operators and Variables." },
+        { h: PIC.su_script.h, t: "In the middle is the script area. Drag blocks here and snap them together into scripts." },
+        { h: PIC.su_stage.h, t: "On the right is the stage, 480 steps wide and 360 steps tall. The middle is x: 0, y: 0." },
+        { h: PIC.su_flag.h, t: "Above the stage are the green flag, which starts the project, and the stop sign. Below it is the sprite list." }],
+      wow: { v: "🌍", t: "Digital superpower: you can share your Scratch projects with friends all over the world!" },
+      gens: [
+        fromFacts(P6_S3, x => tq(`Which S is ${x.d}?`, x.s, P6_S3.filter(y => y !== x).map(y => y.s).concat(["Screens", "Switches"]), { vis: em("🐱"), why: `${x.s}: ${x.d}.` })),
+        fromFacts(P6_SUI, x => pq(`Which part of Scratch ${x.job}?`, x.k, P6_SUI.map(y => y.k), { why: `The ${x.nm} ${x.job}.` })),
+        fromFacts(P6_SUI, x => tq(`What does the ${x.nm} do?`, `It ${x.job}`, P6_SUI.filter(y => y !== x).map(y => `It ${y.job}`), { vis: PIC[x.k].h, why: `The ${x.nm} ${x.job}.` })),
+        facts([["How wide is the Scratch stage?", "480 steps", ["10 steps", "1,000,000 steps", "3 steps"]], ["Where is x: 0, y: 0 on the stage?", "in the middle", ["in the top left corner", "outside the stage", "on the green flag"]],
+          ["The 3 S's of Scratch are…", "Sprites, Stage, Scripts", ["Sound, Sleep, Snacks", "Save, Send, Share", "Screen, Sprite, Switch"]], ["How tall is the Scratch stage?", "360 steps", ["36 steps", "3,600 steps", "6 steps"]]]),
+        tfs([["Scripts are stacks of blocks.", true], ["The stop sign starts the project.", false], ["The sprite list shows all the sprites.", true], ["Sprites act on the stage.", true]]),
+      ] },
+  ] },
+  { nm: "Second term", sub: "Photos, networks and Scratch", topics: [
+    { id: "i6-photo", nm: "Editing photos", icon: "📷", desc: "Photoshop tools: crop, brush, layers and more",
+      act: { type: "match", nm: "Photo tools", rounds: [{ la: "Tool", lb: "What it does", pairs: P6_PS.slice(0, 4).map(x => [x.t, x.d]) }, { la: "Tool", lb: "What it does", pairs: P6_PS.slice(4).map(x => [x.t, x.d]) }], done: "You know the photo editing tools!" },
+      learn: [{ v: "📷✨", t: "Photo editing programs like Adobe Photoshop and GIMP change and improve photos. Tools are on a toolbar on the left." },
+        { v: "✂️↔️", t: "The crop tool cuts away the edges of a photo. The move tool moves a layer or a selected part." },
+        { v: "🖌️🧽🔤", t: "The brush paints, the eraser rubs out, and the text tool adds words, for a poster or a birthday card." },
+        { v: "🪄", t: "The magic wand selects an area of the same colour, like a blue sky, so you can change only that part." },
+        { v: "🗂️", t: "Layers are like clear plastic sheets stacked on top of each other. You can change one layer without spoiling the others." },
+        { v: "🤔", t: "Be honest: edited photos can trick people. Never edit a photo to make someone look bad, and label edited pictures." }],
+      wow: { v: "🎬", t: "Digital superpower: Nollywood film posters are made by designers using layers and photo editing!" },
+      gens: [
+        fromFacts(P6_PS, x => tq(`Which tool ${x.d}?`, x.t, P6_PS.filter(y => y !== x).map(y => y.t), { vis: em("📷"), why: `The ${x.t}: ${x.d}.` })),
+        fromFacts(P6_PS, x => tq(`What does the ${x.t} do?`, x.d[0].toUpperCase() + x.d.slice(1), P6_PS.filter(y => y !== x).map(y => y.d[0].toUpperCase() + y.d.slice(1)), { why: `The ${x.t}: ${x.d}.` })),
+        facts([["Layers are like…", "clear sheets stacked on top of each other", ["folders in a drawer", "keys on a keyboard", "slides in a show"]], ["To change only the blue sky in a photo, first use the…", "magic wand", ["eraser", "crop tool", "power button"]],
+          ["Editing a photo to make a classmate look bad is…", "unkind and wrong", ["a good joke", "a school rule", "always allowed"]], ["Which is a FREE photo editor?", "GIMP", ["Adobe Photoshop (paid)", "Microsoft Excel", "PowerPoint"]]]),
+        tfs([["The crop tool cuts away the edges of a photo.", true], ["Layers let you change one part without spoiling the rest.", true], ["Edited photos are always true.", false], ["The text tool adds words.", true]]),
+      ] },
+    { id: "i6-topology", nm: "Network topologies", icon: "🕸️", desc: "LAN, WAN, star, ring and bus",
+      act: { type: "network", mode: "topology", nm: "Build the topologies" },
+      learn: [{ v: "🏫🌍", t: "Remember: a LAN joins computers in one building; a WAN joins computers across cities and countries, like the internet." },
+        { v: "⭐", t: "Topology means the shape of a network: how the computers are joined. In a STAR, every computer connects to one central hub or switch." },
+        { v: "⭕", t: "In a RING, each computer connects to the next one in a circle, and data travels round the ring." },
+        { v: "🚌", t: "In a BUS, every computer connects to one long main cable, called the backbone." },
+        { v: "🕸️", t: "In a MESH, computers connect to many others, so data can take another path if one link breaks. Each topology has good and bad points." }],
+      wow: { v: "🏢", t: "Digital superpower: most school and office networks today use the star topology, with a switch in the middle!" },
+      gens: [
+        fromFacts(P6_TSC, ([q, a]) => tq(q, a, TOPS.filter(t => t !== a), { vis: em("🕸️"), why: `That describes the ${a} topology.` })),
+        fromFacts(P6_TOP, x => tq(`In which topology ${x.d}?`, x.t, TOPS.filter(t => t !== x.t), { vis: em("🕸️"), why: `In a ${x.t} topology, ${x.d}.` })),
+        fromFacts(P6_TOP, x => tq(`Which topology has this problem: ${x.minus}?`, x.t, TOPS.filter(t => t !== x.t), { why: `${x.t[0].toUpperCase() + x.t.slice(1)}: ${x.minus}.` })),
+        fromFacts(P6_TOP, x => tq(`What is good about the ${x.t} topology?`, x.plus[0].toUpperCase() + x.plus.slice(1), P6_TOP.filter(y => y !== x).map(y => y.plus[0].toUpperCase() + y.plus.slice(1)), { why: `${x.t[0].toUpperCase() + x.t.slice(1)}: ${x.plus}.` })),
+        facts([["The shape of a network is called its…", "topology", ["wallpaper", "resolution", "password"]], ["Most school networks today use the…", "star topology", ["bus topology", "ring topology", "no topology"]],
+          ["The long main cable in a bus network is the…", "backbone", ["mouse", "printer", "stage"]], ["LAN stands for…", "Local Area Network", ["Large Area Network", "Long Antenna Network", "Lagos Area Network"]]]),
+        tfs([["In a star network, every computer connects to a hub.", true], ["A ring network is shaped like a circle.", true], ["A mesh network uses very little cable.", false], ["The internet is a WAN.", true]]),
+      ] },
+    { id: "i6-shapes", nm: "Scratch: drawing shapes", icon: "🔺", desc: "Pen, repeat and the angles of shapes",
+      act: { type: "scratch", mode: "pen", nm: "Draw shapes with code" },
+      learn: [{ h: `<div class="sblkcol">${sblk("✏️ pen down", SC.pe)}${sblk("repeat 4", SC.co)}${sblk("   move 100 steps", SC.mo)}${sblk("   turn ↻ 90 degrees", SC.mo)}</div>`, t: "The Pen blocks let a sprite draw as it moves. Put the pen down, then move and turn to draw." },
+        { v: "⬜", t: "A square has 4 equal sides and 4 turns. 4 × 90° = 360°, one full turn." },
+        { v: "🔺", t: "For a triangle the sprite turns 3 times, so each turn is 360 ÷ 3 = 120 degrees." },
+        { v: "⬠", t: "For any regular shape: turn = 360 ÷ number of sides. A pentagon: 360 ÷ 5 = 72. A hexagon: 360 ÷ 6 = 60." },
+        { v: "🌀", t: "Repeat makes the code short: one repeat block draws the whole shape. Change the numbers to make new shapes!" }],
+      wow: { v: "📐", t: "Digital superpower: coding turns maths into art. Try repeating a shape while turning a little, to draw a flower!" },
+      gens: [
+        fromFacts(P6_ANG, ([n, a, s]) => tq(`To draw a ${s} with Scratch, how many degrees should each turn be?`, String(a), P6_ANG.filter(x => x[1] !== a).map(x => String(x[1])), { vis: em("📐"), why: `360 ÷ ${n} = ${a}.` })),
+        fromFacts(P6_ANG, ([n, a, s]) => tq(`'repeat ${n}: move 100, turn ${a}' draws a…`, s, P6_ANG.filter(x => x[2] !== s).map(x => x[2]), { why: `${n} sides with ${a}° turns make a ${s}.` })),
+        fromFacts(P6_ANG, ([n, a, s]) => tq(`How many times should the loop repeat to draw a ${s}?`, String(n), P6_ANG.filter(x => x[0] !== n).map(x => String(x[0])), { why: `A ${s} has ${n} sides.` })),
+        facts([["To make the sprite draw as it moves, use…", "pen down", ["pen up", "next costume", "play sound"]], ["The turns of any regular shape add up to…", "360 degrees", ["100 degrees", "90 degrees", "1,000 degrees"]],
+          ["Which block makes the code short when steps repeat?", "repeat", ["say", "wait", "pen up"]], ["To stop drawing while moving, use…", "pen up", ["pen down", "forever", "repeat"]]]),
+        tfs([["A square needs four 90-degree turns.", true], ["A triangle needs 120-degree turns.", true], ["Pen down stops the drawing.", false], ["360 ÷ 6 = 60.", true]]),
+      ] },
+    { id: "i6-smaths", nm: "Scratch: maths and variables", icon: "➗", desc: "Operators, variables and a calculator",
+      act: { type: "scratch", mode: "maths", nm: "Build a calculator" },
+      learn: [{ h: `<div class="sblkcol">${sblk("set a to 12", SC.va)}${sblk("set b to 5", SC.va)}</div>`, t: "A variable is a box with a name that holds a number. 'set a to 12' puts 12 in the box called a." },
+        { h: `<div class="sblkcol">${sblk("( a + b )", SC.op)}${sblk("( a − b )", SC.op)}${sblk("( a × b )", SC.op)}${sblk("( a ÷ b )", SC.op)}</div>`, t: "The green Operators blocks do maths: add, subtract, multiply and divide." },
+        { h: sblk("say ( a + b )", SC.op), t: "Put an operator inside 'say' and the sprite says the answer. With a = 12 and b = 5, a + b is 17." },
+        { v: "🧮", t: "Operators can also compare: is a greater than b? Games use this for scores, timers and levels." },
+        { v: "🌊♻️", t: "Big idea: in an Ocean Clean-up game, a 'score' variable goes up by 1 each time the sprite collects a plastic bottle!" }],
+      wow: { v: "🧠", t: "Digital superpower: every calculator, bank app and game uses variables and operators like these!" },
+      gens: [
+        () => { const a = rnd(6, 40), b = rnd(2, 9), ops = [["+", a + b], ["−", a - b], ["×", a * b]], [o, v] = pick(ops); return tq(`a = ${a} and b = ${b}. What does 'say ( a ${o} b )' say?`, String(v), wrongNums(v, [a + b, a - b, a * b]), { vis: sblk(`say ( a ${o} b )`, SC.op), why: `${a} ${o} ${b} = ${v}.` }); },
+        () => { const b = rnd(2, 9), q = rnd(3, 12), a = b * q; return tq(`a = ${a} and b = ${b}. What does 'say ( a ÷ b )' say?`, String(q), wrongNums(q, [a - b, a + b]), { vis: sblk("say ( a ÷ b )", SC.op), why: `${a} ÷ ${b} = ${q}.` }); },
+        facts([["A box with a name that holds a number is a…", "variable", ["sprite", "backdrop", "costume"]], ["Which colour are the Operators blocks?", "green", ["purple", "blue", "yellow"]],
+          ["'set score to 0' does what?", "puts 0 in the score box", ["deletes the game", "stops the sprite", "plays a sound"]], ["In a clean-up game, what should happen when a bottle is collected?", "change score by 1", ["set score to 0", "stop all", "hide the stage"]]]),
+        tfs([["Variables hold values like a score.", true], ["Operators blocks do maths.", true], ["a × b means a divided by b.", false], ["A variable's value can change.", true]]),
+      ] },
+  ] },
+  { nm: "Third term", sub: "Computers in society", topics: [
+    { id: "i6-bigapps", nm: "Computers at work", icon: "🏦", desc: "Banking, e-commerce, teleconferencing and more",
+      act: { type: "match", nm: "What is it for?", rounds: [{ la: "Use", lb: "What it lets you do", pairs: P6_BIG.slice(0, 4).map(x => [x.a, x.u]) }, { la: "Use", lb: "What it lets you do", pairs: P6_BIG.slice(4).map(x => [x.a, x.u]) }], done: "You know how computers power big services!" },
+      learn: [{ v: "🏦📱", t: "Internet banking and bank apps let people check balances and send money online. USSD codes like *123# work even on small phones without internet." },
+        { v: "🛒", t: "E-commerce means buying and selling online, on websites and apps like Jumia and Konga. Payment can be by card, transfer or on delivery." },
+        { v: "🎥", t: "Teleconferencing means meetings by video over the internet, with apps like Zoom, Google Meet and Microsoft Teams." },
+        { v: "🎓🩺🏛️", t: "E-learning brings lessons online, telemedicine lets people see a doctor by video, and e-government puts services like registrations online." },
+        { v: "🔐", t: "Big services must be safe: strong passwords, one-time codes (OTP), and never sharing your PIN, even with someone who says they are from the bank." }],
+      wow: { v: "⚡", t: "Digital superpower: a transfer from Kano to Lagos can arrive in seconds, thanks to computers and networks!" },
+      gens: [
+        fromFacts(P6_BIG, x => tq(`Which lets you ${x.u}?`, x.a, P6_BIG.filter(y => y !== x).map(y => y.a), { vis: em("🏦"), why: `${x.a[0].toUpperCase() + x.a.slice(1)} lets you ${x.u}.` })),
+        fromFacts(P6_BIG, x => tq(`What does ${x.a} let you do?`, x.u[0].toUpperCase() + x.u.slice(1), P6_BIG.filter(y => y !== x).map(y => y.u[0].toUpperCase() + y.u.slice(1)), { why: `${x.a[0].toUpperCase() + x.a.slice(1)}: ${x.u}.` })),
+        facts([["Someone calls saying they are from the bank and asks for your PIN. You should…", "never share it, and tell a grown-up", ["share it quickly", "send half of it", "post it online"]], ["Buying and selling online is called…", "e-commerce", ["e-learning", "telemedicine", "hacking"]],
+          ["Which works on a small phone without internet?", "USSD codes like *123#", ["video calls", "e-commerce websites", "YouTube"]], ["A one-time code sent to your phone for a payment is an…", "OTP", ["URL", "LAN", "CPU"]],
+          ["Zoom and Google Meet are used for…", "teleconferencing", ["painting", "e-commerce", "typing letters"]], ["Seeing a doctor by video call is called…", "telemedicine", ["e-commerce", "teleporting", "e-ticketing"]]]),
+        tfs([["E-commerce means buying and selling online.", true], ["A real bank will never ask for your PIN.", true], ["USSD needs a smartphone with internet.", false], ["Teleconferencing uses video over the internet.", true]]),
+      ] },
+    { id: "i6-social", nm: "Social media", icon: "💬", desc: "Kinds of social media, age limits and your footprint",
+      act: { type: "match", nm: "Apps and categories", rounds: [{ la: "Category", lb: "Example app", pairs: P6_SM.slice(0, 4).map(x => [x.c, x.e]) }, { la: "Category", lb: "Example app", pairs: P6_SM.slice(4).map(x => [x.c, x.e]) }], done: "You know the kinds of social media!" },
+      learn: [{ v: "💬📸🎥", t: "Social media are websites and apps where people share messages, photos and videos, and connect with others." },
+        { v: "🗂️", t: "Categories: messaging (WhatsApp), social networking (Facebook), photo sharing (Instagram), video sharing (YouTube), short videos (TikTok), microblogging (X, once called Twitter) and professional networking (LinkedIn)." },
+        { v: "🔞13", t: "Most social media apps say users must be at least 13 years old. Younger children should use only child-safe apps, with a grown-up." },
+        { v: "👣", t: "Everything you post leaves a digital footprint. It can stay online for ever, even if you delete it. Think before you post!" },
+        { v: "⚖️", t: "Good sides: staying in touch, learning and sharing ideas. Bad sides: fake news, bullying, scams and spending too much time on screens." }],
+      wow: { v: "📰", t: "Digital superpower: before sharing news, check it! Stopping fake news is a real way to help your community." },
+      gens: [
+        fromFacts(P6_SM, x => tq(`${x.e} is mainly used for…`, x.c, P6_SM.filter(y => y !== x).map(y => y.c), { vis: em("💬"), why: `${x.e}: ${x.c}.` })),
+        fromFacts(P6_SM, x => tq(`Which app is mainly for ${x.c}?`, x.e, P6_SM.filter(y => y !== x).map(y => y.e), { why: `${x.e}: ${x.c}.` })),
+        facts([["Most social media apps say users must be at least…", "13 years old", ["5 years old", "8 years old", "30 years old"]], ["Everything you post online leaves a…", "digital footprint", ["wet floor", "password", "virus"]],
+          ["Before sharing a shocking news story, you should…", "check it on a trusted news site", ["share it at once", "add more drama", "send it to everyone"]], ["Which is a BAD side of social media?", "fake news and bullying", ["keeping in touch with family", "learning new skills", "sharing good ideas"]],
+          ["X used to be called…", "Twitter", ["Facebook", "Snapchat", "LinkedIn"]], ["LinkedIn is mostly used by…", "working adults looking for jobs", ["babies", "only gamers", "only farmers"]]]),
+        tfs([["What you post can stay online for ever.", true], ["Social media can spread fake news.", true], ["Most social media is meant for 7-year-olds.", false], ["Thinking before you post is wise.", true]]),
+      ] },
+    { id: "i6-misuse", nm: "Misuse of computers", icon: "⚖️", desc: "Hacking, fraud, privacy, piracy and the law",
+      act: { type: "sort", nm: "Right or wrong use?", A: () => P6_RIGHT, B: () => P6_WRONG, la: "Right use ✅", lb: "Misuse ⛔", ia: "👍", ib: "⚖️", ask: t => "Is this a right use or a misuse of computers?", wrong: c => c.a ? "This is a responsible use of computers." : "This is a misuse. It can harm people, and may be a crime.", done: "You can tell right use from misuse!" },
+      learn: [{ v: "⚖️💻", t: "Misuse of computers means using them to harm people, break rules or steal. Some misuse is a crime." },
+        { v: "🕵🏾🔓", t: "Invasion of privacy: reading other people's messages or files without permission. Hacking: breaking into accounts or systems." },
+        { v: "🦠", t: "Writing or spreading viruses and other malware damages computers and steals information." },
+        { v: "💸🎣", t: "Fraud: tricking people online to steal money, with fake messages, fake shops or fake prizes." },
+        { v: "🏴‍☠️🔞", t: "Piracy is copying and selling films, music or software without permission. Visiting illegal or adult websites is also wrong." },
+        { v: "🇳🇬", t: "In Nigeria, the Cybercrimes (Prohibition, Prevention, etc.) Act 2015, updated in 2024, punishes cybercrimes like hacking, fraud and cyberstalking." }],
+      wow: { v: "🛡️", t: "Digital superpower: ethical hackers are paid to find weak spots and fix them, before criminals find them!" },
+      gens: [
+        () => { const r = Math.random() < .5, t = pick(r ? P6_RIGHT : P6_WRONG); return tq(`"${t}" Is this right or wrong?`, r ? "right use" : "misuse", [r ? "misuse" : "right use", "a computer part", "a file type"], { why: r ? "It is responsible." : "It harms people and may be a crime." }); },
+        () => tq("Which is a MISUSE of computers?", pick(P6_WRONG), P6_RIGHT, { vis: em("⚖️"), why: "It harms people and may be a crime." }),
+        () => tq("Which is a RIGHT use of computers?", pick(P6_RIGHT), P6_WRONG, { vis: em("👍"), why: "It is responsible." }),
+        facts([["Breaking into someone's account is called…", "hacking", ["typing", "printing", "saving"]], ["Copying and selling films without permission is…", "piracy", ["e-commerce", "teleconferencing", "formatting"]],
+          ["Nigeria's main law against cybercrime is the…", "Cybercrimes Act 2015", ["Traffic Act", "Education Act 1999 only", "Football Act"]], ["Reading someone's messages without permission is…", "invasion of privacy", ["e-learning", "good manners", "debugging"]],
+          ["A fake online shop that takes money and sends nothing is…", "fraud", ["e-government", "a backup", "a browser"]], ["People paid to find and fix weak spots are…", "ethical hackers", ["pirates", "trolls", "spammers"]]]),
+        tfs([["Hacking into accounts is a crime.", true], ["Piracy is fine if the film is old.", false], ["Nigeria has a law against cybercrime.", true], ["Writing viruses is a misuse of computers.", true]]),
+      ] },
+    { id: "i6-careers", nm: "Careers in computing", icon: "👩🏾‍💻", desc: "Programmer, data scientist, engineer and more",
+      act: { type: "match", nm: "Who does what?", rounds: [{ la: "Career", lb: "Their job", pairs: P6_JOB.slice(0, 4).map(x => [x.j, x.d]) }, { la: "Career", lb: "Their job", pairs: P6_JOB.slice(4).map(x => [x.j, x.d]) }], done: "You know many careers in computing!" },
+      learn: [{ v: "🧑🏾‍💻", t: "Software developers (programmers) write the code for apps, games and websites. Systems analysts plan the computer systems businesses need." },
+        { v: "🔧", t: "Computer engineers design hardware. Computer technicians repair and maintain computers. Network engineers build networks." },
+        { v: "📊🛡️", t: "Data scientists find patterns in data. Cybersecurity analysts protect computers from hackers." },
+        { v: "🎨🎮", t: "UX designers make apps easy to use, game developers build games, and AI engineers build machines that learn." },
+        { v: "🇳🇬🚀", t: "Nigeria's tech scene is growing fast, especially in Lagos. Many young Nigerians build apps for payments, farming, health and learning." },
+        { v: "📚", t: "To get ready: practise coding, study maths and English, be curious, work in teams, and keep learning. Your Code Buddies journey is a great start!" }],
+      wow: { v: "🌟", t: "Digital superpower: computing skills can take you to jobs anywhere in the world, even working from home in Nigeria!" },
+      gens: [
+        fromFacts(P6_JOB, x => tq(`Who ${x.d}?`, `a ${x.j}`, P6_JOB.filter(y => y !== x).map(y => `a ${y.j}`), { vis: em("👩🏾‍💻"), why: `A ${x.j} ${x.d}.` })),
+        fromFacts(P6_JOB, x => tq(`What does a ${x.j} do?`, x.d[0].toUpperCase() + x.d.slice(1), P6_JOB.filter(y => y !== x).map(y => y.d[0].toUpperCase() + y.d.slice(1)), { why: `A ${x.j} ${x.d}.` })),
+        facts([["Which school subjects help most for a computing career?", "maths and English", ["only sport", "only singing", "none at all"]], ["Which city is the biggest tech hub in Nigeria?", "Lagos", ["Paris", "Tokyo", "New York"]],
+          ["Your computer won't start. Who can repair it?", "a computer technician", ["a data scientist", "a UX designer", "a systems analyst"]], ["A bank is attacked by hackers. Who protects it?", "a cybersecurity analyst", ["a game developer", "a painter", "a UX designer"]]]),
+        tfs([["Programmers write code.", true], ["Data scientists repair cars.", false], ["Computing jobs exist in Nigeria.", true], ["Teamwork matters in computing jobs.", true]]),
+      ] },
+  ] },
+] };
+ICT_YEARS[6] = ICT_P6;
+
 /* ======================= SCHOOL ICT: screens, questions, hands-on activities ======================= */
 let curY = 1, curTerm = 0, curTopic = null;
 const sch = () => { const s = st(); s.school = s.school || { stars: {}, acts: {}, badges: {}, finals: {}, tries: {} }; ["stars", "acts", "badges", "finals", "tries"].forEach(k => s.school[k] = s.school[k] || {}); return s.school; };
@@ -5725,7 +5997,7 @@ ACTS_MORE.ppt = function () {
   const steps = ["Click the box that says 'Click to add title'.", "Type the title: tap the words in order: Our School Trip.", "Add a new slide: open the Home tab and click New Slide.", "Add a picture of an elephant: open Insert, click Pictures and choose the elephant.", "Give your slides colour: open Design, click Themes and pick one.", "Show your slides: open Slide Show and click From Beginning.", "Click the slide to go to the next slide.", "Press Esc (or tap ✕) to end the show."];
   const ask = () => task(steps[si], `${si + 1} of ${steps.length}`);
   const ok = () => { SFX.good(); si++; if (si < steps.length) ask(); else actDone("You made and showed a slide show!"); };
-  const slideHTML = (s, i, big) => `<div class="pslide ${big ? "big" : ""}" style="${theme ? `background:${theme}` : ""}">${s.title ? `<b class="ptitle">${esc(s.title)}</b>` : big && show < 0 && i === cur ? `<button class="pph ${si === 1 ? "on" : ""}" data-p="title">${si === 1 ? esc(words.join(" ")) + "|" : "Click to add title"}</button>` : `<b class="ptitle ghost">${i === 0 ? "" : "Slide " + (i + 1)}</b>`}${s.pic ? `<span class="ppic">${s.pic}</span>` : ""}</div>`;
+  const slideHTML = (s, i, big) => `<div class="pslide ${big ? "big" : ""}" style="${theme ? `background:${theme}` : ""}">${s.title ? `<b class="ptitle">${esc(s.title)}</b>` : big && show < 0 && i === cur ? `<button class="pph ${si === 1 ? "on" : ""}" data-p="title">${si === 1 ? esc(words.join(" ")) + "|" : "Click to add title"}</button>` : `<b class="ptitle ghost">${i === 0 ? "" : "Slide " + (i + 1)}</b>`}${s.pic ? `<span class="pslpic">${s.pic}</span>` : ""}</div>`;
   const draw = () => {
     if (show >= 0) { S.innerHTML = `<div class="pshow" data-p="show">${slideHTML(slides[show], show, true).replace("pslide big", "pslide big full")}<button class="pesc" data-p="esc" aria-label="End show">✕</button><small>Slide ${show + 1} of ${slides.length}</small></div>`; return; }
     S.innerHTML = `<div class="wd pp"><div class="wd-title pp-title"><span>📽️ Presentation1 - PowerPoint</span></div>
@@ -5835,7 +6107,7 @@ const SMODES = {
 };
 ACTS_MORE.scratch = function (A) {
   const M = SMODES[A.mode], S = $("#acStage"); let script = [], cur = null, ti = 0, running = null, bid = 1;
-  S.innerHTML = `<div class="scr"><div class="scrstage" id="scStage"><canvas id="scPen" width="480" height="360"></canvas><div class="scsprite" id="scSprite"><span class="bot">${botSVG(playerBot())}</span></div><div class="scbub" id="scBub" hidden></div></div>
+  S.innerHTML = `<div class="mscr"><div class="scrstage" id="scStage"><canvas id="scPen" width="480" height="360"></canvas><div class="scsprite" id="scSprite"><span class="bot">${botSVG(playerBot())}</span></div><div class="scbub" id="scBub" hidden></div></div>
     <div class="scright"><div class="scpal" id="scPal">${M.pal.map(t => `<button class="sblk ${SB[t].hat ? "hat" : ""}" style="--sc:${SB[t].c}" data-add="${t}">${SB[t].l({ id: 0, v: SB[t].d })}</button>`).join("")}</div>
     <div class="scscript" id="scScript"></div>
     <div class="scctl"><button class="btn scflag" id="scGo" aria-label="Green flag">🟢</button><button class="btn" id="scStop" aria-label="Stop">🛑</button><button class="btn" id="scOut" aria-label="Out of the loop">⤴ out of loop</button><button class="btn" id="scDel" aria-label="Remove last block">⌫</button><button class="btn" id="scClr" aria-label="Clear">🗑️</button></div></div></div>`;
@@ -6108,6 +6380,97 @@ ACTS_MORE.html = function () {
   $("#htView").onclick = () => { viewed = true; SFX.tap(); check(); };
   S.querySelector(".httags").onclick = e => { const b = e.target.closest("[data-t]"); if (!b) return; const s0 = ta.selectionStart, s1 = ta.selectionEnd; ta.setRangeText(b.dataset.t, s0, s1, "end"); ta.focus(); SFX.tap(); check(); };
   render(); task(steps[0].t, `1 of ${steps.length}`);
+};
+
+/* ======================= SCHOOL ICT Primary 6: teach an AI, pretend Paint ======================= */
+/* ---------- Teach the AI: label mangoes, the AI learns from your examples (nearest example by colour) ---------- */
+ACTS_MORE.train = function () {
+  const S = $("#acStage"); let round = 0, examples = [], queue = [], tested = false;
+  const RIPE = [42, 50, 36, 46, 32, 54, 40], UNRIPE = [100, 112, 92, 120, 106, 96, 116];
+  const TEST = [[44, "ripe"], [38, "ripe"], [52, "ripe"], [98, "unripe"], [110, "unripe"], [118, "unripe"]];
+  const mango = h => SV(`<path d="M50 14 C78 14 90 40 86 62 C82 84 62 94 44 90 C22 86 10 66 14 46 C18 26 30 14 50 14 Z" fill="hsl(${h},78%,${h < 70 ? 52 : 42}%)" stroke="${INK}" stroke-width="4"/><path d="M52 14 Q60 4 72 6" stroke="#5D4037" stroke-width="4" fill="none"/><path d="M58 10 Q70 2 80 12 Q68 16 58 10 Z" fill="#43A047"/><ellipse cx="36" cy="40" rx="6" ry="10" fill="#fff" opacity=".35"/>`);
+  const newQueue = n => { const r = shuffle(RIPE).slice(0, n / 2).map(h => [h, "ripe"]), u = shuffle(UNRIPE).slice(0, n / 2).map(h => [h, "unripe"]); return shuffle([...r, ...u]).filter(([h]) => !examples.some(e => e.h === h)); };
+  const predict = h => { let best = null; for (const e of examples) if (!best || Math.abs(e.h - h) < Math.abs(best.h - h)) best = e; return best ? best.lab : "ripe"; };
+  const draw = (res) => {
+    const cur = queue[0];
+    S.innerHTML = `<div class="tr"><div class="trtop">${res ? `<b>🧠 The AI's test</b>` : `<b>🧑🏾‍🏫 Teach the AI</b><span>${examples.length} example${examples.length === 1 ? "" : "s"} learned</span>`}</div>
+      ${res ? `<div class="trres">${res.map(r => `<div class="${r.ok ? "ok" : "no"}"><span class="trm">${mango(r.h)}</span><small>AI: ${r.guess === "ripe" ? "ripe" : "not ripe"} ${r.ok ? "✅" : "❌"}</small></div>`).join("")}</div>`
+      : cur ? `<div class="trcard" id="trCard" data-truth="${cur[1]}"><span class="trm big">${mango(cur[0])}</span></div><div class="trbtns"><button class="btn" data-lab="ripe">🥭 Ripe</button><button class="btn" data-lab="unripe">🟢 Not ripe yet</button></div>`
+      : `<div class="trready">Ready! Now test what the AI learned.</div>`}
+      <div class="trex">${examples.map(e => `<span class="${e.lab}" title="${e.lab}"><span class="trm">${mango(e.h)}</span><i>${e.lab === "ripe" ? "R" : "N"}</i></span>`).join("")}</div>
+      <div class="trbar">${!res && !cur ? `<button class="btn go" id="trTest">🧠 Test the AI</button>` : ""}${res ? `<button class="btn go" id="trNext">${round === 0 ? "Teach it more ▶" : "Finish ✔"}</button>` : ""}</div></div>`;
+  };
+  const start = () => { queue = newQueue(round === 0 ? 6 : 4); tested = false; draw(); task(round === 0 ? "You are the teacher! Look at each mango and tell the AI: is it ripe or not ripe yet? It learns from YOUR examples." : "Real AI learns from LOTS of examples. Teach it 4 more, carefully. Then test it again.", `${round + 1} of 2`); };
+  S.onclick = async e => {
+    const l = e.target.closest("[data-lab]");
+    if (l && queue.length) { const [h] = queue.shift(); examples.push({ h, lab: l.dataset.lab }); SFX.tap(); draw(); return; }
+    if (e.target.closest("#trTest")) {
+      SFX.tap(); const res = TEST.map(([h, truth]) => { const guess = predict(h); return { h, guess, ok: guess === truth }; }); const n = res.filter(r => r.ok).length;
+      draw(res); tested = true;
+      const wrongEx = examples.filter(x => (x.h < 70 ? "ripe" : "unripe") !== x.lab).length;
+      const msg = `The AI got ${n} of 6 right. ` + (n === 6 ? "Great teaching! It learned from good examples." : wrongEx ? `You gave it ${wrongEx} wrong example${wrongEx > 1 ? "s" : ""}, so it learned some wrong ideas. Wrong data means wrong answers!` : "It needs more examples to learn better.");
+      say(msg); task(msg, `${round + 1} of 2`);
+      S.dataset.score = n; return;
+    }
+    if (e.target.closest("#trNext")) {
+      const n = +S.dataset.score;
+      if (round === 0) { round = 1; examples = examples.filter(x => (x.h < 70 ? "ripe" : "unripe") === x.lab); if (examples.length < 6) say("The coach removed your wrong examples. Now teach it again, carefully."); start(); return; }
+      if (n >= 5) actDone("You taught an AI! Good data makes good AI."); else { SFX.oops(); examples = examples.filter(x => (x.h < 70 ? "ripe" : "unripe") === x.lab); start(); say("Let's teach it again. Look closely at the colour: yellow-orange is ripe, green is not ripe yet."); }
+    }
+  };
+  start();
+};
+
+/* ---------- pretend Microsoft Paint ---------- */
+ACTS_MORE.paint = function () {
+  const S = $("#acStage"); let tool = "pencil", col = "#1D1B45", si = 0, down = null, snap = null, stats = { pencil: 0, eraser: 0, rect: 0, text: 0 };
+  const COLS = ["#1D1B45", "#E53935", "#1E88E5", "#43A047", "#FFC83D", "#8D6E63", "#FFFFFF"];
+  const TOOLS = [["pencil", "✏️", "Pencil"], ["brush", "🖌️", "Brush"], ["fill", "🪣", "Fill"], ["rect", "▭", "Rectangle"], ["ellipse", "⬭", "Circle"], ["eraser", "🧽", "Eraser"], ["text", "🔤", "Text"]];
+  const steps = [
+    { t: "Use the ✏️ Pencil to draw a sun or a cloud in the sky: press and drag on the canvas.", ok: () => stats.pencil > 40 },
+    { t: "Click the RED colour, then use the 🪣 Fill bucket and click inside the walls of the house.", ok: () => { const p = ctx.getImageData(250, 205, 1, 1).data; return p[0] > 200 && p[1] < 90 && p[2] < 90; } },
+    { t: "Use the ▭ Rectangle tool to draw a window or a door: press and drag.", ok: () => stats.rect > 0 },
+    { t: "Use the 🧽 Eraser to rub out part of your pencil drawing.", ok: () => stats.eraser > 30 },
+    { t: "Use the 🔤 Text tool: click on the picture, then choose the words to add.", ok: () => stats.text > 0 }];
+  S.innerHTML = `<div class="pt"><div class="ptbar">🎨 Untitled - Paint</div><div class="pttools">${TOOLS.map(([k, i, n]) => `<button data-tool="${k}" class="${k === tool ? "on" : ""}" aria-label="${n}"><b>${i}</b><small>${n}</small></button>`).join("")}</div>
+    <div class="ptcols">${COLS.map(c => `<button data-col="${c}" style="background:${c}" class="${c === col ? "on" : ""}" aria-label="colour"></button>`).join("")}</div>
+    <div class="ptwrap"><canvas id="ptCanvas" width="400" height="300"></canvas></div></div>`;
+  const cv = $("#ptCanvas"), ctx = cv.getContext("2d", { willReadFrequently: true });
+  ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, 400, 300);
+  ctx.strokeStyle = "#1D1B45"; ctx.lineWidth = 3; ctx.strokeRect(200, 140, 120, 110); ctx.beginPath(); ctx.moveTo(190, 140); ctx.lineTo(260, 85); ctx.lineTo(330, 140); ctx.closePath(); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(0, 260); ctx.lineTo(400, 260); ctx.strokeStyle = "#43A047"; ctx.stroke();
+  const pos = e => { const r = cv.getBoundingClientRect(); return [(e.clientX - r.left) * 400 / r.width, (e.clientY - r.top) * 300 / r.height]; };
+  const check = () => { if (si < steps.length && steps[si].ok()) { SFX.good(); si++; if (si < steps.length) setTimeout(() => task(steps[si].t, `${si + 1} of ${steps.length}`), 300); else setTimeout(() => actDone("You are a digital artist!"), 500); } };
+  const flood = (x, y, hex) => {
+    x = Math.floor(x); y = Math.floor(y); const img = ctx.getImageData(0, 0, 400, 300), d = img.data, i0 = (y * 400 + x) * 4, t = [d[i0], d[i0 + 1], d[i0 + 2]];
+    const c = [parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16)]; if (t.every((v, k) => Math.abs(v - c[k]) < 8)) return;
+    const same = i => Math.abs(d[i] - t[0]) < 40 && Math.abs(d[i + 1] - t[1]) < 40 && Math.abs(d[i + 2] - t[2]) < 40;
+    const st = [[x, y]]; let n = 0;
+    while (st.length && n < 200000) { const [px, py] = st.pop(); if (px < 0 || py < 0 || px >= 400 || py >= 300) continue; const i = (py * 400 + px) * 4; if (!same(i)) continue; d[i] = c[0]; d[i + 1] = c[1]; d[i + 2] = c[2]; d[i + 3] = 255; n++; st.push([px + 1, py], [px - 1, py], [px, py + 1], [px, py - 1]); }
+    ctx.putImageData(img, 0, 0);
+  };
+  S.querySelector(".pttools").onclick = e => { const b = e.target.closest("[data-tool]"); if (!b) return; tool = b.dataset.tool; $$(".pttools button").forEach(x => x.classList.toggle("on", x === b)); SFX.tap(); };
+  S.querySelector(".ptcols").onclick = e => { const b = e.target.closest("[data-col]"); if (!b) return; col = b.dataset.col; $$(".ptcols button").forEach(x => x.classList.toggle("on", x === b)); SFX.tap(); };
+  cv.addEventListener("pointerdown", async e => {
+    const [x, y] = pos(e);
+    if (tool === "fill") { flood(x, y, col); SFX.pick(); check(); return; }
+    if (tool === "text") {
+      const v = await modal(`<h3>🔤 Add text</h3>`, [{ t: "My house", v: "My house" }, { t: "Hello Nigeria!", v: "Hello Nigeria!" }]);
+      if (v) { ctx.fillStyle = col === "#FFFFFF" ? "#1D1B45" : col; ctx.font = "bold 22px Arial"; ctx.fillText(v, Math.min(x, 280), Math.max(y, 24)); stats.text++; check(); } return;
+    }
+    cv.setPointerCapture(e.pointerId); down = [x, y]; snap = (tool === "rect" || tool === "ellipse") ? ctx.getImageData(0, 0, 400, 300) : null;
+    ctx.lineCap = "round"; ctx.lineJoin = "round";
+  });
+  cv.addEventListener("pointermove", e => {
+    if (!down) return; const [x, y] = pos(e);
+    if (snap) { ctx.putImageData(snap, 0, 0); ctx.strokeStyle = col; ctx.lineWidth = 4; ctx.beginPath(); if (tool === "rect") ctx.rect(down[0], down[1], x - down[0], y - down[1]); else ctx.ellipse((down[0] + x) / 2, (down[1] + y) / 2, Math.abs(x - down[0]) / 2, Math.abs(y - down[1]) / 2, 0, 0, 7); ctx.stroke(); down.last = [x, y]; return; }
+    ctx.strokeStyle = tool === "eraser" ? "#FFFFFF" : col; ctx.lineWidth = tool === "pencil" ? 3 : tool === "brush" ? 12 : 20;
+    ctx.beginPath(); ctx.moveTo(down[0], down[1]); ctx.lineTo(x, y); ctx.stroke();
+    const dist = Math.hypot(x - down[0], y - down[1]); if (tool === "pencil" || tool === "brush") stats.pencil += dist; if (tool === "eraser") stats.eraser += dist; down = [x, y];
+  });
+  const up = () => { if (!down) return; if (snap && down.last && Math.hypot(down.last[0] - down[0], down.last[1] - down[1]) > 10) stats.rect++; down = null; snap = null; check(); };
+  cv.addEventListener("pointerup", up); cv.addEventListener("pointercancel", up);
+  task(steps[0].t, `1 of ${steps.length}`);
 };
 
 /* ======================= HOW CODING WORKS: automation, programs, "behind the screen" ======================= */
