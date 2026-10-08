@@ -643,6 +643,110 @@ canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-
 @container app (min-width: 760px) and (orientation: landscape) {
   .plmain { flex-direction: row; } .plcode { flex: 1.3; } .plside { flex: 1; }
 }
+/* four choices (Primary 4 to 6) */
+.qans.four { grid-template-columns: 1fr 1fr; }
+.qans.four .btn { font-size: clamp(13px, 2.4cqh, 22px); min-height: clamp(48px, 8cqh, 96px); }
+.qans.pic.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@container app (max-width: 759px), (orientation: portrait) { .qans.pic.four { grid-template-columns: 1fr 1fr; } .qans.pic.four .btn { height: clamp(70px, 13.5cqh, 150px); } }
+/* ---- Primary 4–6 activities ---- */
+.lpanel.phone { left: 50%; right: auto; width: min(64%, 46cqh); transform: translateX(-50%); top: 4%; bottom: 4%; background: #263238; border-radius: 28px; border-width: 5px; }
+.sblk { display: inline-flex; align-items: center; gap: 4px; background: var(--sc); color: #fff; font-weight: 800; border: 2px solid rgba(0,0,0,.25); border-radius: 8px; padding: 3px 10px; font-size: clamp(12px, 2.1cqh, 18px); white-space: nowrap; text-shadow: 0 1px 1px rgba(0,0,0,.25); font-family: var(--font); }
+.sblk.hat { border-radius: 16px 16px 8px 8px; padding-top: 6px; }
+.sblkcol { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
+.qvis .sblk, .lvis .sblk { font-size: clamp(16px, 3.4cqh, 30px); }
+.snum { background: #fff; color: #1D1B45; border-radius: 10px; padding: 0 7px; min-width: 1.6em; text-align: center; cursor: pointer; }
+/* file explorer */
+.fx { position: absolute; inset: 2.5%; display: flex; flex-direction: column; border: 3px solid var(--ink); border-radius: 12px; overflow: hidden; background: #fff; color: #1D1B45; font-size: clamp(12px, 2.1cqh, 18px); }
+.fxbar { background: #FFC83D; font-weight: 800; padding: 4px 10px; }
+.fxtool { display: flex; gap: 6px; padding: 5px; border-bottom: 2px solid #E4E7FA; flex-wrap: wrap; }
+.fxtool .btn { font-size: .95em; padding: 3px 10px; box-shadow: 0 2px 0 var(--ink); }
+.fxbody { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 40%) 1fr; }
+.fxnav { display: flex; flex-direction: column; gap: 4px; padding: 6px; background: #F4F6FB; overflow-y: auto; }
+.fxf { display: flex; align-items: center; gap: 4px; text-align: left; border: 2px solid transparent; border-radius: 8px; background: #fff; color: #1D1B45; padding: 6px; font-weight: 700; font-size: 1em; }
+.fxf span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; } .fxf i { font-style: normal; background: var(--good); color: #fff; border-radius: 999px; padding: 0 6px; font-size: .8em; }
+.fxf i:empty { display: none; } .fxf.on { border-color: #2B579A; background: #E3ECFF; }
+.fxmain { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 6px; padding: 8px; align-content: start; overflow-y: auto; }
+.fxmain em { grid-column: 1 / -1; color: var(--soft); }
+.fxfile { display: flex; flex-direction: column; align-items: center; gap: 2px; border: 2px solid transparent; border-radius: 10px; background: #fff; color: #1D1B45; padding: 4px; font-weight: 700; font-size: .85em; touch-action: none; overflow-wrap: anywhere; }
+.fxfile b { font-size: 2em; line-height: 1; } .fxfile.sel { border-color: var(--sun); background: #FFF8E1; } .fxfile.cutting { opacity: .45; }
+.fxclip { padding: 3px 10px; background: #E3ECFF; font-size: .85em; font-weight: 700; }
+.fxghost { position: fixed; z-index: 50; transform: translate(-50%, -50%); background: #FFF8E1; border: 2px solid var(--ink); border-radius: 10px; padding: 4px 10px; font-weight: 800; pointer-events: none; color: #1D1B45; }
+/* settings */
+.stwin { position: absolute; inset: 2.5%; display: flex; flex-direction: column; border: 3px solid var(--ink); border-radius: 12px; overflow: hidden; background: #fff; color: #1D1B45; font-size: clamp(12px, 2.1cqh, 18px); }
+.stwin.dark { background: #1F2133; color: #F1F1F6; }
+.stbar { background: #546E7A; color: #fff; font-weight: 800; padding: 4px 10px; }
+.stbody { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 40%) 1fr; }
+.stcats { display: flex; flex-direction: column; gap: 4px; padding: 6px; background: rgba(0,0,0,.05); }
+.stcats button { text-align: left; border: 2px solid transparent; border-radius: 8px; background: transparent; color: inherit; font-weight: 700; padding: 6px; font-size: 1em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.stcats button.on { border-color: #42A5F5; background: rgba(66,165,245,.15); }
+.stpanel { padding: 8px; display: flex; flex-direction: column; gap: 6px; overflow-y: auto; }
+.stwall { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.stwall button, .stopts button { border: 2px solid #B0BEC5; border-radius: 8px; background: rgba(255,255,255,.85); color: #1D1B45; font-size: 1.5em; padding: 2px; display: flex; flex-direction: column; align-items: center; }
+.stwall small { font-size: .45em; font-weight: 700; } .stwall button.on, .stopts button.on { border-color: #42A5F5; outline: 3px solid #42A5F5; }
+.stopts { display: flex; gap: 4px; flex-wrap: wrap; } .stopts button { font-size: 1em; font-weight: 800; padding: 4px 10px; }
+.sttog { display: flex; align-items: center; justify-content: space-between; border: 2px solid #B0BEC5; border-radius: 10px; background: transparent; color: inherit; font-weight: 800; padding: 6px 10px; font-size: 1em; }
+.sttog i { width: 42px; height: 22px; border-radius: 999px; background: #B0BEC5; position: relative; } .sttog i::after { content: ""; position: absolute; left: 3px; top: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: left .2s; }
+.sttog.on i { background: #42A5F5; } .sttog.on i::after { left: 23px; }
+.stnum { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.2em; } .stnum .btn { padding: 2px 14px; font-size: 1.1em; }
+.stprev { flex: none; height: clamp(54px, 13cqh, 120px); display: flex; align-items: center; justify-content: space-around; background: linear-gradient(#90CAF9, #E3F2FD); border-top: 3px solid var(--ink); color: #1D1B45; font-weight: 800; }
+.stwin.dark .stprev { background: linear-gradient(#263238, #37474F); color: #fff; }
+.stw { font-size: clamp(28px, 7cqh, 60px); } .sticon { font-size: 1em; } .stptr { transform: rotate(-120deg); display: inline-block; }
+/* PowerPoint */
+.wd.pp .pp-title { background: #C43E1C; } .wd.pp .pp-tabs { background: #C43E1C; } .wd.pp .wd-tabs button.on { color: #C43E1C; }
+.pbody { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(64px, 22%) 1fr; gap: 6px; padding: 6px; }
+.pthumbs { display: flex; flex-direction: column; gap: 6px; overflow-y: auto; }
+.pthumb { position: relative; border: 2px solid #C5CAE0; border-radius: 6px; background: #fff; padding: 0; aspect-ratio: 16 / 9; overflow: hidden; font-size: 6px; }
+.pthumb.on { border-color: #C43E1C; } .pthumb i { position: absolute; left: 2px; top: 1px; font-style: normal; font-size: 9px; color: #555; z-index: 2; }
+.pmain { display: grid; place-items: center; min-height: 0; }
+.pslide { width: 100%; aspect-ratio: 16 / 9; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6%; color: #1D1B45; position: relative; }
+.pslide.big { width: min(100%, calc((100cqh - 0px) * .5)); max-width: 100%; box-shadow: 0 2px 8px rgba(0,0,0,.25); font-size: clamp(14px, 3cqh, 30px); }
+.pmain .pslide.big { width: 100%; max-height: 100%; }
+.ptitle { font-weight: 800; text-align: center; } .ptitle.ghost { opacity: .4; } .ppic { font-size: 2.6em; line-height: 1; }
+.pph { border: 2px dashed #90A4AE; background: transparent; color: #607D8B; font-size: 1em; padding: 6px 14px; border-radius: 6px; font-weight: 700; }
+.pph.on { border-style: solid; border-color: #C43E1C; color: #1D1B45; }
+.ptiles { flex: none; display: flex; gap: 6px; justify-content: center; padding: 6px; flex-wrap: wrap; background: #FFF8E1; }
+.ptiles .btn { padding: 4px 14px; }
+.pshow { position: absolute; inset: 0; background: #000; display: grid; place-items: center; cursor: pointer; }
+.pshow .pslide.full { width: min(96%, calc(100% * 1)); font-size: clamp(18px, 5cqh, 48px); }
+.pesc { position: absolute; right: 8px; top: 8px; background: rgba(255,255,255,.2); color: #fff; border: 2px solid #fff; border-radius: 8px; font-weight: 800; padding: 2px 10px; }
+.pshow small { position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); color: #ccc; }
+/* password */
+.pwbox { position: absolute; inset: 3%; display: flex; flex-direction: column; gap: 6px; color: #1D1B45; font-size: clamp(13px, 2.3cqh, 20px); }
+.pwshow { background: #fff; border: 3px solid var(--ink); border-radius: 12px; padding: 6px 12px; font-family: var(--mono); font-weight: 800; font-size: 1.2em; min-height: 2em; overflow-wrap: anywhere; }
+.pwshow em { font-family: var(--font); font-weight: 700; font-size: .75em; color: var(--soft); font-style: normal; }
+.pwmeter { position: relative; height: 1.6em; border-radius: 999px; background: #E4E7FA; overflow: hidden; border: 2px solid var(--ink); }
+.pwmeter i { position: absolute; inset: 0 auto 0 0; width: 0; transition: width .3s; } .pwmeter span { position: relative; display: block; text-align: center; font-weight: 800; font-size: .85em; line-height: 1.5em; }
+.pwmeter.l1 i { width: 33%; background: #EF5350; } .pwmeter.l2 i { width: 66%; background: #FFCA28; } .pwmeter.l3 i { width: 100%; background: #66BB6A; }
+.pwrules { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 2px 8px; font-weight: 700; font-size: .85em; }
+.pwrules li.ok { color: #1B7F4D; }
+.pwparts { flex: 1; min-height: 0; display: flex; flex-wrap: wrap; gap: 6px; align-content: center; justify-content: center; }
+.pwparts .btn { font-family: var(--mono); padding: 4px 12px; font-size: 1em; }
+.pwacts { display: flex; gap: 6px; justify-content: center; } .pwacts .btn { padding: 4px 14px; }
+/* mini Scratch */
+.scr { position: absolute; inset: 2%; display: flex; flex-direction: column; gap: 6px; }
+.scrstage { flex: none; position: relative; width: min(100%, calc(38cqh * 4 / 3)); aspect-ratio: 4 / 3; margin: 0 auto; background: #fff; border: 3px solid var(--ink); border-radius: 10px; overflow: hidden; background-image: radial-gradient(#E3ECFF 1px, transparent 1px); background-size: 20px 20px; }
+.scrstage canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.scsprite { position: absolute; width: 16%; aspect-ratio: 1; transition: left .2s linear, top .2s linear, transform .15s; }
+.scsprite .bot { --s: 100%; display: block; width: 100%; height: 100%; } .scsprite.c1 .bot { transform: scaleX(-1) translateY(-6%); }
+.scbub { position: absolute; transform: translate(10%, -150%); background: #fff; border: 2px solid var(--ink); border-radius: 12px; padding: 2px 10px; font-weight: 800; color: #1D1B45; white-space: nowrap; }
+.scright { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 6px; }
+.scpal { flex: none; display: flex; flex-wrap: wrap; gap: 4px; }
+.scpal .sblk { cursor: pointer; font-size: clamp(11px, 1.9cqh, 16px); padding: 3px 8px; }
+.scscript { flex: 1; min-height: 0; overflow-y: auto; background: #F4F6FB; border: 3px solid var(--ink); border-radius: 10px; padding: 6px; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; color: #1D1B45; }
+.scscript em { color: var(--soft); font-style: normal; font-weight: 700; }
+.sinside { border-left: 14px solid var(--sc); border-bottom: 8px solid var(--sc); border-radius: 0 0 0 8px; padding: 2px 0 2px 6px; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-height: 18px; min-width: 60%; }
+.scaret { border: 2px dashed #90A4AE; border-radius: 8px; padding: 1px 8px; font-size: .8em; font-weight: 700; color: #607D8B; }
+.scctl { flex: none; display: flex; gap: 6px; } .scctl .btn { padding: 4px 10px; font-size: clamp(13px, 2.2cqh, 19px); } .scctl .btn[hidden] { display: none; }
+.scflag { background: #DCF5E5; } .scflag.on { animation: pulse .8s infinite; }
+@container app (min-width: 760px) and (orientation: landscape) {
+  .scr { flex-direction: row; } .scrstage { width: auto; height: 100%; max-width: 50%; align-self: center; margin: 0; }
+}
+.lscene.phonescene { left: 50%; right: auto; width: min(56%, 46cqh); transform: translateX(-50%); top: 3%; bottom: 3%; }
+.lscene.phonescene .lpanel.phone { inset: 0; left: 0; width: auto; transform: none; }
+.pmain { container-type: size; width: 100%; height: 100%; }
+.pmain .pslide.big { width: min(100cqw, 100cqh * 16 / 9); max-height: none; font-size: clamp(12px, 9cqh, 34px); }
+.lpart .tag { pointer-events: none; } .phonescene .lpart .tag { font-size: 10px; }
+.qans .btn { overflow-wrap: anywhere; }
 
 </style>
 </head>
@@ -3547,11 +3651,11 @@ const NONCOMP = ["chair", "pot", "drum", "bed", "ball", "bicycle", "broom", "pla
 /* ---- question makers. Every question: { p prompt, vis picture html, ch [{v,h}], ans, kind, key, hint, why } ---- */
 function choose(pool, n, not) { return shuffle(pool.filter(x => !not.includes(x))).slice(0, n); }
 function picQ(p, ans, pool, o = {}) {
-  const wr = choose(pool, 2, [ans, ...(o.avoid || [])]);
+  const wr = choose(pool, o.k || 2, [ans, ...(o.avoid || [])]);
   return { p, vis: o.vis || null, kind: "pic", ans, ch: shuffle([ans, ...wr]).map(v => ({ v, h: PIC[v].h, nm: PIC[v].nm })), key: "P|" + p + "|" + ans + "|" + [...wr].sort().join(","), hint: o.hint || "", why: o.why || "" };
 }
 function txtQ(p, ans, wrongs, o = {}) {
-  const wr = choose(wrongs, 2, [ans]);
+  const wr = choose(wrongs, o.k || 2, [ans]);
   return { p, vis: o.vis || null, kind: "text", ans, ch: shuffle([ans, ...wr]).map(v => ({ v, h: esc(v), nm: v })), key: "T|" + p + "|" + ans + "|" + [...wr].sort().join(","), hint: o.hint || "", why: o.why || "" };
 }
 function tfQ(statement, truth, o = {}) {
@@ -4382,6 +4486,300 @@ const ICT_P3 = { y: 3, title: "Primary 3", subj: "Computer Studies", terms: [
 ] };
 ICT_YEARS[3] = ICT_P3;
 
+/* ---------------- PRIMARY 4: Basic Digital Literacy ---------------- */
+/* upper primary: four choices */
+const tq = (p, a, w, o = {}) => txtQ(p, a, w, { k: 3, ...o });
+const pq = (p, a, pool, o = {}) => picQ(p, a, pool, { k: 3, ...o });
+const facts = (list, why) => fromFacts(list, ([q, a, w]) => tq(q, a, w, { why: why ? why(a) : `The answer is ${a}.` }));
+const tfs = list => fromFacts(list, ([s, t, why]) => tfQ(s, t, { why: why || (t ? "That is true." : "That is not true.") }));
+/* a scratch-style block, drawn in HTML */
+const sblk = (txt, col) => `<span class="sblk" style="--sc:${col}">${esc(txt)}</span>`;
+const SC = { ev: "#FFBF00", mo: "#4C97FF", lo: "#9966FF", so: "#CF63CF", co: "#FFAB19", pe: "#0FBD8C", op: "#59C059", va: "#FF8C1A" };
+Object.assign(SVGS, {
+  smartwatch: SV(`<rect x="36" y="4" width="28" height="20" rx="4" fill="#455A64"/><rect x="36" y="76" width="28" height="20" rx="4" fill="#455A64"/><rect x="24" y="22" width="52" height="56" rx="14" fill="#263238" stroke="${INK}" stroke-width="4"/><rect x="31" y="29" width="38" height="42" rx="8" fill="#4FC3F7"/><text x="50" y="56" font-size="14" font-weight="900" text-anchor="middle" fill="#fff">10:30</text>`),
+  console: SV(`<path d="M14 40 Q14 28 28 28 H72 Q86 28 86 40 L92 70 Q94 82 82 80 L70 70 H30 L18 80 Q6 82 8 70 Z" fill="#37474F" stroke="${INK}" stroke-width="4"/><path d="M26 46 V58 M20 52 H32" stroke="#fff" stroke-width="4"/><circle cx="70" cy="48" r="4" fill="#E53935"/><circle cx="78" cy="56" r="4" fill="#43A047"/>`),
+  sensor: SV(`<rect x="14" y="30" width="72" height="40" rx="8" fill="#1565C0" stroke="${INK}" stroke-width="4"/><circle cx="34" cy="50" r="12" fill="#ECEFF1" stroke="${INK}" stroke-width="3"/><circle cx="66" cy="50" r="12" fill="#ECEFF1" stroke="${INK}" stroke-width="3"/><circle cx="34" cy="50" r="5" fill="#455A64"/><circle cx="66" cy="50" r="5" fill="#455A64"/>`),
+  motor: SV(`<rect x="10" y="34" width="56" height="32" rx="6" fill="#FFB300" stroke="${INK}" stroke-width="4"/><rect x="66" y="44" width="18" height="12" fill="#90A4AE" stroke="${INK}" stroke-width="3"/><circle cx="86" cy="50" r="8" fill="#455A64"/><path d="M20 42 V58 M30 42 V58 M40 42 V58 M50 42 V58" stroke="#E65100" stroke-width="3"/>`),
+  arm: SV(`<rect x="20" y="80" width="40" height="12" rx="3" fill="#455A64"/><path d="M40 80 L40 54 L70 30" stroke="#FF7043" stroke-width="10" stroke-linecap="round" fill="none"/><circle cx="40" cy="54" r="7" fill="#263238"/><path d="M70 30 L84 22 M70 30 L82 40" stroke="#263238" stroke-width="6" stroke-linecap="round"/>`),
+  bulbon: SV(`<circle cx="50" cy="40" r="26" fill="#FFEB3B" stroke="${INK}" stroke-width="4"/><rect x="38" y="64" width="24" height="18" rx="3" fill="#90A4AE" stroke="${INK}" stroke-width="3"/>`),
+});
+Object.assign(PIC, {
+  smartwatch: { h: SVGS.smartwatch, nm: "smartwatch" }, gconsole: { h: SVGS.console, nm: "game console" }, smarttv: { h: em("📺"), nm: "smart TV" }, dcamera: { h: em("📷"), nm: "digital camera" },
+  gps: { h: em("🧭"), nm: "map app (GPS)" }, ebook: { h: em("📚"), nm: "e-reader" },
+  cam_eye: { h: SVGS.sensor, nm: "camera eyes" }, bulbon: { h: SVGS.bulbon, nm: "light" }, wheel: { h: em("🛞"), nm: "wheel" }, lightsense: { h: em("🔆"), nm: "light sensor" }, motor: { h: SVGS.motor, nm: "motor" }, robotarm: { h: SVGS.arm, nm: "robot arm" },
+});
+const P4_DEV = [{ k: "phone", nm: "smartphone", use: "call and chat with family" }, { k: "laptop", nm: "laptop", use: "type a school project" }, { k: "smartwatch", nm: "smartwatch", use: "count steps and tell the time" },
+  { k: "tablet", nm: "tablet", use: "read e-books and watch lessons" }, { k: "dcamera", nm: "digital camera", use: "take photos" }, { k: "smarttv", nm: "smart TV", use: "watch the news and films" },
+  { k: "gconsole", nm: "game console", use: "play video games" }, { k: "pos", nm: "POS machine", use: "pay for things in a shop" }, { k: "gps", nm: "map app (GPS)", use: "find the way to a new place" }];
+const P4_AREAS = [["learning", "watching a lesson video"], ["communication", "a video call with Grandma"], ["work", "keeping a shop's sales records"], ["everyday life", "an alarm to wake up for school"], ["learning", "reading an e-book"], ["communication", "sending an email"], ["work", "an online meeting"], ["everyday life", "a map to find the way"]];
+const P4_PHONE = [{ k: "ph_screen", nm: "touch screen", job: "shows pictures and words, and we tap it to give orders" }, { k: "ph_cam", nm: "front camera", job: "takes selfies and video calls" },
+  { k: "ph_power", nm: "power button", job: "switches the phone on and off, and locks the screen" }, { k: "ph_vol", nm: "volume buttons", job: "make the sound louder or quieter" },
+  { k: "ph_port", nm: "charging port", job: "is where the charger cable goes in" }, { k: "ph_spk", nm: "earpiece speaker", job: "lets us hear the person on a call" }, { k: "ph_mic", nm: "microphone", job: "picks up our voice" }];
+Object.assign(PIC, {
+  ph_screen: { h: SV(`<rect x="6" y="4" width="88" height="92" rx="6" fill="#4FC3F7" stroke="${INK}" stroke-width="4"/><circle cx="30" cy="30" r="9" fill="#fff"/><circle cx="70" cy="30" r="9" fill="#FFEB3B"/><circle cx="30" cy="66" r="9" fill="#81C784"/><circle cx="70" cy="66" r="9" fill="#F48FB1"/>`), nm: "touch screen" },
+  ph_cam: { h: SV(`<circle cx="50" cy="50" r="40" fill="#263238" stroke="${INK}" stroke-width="5"/><circle cx="50" cy="50" r="18" fill="#3949AB"/><circle cx="42" cy="42" r="6" fill="#fff" opacity=".7"/>`), nm: "front camera" },
+  ph_power: { h: SV(`<rect x="34" y="6" width="32" height="88" rx="10" fill="#E53935" stroke="${INK}" stroke-width="5"/>`), nm: "power button" },
+  ph_vol: { h: SV(`<rect x="34" y="4" width="32" height="40" rx="10" fill="#1E88E5" stroke="${INK}" stroke-width="5"/><rect x="34" y="56" width="32" height="40" rx="10" fill="#1E88E5" stroke="${INK}" stroke-width="5"/><text x="50" y="32" font-size="26" font-weight="900" text-anchor="middle" fill="#fff">+</text><text x="50" y="84" font-size="26" font-weight="900" text-anchor="middle" fill="#fff">−</text>`), nm: "volume buttons" },
+  ph_port: { h: SV(`<rect x="8" y="30" width="84" height="40" rx="20" fill="#455A64" stroke="${INK}" stroke-width="5"/><rect x="24" y="44" width="52" height="12" rx="6" fill="#111"/>`), nm: "charging port" },
+  ph_spk: { h: SV(`<rect x="6" y="34" width="88" height="32" rx="16" fill="#37474F" stroke="${INK}" stroke-width="5"/>${[0, 1, 2, 3, 4].map(i => `<circle cx="${24 + i * 13}" cy="50" r="4" fill="#90A4AE"/>`).join("")}`), nm: "earpiece speaker" },
+  ph_mic: { h: SV(`<circle cx="50" cy="50" r="30" fill="#37474F" stroke="${INK}" stroke-width="5"/><circle cx="50" cy="50" r="10" fill="#111"/>`), nm: "microphone" },
+});
+const P4_EXT = [{ x: ".docx", app: "Microsoft Word", what: "a typed document", folder: "School work" }, { x: ".xlsx", app: "Microsoft Excel", what: "a spreadsheet of numbers", folder: "School work" }, { x: ".pptx", app: "Microsoft PowerPoint", what: "a slide show", folder: "School work" },
+  { x: ".jpg", app: "a photo viewer", what: "a photo", folder: "Pictures" }, { x: ".png", app: "a photo viewer", what: "a picture", folder: "Pictures" }, { x: ".mp3", app: "a music player", what: "a song or sound", folder: "Music" }, { x: ".mp4", app: "a video player", what: "a video", folder: "Videos" }];
+const P4_SET = [{ s: "Wallpaper", what: "the picture behind your desktop icons", where: "Personalisation" }, { s: "Dark mode", what: "dark backgrounds that are gentle on the eyes at night", where: "Personalisation" },
+  { s: "Text size", what: "how big the words are", where: "Accessibility" }, { s: "Brightness", what: "how bright the screen is", where: "Display" }, { s: "Volume", what: "how loud the sound is", where: "Sound" },
+  { s: "Mouse pointer size", what: "how big the arrow is", where: "Accessibility" }, { s: "Screen saver", what: "a moving picture that comes on when the computer is not used", where: "Personalisation" }];
+const P4_PPT = [{ t: "Home", has: ["New Slide", "Bold", "Font size"] }, { t: "Insert", has: ["Pictures", "Shapes", "Text Box"] }, { t: "Design", has: ["Themes", "Background colour"] }, { t: "Transitions", has: ["Fade", "Push"] }, { t: "Slide Show", has: ["From Beginning", "From Current Slide"] }];
+const P4_PW_GOOD = ["Mango!Rain27Lagos", "Blue#Kite#2026", "Jollof+Drum+88", "7Green$Elephants"];
+const P4_PW_BAD = ["password", "123456", "ada2015", "qwerty", "abuja", "11111111"];
+const P4_VIR = [{ v: "virus", job: "attaches to files and spreads when they are shared" }, { v: "worm", job: "copies itself across a network by itself" }, { v: "Trojan horse", job: "pretends to be a good program but hides something bad" },
+  { v: "spyware", job: "secretly watches what you do and steals information" }, { v: "ransomware", job: "locks your files and asks for money" }, { v: "adware", job: "fills the screen with unwanted adverts" }];
+const P4_AV = ["Microsoft Defender", "Avast", "Norton", "McAfee", "Kaspersky", "AVG"];
+const P4_TRICK = ["You won ₦1,000,000! Send your bank PIN to collect it.", "Free data! Click this link and type your password.", "Your account is blocked. Reply with your password now.", "Download this free game from a strange website.", "A stranger online asks for your home address.", "Forward this to 10 friends or something bad will happen."];
+const P4_SAFE = ["Your teacher posts the homework on the school portal.", "Your phone asks to update an app from the official app store.", "Mum shares a family photo in the family group.", "The school website shows the new term calendar.", "Your antivirus says: scan complete, no threats found."];
+const P4_KIND = ["Great goal! Well played.", "Can I help you with the homework?", "Your drawing is beautiful!", "Let's add captions so everyone can follow the video.", "Sorry, I made a mistake. I will fix it.", "Welcome to our group, Ifeoma!"];
+const P4_UNKIND = ["Nobody wants you in this group.", "You are so stupid.", "Posting a funny photo of a classmate without asking.", "Telling everyone a friend's secret.", "Laughing at how someone speaks.", "Sending the same rude message again and again."];
+const P4_VIS = ["Scratch", "ScratchJr", "Blockly", "MIT App Inventor", "Code Buddies blocks"];
+const P4_TXT = ["Python", "JavaScript", "Java", "C++", "Swift"];
+const P4_SB = [{ b: "when green flag clicked", c: SC.ev, cat: "Events", job: "starts the script when the green flag is clicked" }, { b: "move 10 steps", c: SC.mo, cat: "Motion", job: "moves the sprite forward" },
+  { b: "turn 15 degrees", c: SC.mo, cat: "Motion", job: "turns the sprite round" }, { b: "say Hello! for 2 seconds", c: SC.lo, cat: "Looks", job: "shows a speech bubble" }, { b: "next costume", c: SC.lo, cat: "Looks", job: "changes how the sprite looks" },
+  { b: "play sound Drum", c: SC.so, cat: "Sound", job: "plays a sound" }, { b: "wait 1 seconds", c: SC.co, cat: "Control", job: "pauses for a moment" }];
+const P4_GAME = [{ p: "score", d: "a number that goes up when you earn points" }, { p: "lives", d: "how many more chances you have" }, { p: "timer", d: "how much time is left" }, { p: "level", d: "a stage of the game that gets harder" },
+  { p: "goal", d: "what you must do to win" }, { p: "rules", d: "what you are allowed and not allowed to do" }, { p: "player", d: "the character you control" }, { p: "enemy", d: "a character that tries to stop you" }];
+const P4_TEAM = [{ r: "game designer", d: "plans the rules and levels" }, { r: "artist", d: "draws the characters and places" }, { r: "programmer", d: "writes the code" }, { r: "sound designer", d: "makes the music and sound effects" }, { r: "tester", d: "plays the game to find bugs" }];
+const P4_SENSE = ["camera eyes", "microphone ears", "touch sensor", "distance sensor", "light sensor", "temperature sensor"];
+const P4_ACT = ["wheels with motors", "robot arm", "gripper hand", "speaker voice", "flashing lights", "propellers on a drone"];
+const P4_AI = [["a phone unlocking when it sees your face", true], ["a voice assistant answering a question", true], ["an app suggesting the next video to watch", true], ["translating Yoruba to English on a phone", true], ["a plain wall clock", false], ["a bicycle", false], ["a ceiling fan with a switch", false], ["a calculator adding 2 and 3", false]];
+
+const ICT_P4 = { y: 4, title: "Primary 4", subj: "Basic Digital Literacy", terms: [
+  { nm: "First term", sub: "Digital devices", topics: [
+    { id: "i4-devices", nm: "Digital devices and their uses", icon: "📱", desc: "Learning, communication, work and everyday life",
+      act: { type: "match", nm: "Device and job", rounds: [
+        { la: "Device", lb: "What we use it for", pairs: P4_DEV.slice(0, 4).map(d => [`${d.nm}`, d.use]) },
+        { la: "Device", lb: "What we use it for", pairs: P4_DEV.slice(4, 8).map(d => [`${d.nm}`, d.use]) }], done: "You know what digital devices are for!" },
+      learn: [{ v: "📱💻⌚", t: "A digital device is an electronic machine that works with information as numbers: phones, laptops, tablets, smartwatches, smart TVs and many more." },
+        { v: "📚", t: "For learning: typing projects, watching lesson videos, reading e-books and using learning apps." },
+        { v: "📞💬", t: "For communication: calls, text messages, video calls and email. Social media is for older people, with a grown-up's permission." },
+        { v: "🏪💼", t: "For work: keeping a shop's records, making documents, online meetings and design work." },
+        { v: "⏰🧭", t: "In everyday life: alarms, maps that find the way, paying with a POS machine, and watches that count our steps." }],
+      wow: { v: "🌍", t: "Digital superpower: a phone in a market in Kano can talk to a laptop in Lagos in less than a second!" },
+      gens: [
+        fromFacts(P4_DEV, d => tq(`Which device do we use to ${d.use}?`, d.nm, P4_DEV.filter(x => x !== d).map(x => x.nm), { vis: PIC[d.k].h, why: `We use a ${d.nm} to ${d.use}.` })),
+        fromFacts(P4_DEV, d => pq(`Which one is a ${d.nm}?`, d.k, P4_DEV.map(x => x.k), { why: `That is a ${d.nm}.` })),
+        fromFacts(P4_AREAS, ([a, x]) => tq(`${x[0].toUpperCase() + x.slice(1)} is a use of digital devices in…`, a, ["learning", "communication", "work", "everyday life"], { why: `${x[0].toUpperCase() + x.slice(1)} is about ${a}.` })),
+        facts([["Which one is NOT a digital device?", "a wooden spoon", ["a tablet", "a smartwatch", "a smart TV"]], ["A digital device works with information as…", "numbers", ["sand", "water", "smoke"]],
+          ["Which is a safe way to use devices?", "take breaks and rest your eyes", ["use them all night", "share your password", "use them in the bath"]], ["Which device is worn on the wrist?", "a smartwatch", ["a laptop", "a smart TV", "a printer"]],
+          ["Social media should be used by children…", "only with a grown-up's permission", ["alone at night", "with strangers", "instead of homework"]], ["Which device helps a shop owner collect card payments?", "a POS machine", ["a radio", "a game console", "a torch"]]]),
+        tfs([["A smartphone is a digital device.", true], ["We can use devices for learning.", true], ["A wooden chair is a digital device.", false], ["A map app can help us find a new place.", true], ["Devices should be used all night without rest.", false]]),
+      ] },
+    { id: "i4-mobile", nm: "Parts of a mobile phone", icon: "📲", desc: "Screen, buttons, camera, ports and more",
+      act: { type: "label", nm: "Find the phone parts", panel: "phone", panelText: "", bw: 4.6, bh: 4.4, parts: [{ k: "ph_cam", x: 50, y: 14, s: .32 }, { k: "ph_spk", x: 50, y: 4, s: .45 }, { k: "ph_screen", x: 50, y: 48, s: 2.4 }, { k: "ph_power", x: 99, y: 28, s: .5 }, { k: "ph_vol", x: 1, y: 28, s: .55 }, { k: "ph_port", x: 50, y: 93, s: .45 }, { k: "ph_mic", x: 28, y: 93, s: .25 }], done: "You know the parts of a mobile phone!" },
+      learn: [{ v: "📱", t: "A smartphone is a small computer we hold in one hand. It has an input, a processor, memory, storage and outputs, just like a big computer." },
+        { v: "👆", t: "The touch screen is both input and output: it shows pictures, and we tap and swipe it to give orders." },
+        { v: "🔘🔊", t: "The power button switches the phone on and off and locks the screen. The volume buttons make the sound louder or quieter." },
+        { v: "🤳🎤", t: "The camera takes photos and video calls. The microphone picks up our voice, and the speaker lets us hear." },
+        { v: "🔌🔋", t: "The charging port is where the charger goes in. It charges the battery. Some phones also have a SIM card tray." }],
+      wow: { v: "🛰️", t: "Digital superpower: your phone has a GPS chip that listens to satellites in space to find where you are!" },
+      gens: [
+        fromFacts(P4_PHONE, f => pq(`Which phone part ${f.job}?`, f.k, P4_PHONE.map(x => x.k), { why: `The ${f.nm} ${f.job}.` })),
+        fromFacts(P4_PHONE, f => tq(`What does the ${f.nm} do?`, `It ${f.job}`, P4_PHONE.filter(x => x !== f).map(x => `It ${x.job}`), { vis: PIC[f.k].h, why: `The ${f.nm} ${f.job}.` })),
+        fromFacts(P4_PHONE, f => tq("What is this part of a phone called?", f.nm, P4_PHONE.filter(x => x !== f).map(x => x.nm), { vis: PIC[f.k].h, why: `It is the ${f.nm}.` })),
+        facts([["Which phone part is both input AND output?", "the touch screen", ["the charging port", "the volume buttons", "the speaker"]], ["What gives a phone its power?", "the battery", ["the camera", "the screen", "the case"]],
+          ["Which card lets a phone join a network like MTN, Airtel, Glo or 9mobile?", "the SIM card", ["a bank card", "a library card", "a birthday card"]], ["To make the sound quieter, press…", "the volume down button", ["the power button", "the camera", "the screen twice"]],
+          ["Which part takes a selfie?", "the front camera", ["the charging port", "the microphone", "the power button"]], ["A phone that is very hot while charging should be…", "unplugged and left to cool", ["covered with a pillow", "put in water", "charged more"]]]),
+        tfs([["A smartphone is a small computer.", true], ["The microphone picks up our voice.", true], ["The charging port takes photos.", false], ["We should charge phones on a soft bed under a pillow.", false, "No. Charge phones on a hard surface where air can move."]]),
+      ] },
+    { id: "i4-files", nm: "Files and folders", icon: "🗂️", desc: "Make folders and keep files tidy",
+      act: { type: "files", mode: "sort", nm: "Tidy the files" },
+      learn: [{ v: "📄", t: "A file is one piece of saved work: a story, a photo, a song or a slide show." },
+        { v: "📁", t: "A folder is like a box with a name. We put files in folders to keep them tidy, just like books on a shelf." },
+        { v: "📁➡️📁", t: "Folders can hold other folders. School work can have a folder for each subject." },
+        { v: ".docx .jpg .mp3", t: "The letters after the dot are the extension. They tell us the kind of file: .docx is a Word document, .jpg is a photo, .mp3 is a song, .pptx is a slide show." },
+        { v: "✏️🗑️", t: "We can make, rename, move and delete files and folders. Deleted files go to the Recycle Bin first." }],
+      wow: { v: "🔎", t: "Digital superpower: with good folder names, you can find any file in seconds, even years later!" },
+      gens: [
+        fromFacts(P4_EXT, e => tq(`A file ending in ${e.x} is…`, e.what, P4_EXT.filter(x => x.what !== e.what).map(x => x.what), { why: `${e.x} files are ${e.what}s, opened with ${e.app}.`.replace("ss,", "s,") })),
+        fromFacts(P4_EXT, e => tq(`Which folder is the best home for "trip${e.x}"?`, e.folder, ["School work", "Pictures", "Music", "Videos"].filter(x => x !== e.folder), { why: `It is ${e.what}, so it goes in ${e.folder}.` })),
+        fromFacts(P4_EXT, e => tq(`Which file is ${e.what.replace(/^a /, "a ")}?`, `holiday${e.x}`, P4_EXT.filter(x => x.what !== e.what).map(x => `holiday${x.x}`), { why: `The ${e.x} extension means ${e.what}.` })),
+        facts([["A folder is like a…", "box with a name", ["song", "keyboard", "battery"]], ["Where do deleted files go first?", "the Recycle Bin", ["the printer", "the internet", "the monitor"]],
+          ["Which is the best name for a folder of maths work?", "Maths homework", ["asdfgh", "New folder (7)", "stuff"]], ["The letters after the dot in a file name are called the…", "extension", ["password", "cursor", "icon"]],
+          ["To give a file a new name, we…", "rename it", ["print it", "delete it", "unplug it"]], ["Which app lets us look through our files and folders?", "File Explorer", ["Paint", "Calculator", "Media Player"]]]),
+        tfs([["A folder can hold other folders.", true], ["mama.jpg is a photo.", true], ["song.mp3 is a slide show.", false], ["Good folder names help us find files.", true]]),
+      ] },
+    { id: "i4-custom", nm: "Make the computer yours", icon: "🎨", desc: "Wallpaper, dark mode, text size and more",
+      act: { type: "settings", nm: "Change the settings" },
+      learn: [{ v: "⚙️", t: "Settings let us change how the computer looks and works. This is called customising the interface." },
+        { v: "🖼️🌙", t: "In Personalisation we can change the wallpaper, the colours, and switch on dark mode for night time." },
+        { v: "🔆🔊", t: "We can turn the brightness and the volume up or down. Lower brightness saves battery." },
+        { v: "🔠👓", t: "Accessibility settings help everyone: bigger text, a bigger mouse pointer, and reading aloud for people who cannot see well." },
+        { v: "🙋🏾", t: "On a shared school computer, ask your teacher before changing settings, and put them back afterwards." }],
+      wow: { v: "♿", t: "Digital superpower: accessibility settings help people with poor sight or hearing use computers too!" },
+      gens: [
+        fromFacts(P4_SET, f => tq(`Which setting changes ${f.what}?`, f.s, P4_SET.filter(x => x !== f).map(x => x.s), { vis: em("⚙️"), why: `${f.s} changes ${f.what}.` })),
+        fromFacts(P4_SET, f => tq(`Where would you find ${f.s}?`, f.where, ["Personalisation", "Display", "Sound", "Accessibility"].filter(x => x !== f.where), { why: `${f.s} is in ${f.where}.` })),
+        facts([["Lowering the brightness helps to…", "save battery", ["make the computer faster at maths", "print in colour", "delete files"]], ["Bigger text and a bigger pointer are found in…", "Accessibility", ["Recycle Bin", "Paint", "Calculator"]],
+          ["Changing how the computer looks is called…", "customising", ["deleting", "booting", "printing"]], ["Before changing settings on a school computer, you should…", "ask your teacher", ["change everything", "switch it off", "unplug the mouse"]],
+          ["Dark mode is good for…", "using the computer at night", ["printing", "charging", "typing faster"]], ["Which app do we open to change settings?", "Settings", ["Music", "Camera", "Calculator"]]]),
+        tfs([["Settings let us change how the computer looks.", true], ["Accessibility settings help people who cannot see well.", true], ["Changing the wallpaper deletes your files.", false], ["We should put a shared computer's settings back when we finish.", true]]),
+      ] },
+  ] },
+  { nm: "Second term", sub: "Creating and staying safe", topics: [
+    { id: "i4-ppt", nm: "Microsoft PowerPoint", icon: "📽️", desc: "Slides, titles, pictures and slide shows",
+      act: { type: "ppt", nm: "Make a slide show" },
+      learn: [{ v: "📽️", t: "Microsoft PowerPoint is a program for making slide shows. We use it to present a talk to the class, with words and pictures." },
+        { v: "🗂️", t: "A presentation is made of slides. The slide list on the left shows them all, in order." },
+        { v: "🔤", t: "Click 'Click to add title' to type a title. Each slide can have a title, text boxes and pictures." },
+        { v: "➕🖼️", t: "Home → New Slide adds a slide. Insert → Pictures adds a picture. Design → Themes gives every slide nice colours." },
+        { v: "▶️", t: "Slide Show → From Beginning shows your slides on the whole screen. Click to go to the next slide. Press Esc to stop." },
+        { v: "💾", t: "Save it with File → Save As. PowerPoint files end with .pptx." }],
+      wow: { v: "🎤", t: "Digital superpower: good slides have few words and big pictures, so people listen to YOU!" },
+      gens: [
+        () => { const t = pick(P4_PPT), b = pick(t.has); return tq(`In PowerPoint, which tab has ${b}?`, t.t, P4_PPT.filter(x => x !== t).map(x => x.t), { why: `${b} is on the ${t.t} tab.` }); },
+        () => { const t = pick(P4_PPT); return tq(`In PowerPoint, which button is on the ${t.t} tab?`, pick(t.has), P4_PPT.filter(x => x !== t).flatMap(x => x.has), { why: `It is on the ${t.t} tab.` }); },
+        facts([["PowerPoint is used to make…", "slide shows", ["songs", "spreadsheets of numbers", "phone calls"]], ["One page in PowerPoint is called a…", "slide", ["cell", "tab", "port"]],
+          ["To show slides on the whole screen, use…", "Slide Show → From Beginning", ["File → Close", "Insert → Table", "Delete"]], ["To stop a slide show, press…", "Esc", ["Shift", "Caps Lock", "the power button"]],
+          ["PowerPoint files end with…", ".pptx", [".mp3", ".jpg", ".docx"]], ["Where do you see all your slides in order?", "the slide list on the left", ["the Recycle Bin", "the status bar only", "the printer"]],
+          ["Which makes the best slide?", "a big picture and a few words", ["very small writing everywhere", "no title at all", "fifty sentences"]], ["To add a new slide, click…", "New Slide", ["Shut down", "Undo", "Esc"]],
+          ["Moving smoothly from one slide to the next is called a…", "transition", ["virus", "folder", "cursor"]], ["Design → Themes changes the…", "colours and look of the slides", ["password", "printer", "volume"]]]),
+        tfs([["A presentation is made of slides.", true], ["PowerPoint is made for typing long letters only.", false], ["Pictures can be added with Insert → Pictures.", true], ["Esc stops a slide show.", true], ["A slide should have as many words as possible.", false]]),
+      ] },
+    { id: "i4-pass", nm: "Strong passwords", icon: "🔐", desc: "Make passwords that are hard to guess",
+      act: { type: "password", nm: "Build a strong password" },
+      learn: [{ v: "🔐", t: "A password is a secret word that locks your account, like a key locks a door. Only you (and your parent) should know it." },
+        { v: "🙅🏾", t: "Weak passwords are easy to guess: 123456, password, your name or your birthday. Thieves try these first!" },
+        { v: "💪🏾", t: "A strong password is long, at least 12 characters, and mixes capital letters, small letters, numbers and symbols like ! # $." },
+        { v: "🥭🌧️🥁", t: "A good trick: join three random words and add numbers and a symbol, like Mango!Rain27Drum. Long, but easy for you to remember." },
+        { v: "🤫", t: "Never share your password with friends. Use a different password for each account. Tell a grown-up if someone asks for it." }],
+      wow: { v: "⏳", t: "Digital superpower: a long, mixed password could take a computer thousands of years to guess!" },
+      gens: [
+        () => tq("Which password is the STRONGEST?", pick(P4_PW_GOOD), P4_PW_BAD, { vis: em("🔐"), why: "It is long and mixes capitals, small letters, numbers and symbols." }),
+        () => tq("Which password is the WEAKEST?", pick(P4_PW_BAD), P4_PW_GOOD, { vis: em("🔓"), why: "It is short or easy to guess." }),
+        facts([["A strong password should be at least…", "12 characters long", ["3 characters long", "your first name", "your birthday"]], ["Who can you share your password with?", "your parent or guardian", ["your best friend", "anyone who asks nicely", "a stranger online"]],
+          ["Which symbol could make a password stronger?", "#", ["a space at the end", "your name", "the word password"]], ["Why use a different password for each account?", "so one stolen password can't open everything", ["to make typing slower", "because the law says so", "to confuse your teacher"]],
+          ["A stranger messages: 'Send me your password to win a prize.' You should…", "not reply and tell a grown-up", ["send it quickly", "send half of it", "post it publicly"]], ["Which is a weak password?", "123456", ["Blue#Kite#2026", "Jollof+Drum+88", "7Green$Elephants"]],
+          ["A password is like a…", "key for a door", ["song", "window", "shoe"]], ["Joining three random words makes a password…", "long and easy to remember", ["short and weak", "illegal", "visible to everyone"]]]),
+        tfs([["Your birthday makes a strong password.", false], ["Strong passwords mix letters, numbers and symbols.", true], ["You should tell your best friend your password.", false], ["Long passwords are harder to guess.", true], ["password is a good password.", false]]),
+      ] },
+    { id: "i4-virus", nm: "Viruses, tricks and antivirus", icon: "🦠", desc: "Malware, phishing and how to stay protected",
+      act: { type: "sort", nm: "Safe or a trick?", A: () => P4_SAFE, B: () => P4_TRICK, la: "Looks safe", lb: "A trick!", ia: "✅", ib: "🎣", ask: t => "Is this message safe, or is it a trick?", wrong: c => c.a ? "This one is normal and expected, so it looks safe." : "This is a trick! It wants your secrets, your money or a dangerous click.", done: "You can spot online tricks!" },
+      learn: [{ v: "🦠💻", t: "A computer virus is a bad program, called malware, that can damage files, slow the computer down or steal information." },
+        { v: "🐛🐴🕵🏾", t: "Kinds of malware: viruses spread with shared files, worms spread by themselves, Trojan horses pretend to be good programs, spyware spies, and ransomware locks files for money." },
+        { v: "🎣", t: "Phishing is a trick message that pretends to be a bank, a school or a prize, to make you give away a password or click a bad link." },
+        { v: "🛡️", t: "Antivirus software finds and removes malware. Examples: Microsoft Defender, Avast, Norton and McAfee. Keep it switched on and updated." },
+        { v: "🧐", t: "Stay safe: don't open strange links or attachments, download apps only from the official store, and ask a grown-up when unsure." }],
+      wow: { v: "🧑🏾‍💻", t: "Digital superpower: cybersecurity experts are digital police who protect banks, schools and hospitals from hackers!" },
+      gens: [
+        fromFacts(P4_VIR, v => tq(`Which kind of malware ${v.job}?`, v.v, P4_VIR.filter(x => x !== v).map(x => x.v), { vis: em("🦠"), why: `A ${v.v} ${v.job}.` })),
+        () => tq("Which one is antivirus software?", pick(P4_AV), ["Microsoft Word", "PowerPoint", "Paint", "a web browser", "Calculator"], { vis: em("🛡️"), why: "It is antivirus software. It finds and removes malware." }),
+        () => { const tr = Math.random() < .6, t = pick(tr ? P4_TRICK : P4_SAFE); return tq(`"${t}" What is this?`, tr ? "a trick (phishing or a scam)" : "a safe, normal message", [tr ? "a safe, normal message" : "a trick (phishing or a scam)", "a computer part", "a password"], { why: tr ? "It wants your secrets or money, or a dangerous click." : "It is normal and expected." }); },
+        facts([["Bad software is called…", "malware", ["hardware", "firmware", "a folder"]], ["A trick message that tries to steal your password is called…", "phishing", ["printing", "scrolling", "booting"]],
+          ["Where should you download apps from?", "the official app store", ["any pop-up advert", "a stranger's link", "a random website"]], ["What should antivirus software be?", "switched on and updated", ["switched off", "deleted", "shared"]],
+          ["A pop-up says 'Your computer has 99 viruses! Click here!' You should…", "close it and tell a grown-up", ["click it fast", "type your password", "pay money"]], ["Ransomware asks for…", "money to unlock your files", ["a new mouse", "a picture", "more slides"]]]),
+        tfs([["Antivirus software helps find malware.", true], ["It is safe to open any link a stranger sends.", false], ["A Trojan horse pretends to be a good program.", true], ["Phishing messages may pretend to be from a bank.", true], ["Malware makes your computer faster.", false]]),
+      ] },
+    { id: "i4-kind", nm: "Kind and fair online", icon: "💛", desc: "Kind words, cyberbullying and content for everyone",
+      act: { type: "sort", nm: "Kind or unkind?", A: () => P4_KIND, B: () => P4_UNKIND, la: "Kind 😊", lb: "Unkind 😢", ia: "💛", ib: "🚫", ask: t => "Is this kind or unkind online?", wrong: c => c.a ? "This is kind and helpful." : "This hurts people. Online, unkind words are cyberbullying.", done: "You are a kind digital citizen!" },
+      learn: [{ v: "💛🌐", t: "Online, there is a real person behind every screen. Be as kind online as you are face to face." },
+        { v: "😢📱", t: "Cyberbullying is using phones or computers to hurt, scare or leave someone out, again and again." },
+        { v: "🛑📸🚫🗣️", t: "If you are bullied: don't reply, take a screenshot, block the person and tell a trusted adult. If you see it, support the person and report it." },
+        { v: "🦻🏾📝", t: "Make content for everyone: add captions to videos for people who can't hear, describe pictures for people who can't see, and use clear words." },
+        { v: "🤔", t: "Before you post, think: is it true? Is it kind? Would I be happy if my teacher or Grandma saw it?" }],
+      wow: { v: "🌈", t: "Digital superpower: one kind comment can make someone's whole day!" },
+      gens: [
+        () => { const k = Math.random() < .5, t = pick(k ? P4_KIND : P4_UNKIND); return tq(`"${t}" Is this kind or unkind?`, k ? "kind" : "unkind", [k ? "unkind" : "kind", "a password", "a virus"], { why: k ? "It is kind and helpful." : "It hurts people. It is unkind." }); },
+        () => tq("Which one is KIND online?", pick(P4_KIND), P4_UNKIND, { vis: em("💛"), why: "That is kind and helpful." }),
+        () => tq("Which one is UNKIND online?", pick(P4_UNKIND), P4_KIND, { vis: em("🚫"), why: "That hurts people. It is unkind." }),
+        facts([["Using phones or computers to hurt someone again and again is called…", "cyberbullying", ["coding", "formatting", "browsing"]], ["If someone bullies you online, first you should…", "not reply, and tell a trusted adult", ["reply with rude words", "keep it secret", "share their password"]],
+          ["Captions on videos help people who…", "cannot hear well", ["cannot type", "have no computer", "like loud music"]], ["Before you post, ask yourself…", "Is it true and kind?", ["Is it rude enough?", "Will it make someone cry?", "Is it a secret?"]],
+          ["Saving a screenshot of bullying messages helps because…", "it shows a grown-up what happened", ["it makes the bully stronger", "it deletes the messages", "it is a game"]], ["Describing a picture in words helps people who…", "cannot see well", ["are hungry", "are tall", "speak loudly"]],
+          ["If you see a friend being bullied online, you should…", "support them and tell an adult", ["laugh and share it", "join in", "do nothing"]], ["Behind every screen is…", "a real person with feelings", ["only a robot", "nobody", "a printer"]]]),
+        tfs([["Cyberbullying can make people very sad.", true], ["You should block someone who bullies you.", true], ["It is fine to share a friend's secret online.", false], ["Captions make videos easier for everyone.", true], ["Unkind words online don't matter.", false]]),
+      ] },
+  ] },
+  { nm: "Third term", sub: "Coding, games, robots and AI", topics: [
+    { id: "i4-coding", nm: "Coding and programming languages", icon: "🧑🏾‍💻", desc: "Programs, programmers and languages",
+      act: { type: "sort", nm: "Blocks or typed words?", A: () => P4_VIS, B: () => P4_TXT, la: "Visual: blocks", lb: "Text: typed", ia: "🧩", ib: "⌨️", ask: t => `Is ${t} a visual (block) language or a text language?`, wrong: c => c.a ? `${c.t} uses blocks you snap together. It is a visual language.` : `${c.t} is typed as words. It is a text language.`, done: "You know the two kinds of programming languages!" },
+      learn: [{ v: "📜", t: "A program is a set of instructions that tells a computer what to do. Writing programs is called programming, or coding." },
+        { v: "🧑🏾‍💻", t: "A person who writes programs is a programmer, or coder. Every app, game and website was made by coders." },
+        { v: "🧩", t: "Visual programming languages use blocks you snap together, like Scratch and Blockly. They are great for starting out." },
+        { v: "⌨️", t: "Text programming languages are typed as words, like Python, JavaScript and Java. Professional coders use them." },
+        { v: "💡", t: "Why learn coding? It teaches us to solve problems step by step, to be creative, and it leads to great jobs. You can build your own games and apps!" }],
+      wow: { v: "🐍", t: "Digital superpower: Python was created by Guido van Rossum and first released in 1991. You can learn it in Python Path!" },
+      gens: [
+        () => { const v = Math.random() < .5, t = pick(v ? P4_VIS : P4_TXT); return tq(`${t} is a…`, v ? "visual (block) language" : "text language", [v ? "text language" : "visual (block) language", "computer part", "virus"], { why: v ? `${t} uses blocks.` : `${t} is typed as words.` }); },
+        () => tq("Which one is a VISUAL (block) programming language?", pick(P4_VIS), P4_TXT, { vis: em("🧩"), why: "It uses blocks you snap together." }),
+        () => tq("Which one is a TEXT programming language?", pick(P4_TXT), P4_VIS, { vis: em("⌨️"), why: "It is typed as words." }),
+        facts([["A set of instructions for a computer is called a…", "program", ["folder", "monitor", "password"]], ["A person who writes programs is a…", "programmer", ["printer", "plumber", "pilot"]],
+          ["Writing programs is also called…", "coding", ["painting", "farming", "cooking"]], ["Which is a text programming language?", "Python", ["Scratch", "Blockly", "ScratchJr"]],
+          ["Which is a visual programming language?", "Scratch", ["Python", "Java", "C++"]], ["Which of these is made with code?", "a phone game", ["a mango", "a river", "a stone"]],
+          ["Coding helps us learn to…", "solve problems step by step", ["sleep longer", "forget things", "eat faster"]], ["Who created Python?", "Guido van Rossum", ["Charles Babbage", "Blaise Pascal", "John Napier"]],
+          ["Websites, apps and games are all made with…", "code", ["paint", "glue", "sand"]], ["A mistake in a program is called a…", "bug", ["byte", "badge", "banana"]]]),
+        tfs([["Every app was made by coders.", true], ["Scratch uses blocks.", true], ["Python is typed as words.", true], ["Computers can think up programs with no instructions.", false], ["A bug is a mistake in code.", true]]),
+      ] },
+    { id: "i4-scratch", nm: "Scratch: sprites and blocks", icon: "🐱", desc: "Sprites, the stage, the green flag and scripts",
+      act: { type: "scratch", mode: "basic", nm: "Make it move!" },
+      learn: [{ v: "🟧", t: "Scratch is a free visual programming language made at the MIT Media Lab in the USA in 2007. Children snap blocks together to make games and stories." },
+        { v: "🤖🎭", t: "A sprite is a character that the code controls. The stage is the place where the sprites move. The backdrop is the stage's picture." },
+        { h: `<div class="sblkcol">${sblk("when green flag clicked", SC.ev)}${sblk("move 10 steps", SC.mo)}${sblk("say Hello!", SC.lo)}</div>`, t: "Blocks snap together to make a script. Scripts run from top to bottom." },
+        { h: `<div class="sblkcol">${sblk("Events", SC.ev)}${sblk("Motion", SC.mo)}${sblk("Looks", SC.lo)}${sblk("Sound", SC.so)}${sblk("Control", SC.co)}</div>`, t: "Blocks are grouped by colour: Events start scripts, Motion moves, Looks changes how sprites look, Sound plays sounds, and Control waits and repeats." },
+        { v: "🟢🚩", t: "Most scripts start with 'when green flag clicked'. Click the green flag to run, and the red stop sign to stop." }],
+      wow: { v: "🌍", t: "Digital superpower: millions of children around the world share their Scratch projects online!" },
+      gens: [
+        fromFacts(P4_SB, b => tq(`Which group (colour) does "${b.b}" belong to?`, b.cat, ["Events", "Motion", "Looks", "Sound", "Control"].filter(x => x !== b.cat), { vis: sblk(b.b, b.c), why: `"${b.b}" is a ${b.cat} block.` })),
+        fromFacts(P4_SB, b => tq(`What does "${b.b}" do?`, `It ${b.job}`, P4_SB.filter(x => x !== b).map(x => `It ${x.job}`), { vis: sblk(b.b, b.c), why: `"${b.b}" ${b.job}.` })),
+        facts([["A character in Scratch is called a…", "sprite", ["slide", "cell", "port"]], ["Where do the sprites move?", "on the stage", ["in the Recycle Bin", "in the printer", "on the keyboard"]],
+          ["What starts most Scratch scripts?", "the green flag", ["the red stop sign", "the power button", "Esc"]], ["Blocks snapped together make a…", "script", ["slide", "virus", "folder"]],
+          ["Scratch was made at…", "the MIT Media Lab", ["a bakery", "the post office", "a football club"]], ["The picture behind the stage is the…", "backdrop", ["sprite", "cursor", "folder"]],
+          ["Which button stops a Scratch project?", "the red stop sign", ["the green flag", "the space bar", "the volume button"]], ["Scratch is a…", "visual programming language", ["text programming language", "kind of printer", "web browser"]]]),
+        tfs([["Scripts run from top to bottom.", true], ["Scratch is free.", true], ["A sprite is a kind of virus.", false], ["Motion blocks move the sprite.", true]]),
+      ] },
+    { id: "i4-games", nm: "Games and game making", icon: "🎮", desc: "Parts of a game and how games are made",
+      act: { type: "order", nm: "Make a game", sets: [
+        { nm: "make a game, from the very first step", steps: ["Have an idea for the game", "Plan the rules and draw the characters", "Write the code", "Test it and fix the bugs", "Share it with friends"] },
+        { nm: "build a catching game in Scratch", steps: ["Choose a sprite and a backdrop", "Make the sprite move with the arrow keys", "Make things fall from the sky", "Add a score that goes up", "Click the green flag to play and test"] }], done: "You know how games are made!" },
+      learn: [{ v: "🎮", t: "A video game is a program you play. Every game has a player, a goal, rules, and a way to win or lose." },
+        { v: "⭐❤️⏱️", t: "Games often have a score, lives, a timer and levels that get harder. These are made with variables and code." },
+        { v: "💡✏️💻🧪📤", t: "Making a game: have an idea, plan the rules and characters, write the code, test it and fix the bugs, then share it." },
+        { v: "🧑🏾‍🎨🧑🏾‍💻🎵", t: "Big games are made by teams: designers plan, artists draw, coders program, sound designers make music, and testers find bugs." },
+        { v: "⏳", t: "Play wisely: take breaks, finish homework first, and choose games that are right for your age." }],
+      wow: { v: "🇳🇬", t: "Digital superpower: Nigerian game studios make games with our own stories, food and places. You could be next!" },
+      gens: [
+        () => { const s = ["Have an idea", "Plan the rules and characters", "Write the code", "Test and fix bugs", "Share the game"], i = rnd(0, 3); return tq(`When making a game, what comes after "${s[i]}"?`, s[i + 1], s.filter((_, j) => j !== i + 1 && j !== i), { why: `After "${s[i]}" we ${s[i + 1].toLowerCase()}.` }); },
+        fromFacts(P4_GAME, g => tq(`In a game, what is ${g.d}?`, `the ${g.p}`, P4_GAME.filter(x => x !== g).map(x => `the ${x.p}`), { vis: em("🎮"), why: `The ${g.p} is ${g.d}.` })),
+        fromFacts(P4_GAME, g => tq(`What is the ${g.p} in a game?`, g.d, P4_GAME.filter(x => x !== g).map(x => x.d), { why: `The ${g.p} is ${g.d}.` })),
+        fromFacts(P4_TEAM, g => tq(`Who in a game team ${g.d}?`, `the ${g.r}`, P4_TEAM.filter(x => x !== g).map(x => `the ${x.r}`).concat(["the banker", "the driver"]), { why: `The ${g.r} ${g.d}.` })),
+        facts([["Who finds bugs in a game before it is shared?", "a tester", ["a farmer", "a printer", "a driver"]], ["Who draws the characters for a game?", "an artist", ["a tester", "a banker", "a pilot"]],
+          ["A number that goes up when you win points is the…", "score", ["mouse", "folder", "volume"]], ["Every game needs a goal and…", "rules", ["a printer", "a scanner", "a bank card"]],
+          ["Levels in a game usually…", "get harder", ["get easier forever", "delete the game", "turn off the computer"]], ["What should come before playing games?", "finishing your homework", ["staying up all night", "skipping meals", "breaking the rules"]],
+          ["The person who writes the code for a game is a…", "programmer", ["tester", "cleaner", "singer"]], ["In code, the score and lives are stored in…", "variables", ["folders", "printers", "windows"]]]),
+        tfs([["Games are programs.", true], ["Testing helps find bugs.", true], ["Every game is made by one person in one day.", false], ["Taking breaks from games is healthy.", true]]),
+      ] },
+    { id: "i4-robots", nm: "Robots and AI", icon: "🤖", desc: "Sense, think, act, and machines that learn",
+      act: { type: "sort", nm: "Sense or act?", A: () => P4_SENSE, B: () => P4_ACT, la: "Sense: takes in", lb: "Act: does something", ia: "👀", ib: "🦾", ask: t => `Does the ${t} help the robot sense, or act?`, wrong: c => c.a ? `The ${c.t} takes in information. It is a sensor.` : `The ${c.t} makes the robot do something. It is an actuator.`, done: "You know how robots sense and act!" },
+      learn: [{ v: "🤖", t: "A robot is a machine that can sense the world, think with a computer brain, and act. Sense, think, act!" },
+        { h: SVGS.sensor, t: "Sensors are the robot's eyes, ears and skin: cameras, microphones, touch sensors and distance sensors." },
+        { h: SVGS.motor, t: "Actuators make it move or act: motors turn wheels, robot arms lift, speakers talk and lights flash." },
+        { v: "🧠💡", t: "Artificial intelligence, AI, is when computers learn from lots of examples to do clever things, like recognising faces or understanding speech." },
+        { v: "🏭🚁🏥", t: "Robots build cars in factories, drones carry medicine, and robot vacuums clean floors. In Abuja, Nigeria's National Centre for Artificial Intelligence and Robotics was opened in 2020." }],
+      wow: { v: "🧑🏾‍🔬", t: "Digital superpower: robots still need people to design, build and code them. That could be you!" },
+      gens: [
+        () => { const s = Math.random() < .5, t = pick(s ? P4_SENSE : P4_ACT); return tq(`A robot's ${t} helps it to…`, s ? "sense" : "act", [s ? "act" : "sense", "sleep", "eat"], { why: s ? "It takes in information." : "It makes the robot do something." }); },
+        () => tq("Which one is a SENSOR (it takes in information)?", pick(P4_SENSE), P4_ACT, { vis: em("👀"), why: "Sensors take in information." }),
+        () => tq("Which one is an ACTUATOR (it makes the robot do something)?", pick(P4_ACT), P4_SENSE, { vis: em("🦾"), why: "Actuators make the robot move or act." }),
+        () => { const yes = P4_AI.filter(x => x[1]).map(x => x[0]), no = P4_AI.filter(x => !x[1]).map(x => x[0]); return tq("Which one uses AI?", pick(yes), no, { vis: em("🧠"), why: "It learned from lots of examples, so it is AI." }); },
+        () => { const [t, ai] = pick(P4_AI); return tq(`Is "${t}" an example of AI?`, ai ? "Yes, it learns from examples" : "No, it just follows simple fixed steps", [ai ? "No, it just follows simple fixed steps" : "Yes, it learns from examples", "It is a kind of virus", "It is a printer"], { why: ai ? "AI learned this from lots of examples." : "It does not learn. It is not AI." }); },
+        () => pq("Which one is a SENSOR?", "cam_eye", ["motor", "robotarm", "bulbon", "wheel"], { why: "Camera eyes take in information. They are sensors." }),
+        () => pq("Which one is an ACTUATOR (it makes the robot move)?", pick(["motor", "robotarm"]), ["cam_eye", "microphone", "lightsense"], { why: "Motors and robot arms make the robot move. They are actuators." }),
+        facts([["The three things robots do are…", "sense, think and act", ["eat, sleep and play", "print, scan and copy", "cut, copy and paste"]], ["A robot's brain is a…", "computer", ["sponge", "battery", "wheel"]],
+          ["AI stands for…", "artificial intelligence", ["all inside", "automatic internet", "angry insect"]], ["AI learns from…", "lots of examples (data)", ["sleeping", "eating", "magic"]],
+          ["Which robot carries medicine through the air?", "a drone", ["a robot vacuum", "a robot arm", "a toy car"]], ["Nigeria's centre for AI and robotics is in…", "Abuja", ["London", "Paris", "Tokyo"]],
+          ["Which part makes a robot's wheels turn?", "a motor", ["a microphone", "a camera", "a light sensor"]], ["Can AI make mistakes?", "Yes, so people must check it", ["No, never", "Only on Sundays", "Only when it is cold"]]]),
+        tfs([["Robots need code to work.", true], ["A camera can be a robot's eye.", true], ["AI is always right.", false, "No. AI can make mistakes, so people must check it."], ["A motor is an actuator.", true], ["Robots can only be found in films.", false]]),
+      ] },
+  ] },
+] };
+ICT_YEARS[4] = ICT_P4;
+
 /* ======================= SCHOOL ICT: screens, questions, hands-on activities ======================= */
 let curY = 1, curTerm = 0, curTopic = null;
 const sch = () => { const s = st(); s.school = s.school || { stars: {}, acts: {}, badges: {}, finals: {}, tries: {} }; ["stars", "acts", "badges", "finals", "tries"].forEach(k => s.school[k] = s.school[k] || {}); return s.school; };
@@ -4452,7 +4850,7 @@ function showQ() {
   const q = QZ.qs[QZ.i]; QZ.tries = 0; QZ.locked = false;
   $("#qzDots").className = "qdots" + (QZ.qs.length > 12 ? " many" : ""); $("#qzDots").innerHTML = QZ.qs.map((_, k) => `<i class="${k < QZ.i ? (QZ.res[k] ? "ok" : "no") : k === QZ.i ? "now" : ""}"></i>`).join("");
   $("#qzPrompt").textContent = q.p; $("#qzVis").innerHTML = q.vis || ""; $("#qzWhy").textContent = ""; $("#qzWhy").className = "qwhy"; $("#qzNext").hidden = true; $("#qzCoins").textContent = QZ.coins;
-  $("#qzAns").className = "qans " + (q.kind === "pic" ? "pic" : q.kind === "tf" ? "tf" : "");
+  $("#qzAns").className = "qans " + (q.kind === "pic" ? "pic" : q.kind === "tf" ? "tf" : "") + (q.ch.length === 4 ? " four" : "");
   $("#qzAns").innerHTML = q.ch.map((c, k) => `<button class="btn" data-v="${esc(c.v)}" style="animation-delay:${k * .06}s" aria-label="${esc(c.nm)}">${c.h}</button>`).join("");
   qSpeak(q);
 }
@@ -4512,7 +4910,7 @@ const P1_ACTS = {
 function startAct(t) {
   const A = typeof t.act === "string" ? P1_ACTS[t.act] : t.act;
   ACT = { t, kind: A.type, step: 0 }; $("#acTitle").textContent = "✋ " + A.nm; $("#acProg").textContent = ""; show("act");
-  ({ click: actClick, keys: actKeys, label: actLabel, sort: actSort, order: actOrder, desk: actDesk, speckeys: actSpecKeys, icons: actIcons, match: actMatch, mouse2: actMouse2, word: actWord })[A.type](A);
+  (({ click: actClick, keys: actKeys, label: actLabel, sort: actSort, order: actOrder, desk: actDesk, speckeys: actSpecKeys, icons: actIcons, match: actMatch, mouse2: actMouse2, word: actWord })[A.type] || actsMore)(A);
 }
 $("#acBack").onclick = () => { hush(); show("stopic"); ACT = null; };
 $("#acSay").onclick = () => say($("#acTask").textContent);
@@ -4573,8 +4971,8 @@ function actKeys() {
 /* find the parts in a computer picture */
 function actLabel(A) {
   const S = $("#acStage"), parts = A.parts;
-  S.innerHTML = `<div class="lscene">${A.desk ? `<div class="ldesk"></div>` : ""}${A.panel ? `<div class="lpanel ${A.panel === "inside" ? "inside" : ""}"><span>${A.panelText || "Back of the system unit"}</span></div>` : ""}${parts.map(p => `<div class="lpart" data-p="${p.k}" data-s="${p.s}" style="left:${p.x}%;top:${p.y}%">${PIC[p.k].h.replace('class="picem"', 'class="picem" style="font-size:inherit"')}</div>`).join("")}</div>`;
-  const fit = () => { const r = S.getBoundingClientRect(), base = Math.min(r.width / (A.bw || 4.2), r.height / (A.bh || 4.6)); $$("#acStage .lpart").forEach(el => { const z = base * +el.dataset.s; el.style.width = el.style.height = z + "px"; el.style.fontSize = z * .78 + "px"; }); };
+  S.innerHTML = `<div class="lscene ${A.panel === "phone" ? "phonescene" : ""}">${A.desk ? `<div class="ldesk"></div>` : ""}${A.panel ? `<div class="lpanel ${A.panel === true ? "" : A.panel}"><span>${A.panelText !== undefined ? A.panelText : "Back of the system unit"}</span></div>` : ""}${parts.map(p => `<div class="lpart" data-p="${p.k}" data-s="${p.s}" style="left:${p.x}%;top:${p.y}%">${PIC[p.k].h.replace('class="picem"', 'class="picem" style="font-size:inherit"')}</div>`).join("")}</div>`;
+  const fit = () => { const r = A.panel === "phone" ? S.querySelector(".lscene").getBoundingClientRect() : S.getBoundingClientRect(), base = A.panel === "phone" ? Math.min(r.width / 3.2, r.height / 6) : Math.min(r.width / (A.bw || 4.2), r.height / (A.bh || 4.6)); $$("#acStage .lpart").forEach(el => { const z = Math.max(base * +el.dataset.s, A.panel === "phone" ? 30 : 0); el.style.width = el.style.height = z + "px"; el.style.fontSize = z * .78 + "px"; }); };
   fit(); ACT.fit = fit;
   const order = shuffle(parts.map(p => p.k)); let i = 0;
   const ask = () => task(`Tap the ${PIC[order[i]].nm}.`, `${i + 1} of ${order.length}`);
@@ -4639,7 +5037,7 @@ function actDesk() {
   });
   ask();
 }
-ON_LEAVE.act = () => { if (ACT && ACT.keyHandler) removeEventListener("keydown", ACT.keyHandler); };
+ON_LEAVE.act = () => { if (ACT && ACT.keyHandler) removeEventListener("keydown", ACT.keyHandler); if (ACT && ACT.cleanup) ACT.cleanup(); };
 addEventListener("resize", () => { if (curScreen === "act" && ACT && ACT.fit) ACT.fit(); });
 
 /* Primary 2: find the special keys on a full keyboard */
@@ -4910,6 +5308,309 @@ function wordFormat() {
   };
   ask();
 }
+
+/* ======================= SCHOOL ICT Primary 4–6: file explorer, settings, PowerPoint, passwords, mini Scratch ======================= */
+const ACTS_MORE = {};
+function actsMore(A) { return ACTS_MORE[A.type](A); }
+
+/* ---------- File Explorer: sort files into folders (P4) or copy / cut / paste between drives (P5) ---------- */
+ACTS_MORE.files = function (A) {
+  const S = $("#acStage"); let si = 0;
+  const FILES = A.mode === "copy" ? null : [["story.docx", "School work"], ["maths.xlsx", "School work"], ["talk.pptx", "School work"], ["mama.jpg", "Pictures"], ["zuma.png", "Pictures"], ["song.mp3", "Music"], ["dance.mp4", "Videos"], ["old.tmp", "Recycle Bin"]];
+  if (A.mode === "copy") return filesCopy(A);
+  const ICON = n => n.endsWith(".docx") ? "📝" : n.endsWith(".xlsx") ? "📊" : n.endsWith(".pptx") ? "📽️" : /\.(jpg|png)$/.test(n) ? "🖼️" : n.endsWith(".mp3") ? "🎵" : n.endsWith(".mp4") ? "🎬" : "🗒️";
+  const KIND = n => n.endsWith(".docx") ? "a Word document" : n.endsWith(".xlsx") ? "an Excel spreadsheet" : n.endsWith(".pptx") ? "a PowerPoint slide show" : /\.(jpg|png)$/.test(n) ? "a picture" : n.endsWith(".mp3") ? "a song" : n.endsWith(".mp4") ? "a video" : "an old junk file";
+  let folders = ["Pictures", "Music", "Videos", "Recycle Bin"], left = FILES.map(f => f[0]), sel = null, made = false, named = false;
+  const FIC = { "Pictures": "🖼️", "Music": "🎵", "Videos": "🎬", "Recycle Bin": "🗑️", "New folder": "📁", "School work": "📁" };
+  const draw = () => {
+    S.innerHTML = `<div class="fx"><div class="fxbar">📁 File Explorer</div><div class="fxtool"><button class="btn" data-x="new">📁 New folder</button><button class="btn" data-x="ren">✏️ Rename</button></div>
+      <div class="fxbody"><div class="fxnav">${folders.map(f => `<button class="fxf" data-f="${f}">${FIC[f] || "📁"} <span>${f}</span><i>${FILES.filter(x => x[1] === f && !left.includes(x[0])).length || ""}</i></button>`).join("")}</div>
+      <div class="fxmain">${left.map(n => `<button class="fxfile ${sel === n ? "sel" : ""}" data-n="${n}"><b>${ICON(n)}</b>${n}</button>`).join("") || `<em>All tidy! 🎉</em>`}</div></div></div>`;
+  };
+  const steps = [{ t: "Click 📁 New folder to make a folder for your school work." }, { t: "Now click ✏️ Rename and give the new folder a good name." }, { t: "Put every file in the right folder. Drag it, or tap the file and then tap the folder." }];
+  const ask = () => task(steps[si].t, `${si + 1} of 3`);
+  const place = (n, f) => {
+    const want = FILES.find(x => x[0] === n)[1];
+    if (f === want) { left = left.filter(x => x !== n); sel = null; SFX.good(); draw(); if (!left.length) actDone("Your files are tidy! You can find anything now."); else say(`${n} went into ${f}.`); }
+    else { SFX.oops(); sel = null; draw(); say(`${n} is ${KIND(n)}. It belongs in ${want}.`); }
+  };
+  S.onclick = async e => {
+    const x = e.target.closest("[data-x]"), fl = e.target.closest("[data-f]"), fi = e.target.closest("[data-n]");
+    if (si === 0) { if (x && x.dataset.x === "new") { folders.unshift("New folder"); made = true; SFX.good(); si++; draw(); ask(); } else { SFX.oops(); say(steps[0].t); } return; }
+    if (si === 1) {
+      if (x && x.dataset.x === "ren") {
+        const v = await modal(`<h3>✏️ Rename the folder</h3><p>Pick the best name:</p>`, [{ t: "asdfgh", v: "asdfgh" }, { t: "New folder (7)", v: "nf" }, { t: "School work", v: "School work", cls: "go" }]);
+        if (v === "School work") { folders[0] = "School work"; named = true; SFX.good(); si++; draw(); ask(); }
+        else { SFX.oops(); say("That name won't help you find your files later. Choose a name that says what is inside."); }
+      } else { SFX.oops(); say(steps[1].t); }
+      return;
+    }
+    if (fi) { sel = sel === fi.dataset.n ? null : fi.dataset.n; SFX.tap(); draw(); return; }
+    if (fl && sel) place(sel, fl.dataset.f);
+    else if (fl) say("First tap a file, then tap its folder.");
+  };
+  /* dragging */
+  let drag = null;
+  S.onpointerdown = e => { const fi = e.target.closest("[data-n]"); if (!fi || si < 2) return; drag = { n: fi.dataset.n, x: e.clientX, y: e.clientY, el: null }; };
+  S.onpointermove = e => {
+    if (!drag) return; if (!drag.el && Math.hypot(e.clientX - drag.x, e.clientY - drag.y) < 8) return;
+    if (!drag.el) { drag.el = document.createElement("div"); drag.el.className = "fxghost"; drag.el.textContent = ICON(drag.n) + " " + drag.n; document.body.appendChild(drag.el); }
+    drag.el.style.left = e.clientX + "px"; drag.el.style.top = e.clientY + "px";
+  };
+  S.onpointerup = e => {
+    if (!drag) return; const d = drag; drag = null; if (!d.el) return; d.el.remove();
+    const t = document.elementFromPoint(e.clientX, e.clientY), fl = t && t.closest("[data-f]");
+    if (fl) { S.__noclick = true; setTimeout(() => S.__noclick = false, 50); place(d.n, fl.dataset.f); }
+  };
+  draw(); ask();
+};
+/* P5: copy and cut between drives */
+function filesCopy(A) {
+  const S = $("#acStage"); let si = 0, clip = null, loc = "Documents", sel = null;
+  const FS = { "Desktop": ["photo.jpg", "notes.txt"], "Documents": ["project.docx", "scores.xlsx"], "Pictures": [], "Flash drive (E:)": ["games"] };
+  const steps = [
+    { t: "Open Documents, tap project.docx, then click 📋 Copy (or press Ctrl + C).", ok: () => clip && clip.n === "project.docx" && clip.mode === "copy" },
+    { t: "Now open Flash drive (E:) and click 📌 Paste (or press Ctrl + V).", ok: () => FS["Flash drive (E:)"].includes("project.docx") },
+    { t: "Copy leaves the file in BOTH places. Open Desktop, tap photo.jpg and click ✂️ Cut (or Ctrl + X).", ok: () => clip && clip.n === "photo.jpg" && clip.mode === "cut" },
+    { t: "Open Pictures and click 📌 Paste. Cut MOVES the file.", ok: () => FS.Pictures.includes("photo.jpg") && !FS.Desktop.includes("photo.jpg") },
+    { t: "Oops, notes.txt is not needed. Open Desktop, tap notes.txt and click 🗑️ Delete.", ok: () => !FS.Desktop.includes("notes.txt") }];
+  const ICN = n => n === "games" ? "📁" : n.endsWith(".docx") ? "📝" : n.endsWith(".xlsx") ? "📊" : n.endsWith(".jpg") ? "🖼️" : "🗒️";
+  const draw = () => {
+    S.innerHTML = `<div class="fx"><div class="fxbar">📁 File Explorer · <span id="fxLoc">${esc(loc)}</span></div><div class="fxtool"><button class="btn" data-x="copy">📋 Copy</button><button class="btn" data-x="cut">✂️ Cut</button><button class="btn" data-x="paste">📌 Paste</button><button class="btn" data-x="del">🗑️ Delete</button></div>
+      <div class="fxbody"><div class="fxnav">${Object.keys(FS).map(f => `<button class="fxf ${f === loc ? "on" : ""}" data-f="${f}">${f.startsWith("Flash") ? "💾" : f === "Pictures" ? "🖼️" : f === "Desktop" ? "🖥️" : "📄"} <span>${f}</span></button>`).join("")}</div>
+      <div class="fxmain">${FS[loc].map(n => `<button class="fxfile ${sel === n ? "sel" : ""} ${clip && clip.n === n && clip.from === loc && clip.mode === "cut" ? "cutting" : ""}" data-n="${n}"><b>${ICN(n)}</b>${n}</button>`).join("") || `<em>This folder is empty.</em>`}</div></div>
+      ${clip ? `<div class="fxclip">📋 Clipboard: ${esc(clip.n)} (${clip.mode})</div>` : ""}</div>`;
+  };
+  const check = () => { draw(); if (steps[si].ok()) { SFX.good(); si++; if (si < steps.length) task(steps[si].t, `${si + 1} of ${steps.length}`); else actDone("You can copy, cut, paste and delete files!"); } };
+  const act = x => {
+    if (x === "copy" || x === "cut") { if (!sel) { SFX.oops(); say("First tap a file to select it."); return; } clip = { n: sel, from: loc, mode: x }; SFX.tap(); }
+    if (x === "paste") { if (!clip) { SFX.oops(); say("The clipboard is empty. Copy or cut something first."); return; } if (FS[loc].includes(clip.n)) { SFX.oops(); say("That file is already here."); return; } FS[loc].push(clip.n); if (clip.mode === "cut") { FS[clip.from] = FS[clip.from].filter(n => n !== clip.n); clip = null; } SFX.pick(); }
+    if (x === "del") { if (!sel) { SFX.oops(); say("First tap a file to select it."); return; } if (si !== 4) { SFX.oops(); say("Careful! Don't delete that one. " + steps[si].t); return; } FS[loc] = FS[loc].filter(n => n !== sel); sel = null; }
+    check();
+  };
+  S.onclick = e => {
+    const x = e.target.closest("[data-x]"), fl = e.target.closest("[data-f]"), fi = e.target.closest("[data-n]");
+    if (x) { act(x.dataset.x); return; } if (fl) { loc = fl.dataset.f; sel = null; SFX.tap(); draw(); return; }
+    if (fi) { sel = fi.dataset.n; SFX.tap(); draw(); }
+  };
+  ACT.keyHandler = e => { if (curScreen !== "act" || !ACT || ACT.kind !== "files") return; if (!(e.ctrlKey || e.metaKey)) return; const k = e.key.toLowerCase(); const m = { c: "copy", x: "cut", v: "paste" }[k]; if (m) { e.preventDefault(); act(m); } };
+  addEventListener("keydown", ACT.keyHandler);
+  draw(); task(steps[0].t, `1 of ${steps.length}`);
+}
+
+/* ---------- Settings: customise the interface ---------- */
+ACTS_MORE.settings = function () {
+  const S = $("#acStage"), st_ = { wall: "🌄", dark: false, bright: 80, text: 100, pointer: "Small", vol: 60 }; let cat = "Personalisation", si = 0;
+  const WALLS = [["🌄", "Hills"], ["🏖️", "Beach"], ["🦁", "Lion"], ["🌃", "City at night"]];
+  const steps = [
+    { t: "Change the wallpaper to the beach. Open Personalisation.", ok: () => st_.wall === "🏖️" }, { t: "Switch on dark mode, for using the computer at night.", ok: () => st_.dark },
+    { t: "Open Display and turn the brightness down to 40% or less, to save battery.", ok: () => st_.bright <= 40 }, { t: "Open Accessibility and make the text size 150%.", ok: () => st_.text === 150 },
+    { t: "Make the mouse pointer Large, so it is easy to see.", ok: () => st_.pointer === "Large" }, { t: "Open Sound and turn the volume down to 20 or less.", ok: () => st_.vol <= 20 }];
+  const panel = () => {
+    if (cat === "Personalisation") return `<b>Wallpaper</b><div class="stwall">${WALLS.map(([w, n]) => `<button class="${st_.wall === w ? "on" : ""}" data-s="wall" data-v="${w}" aria-label="${n}">${w}<small>${n}</small></button>`).join("")}</div><button class="sttog ${st_.dark ? "on" : ""}" data-s="dark"><span>🌙 Dark mode</span><i></i></button>`;
+    if (cat === "Display") return `<b>Brightness</b><div class="stnum"><button class="btn" data-s="bright" data-v="-10" aria-label="Darker">−</button><span>🔆 ${st_.bright}%</span><button class="btn" data-s="bright" data-v="10" aria-label="Brighter">+</button></div>`;
+    if (cat === "Accessibility") return `<b>Text size</b><div class="stopts">${[100, 125, 150, 200].map(v => `<button class="${st_.text === v ? "on" : ""}" data-s="text" data-v="${v}">${v}%</button>`).join("")}</div><b>Mouse pointer size</b><div class="stopts">${["Small", "Medium", "Large"].map(v => `<button class="${st_.pointer === v ? "on" : ""}" data-s="pointer" data-v="${v}">${v}</button>`).join("")}</div>`;
+    return `<b>Volume</b><div class="stnum"><button class="btn" data-s="vol" data-v="-10" aria-label="Quieter">−</button><span>${st_.vol ? "🔊" : "🔇"} ${st_.vol}</span><button class="btn" data-s="vol" data-v="10" aria-label="Louder">+</button></div>`;
+  };
+  const draw = () => {
+    S.innerHTML = `<div class="stwin ${st_.dark ? "dark" : ""}"><div class="stbar">⚙️ Settings</div><div class="stbody"><div class="stcats">${["Personalisation", "Display", "Sound", "Accessibility"].map(c => `<button class="${c === cat ? "on" : ""}" data-c="${c}">${{ Personalisation: "🎨", Display: "🖥️", Sound: "🔊", Accessibility: "♿" }[c]} <span>${c}</span></button>`).join("")}</div>
+      <div class="stpanel">${panel()}</div></div><div class="stprev" style="filter:brightness(${.35 + st_.bright / 160})"><span class="stw">${st_.wall}</span><span class="sticon" style="font-size:${st_.text / 100}em">📁 My Work</span><span class="stptr" style="font-size:${{ Small: 1, Medium: 1.4, Large: 1.9 }[st_.pointer]}em">➤</span><span class="stvol">${st_.vol ? "🔊" : "🔇"} ${st_.vol}</span></div></div>`;
+  };
+  S.onclick = e => {
+    const c = e.target.closest("[data-c]"), b = e.target.closest("[data-s]"); if (si >= steps.length) return;
+    if (c) { cat = c.dataset.c; SFX.tap(); draw(); return; }
+    if (!b) return; const k = b.dataset.s, v = b.dataset.v;
+    if (k === "wall") st_.wall = v; else if (k === "dark") st_.dark = !st_.dark; else if (k === "bright") st_.bright = Math.max(10, Math.min(100, st_.bright + +v)); else if (k === "vol") st_.vol = Math.max(0, Math.min(100, st_.vol + +v)); else if (k === "text") st_.text = +v; else if (k === "pointer") st_.pointer = v;
+    SFX.tap(); draw();
+    if (steps[si].ok()) { SFX.good(); si++; const k = si; if (k < steps.length) setTimeout(() => { if (si === k) task(steps[k].t, `${k + 1} of ${steps.length}`); }, 300); else setTimeout(() => actDone("You made the computer just right!"), 400); }
+  };
+  draw(); task(steps[0].t, `1 of ${steps.length}`);
+};
+
+/* ---------- PowerPoint: title, new slide, picture, theme, slide show ---------- */
+const PTABS = { File: [["save", "💾", "Save"], ["print", "🖨️", "Print"]], Home: [["newslide", "➕", "New Slide"], ["bold", "<b>B</b>", "Bold"]], Insert: [["pictures", "🖼️", "Pictures"], ["shapes", "⬟", "Shapes"], ["textbox", "🔤", "Text Box"]],
+  Design: [["themes", "🎨", "Themes"]], Transitions: [["fade", "🌫️", "Fade"]], "Slide Show": [["fromstart", "▶️", "From Beginning"]] };
+ACTS_MORE.ppt = function () {
+  const S = $("#acStage"); let si = 0, tab = "Home", cur = 0, words = [], theme = null, show = -1;
+  const slides = [{ title: "", pic: "" }];
+  const TITLE = ["Our", "School", "Trip"];
+  const steps = ["Click the box that says 'Click to add title'.", "Type the title: tap the words in order: Our School Trip.", "Add a new slide: open the Home tab and click New Slide.", "Add a picture of an elephant: open Insert, click Pictures and choose the elephant.", "Give your slides colour: open Design, click Themes and pick one.", "Show your slides: open Slide Show and click From Beginning.", "Click the slide to go to the next slide.", "Press Esc (or tap ✕) to end the show."];
+  const ask = () => task(steps[si], `${si + 1} of ${steps.length}`);
+  const ok = () => { SFX.good(); si++; if (si < steps.length) ask(); else actDone("You made and showed a slide show!"); };
+  const slideHTML = (s, i, big) => `<div class="pslide ${big ? "big" : ""}" style="${theme ? `background:${theme}` : ""}">${s.title ? `<b class="ptitle">${esc(s.title)}</b>` : big && show < 0 && i === cur ? `<button class="pph ${si === 1 ? "on" : ""}" data-p="title">${si === 1 ? esc(words.join(" ")) + "|" : "Click to add title"}</button>` : `<b class="ptitle ghost">${i === 0 ? "" : "Slide " + (i + 1)}</b>`}${s.pic ? `<span class="ppic">${s.pic}</span>` : ""}</div>`;
+  const draw = () => {
+    if (show >= 0) { S.innerHTML = `<div class="pshow" data-p="show">${slideHTML(slides[show], show, true).replace("pslide big", "pslide big full")}<button class="pesc" data-p="esc" aria-label="End show">✕</button><small>Slide ${show + 1} of ${slides.length}</small></div>`; return; }
+    S.innerHTML = `<div class="wd pp"><div class="wd-title pp-title"><span>📽️ Presentation1 - PowerPoint</span></div>
+      <div class="wd-rib"><div class="wd-tabs pp-tabs">${Object.keys(PTABS).map(t => `<button data-tab="${t}" class="${t === tab ? "on" : ""}">${t}</button>`).join("")}</div><div class="wd-btns">${PTABS[tab].map(([k, ic, nm]) => `<button data-b="${k}" aria-label="${nm}"><span>${ic}</span><small>${nm}</small></button>`).join("")}</div></div>
+      <div class="pbody"><div class="pthumbs">${slides.map((s, i) => `<button class="pthumb ${i === cur ? "on" : ""}" data-t="${i}"><i>${i + 1}</i>${slideHTML(s, i)}</button>`).join("")}</div><div class="pmain">${slideHTML(slides[cur], cur, true)}</div></div>
+      ${si === 1 ? `<div class="ptiles">${shuffle([...TITLE, "Banana"]).map(w => `<button class="btn" data-w="${w}">${w}</button>`).join("")}</div>` : ""}</div>`;
+  };
+  const ACTS = { title: () => si === 0, newslide: () => si === 2, pictures: () => si === 3, themes: () => si === 4, fromstart: () => si === 5 };
+  S.onclick = async e => {
+    const tb = e.target.closest("[data-tab]"), b = e.target.closest("[data-b]"), p = e.target.closest("[data-p]"), w = e.target.closest("[data-w]"), th = e.target.closest("[data-t]");
+    if (show >= 0) {
+      if (p && p.dataset.p === "esc") { if (si === 7) { show = -1; draw(); ok(); } else say("Click the slide first, to see the next slide."); return; }
+      if (si === 6) { if (show < slides.length - 1) { show++; SFX.tap(); draw(); ok(); } return; }
+      return;
+    }
+    if (tb) { tab = tb.dataset.tab; SFX.tap(); draw(); return; }
+    if (th) { cur = +th.dataset.t; SFX.tap(); draw(); return; }
+    if (p && p.dataset.p === "title" && si === 0) { draw(); ok(); draw(); return; }
+    if (w && si === 1) {
+      if (w.dataset.w === TITLE[words.length]) { words.push(w.dataset.w); SFX.tap(); if (words.length === TITLE.length) { slides[0].title = words.join(" "); draw(); ok(); } else { const keep = [...$$(".ptiles button")].map(x => x.dataset.w); draw(); } }
+      else { SFX.oops(); say(`Not ${w.dataset.w}. The title is: Our School Trip.`); }
+      return;
+    }
+    if (!b) { if (p) return; return; }
+    const k = b.dataset.b;
+    if (k === "newslide" && si === 2) { slides.push({ title: "Elephants at Yankari", pic: "" }); cur = slides.length - 1; draw(); ok(); return; }
+    if (k === "pictures" && si === 3) {
+      const v = await modal(`<h3>🖼️ Insert a picture</h3>`, [{ t: "🦒", v: "🦒" }, { t: "🐘", v: "🐘" }, { t: "🦁", v: "🦁" }]);
+      if (v === "🐘") { slides[cur].pic = "🐘"; draw(); ok(); } else { SFX.oops(); say("Choose the elephant."); } return;
+    }
+    if (k === "themes" && si === 4) {
+      const v = await modal(`<h3>🎨 Themes</h3><p>Pick a theme for every slide.</p>`, [{ t: "🟩 Green", v: "linear-gradient(135deg,#C8E6C9,#81C784)" }, { t: "🟦 Blue", v: "linear-gradient(135deg,#BBDEFB,#64B5F6)" }, { t: "🟧 Orange", v: "linear-gradient(135deg,#FFE0B2,#FFB74D)" }]);
+      if (v) { theme = v; draw(); ok(); } return;
+    }
+    if (k === "fromstart" && si === 5) { show = 0; draw(); ok(); return; }
+    SFX.oops(); say(steps[si]);
+  };
+  ACT.keyHandler = e => { if (curScreen !== "act" || !ACT || ACT.kind !== "ppt") return; if (e.key === "Escape" && show >= 0 && si === 7) { show = -1; draw(); ok(); } };
+  addEventListener("keydown", ACT.keyHandler);
+  draw(); ask();
+};
+
+/* ---------- password builder ---------- */
+ACTS_MORE.password = function () {
+  const S = $("#acStage"), me = (PL().name || "Ada").replace(/[^A-Za-z]/g, "") || "Ada"; let round = 0, parts = [];
+  const SETS = [["mango", "Mango", "Rain", "drum", "27", "2026", "!", "#", me, "1234", "password"], ["kite", "Blue", "Jollof", "lion", "88", "5", "$", "+", me, "abc", "qwerty"]];
+  const rules = pw => { const low = pw.toLowerCase(); return [[pw.length >= 12, "12 or more characters"], [/[A-Z]/.test(pw), "a CAPITAL letter"], [/[a-z]/.test(pw), "a small letter"], [/[0-9]/.test(pw), "a number"], [/[^A-Za-z0-9]/.test(pw), "a symbol like ! # $"], [!(low.includes(me.toLowerCase()) || /1234|password|qwerty|abc/.test(low)), "no name or easy words"]]; };
+  const draw = () => {
+    const pw = parts.join(""), R = rules(pw), n = R.filter(r => r[0]).length, lv = !pw ? 0 : n <= 3 ? 1 : n <= 5 ? 2 : 3;
+    S.innerHTML = `<div class="pwbox"><div class="pwshow">${pw ? esc(pw) : "<em>Tap the pieces below to build a password</em>"}</div>
+      <div class="pwmeter l${lv}"><i></i><span>${["", "😟 Weak", "😐 Not bad", "💪🏾 Strong!"][lv]}</span></div>
+      <ul class="pwrules">${R.map(([ok, t]) => `<li class="${ok ? "ok" : ""}">${ok ? "✅" : "⬜"} ${t}</li>`).join("")}</ul>
+      <div class="pwparts">${SETS[round].map((p, i) => `<button class="btn" data-p="${i}">${esc(p)}</button>`).join("")}</div>
+      <div class="pwacts"><button class="btn" data-a="back" aria-label="Remove last piece">⌫</button><button class="btn" data-a="clear">🗑️ Clear</button><button class="btn go" data-a="check">✅ Check</button></div></div>`;
+  };
+  S.onclick = e => {
+    const p = e.target.closest("[data-p]"), a = e.target.closest("[data-a]");
+    if (p) { if (parts.join("").length < 30) parts.push(SETS[round][+p.dataset.p]); SFX.tap(); draw(); return; }
+    if (!a) return;
+    if (a.dataset.a === "back") parts.pop(); else if (a.dataset.a === "clear") parts = [];
+    else { const R = rules(parts.join("")), miss = R.filter(r => !r[0]);
+      if (!miss.length) { SFX.good(); round++; parts = []; if (round < SETS.length) { draw(); task("Strong! Now make a different strong password with these new pieces. Never use the same password twice.", "2 of 2"); } else actDone("You can make strong passwords! Keep them secret."); return; }
+      SFX.oops(); say(`Not strong yet. It still needs ${miss.map(m => m[1]).join(", ")}.`); }
+    draw();
+  };
+  draw(); task("Build a STRONG password: make every box in the list turn green, then press Check.", "1 of 2");
+};
+
+/* ---------- mini Scratch: sprites, scripts, loops, pen and maths ---------- */
+const SB = {
+  flag: { c: SC.ev, hat: 1, l: () => "when 🟢 clicked" },
+  move: { c: SC.mo, l: b => `move ${f(b, "n")} steps`, n: [10, 20, 50, 100], d: 10 },
+  turn: { c: SC.mo, l: b => `turn ↻ ${f(b, "n")} degrees`, n: [15, 30, 45, 60, 72, 90, 120], d: 15 },
+  bounce: { c: SC.mo, l: () => "if on edge, bounce" },
+  say: { c: SC.lo, l: () => "say Hello! for 2 seconds" },
+  cost: { c: SC.lo, l: () => "next costume" },
+  sound: { c: SC.so, l: () => "play sound Drum" },
+  wait: { c: SC.co, l: b => `wait ${f(b, "n")} seconds`, n: [1, 2], d: 1 },
+  repeat: { c: SC.co, cont: 1, l: b => `repeat ${f(b, "n")}`, n: [2, 3, 4, 5, 6, 8, 10], d: 10 },
+  forever: { c: SC.co, cont: 1, l: () => "forever" },
+  pendown: { c: SC.pe, l: () => "✏️ pen down" }, penup: { c: SC.pe, l: () => "✏️ pen up" },
+  seta: { c: SC.va, l: b => `set a to ${f(b, "n")}`, n: [12, 35, 8, 100, 6], d: 12 },
+  setb: { c: SC.va, l: b => `set b to ${f(b, "n")}`, n: [5, 4, 7, 2, 3], d: 5 },
+  sayop: { c: SC.op, l: b => `say ( a ${f(b, "op")} b )`, op: ["+", "−", "×", "÷"], d: "+" },
+};
+function f(b, k) { return `<span class="snum" data-num="${b.id}">${b.v}</span>`; }
+const SMODES = {
+  basic: { pal: ["flag", "move", "turn", "say", "cost", "sound", "wait"], tasks: [
+    { t: "Make your robot move! Tap 'when 🟢 clicked', then 'move 10 steps'. Then press the green flag 🟢.", ok: (r, sc) => sc[0] && sc[0].t === "flag" && r.moved > 0 },
+    { t: "After it moves, make it talk: add 'say Hello! for 2 seconds'. Press 🟢.", ok: (r, sc) => r.said.includes("Hello!") && r.firstMoveBeforeSay },
+    { t: "Make it turn too: add 'turn ↻ 15 degrees'. Press 🟢.", ok: r => r.turned > 0 },
+    { t: "Make it dance: add 'next costume' and 'play sound Drum'. Press 🟢.", ok: r => r.costumes > 0 && r.sounds > 0 },
+    { t: "Go further! Tap the number in 'move 10 steps' until it says 100. Press 🟢.", ok: r => r.maxMove >= 100 }] },
+  loops: { pal: ["flag", "move", "turn", "cost", "wait", "repeat", "forever", "bounce"], tasks: [
+    { t: "Use a loop: tap 'when 🟢 clicked', then 'repeat 10', then 'move 10 steps' (it goes INSIDE the repeat). Press 🟢.", ok: (r, sc) => r.loopMoves >= 5 },
+    { t: "Make it walk: add 'next costume' inside the same repeat, so its legs change every step. Press 🟢.", ok: r => r.loopCostumes >= 5 },
+    { t: "Now make it go for ever: start again with 🗑️, then 'when 🟢 clicked', 'forever', 'move 10 steps' and 'if on edge, bounce'. Press 🟢, then 🛑.", ok: r => r.forever && r.bounced } ] },
+  pen: { pal: ["flag", "pendown", "penup", "move", "turn", "repeat"], tasks: [
+    { t: "Draw a SQUARE: 'when 🟢 clicked', '✏️ pen down', 'repeat 4' with 'move 100 steps' and 'turn ↻ 90 degrees' inside. Tap the numbers to change them. Press 🟢.", ok: r => r.shape === 4 },
+    { t: "Now a TRIANGLE: change repeat to 3 and the turn to 120 degrees (3 × 120 = 360). Press 🟢.", ok: r => r.shape === 3 },
+    { t: "Now a PENTAGON with 5 sides: repeat 5, turn 72 degrees (5 × 72 = 360). Press 🟢.", ok: r => r.shape === 5 }] },
+  maths: { pal: ["flag", "seta", "setb", "sayop", "wait"], tasks: [
+    { t: "Make a calculator: 'when 🟢 clicked', 'set a to 12', 'set b to 5', then 'say ( a + b )'. Press 🟢. It should say 17.", ok: r => r.said.includes("17") },
+    { t: "Tap the + in the say block until it becomes ×. Press 🟢. What is 12 × 5?", ok: r => r.said.includes("60") },
+    { t: "Make it say 7: set a to 35, set b to 5, and choose ÷. Press 🟢.", ok: r => r.said.includes("7") },
+    { t: "Make it say 96: use 100 and 4 with the right sign (−). Press 🟢.", ok: r => r.said.includes("96") }] },
+};
+ACTS_MORE.scratch = function (A) {
+  const M = SMODES[A.mode], S = $("#acStage"); let script = [], cur = null, ti = 0, running = null, bid = 1;
+  S.innerHTML = `<div class="scr"><div class="scrstage" id="scStage"><canvas id="scPen" width="480" height="360"></canvas><div class="scsprite" id="scSprite"><span class="bot">${botSVG(playerBot())}</span></div><div class="scbub" id="scBub" hidden></div></div>
+    <div class="scright"><div class="scpal" id="scPal">${M.pal.map(t => `<button class="sblk ${SB[t].hat ? "hat" : ""}" style="--sc:${SB[t].c}" data-add="${t}">${SB[t].l({ id: 0, v: SB[t].d })}</button>`).join("")}</div>
+    <div class="scscript" id="scScript"></div>
+    <div class="scctl"><button class="btn scflag" id="scGo" aria-label="Green flag">🟢</button><button class="btn" id="scStop" aria-label="Stop">🛑</button><button class="btn" id="scOut" aria-label="Out of the loop">⤴ out of loop</button><button class="btn" id="scDel" aria-label="Remove last block">⌫</button><button class="btn" id="scClr" aria-label="Clear">🗑️</button></div></div></div>`;
+  const pen = $("#scPen").getContext("2d"), spr = { x: 0, y: 0, dir: 90, costume: 0, down: false };
+  const place = () => { const st = $("#scStage"), w = st.clientWidth, h = st.clientHeight, sp = $("#scSprite"); sp.style.left = (w / 2 + spr.x * w / 480) + "px"; sp.style.top = (h / 2 - spr.y * h / 360) + "px"; sp.style.transform = `translate(-50%,-50%) rotate(${spr.dir - 90}deg)`; sp.classList.toggle("c1", spr.costume % 2 === 1); const bb = $("#scBub"); bb.style.left = sp.style.left; bb.style.top = sp.style.top; };
+  const reset = () => { Object.assign(spr, { x: 0, y: 0, dir: 90, costume: 0, down: false }); pen.clearRect(0, 0, 480, 360); $("#scBub").hidden = true; place(); };
+  ACT.fit = place;
+  const listOf = id => { if (id === null) return script; const find = (l) => { for (const b of l) { if (b.id === id) return b.kids; if (b.kids) { const r = find(b.kids); if (r) return r; } } return null; }; return find(script) || script; };
+  const drawScript = () => {
+    const render = (l, depth) => l.map(b => { const T = SB[b.t]; return `<div class="sblk ${T.hat ? "hat" : ""} ${T.cont ? "cblk" : ""}" style="--sc:${T.c}">${T.l(b)}</div>${T.cont ? `<div class="sinside" style="--sc:${T.c}">${render(b.kids, depth + 1)}${cur === b.id ? `<div class="scaret">✚ blocks go here</div>` : ""}</div>` : ""}`; }).join("");
+    $("#scScript").innerHTML = script.length ? render(script, 0) + (cur === null ? `<div class="scaret">✚ blocks go here</div>` : "") : `<em>Tap blocks above to build your script ⬆️</em>`;
+    $("#scOut").hidden = cur === null; const c = $("#scScript .scaret"); if (c) c.scrollIntoView({ block: "nearest" });
+  };
+  const ask = () => task(M.tasks[ti].t, `${ti + 1} of ${M.tasks.length}`);
+  $("#scPal").onclick = e => {
+    const b = e.target.closest("[data-add]"); if (!b || running) return; const t = b.dataset.add, T = SB[t];
+    if (T.hat && script.some(x => x.t === "flag")) { say("You already have a 'when 🟢 clicked' block. It goes at the top."); return; }
+    const nb = { id: bid++, t, v: T.d }; if (T.cont) nb.kids = [];
+    if (T.hat) { script.unshift(nb); } else listOf(cur).push(nb);
+    if (T.cont) cur = nb.id; SFX.tap(); drawScript();
+  };
+  $("#scScript").onclick = e => {
+    const n = e.target.closest("[data-num]"); if (!n || running) return; const find = l => { for (const b of l) { if (b.id === +n.dataset.num) return b; if (b.kids) { const r = find(b.kids); if (r) return r; } } };
+    const b = find(script), T = SB[b.t], opts = T.op || T.n; b.v = opts[(opts.indexOf(b.v) + 1) % opts.length]; SFX.tap(); drawScript();
+  };
+  $("#scOut").onclick = () => { const parentOf = (l, id, p) => { for (const b of l) { if (b.id === id) return p; if (b.kids) { const r = parentOf(b.kids, id, b.id); if (r !== undefined) return r; } } return undefined; }; cur = parentOf(script, cur, null) ?? null; SFX.tap(); drawScript(); };
+  $("#scDel").onclick = () => { if (running) return; const l = listOf(cur); if (l.length) { const x = l.pop(); if (x.id === cur) cur = null; } else if (cur !== null) { $("#scOut").onclick(); const l2 = listOf(cur); l2.pop(); } else if (script.length) script.pop(); SFX.turn(); drawScript(); };
+  $("#scClr").onclick = () => { if (running) return; script = []; cur = null; reset(); drawScript(); };
+  $("#scStop").onclick = () => { if (running) running.stop = true; };
+  $("#scGo").onclick = async () => {
+    if (running) return; if (!script.length || script[0].t !== "flag") { SFX.oops(); say("Start your script with 'when 🟢 clicked', so the green flag can start it."); return; }
+    reset(); const R = running = { stop: false, moved: 0, turned: 0, said: [], costumes: 0, sounds: 0, maxMove: 0, loopMoves: 0, loopCostumes: 0, forever: false, bounced: false, firstMoveBeforeSay: false, pts: [[0, 0]], penTurns: [], vars: { a: 0, b: 0 }, steps: 0 };
+    const sleep = ms => wait(ms);
+    const run = async (list, inLoop) => {
+      for (const b of list) {
+        if (R.stop || R.steps++ > 600) return; const T = b.t;
+        if (T === "flag") continue;
+        if (T === "move") { const n = b.v, rad = (90 - spr.dir) * Math.PI / 180, nx = spr.x + n * Math.cos(rad), ny = spr.y + n * Math.sin(rad);
+          if (spr.down) { pen.strokeStyle = "#E8457E"; pen.lineWidth = 4; pen.lineCap = "round"; pen.beginPath(); pen.moveTo(240 + spr.x, 180 - spr.y); pen.lineTo(240 + nx, 180 - ny); pen.stroke(); R.pts.push([Math.round(nx), Math.round(ny)]); }
+          spr.x = Math.max(-260, Math.min(260, nx)); spr.y = Math.max(-200, Math.min(200, ny)); R.moved += n; R.maxMove = Math.max(R.maxMove, n); if (inLoop) R.loopMoves++; place(); SFX.step(); await sleep(R.fast ? 30 : 220); }
+        else if (T === "turn") { spr.dir = (spr.dir + b.v) % 360; R.turned += b.v; if (spr.down) R.penTurns.push(b.v); place(); await sleep(R.fast ? 20 : 160); }
+        else if (T === "bounce") { if (Math.abs(spr.x) >= 220) { spr.dir = (360 - spr.dir) % 360; spr.x = Math.sign(spr.x) * 219; R.bounced = true; place(); } }
+        else if (T === "say") { if (R.moved > 0) R.firstMoveBeforeSay = true; R.said.push("Hello!"); $("#scBub").hidden = false; $("#scBub").textContent = "Hello!"; say("Hello!"); await sleep(1300); $("#scBub").hidden = true; }
+        else if (T === "cost") { spr.costume++; R.costumes++; if (inLoop) R.loopCostumes++; place(); await sleep(R.fast ? 30 : 200); }
+        else if (T === "sound") { R.sounds++; SFX.pick(); await sleep(300); }
+        else if (T === "wait") await sleep(Math.min(2, b.v) * 600);
+        else if (T === "pendown") spr.down = true; else if (T === "penup") spr.down = false;
+        else if (T === "seta") R.vars.a = b.v; else if (T === "setb") R.vars.b = b.v;
+        else if (T === "sayop") { const { a, b: bb } = R.vars, v = { "+": a + bb, "−": a - bb, "×": a * bb, "÷": bb ? Math.round(a / bb * 100) / 100 : "?" }[b.v]; R.said.push(String(v)); $("#scBub").hidden = false; $("#scBub").textContent = v; say(String(v)); await sleep(1300); }
+        else if (T === "repeat") { R.fast = b.v * b.kids.length > 12; for (let i = 0; i < b.v && !R.stop; i++) await run(b.kids, true); }
+        else if (T === "forever") { R.forever = true; for (let i = 0; i < 80 && !R.stop; i++) await run(b.kids, true); }
+      }
+    };
+    $("#scGo").classList.add("on"); await run(script, false); $("#scGo").classList.remove("on"); running = null;
+    // shape check: a closed polygon with equal sides and equal turns adding to 360
+    const P = R.pts; if (P.length >= 4) { const last = P[P.length - 1], closed = Math.hypot(last[0] - P[0][0], last[1] - P[0][1]) < 3; const sides = P.length - 1, turns = R.penTurns.slice(0, sides); if (closed && turns.length >= sides && turns.every(t => t === turns[0]) && sides * turns[0] === 360) R.shape = sides; }
+    const T = M.tasks[ti];
+    if (T.ok(R, script)) { SFX.good(); ti++; if (ti < M.tasks.length) setTimeout(ask, 900); else setTimeout(() => actDone("You are a Scratch coder!"), 900); }
+    else if (!R.stop) { SFX.oops(); say(M.tasks[ti].t.split(".")[0] + ". Check your blocks and try again."); }
+  };
+  ACT.cleanup = () => { if (running) running.stop = true; };
+  drawScript(); requestAnimationFrame(place); ask();
+};
 
 /* ======================= HOW CODING WORKS: automation, programs, "behind the screen" ======================= */
 const DEMO = { timers: [], stop() { this.timers.forEach(t => { clearInterval(t); clearTimeout(t); }); this.timers = []; this.alive = (this.alive || 0) + 1; } };
